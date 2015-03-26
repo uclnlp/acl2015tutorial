@@ -11,6 +11,8 @@ cp application.conf moro/conf
 cd moro; sbt run
 #+END_SRC
 Then go to =localhost:9000= in your browser.
+*** Opening slides
+Got to =localhost:9000/doc/present/scratch= in your browser. Replace =scratch= with the name of your slides.
 *** Committing your slides
 #+BEGIN_SRC 
 cd ..
