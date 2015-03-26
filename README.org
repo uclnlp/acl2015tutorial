@@ -1,1 +1,18 @@
-* ACL 2015 Tutorial
+** ACL 2015 Tutorial
+*** Cloning
+#+BEGIN_SRC sh
+git clone https://github.com/uclmr/acl2015tutorial.git
+git submodule update --init --recursive
+cd moro; git checkout master; cd .. 
+cp application.conf moro/conf
+#+END_SRC
+*** Running Moro notebook
+#+BEGIN_SRC sh
+cd moro; sbt run
+#+END_SRC
+Then go to =localhost:9000= in your browser.
+*** Committing your slides
+cd ..
+git add *.json
+git commit -am "Added slide"
+git push 
