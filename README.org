@@ -12,7 +12,9 @@ cd moro; sbt run
 #+END_SRC
 Then go to =localhost:9000= in your browser.
 *** Committing your slides
+#+BEGIN_SRC 
 cd ..
 git add *.json
 git commit -am "Added slide"
 git push 
+#+END_SRC
