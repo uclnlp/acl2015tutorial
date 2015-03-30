@@ -16,7 +16,7 @@ Got to =localhost:9000/doc/present/scratch= in your browser. Replace =scratch= w
 *** Committing your slides
 #+BEGIN_SRC 
 cd ..
-git add *.json
+git add src/main/moro/*.json
 git commit -am "Added slide"
 git push 
 #+END_SRC
