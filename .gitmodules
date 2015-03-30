@@ -5,3 +5,6 @@
 	path = wolfe
 	url = https://github.com/wolfe-pack/wolfe.git
 	branch = dev
+[submodule "htmlgen"]
+	path = htmlgen
+	url = https://github.com/sameersingh/htmlgen.git
