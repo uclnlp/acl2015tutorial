@@ -4,9 +4,9 @@
 git clone https://github.com/uclmr/acl2015tutorial.git
 cd acl2015tutorial
 git submodule update --init --recursive
-cd wolfe; sbt publish-local; cd ..
-cd htmlgen; mvn clean install -Dgpg.skip=true; cd ..
-cd moro; git checkout master; cd .. 
+cd wolfe; git pull; sbt publish-local; cd ..
+cd htmlgen; git pull; mvn clean install -Dgpg.skip=true; cd ..
+cd moro; git checkout master; git pull; cd .. 
 cp application.conf moro/conf
 #+END_SRC
 *** Running Moro notebook
