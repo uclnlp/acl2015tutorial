@@ -1,0 +1,113 @@
+{
+  "name" : "Tensor Factorization",
+  "cells" : [ {
+    "id" : 0,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "notation",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"notation\" class=\"section\"><a href=\"#notation\" class=\"muted\"><small>#notation</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 2,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Notation\n(Kolda and Bader, 2009)",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Notation</h3><p>(Kolda and Bader, 2009)</p>"
+    }
+  }, {
+    "id" : 5,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "tucker",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"tucker\" class=\"section\"><a href=\"#tucker\" class=\"muted\"><small>#tucker</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 6,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Tucker Decomposition\n(Tucker, 1966)\n\n",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Tucker Decomposition</h3><p>(Tucker, 1966)</p>"
+    }
+  }, {
+    "id" : 8,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "candecomp",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"candecomp\" class=\"section\"><a href=\"#candecomp\" class=\"muted\"><small>#candecomp</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 9,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### CANDECOMP/PARAFAC\n(Carroll and Chang, 1970; Harshman, 1970)\n\nIn PARAFAC the core tensor is restricted to be \"diagonal\"",
+      "extraFields" : { },
+      "outputFormat" : "<h3>CANDECOMP/PARAFAC</h3><p>(Carroll and Chang, 1970; Harshman, 1970)</p><p>In PARAFAC the core tensor is restricted to be \"diagonal\"</p>"
+    }
+  }, {
+    "id" : 1,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "rescal",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"rescal\" class=\"section\"><a href=\"#rescal\" class=\"muted\"><small>#rescal</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 3,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### RESCAL\n(Nickel et al, 2012)\n<br />\n<img src=\"http://www.mit.edu/~mnick/img/me.png\" height=\"150\">\n",
+      "extraFields" : { },
+      "outputFormat" : "<h3>RESCAL</h3><p>(Nickel et al, 2012) <br> <img src=\"http://www.mit.edu/~mnick/img/me.png\" height=\"150\"></p>"
+    }
+  }, {
+    "id" : 13,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "als",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"als\" class=\"section\"><a href=\"#als\" class=\"muted\"><small>#als</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 12,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Alternating Least Squares",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Alternating Least Squares</h3>"
+    }
+  }, {
+    "id" : 10,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "references",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"references\" class=\"section\"><a href=\"#references\" class=\"muted\"><small>#references</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 11,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### References\n\n- Kolda, Tamara G., and Brett W. Bader. \"Tensor decompositions and applications.\" SIAM review 51.3 (2009): 455-500.\n- Tucker, Ledyard R. \"Some mathematical notes on three-mode factor analysis.\" Psychometrika 31.3 (1966): 279-311.\n- Carroll, J. Douglas, and Jih-Jie Chang. \"Analysis of individual differences in multidimensional scaling via an N-way generalization of “Eckart-Young” decomposition.\" Psychometrika 35.3 (1970): 283-319.\n- Harshman, Richard A. \"Foundations of the PARAFAC procedure: Models and conditions for an\" explanatory\" multi-modal factor analysis.\" (1970): 1-84.\nAPA\t\n- Nickel, Maximilian, Volker Tresp, and Hans-Peter Kriegel. \"Factorizing YAGO: scalable machine learning for linked data.\" Proceedings of the 21st international conference on World Wide Web. ACM, 2012.\nAPA\n",
+      "extraFields" : { },
+      "outputFormat" : "<h3>References</h3>\n<ul>\n  <li>Kolda, Tamara G., and Brett W. Bader. \"Tensor decompositions and applications.\" SIAM review 51.3 (2009): 455-500.</li>\n  <li>Tucker, Ledyard R. \"Some mathematical notes on three-mode factor analysis.\" Psychometrika 31.3 (1966): 279-311.</li>\n  <li>Carroll, J. Douglas, and Jih-Jie Chang. \"Analysis of individual differences in multidimensional scaling via an N-way generalization of “Eckart-Young” decomposition.\" Psychometrika 35.3 (1970): 283-319.</li>\n  <li>Harshman, Richard A. \"Foundations of the PARAFAC procedure: Models and conditions for an\" explanatory\" multi-modal factor analysis.\" (1970): 1-84. APA</li>\n  <li>Nickel, Maximilian, Volker Tresp, and Hans-Peter Kriegel. \"Factorizing YAGO: scalable machine learning for linked data.\" Proceedings of the 21st international conference on World Wide Web. ACM, 2012. APA</li>\n</ul>"
+    }
+  } ],
+  "config" : { }
+}
