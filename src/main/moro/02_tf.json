@@ -5,18 +5,36 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
+      "code" : "tensor",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"tensor\" class=\"section\"><a href=\"#tensor\" class=\"muted\"><small>#tensor</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 1,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Tensors\n\n- Many real-world data has multiple interacting variables\n    - Subject, verb, object triplets \\\\((s,v,o)\\\\)\n    - Relation triplets \\\\((r_s, e_i, e_j)\\\\)\n- Tensors are the higher-order generalizations of a matrices",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Tensors</h3>\n<ul>\n  <li>Many real-world data has multiple interacting variables\n  <ul>\n    <li>Subject, verb, object triplets <span class=\"MathJax_Preview\" style=\"color: inherit;\"></span><span class=\"MathJax\" id=\"MathJax-Element-1-Frame\"><nobr><span class=\"math\" id=\"MathJax-Span-1\" role=\"math\" style=\"width: 3.455em; display: inline-block;\"><span style=\"display: inline-block; position: relative; width: 2.86em; height: 0px; font-size: 120%;\"><span style=\"position: absolute; clip: rect(1.729em 1000.003em 2.92em -999.997em); top: -2.557em; left: 0.003em;\"><span class=\"mrow\" id=\"MathJax-Span-2\"><span class=\"mo\" id=\"MathJax-Span-3\" style=\"font-family: STIXGeneral-Regular;\">(</span><span class=\"mi\" id=\"MathJax-Span-4\" style=\"font-family: STIXGeneral-Italic;\">s</span><span class=\"mo\" id=\"MathJax-Span-5\" style=\"font-family: STIXGeneral-Regular;\">,</span><span class=\"mi\" id=\"MathJax-Span-6\" style=\"font-family: STIXGeneral-Italic; padding-left: 0.182em;\">v</span><span class=\"mo\" id=\"MathJax-Span-7\" style=\"font-family: STIXGeneral-Regular;\">,</span><span class=\"mi\" id=\"MathJax-Span-8\" style=\"font-family: STIXGeneral-Italic; padding-left: 0.182em;\">o</span><span class=\"mo\" id=\"MathJax-Span-9\" style=\"font-family: STIXGeneral-Regular;\">)</span></span><span style=\"display: inline-block; width: 0px; height: 2.562em;\"></span></span></span><span style=\"border-left-width: 0.004em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.146em; vertical-align: -0.282em;\"></span></span></nobr></span><script type=\"math/tex\" id=\"MathJax-Element-1\">(s,v,o)</script></li>\n    <li>Relation triplets <span class=\"MathJax_Preview\" style=\"color: inherit;\"></span><span class=\"MathJax\" id=\"MathJax-Element-2-Frame\"><nobr><span class=\"math\" id=\"MathJax-Span-10\" role=\"math\" style=\"width: 4.467em; display: inline-block;\"><span style=\"display: inline-block; position: relative; width: 3.693em; height: 0px; font-size: 120%;\"><span style=\"position: absolute; clip: rect(1.729em 1000.003em 3.039em -999.997em); top: -2.557em; left: 0.003em;\"><span class=\"mrow\" id=\"MathJax-Span-11\"><span class=\"mo\" id=\"MathJax-Span-12\" style=\"font-family: STIXGeneral-Regular;\">(</span><span class=\"msubsup\" id=\"MathJax-Span-13\"><span style=\"display: inline-block; position: relative; width: 0.717em; height: 0px;\"><span style=\"position: absolute; clip: rect(3.396em 1000.003em 4.17em -999.997em); top: -3.985em; left: 0.003em;\"><span class=\"mi\" id=\"MathJax-Span-14\" style=\"font-family: STIXGeneral-Italic;\">r<span style=\"display: inline-block; overflow: hidden; height: 1px; width: 0.003em;\"></span></span><span style=\"display: inline-block; width: 0px; height: 3.991em;\"></span></span><span style=\"position: absolute; top: -3.807em; left: 0.42em;\"><span class=\"mi\" id=\"MathJax-Span-15\" style=\"font-size: 70.7%; font-family: STIXGeneral-Italic;\">s</span><span style=\"display: inline-block; width: 0px; height: 3.991em;\"></span></span></span></span><span class=\"mo\" id=\"MathJax-Span-16\" style=\"font-family: STIXGeneral-Regular;\">,</span><span class=\"msubsup\" id=\"MathJax-Span-17\" style=\"padding-left: 0.182em;\"><span style=\"display: inline-block; position: relative; width: 0.717em; height: 0px;\"><span style=\"position: absolute; clip: rect(3.396em 1000.003em 4.17em -999.997em); top: -3.985em; left: 0.003em;\"><span class=\"mi\" id=\"MathJax-Span-18\" style=\"font-family: STIXGeneral-Italic;\">e</span><span style=\"display: inline-block; width: 0px; height: 3.991em;\"></span></span><span style=\"position: absolute; top: -3.807em; left: 0.42em;\"><span class=\"mi\" id=\"MathJax-Span-19\" style=\"font-size: 70.7%; font-family: STIXGeneral-Italic;\">i</span><span style=\"display: inline-block; width: 0px; height: 3.991em;\"></span></span></span></span><span class=\"mo\" id=\"MathJax-Span-20\" style=\"font-family: STIXGeneral-Regular;\">,</span><span class=\"msubsup\" id=\"MathJax-Span-21\" style=\"padding-left: 0.182em;\"><span style=\"display: inline-block; position: relative; width: 0.717em; height: 0px;\"><span style=\"position: absolute; clip: rect(3.396em 1000.003em 4.17em -999.997em); top: -3.985em; left: 0.003em;\"><span class=\"mi\" id=\"MathJax-Span-22\" style=\"font-family: STIXGeneral-Italic;\">e</span><span style=\"display: inline-block; width: 0px; height: 3.991em;\"></span></span><span style=\"position: absolute; top: -3.807em; left: 0.42em;\"><span class=\"mi\" id=\"MathJax-Span-23\" style=\"font-size: 70.7%; font-family: STIXGeneral-Italic;\">j<span style=\"display: inline-block; overflow: hidden; height: 1px; width: 0.003em;\"></span></span><span style=\"display: inline-block; width: 0px; height: 3.991em;\"></span></span></span></span><span class=\"mo\" id=\"MathJax-Span-24\" style=\"font-family: STIXGeneral-Regular;\">)</span></span><span style=\"display: inline-block; width: 0px; height: 2.562em;\"></span></span></span><span style=\"border-left-width: 0.004em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.289em; vertical-align: -0.425em;\"></span></span></nobr></span><script type=\"math/tex\" id=\"MathJax-Element-2\">(r_s, e_i, e_j)</script></li>\n  </ul></li>\n  <li>Tensors are the higher-order generalizations of a matrices</li>\n</ul>"
+    }
+  }, {
+    "id" : 3,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
       "code" : "notation",
       "extraFields" : { },
       "outputFormat" : "<h5 id=\"notation\" class=\"section\"><a href=\"#notation\" class=\"muted\"><small>#notation</small></a></h5>\n<hr>"
     }
   }, {
-    "id" : 2,
+    "id" : 4,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Notation\n(Kolda and Bader, 2009)",
+      "code" : "### Notation\n(Kolda and Bader, 2009)\n\n- Vectors: boldface lower-case letters \\\\(\\mathbf{v}\\\\)\n- Matrices: boldface capital letters \\\\(\\mathbf{M}\\\\)\n- Tensors: Euler script letters \\\\(\\mathcal{T}\\\\)",
       "extraFields" : { },
-      "outputFormat" : "<h3>Notation</h3><p>(Kolda and Bader, 2009)</p>"
+      "outputFormat" : "<h3>Notation</h3><p>(Kolda and Bader, 2009)</p>\n<ul>\n  <li>Vectors: boldface lower-case letters <span class=\"MathJax_Preview\" style=\"color: inherit;\"></span><span class=\"MathJax\" id=\"MathJax-Element-16-Frame\"><nobr><span class=\"math\" id=\"MathJax-Span-90\" role=\"math\" style=\"width: 0.658em; display: inline-block;\"><span style=\"display: inline-block; position: relative; width: 0.539em; height: 0px; font-size: 120%;\"><span style=\"position: absolute; clip: rect(1.908em 1000.003em 2.741em -999.997em); top: -2.557em; left: 0.003em;\"><span class=\"mrow\" id=\"MathJax-Span-91\"><span class=\"texatom\" id=\"MathJax-Span-92\"><span class=\"mrow\" id=\"MathJax-Span-93\"><span class=\"mi\" id=\"MathJax-Span-94\" style=\"font-family: STIXGeneral; font-weight: bold;\">v</span></span></span></span><span style=\"display: inline-block; width: 0px; height: 2.562em;\"></span></span></span><span style=\"border-left-width: 0.004em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 0.718em; vertical-align: -0.068em;\"></span></span></nobr></span><script type=\"math/tex\" id=\"MathJax-Element-16\">\\mathbf{v}</script></li>\n  <li>Matrices: boldface capital letters <span class=\"MathJax_Preview\" style=\"color: inherit;\"></span><span class=\"MathJax\" id=\"MathJax-Element-17-Frame\"><nobr><span class=\"math\" id=\"MathJax-Span-95\" role=\"math\" style=\"width: 1.193em; display: inline-block;\"><span style=\"display: inline-block; position: relative; width: 0.955em; height: 0px; font-size: 120%;\"><span style=\"position: absolute; clip: rect(1.729em 1000.003em 2.741em -999.997em); top: -2.557em; left: 0.003em;\"><span class=\"mrow\" id=\"MathJax-Span-96\"><span class=\"texatom\" id=\"MathJax-Span-97\"><span class=\"mrow\" id=\"MathJax-Span-98\"><span class=\"mi\" id=\"MathJax-Span-99\" style=\"font-family: STIXGeneral; font-weight: bold;\">M</span></span></span></span><span style=\"display: inline-block; width: 0px; height: 2.562em;\"></span></span></span><span style=\"border-left-width: 0.004em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 0.932em; vertical-align: -0.068em;\"></span></span></nobr></span><script type=\"math/tex\" id=\"MathJax-Element-17\">\\mathbf{M}</script></li>\n  <li>Tensors: Euler script letters <span class=\"MathJax_Preview\" style=\"color: inherit;\"></span><span class=\"MathJax\" id=\"MathJax-Element-18-Frame\"><nobr><span class=\"math\" id=\"MathJax-Span-100\" role=\"math\" style=\"width: 0.955em; display: inline-block;\"><span style=\"display: inline-block; position: relative; width: 0.777em; height: 0px; font-size: 120%;\"><span style=\"position: absolute; clip: rect(2.086em 1000.003em 3.158em -999.997em); top: -2.973em; left: 0.003em;\"><span class=\"mrow\" id=\"MathJax-Span-101\"><span class=\"texatom\" id=\"MathJax-Span-102\"><span class=\"mrow\" id=\"MathJax-Span-103\"><span class=\"mi\" id=\"MathJax-Span-104\" style=\"font-family: STIXNonUnicode-Italic;\"><span style=\"display: inline-block; overflow: hidden; height: 1px; width: 0.241em;\"></span></span></span></span></span><span style=\"display: inline-block; width: 0px; height: 2.979em;\"></span></span></span><span style=\"border-left-width: 0.004em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.004em; vertical-align: -0.068em;\"></span></span></nobr></span><script type=\"math/tex\" id=\"MathJax-Element-18\">\\mathcal{T}</script></li>\n</ul>"
     }
   }, {
     "id" : 5,
@@ -37,7 +55,7 @@
       "outputFormat" : "<h3>Tucker Decomposition</h3><p>(Tucker, 1966)</p>"
     }
   }, {
-    "id" : 8,
+    "id" : 7,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -46,7 +64,7 @@
       "outputFormat" : "<h5 id=\"candecomp\" class=\"section\"><a href=\"#candecomp\" class=\"muted\"><small>#candecomp</small></a></h5>\n<hr>"
     }
   }, {
-    "id" : 9,
+    "id" : 8,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -55,7 +73,7 @@
       "outputFormat" : "<h3>CANDECOMP/PARAFAC</h3><p>(Carroll and Chang, 1970; Harshman, 1970)</p><p>In PARAFAC the core tensor is restricted to be \"diagonal\"</p>"
     }
   }, {
-    "id" : 1,
+    "id" : 9,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -64,16 +82,16 @@
       "outputFormat" : "<h5 id=\"rescal\" class=\"section\"><a href=\"#rescal\" class=\"muted\"><small>#rescal</small></a></h5>\n<hr>"
     }
   }, {
-    "id" : 3,
+    "id" : 10,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### RESCAL\n(Nickel et al, 2012)\n<br />\n<img src=\"http://www.mit.edu/~mnick/img/me.png\" height=\"150\">\n",
+      "code" : "### RESCAL\n(Nickel et al, 2012)\n<br />\n<img src=\"../../assets/figures/nickel.png\" height=\"150\">\n",
       "extraFields" : { },
-      "outputFormat" : "<h3>RESCAL</h3><p>(Nickel et al, 2012) <br> <img src=\"http://www.mit.edu/~mnick/img/me.png\" height=\"150\"></p>"
+      "outputFormat" : "<h3>RESCAL</h3><p>(Nickel et al, 2012) <br> <img src=\"../../assets/figures/nickel.png\" height=\"150\"></p>"
     }
   }, {
-    "id" : 13,
+    "id" : 11,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -91,7 +109,7 @@
       "outputFormat" : "<h3>Alternating Least Squares</h3>"
     }
   }, {
-    "id" : 10,
+    "id" : 13,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -100,7 +118,7 @@
       "outputFormat" : "<h5 id=\"references\" class=\"section\"><a href=\"#references\" class=\"muted\"><small>#references</small></a></h5>\n<hr>"
     }
   }, {
-    "id" : 11,
+    "id" : 14,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
