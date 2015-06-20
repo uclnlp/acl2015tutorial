@@ -8,6 +8,9 @@ cd wolfe; git pull; sbt publish-local; cd ..
 cd htmlgen; git pull; mvn clean install -Dgpg.skip=true; cd ..
 cd moro; git checkout master; git pull; cd .. 
 cp application.conf moro/conf
+cd moro/public/
+ln -s ../../src/main/moro/figures/
+cd ../..
 #+END_SRC
 *** Running Moro notebook
 #+BEGIN_SRC sh
