@@ -1,5 +1,167 @@
 {
   "name" : "Inclusion of Prior Knowledge in Factorization Models",
-  "cells" : [ ],
+  "cells" : [ {
+    "id" : 0,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "drawbacks",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"drawbacks\" class=\"section\"><a href=\"#drawbacks\" class=\"muted\"><small>#drawbacks</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 4,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Drawbacks of OpenIE and Embeddings\n\n<br />\n<img src=\"../../assets/figures/07/MF-7.png\" height=\"500\">",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Drawbacks of OpenIE and Embeddings</h3><p><br> <img src=\"../../assets/figures/07/MF-7.png\" height=\"500\"></p>"
+    }
+  }, {
+    "id" : 2,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "drawbacks1",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"drawbacks1\" class=\"section\"><a href=\"#drawbacks1\" class=\"muted\"><small>#drawbacks1</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 3,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Drawbacks of OpenIE and Embeddings\n\n<br />\n<img src=\"../../assets/figures/07/MF-14.png\" height=\"500\">",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Drawbacks of OpenIE and Embeddings</h3><p><br> <img src=\"../../assets/figures/07/MF-14.png\" height=\"500\"></p>"
+    }
+  }, {
+    "id" : 5,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "drawbacksTODO",
+      "extraFields" : { },
+      "outputFormat" : ""
+    }
+  }, {
+    "id" : 6,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### TODO: add intermediate slides\n\n<br />\n<img src=\"../../assets/figures/07/MF-16.png\" height=\"500\">",
+      "extraFields" : { },
+      "outputFormat" : "<h3>TODO: add intermediate slides</h3><p><br> <img src=\"../../assets/figures/07/MF-16.png\" height=\"500\"></p>"
+    }
+  }, {
+    "id" : 7,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "logic",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"logic\" class=\"section\"><a href=\"#logic\" class=\"muted\"><small>#logic</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 8,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### First-order Logic Prior Knowledge\n\n- *Representation Learning*: hard to fix mistakes\n\n    \\\\(\\neg \\text{person}(x) \\Rightarrow \\neg \\text{place of birth}(x,y)\\\\) \n- *Distant Supervision*: fails for no or little alignment\n\n    \\\\(\\text{#1-is-a-student-in-#2-'s-lab}(x,y) \\Rightarrow \\text{supervisedBy}(x,y)\\\\)\n- Pros: Formulae are easy to modify and improve\n- Cons: Brittle, no generalization and inference can become intractable\n- Markov Logic Networks: easy to modify, generalize well, but inference often intractable in practice",
+      "extraFields" : { },
+      "outputFormat" : "<h3>First-order Logic Prior Knowledge</h3>\n<ul>\n  <li><p><em>Representation Learning</em>: hard to fix mistakes</p><p><span class=\"MathJax_Preview\" style=\"color: inherit;\"></span><span class=\"MathJax\" id=\"MathJax-Element-5-Frame\"><nobr><span class=\"math\" id=\"MathJax-Span-61\" role=\"math\" style=\"width: 16.67em; display: inline-block;\"><span style=\"display: inline-block; position: relative; width: 13.872em; height: 0px; font-size: 120%;\"><span style=\"position: absolute; clip: rect(1.729em 1000.003em 2.979em -999.997em); top: -2.557em; left: 0.003em;\"><span class=\"mrow\" id=\"MathJax-Span-62\"><span class=\"mi\" id=\"MathJax-Span-63\" style=\"font-family: STIXGeneral-Regular;\">¬</span><span class=\"mtext\" id=\"MathJax-Span-64\" style=\"font-family: STIXGeneral-Regular;\">person</span><span class=\"mo\" id=\"MathJax-Span-65\" style=\"font-family: STIXGeneral-Regular;\">(</span><span class=\"mi\" id=\"MathJax-Span-66\" style=\"font-family: STIXGeneral-Italic;\">x<span style=\"display: inline-block; overflow: hidden; height: 1px; width: 0.003em;\"></span></span><span class=\"mo\" id=\"MathJax-Span-67\" style=\"font-family: STIXGeneral-Regular;\">)</span><span class=\"mo\" id=\"MathJax-Span-68\" style=\"font-family: STIXGeneral-Regular; padding-left: 0.301em;\">⇒</span><span class=\"mi\" id=\"MathJax-Span-69\" style=\"font-family: STIXGeneral-Regular; padding-left: 0.301em;\">¬</span><span class=\"mtext\" id=\"MathJax-Span-70\" style=\"font-family: STIXGeneral-Regular;\">place of birth</span><span class=\"mo\" id=\"MathJax-Span-71\" style=\"font-family: STIXGeneral-Regular;\">(</span><span class=\"mi\" id=\"MathJax-Span-72\" style=\"font-family: STIXGeneral-Italic;\">x<span style=\"display: inline-block; overflow: hidden; height: 1px; width: 0.003em;\"></span></span><span class=\"mo\" id=\"MathJax-Span-73\" style=\"font-family: STIXGeneral-Regular;\">,</span><span class=\"mi\" id=\"MathJax-Span-74\" style=\"font-family: STIXGeneral-Italic; padding-left: 0.182em;\">y</span><span class=\"mo\" id=\"MathJax-Span-75\" style=\"font-family: STIXGeneral-Regular;\">)</span></span><span style=\"display: inline-block; width: 0px; height: 2.562em;\"></span></span></span><span style=\"border-left-width: 0.004em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.218em; vertical-align: -0.354em;\"></span></span></nobr></span><script type=\"math/tex\" id=\"MathJax-Element-5\">\\neg \\text{person}(x) \\Rightarrow \\neg \\text{place of birth}(x,y)</script> </p></li>\n  <li><p><em>Distant Supervision</em>: fails for no or little alignment</p><p><span class=\"MathJax_Preview\" style=\"color: inherit;\"></span><span class=\"MathJax\" id=\"MathJax-Element-6-Frame\"><nobr><span class=\"math\" id=\"MathJax-Span-76\" role=\"math\" style=\"width: 26.253em; display: inline-block;\"><span style=\"display: inline-block; position: relative; width: 21.848em; height: 0px; font-size: 120%;\"><span style=\"position: absolute; clip: rect(1.729em 1000.003em 2.979em -999.997em); top: -2.557em; left: 0.003em;\"><span class=\"mrow\" id=\"MathJax-Span-77\"><span class=\"mtext\" id=\"MathJax-Span-78\" style=\"font-family: STIXGeneral-Regular;\">#1-is-a-student-in-#2-'s-lab</span><span class=\"mo\" id=\"MathJax-Span-79\" style=\"font-family: STIXGeneral-Regular;\">(</span><span class=\"mi\" id=\"MathJax-Span-80\" style=\"font-family: STIXGeneral-Italic;\">x<span style=\"display: inline-block; overflow: hidden; height: 1px; width: 0.003em;\"></span></span><span class=\"mo\" id=\"MathJax-Span-81\" style=\"font-family: STIXGeneral-Regular;\">,</span><span class=\"mi\" id=\"MathJax-Span-82\" style=\"font-family: STIXGeneral-Italic; padding-left: 0.182em;\">y</span><span class=\"mo\" id=\"MathJax-Span-83\" style=\"font-family: STIXGeneral-Regular;\">)</span><span class=\"mo\" id=\"MathJax-Span-84\" style=\"font-family: STIXGeneral-Regular; padding-left: 0.301em;\">⇒</span><span class=\"mtext\" id=\"MathJax-Span-85\" style=\"font-family: STIXGeneral-Regular; padding-left: 0.301em;\">supervisedBy</span><span class=\"mo\" id=\"MathJax-Span-86\" style=\"font-family: STIXGeneral-Regular;\">(</span><span class=\"mi\" id=\"MathJax-Span-87\" style=\"font-family: STIXGeneral-Italic;\">x<span style=\"display: inline-block; overflow: hidden; height: 1px; width: 0.003em;\"></span></span><span class=\"mo\" id=\"MathJax-Span-88\" style=\"font-family: STIXGeneral-Regular;\">,</span><span class=\"mi\" id=\"MathJax-Span-89\" style=\"font-family: STIXGeneral-Italic; padding-left: 0.182em;\">y</span><span class=\"mo\" id=\"MathJax-Span-90\" style=\"font-family: STIXGeneral-Regular;\">)</span></span><span style=\"display: inline-block; width: 0px; height: 2.562em;\"></span></span></span><span style=\"border-left-width: 0.004em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.218em; vertical-align: -0.354em;\"></span></span></nobr></span><script type=\"math/tex\" id=\"MathJax-Element-6\">\\text{#1-is-a-student-in-#2-'s-lab}(x,y) \\Rightarrow \\text{supervisedBy}(x,y)</script></p></li>\n  <li>Pros: Formulae are easy to modify and improve</li>\n  <li>Cons: Brittle, no generalization and inference can become intractable</li>\n  <li>Markov Logic Networks: easy to modify, generalize well, but inference often intractable in practice</li>\n</ul>"
+    }
+  }, {
+    "id" : 9,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "overview",
+      "extraFields" : { },
+      "outputFormat" : ""
+    }
+  }, {
+    "id" : 10,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Low-rank Logic Embeddings \n\n<br />\n<img src=\"../../assets/figures/07/Overview-7.png\" height=\"300\">",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Low-rank Logic Embeddings</h3><p><br> <img src=\"../../assets/figures/07/Overview-7.png\" height=\"400\"></p>"
+    }
+  }, {
+    "id" : 11,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "mflogic",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"mflogic\" class=\"section\"><a href=\"#mflogic\" class=\"muted\"><small>#mflogic</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 12,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Combining Logic and Matrix Factorization\n\n<br />\n<img src=\"../../assets/figures/07/Baselines-15.png\" height=\"500\">",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Combining Logic and Matrix Factorization</h3><p><br> <img src=\"../../assets/figures/07/Baselines-15.png\" height=\"400\"></p>"
+    }
+  }, {
+    "id" : 13,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "backprop",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"backprop\" class=\"section\"><a href=\"#backprop\" class=\"muted\"><small>#backprop</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 15,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Backpropagation Through Structure\n(REF)\n\n<br />\n<img src=\"../../assets/figures/07/Backprop.png\" height=\"400\">",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Backpropagation Through Structure</h3><p>(REF)</p><p><br> <img src=\"../../assets/figures/07/Backprop.png\" height=\"300\"></p>"
+    }
+  }, {
+    "id" : 16,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "results",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"results\" class=\"section\"><a href=\"#results\" class=\"muted\"><small>#results</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 17,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Zero-shot Relation Learning\n\n<br />\n<img src=\"../../assets/figures/07/zero-shot-5.png\" height=\"500\">",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Zero-shot Relation Learning</h3><p><br> <img src=\"../../assets/figures/07/zero-shot-5.png\" height=\"500\"></p>"
+    }
+  }, {
+    "id" : 18,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "fewdistant",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"fewdistant\" class=\"section\"><a href=\"#fewdistant\" class=\"muted\"><small>#fewdistant</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 19,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Relations with Few Distant Labels\n\n<br />\n<img src=\"../../assets/figures/07/results.png\" height=\"500\">",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Relations with Few Distant Labels</h3><p><br> <img src=\"../../assets/figures/07/results.png\" height=\"500\"></p>"
+    }
+  } ],
   "config" : { }
 }
