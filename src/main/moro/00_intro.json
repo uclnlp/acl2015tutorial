@@ -1,0 +1,50 @@
+{
+  "name" : "Matrix and Tensor Factorization Methods for Natural Language Processing",
+  "cells" : [ {
+    "id" : 0,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "intro",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"intro\" class=\"section\"><a href=\"#intro\" class=\"muted\"><small>#intro</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 34,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Eyecandy",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Eyecandy</h3>"
+    }
+  }, {
+    "id" : 1,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Introduction\n- Formulating tasks as instances of matrix and tensor factorization becomes more common:\n- example1\n- example2\n",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Introduction</h3>\n<ul>\n  <li>Formulating tasks as instances of matrix and tensor factorization becomes more common:</li>\n  <li>example1</li>\n  <li>example2</li>\n</ul>"
+    }
+  }, {
+    "id" : 2,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### This tutorial\n\nPart 1:\n\n",
+      "extraFields" : { },
+      "outputFormat" : "<h3>This tutorial</h3><p>Part 1:</p>"
+    }
+  }, {
+    "id" : 3,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### This tutorial\n\nPart 2:\n",
+      "extraFields" : { },
+      "outputFormat" : "<h3>This tutorial</h3><p>Part 2:</p>"
+    }
+  } ],
+  "config" : { }
+}
