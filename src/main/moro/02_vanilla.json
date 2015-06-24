@@ -1,0 +1,149 @@
+{
+  "name" : "Vanilla Matrix Factorization",
+  "cells" : [ {
+    "id" : 0,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "completion",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"completion\" class=\"section\"><a href=\"#completion\" class=\"muted\"><small>#completion</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 1,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Matrix Completion\n",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Matrix Completion</h3>"
+    }
+  }, {
+    "id" : 2,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "lowrank",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"lowrank\" class=\"section\"><a href=\"#lowrank\" class=\"muted\"><small>#lowrank</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 3,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Low-Rank Factorization\n",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Low-Rank Factorization</h3>"
+    }
+  }, {
+    "id" : 4,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "why",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"why\" class=\"section\"><a href=\"#why\" class=\"muted\"><small>#why</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 5,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\n### Why Low-Rank\n",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Why Low-Rank</h3>"
+    }
+  }, {
+    "id" : 6,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "svd",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"svd\" class=\"section\"><a href=\"#svd\" class=\"muted\"><small>#svd</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 7,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Singular Value Decomposition\n",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Singular Value Decomposition</h3>"
+    }
+  }, {
+    "id" : 8,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "sgd",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"sgd\" class=\"section\"><a href=\"#sgd\" class=\"muted\"><small>#sgd</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 9,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Stochastic Gradient Descent\n",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Stochastic Gradient Descent</h3>"
+    }
+  }, {
+    "id" : 10,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "als",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"als\" class=\"section\"><a href=\"#als\" class=\"muted\"><small>#als</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 11,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Alternating Least Squares\n",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Alternating Least Squares</h3>"
+    }
+  }, {
+    "id" : 14,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "lsa",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"lsa\" class=\"section\"><a href=\"#lsa\" class=\"muted\"><small>#lsa</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 15,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Latent Semantic Analysis\n\n\n",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Latent Semantic Analysis</h3>"
+    }
+  }, {
+    "id" : 16,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "references",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"references\" class=\"section\"><a href=\"#references\" class=\"muted\"><small>#references</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 17,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### References \n",
+      "extraFields" : { },
+      "outputFormat" : "<h3>References</h3>"
+    }
+  } ],
+  "config" : { }
+}
