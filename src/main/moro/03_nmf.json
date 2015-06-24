@@ -1,0 +1,77 @@
+{
+  "name" : "Non-Negative Matrix Factorization",
+  "cells" : [ {
+    "id" : 0,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "why",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"why\" class=\"section\"><a href=\"#why\" class=\"muted\"><small>#why</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 1,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Non-negativity\n\n- Intepretability\n- modelling assumptions\n",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Non-negativity</h3>\n<ul>\n  <li>Intepretability</li>\n  <li>representation</li>\n</ul>"
+    }
+  }, {
+    "id" : 2,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "algos",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"algos\" class=\"section\"><a href=\"#algos\" class=\"muted\"><small>#algos</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 3,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Algorithms\nLee and Seung\n",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Algorithms</h3><p>Lee and Seung</p>"
+    }
+  }, {
+    "id" : 4,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "sparsity",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"sparsity\" class=\"section\"><a href=\"#sparsity\" class=\"muted\"><small>#sparsity</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 5,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\n### Sparsity\n",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Sparsity</h3>"
+    }
+  }, {
+    "id" : 6,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "lda",
+      "extraFields" : { },
+      "outputFormat" : "<h5 id=\"lda\" class=\"section\"><a href=\"#lda\" class=\"muted\"><small>#lda</small></a></h5>\n<hr>"
+    }
+  }, {
+    "id" : 7,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Topic models\n\nEye candy\nShow how the topics correspond to the factors",
+      "extraFields" : { },
+      "outputFormat" : "<h3>Topic models</h3><p>Eye candy</p>"
+    }
+  } ],
+  "config" : { }
+}
