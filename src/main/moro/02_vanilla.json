@@ -21,7 +21,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "lowrank",
+      "code" : "assumptions",
       "extraFields" : { }
     }
   }, {
@@ -29,7 +29,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Low-Rank Factorization\n",
+      "code" : "### Modelling assumptions\n- exchangeability (row/column) -> rotation invariance (spectrum of the matrix)\n- low complexity measures for matrices -> (pseudo-) norms on the spectrum\n- sparsity for computational efficiency -> low-rank",
       "extraFields" : { }
     }
   }, {
@@ -37,7 +37,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "why",
+      "code" : "lowrank",
       "extraFields" : { }
     }
   }, {
@@ -45,7 +45,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "\n### Why Low-Rank\n",
+      "code" : "### Low-Rank Factorization\n",
       "extraFields" : { }
     }
   }, {
@@ -53,7 +53,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "svd",
+      "code" : "why",
       "extraFields" : { }
     }
   }, {
@@ -61,7 +61,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Singular Value Decomposition\n",
+      "code" : "\n### Why Low-Rank\n",
       "extraFields" : { }
     }
   }, {
@@ -69,7 +69,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "sgd",
+      "code" : "svd",
       "extraFields" : { }
     }
   }, {
@@ -77,7 +77,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Stochastic Gradient Descent\n",
+      "code" : "### Singular Value Decomposition\n",
       "extraFields" : { }
     }
   }, {
@@ -85,7 +85,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "als",
+      "code" : "sgd",
       "extraFields" : { }
     }
   }, {
@@ -93,7 +93,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Alternating Least Squares\n",
+      "code" : "### Stochastic Gradient Descent\n",
       "extraFields" : { }
     }
   }, {
@@ -101,7 +101,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "lsa",
+      "code" : "als",
       "extraFields" : { }
     }
   }, {
@@ -109,7 +109,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Latent Semantic Analysis\n\n\n",
+      "code" : "### Alternating Least Squares\n",
       "extraFields" : { }
     }
   }, {
@@ -117,11 +117,27 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "references",
+      "code" : "lsa",
       "extraFields" : { }
     }
   }, {
     "id" : 15,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Latent Semantic Analysis\n\n\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 16,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "references",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 17,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
