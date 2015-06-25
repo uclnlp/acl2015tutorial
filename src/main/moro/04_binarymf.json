@@ -1,11 +1,11 @@
 {
-  "name" : "Vanilla Matrix Factorization",
+  "name" : "Binary Matrix Factorization",
   "cells" : [ {
     "id" : 0,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "completion",
+      "code" : "1",
       "extraFields" : { }
     }
   }, {
@@ -13,23 +13,23 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Completion\n",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 2,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "lowrank",
+      "code" : "### Binary Data\n\nsome example binary instead of real data here. Term Frequency vs exist link or not. ",
       "extraFields" : { }
     }
   }, {
     "id" : 3,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "2",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 2,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Low-Rank Factorization\n",
+      "code" : "### Logistic Loss\n\n* Map real values to a probability [0,1]\n* Think of scores as natural parameters of a Bernoulli \n* Now we can maximize log-likelihood of this data => Logistic loss\n\n",
       "extraFields" : { }
     }
   }, {
@@ -37,39 +37,15 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "why",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 5,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "\n### Why Low-Rank\n",
+      "code" : "3   ",
       "extraFields" : { }
     }
   }, {
     "id" : 6,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "svd",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 7,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Singular Value Decomposition\n",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 8,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "sgd",
+      "code" : "### Alternative View: Sign Rank\n\n* Low _rank_ not very powerful (can't do diagonal, triangle etc)\n* Let's make another assumption: low sign Rank \n\n",
       "extraFields" : { }
     }
   }, {
@@ -77,55 +53,47 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Stochastic Gradient Descent\n",
+      "code" : "4",
       "extraFields" : { }
     }
   }, {
-    "id" : 10,
-    "compiler" : "section",
+    "id" : 7,
+    "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "als",
+      "code" : "### Negative Data\n\n* Often we only observe 1s, 0s are hidden\n* Need to sample negative data (in advance, or during SGD)\n* BPR (ranking objective) \n",
       "extraFields" : { }
     }
   }, {
     "id" : 11,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### Alternating Least Squares\n",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 12,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "lsa",
+      "code" : "\n5",
       "extraFields" : { }
     }
   }, {
-    "id" : 13,
+    "id" : 10,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Latent Semantic Analysis\n\n\n",
+      "code" : "### Application: USchema\n\n* Problem: Combine Open and Closed IE\n* Show data matrix\n* Semisupervised learning\n* Results",
       "extraFields" : { }
     }
   }, {
-    "id" : 14,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "references",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 15,
+    "id" : 8,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### References \n",
+      "code" : "",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 5,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "",
       "extraFields" : { }
     }
   } ],
