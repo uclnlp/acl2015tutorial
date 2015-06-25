@@ -77,7 +77,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Notation\n\n- Scalars: lower-case letters \\\\(v,m\\\\)\n- Vectors: boldface lower-case letters \\\\(\\mathbf{v}\\\\)\n- Matrices: boldface capital letters \\\\(\\mathbf{M}\\\\)\n\nTODO: staged?\n\n- \\\\(i\\\\)th element of a vector \\\\(\\mathbf{v}\\\\): \\\\(v_i\\\\)\n- \\\\((i,j)\\\\)-element of a matrix \\\\(\\mathbf{M}\\\\): \\\\(m_{ij}\\\\)\n- \\\\(i\\\\)th row of a matrix \\\\(\\mathbf{M}\\\\): \\\\(\\mathbf{m}_{i:}\\\\)\n- \\\\(j\\\\)th column of a matrix \\\\(\\mathbf{M}\\\\): \\\\(\\mathbf{m}_{:j}\\\\)\n",
+      "code" : "### Notation\n\n- Scalars: lower-case letters \\\\(v,m\\\\)\n- Vectors: boldface lower-case letters \\\\(\\mathbf{v}\\\\)\n- Matrices: boldface capital letters \\\\(\\mathbf{M}\\\\)\n\nTODO: staged?\n\n- \\\\(i\\\\)th element of a vector \\\\(\\mathbf{v}\\\\): \\\\(v_i\\\\) <!-- .element: class=\"fragment\" data-fragment-index=\"1\" -->\n- \\\\((i,j)\\\\)-element of a matrix \\\\(\\mathbf{M}\\\\): \\\\(m_{ij}\\\\) <!-- .element: class=\"fragment\" data-fragment-index=\"2\" -->\n- \\\\(i\\\\)th row of a matrix \\\\(\\mathbf{M}\\\\): \\\\(\\mathbf{m}_{i:}\\\\) <!-- .element: class=\"fragment\" data-fragment-index=\"3\" -->\n- \\\\(j\\\\)th column of a matrix \\\\(\\mathbf{M}\\\\): \\\\(\\mathbf{m}_{:j}\\\\) <!-- .element: class=\"fragment\" data-fragment-index=\"4\" -->\n",
       "extraFields" : {
         "hide_output" : "false"
       }
