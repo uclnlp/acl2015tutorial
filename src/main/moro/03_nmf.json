@@ -6,8 +6,7 @@
     "input" : {
       "sessionId" : null,
       "code" : "why",
-      "extraFields" : { },
-      "outputFormat" : "<h5 id=\"why\" class=\"section\"><a href=\"#why\" class=\"muted\"><small>#why</small></a></h5>\n<hr>"
+      "extraFields" : { }
     }
   }, {
     "id" : 1,
@@ -15,8 +14,7 @@
     "input" : {
       "sessionId" : null,
       "code" : "### Non-negativity\n\n- Intepretability\n- modelling assumptions\n",
-      "extraFields" : { },
-      "outputFormat" : "<h3>Non-negativity</h3>\n<ul>\n  <li>Intepretability</li>\n  <li>representation</li>\n</ul>"
+      "extraFields" : { }
     }
   }, {
     "id" : 2,
@@ -24,8 +22,7 @@
     "input" : {
       "sessionId" : null,
       "code" : "algos",
-      "extraFields" : { },
-      "outputFormat" : "<h5 id=\"algos\" class=\"section\"><a href=\"#algos\" class=\"muted\"><small>#algos</small></a></h5>\n<hr>"
+      "extraFields" : { }
     }
   }, {
     "id" : 3,
@@ -33,8 +30,7 @@
     "input" : {
       "sessionId" : null,
       "code" : "### Algorithms\nLee and Seung\n",
-      "extraFields" : { },
-      "outputFormat" : "<h3>Algorithms</h3><p>Lee and Seung</p>"
+      "extraFields" : { }
     }
   }, {
     "id" : 4,
@@ -42,8 +38,7 @@
     "input" : {
       "sessionId" : null,
       "code" : "sparsity",
-      "extraFields" : { },
-      "outputFormat" : "<h5 id=\"sparsity\" class=\"section\"><a href=\"#sparsity\" class=\"muted\"><small>#sparsity</small></a></h5>\n<hr>"
+      "extraFields" : { }
     }
   }, {
     "id" : 5,
@@ -51,8 +46,7 @@
     "input" : {
       "sessionId" : null,
       "code" : "\n### Sparsity\n",
-      "extraFields" : { },
-      "outputFormat" : "<h3>Sparsity</h3>"
+      "extraFields" : { }
     }
   }, {
     "id" : 6,
@@ -60,17 +54,15 @@
     "input" : {
       "sessionId" : null,
       "code" : "lda",
-      "extraFields" : { },
-      "outputFormat" : "<h5 id=\"lda\" class=\"section\"><a href=\"#lda\" class=\"muted\"><small>#lda</small></a></h5>\n<hr>"
+      "extraFields" : { }
     }
   }, {
     "id" : 7,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Topic models\n\nEye candy\nShow how the topics correspond to the factors",
-      "extraFields" : { },
-      "outputFormat" : "<h3>Topic models</h3><p>Eye candy</p>"
+      "code" : "### Topic models\n\nEye candy\n\nShow how the topics correspond to the factors\n\nrecent work in topic modelling goes back to MF",
+      "extraFields" : { }
     }
   } ],
   "config" : { }
