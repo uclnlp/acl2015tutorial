@@ -85,7 +85,7 @@ object MatrixRenderer {
       |    text.enter().append("text")
       |        .attr("class", "row")
       |
-      |    text.attr("x", function(d) {return 0} )
+      |    text.transition().attr("x", function(d) {return 0} )
       |        .attr("y", function(d) {return d.row * ch + colHeaderSize;} )
       |        .text(function(d) {return d.name;})
       |
@@ -99,7 +99,7 @@ object MatrixRenderer {
       |    text.enter().append("text")
       |        .attr("class", "col")
       |
-      |    text.attr("x", function(d) {return d.col * cw + rowHeaderSize;} )
+      |    text.transition().attr("x", function(d) {return d.col * cw + rowHeaderSize;} )
       |        .attr("y", function(d) {return colHeaderSize - ch;} )
       |        .text(function(d) {return d.name;})
       |        .attr("transform",function(d) { return "rotate(-45 " + (d.col * cw + rowHeaderSize) + "," + (colHeaderSize - ch) + ")" });
