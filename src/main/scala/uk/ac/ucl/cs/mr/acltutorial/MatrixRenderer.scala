@@ -8,7 +8,32 @@ import org.sameersingh.htmlgen.{RawHTML, HTML}
 * @author riedelcastro
 */
 object MatrixRenderer {
-  def render():HTML = {
+
+  case class Cell(row:Int, col:Int, value:Any) {
+    override def toString = s"""{"row":$row, "col": $col, "value": ${value match {
+      case s:String => "\"" + s + "\""
+      case _ => value.toString
+    }}}"""
+  }
+  case class RowLabel(row:Int, name:String) {
+    override def toString = s"""{"row": $row, "name": "$name"}"""
+  }
+  case class ColLabel(col:Int, name:String) {
+    override def toString = s"""{"col": $col, "name": "$name"}"""
+  }
+  case class Matrix(cells:Seq[Cell], rowLabels:Seq[RowLabel], colLabels:Seq[ColLabel], hRulers:Seq[Int]) {
+    override def toString = {
+      s"""{"cells": [${cells.mkString(",")}],
+         |"cols":[${colLabels.mkString(",")}],
+         |"rows":[${rowLabels.mkString(",")}],
+         |"hRulers":[${hRulers.mkString(",")}]}""".stripMargin
+    }
+  }
+
+  def render(matrices:Seq[Matrix]):HTML = {
+
+    val actions = matrices.mkString(",")
+
     val id = "matrix" + UUID.randomUUID().toString
     val html = s"""
       |<div id = "$id" class="matrix">
@@ -31,36 +56,7 @@ object MatrixRenderer {
       |var hRulers = svg.append("g");
       |var vRulers = svg.append("g");
       |
-      |// data are animation steps
-      |var cells1 = [
-      |    {"row": 1, "col": 1, "value":1.2},
-      |    {"row": 1, "col": 2, "value":1},
-      |    {"row": 2, "col": 1, "value":1}
-      |    ];
-      |
-      |var cells2 = [
-      |    {"row": 1, "col": 1, "value":1},
-      |    {"row": 2, "col": 2, "value":0}
-      |    ];
-      |
-      |var rowNames1 = [
-      |    {"row":1, "name":"row1"},
-      |    {"row":2, "name":"row2"}
-      |];
-      |
-      |var colNames1 = [
-      |    {"col":1, "name":"col1"},
-      |    {"col":2, "name":"col2"}
-      |];
-      |
-      |var hRulers1 = [1,2];
-      |var hRulers2 = [2];
-      |
-      |var actions = [
-      |    {"cells": cells1, "cols": colNames1, "rows": rowNames1, "hRulers": hRulers1},
-      |    {"cells": cells2, "cols": colNames1, "rows": rowNames1, "hRulers": hRulers2}
-      |];
-      |
+      |var actions = [$actions]
       |
       |function updateCells(data) {
       |    var text = cells.selectAll("text")

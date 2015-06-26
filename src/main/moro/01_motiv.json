@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Binary Classification\n\n| label | features   | \n| ----- | ---------- |\n| 1 | f1, f3, f4, f6 |\n| 1 | f3, f6         |\n| 0 | f1, f2, f5     |\n| 0 | f1, f2         |\n| --- | --- | <!-- .element: class=\"fragment\" data-fragment-index=\"1\" -->\n| | f1, f3, f4 | <!-- .element: class=\"fragment\" data-fragment-index=\"1\" -->\n| | f2 | <!-- .element: class=\"fragment\" data-fragment-index=\"1\" -->\n\n\nStaging not working\n\nWould be better if centered",
+      "code" : "### Binary Classification\nShow a typical class (feature-value)_n and then turn it into a matrix\n\nShow what this example would look like on a matrix, both training and testing",
       "extraFields" : { }
     }
   }, {
@@ -21,7 +21,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "matrix",
+      "code" : "semi",
       "extraFields" : { }
     }
   }, {
@@ -29,7 +29,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix formulation\n\n| instanceID | label | f1 | f2 | f3 | f4 | f5 | f6 |\n| ---------- | ----- | -- | -- | -- | -- | -- | -- |\n| *train1*   | 1     | 1  | 0  | 1  | 1  | 0  | 1  |\n| *train2*   | 1     | 0  | 0  | 1  | 0  | 0  | 1  |\n| *train3*   | 0     | 1  | 1  | 0  | 0  | 1  | 0  |\n| *train4*   | 0     | 1  | 1  | 0  | 0  | 0  | 0  |\n| *test1*    | ?     | 1  | 0  | 1  | 1  | 0  | 0  |\n| *test2*    | ?     | 0  | 1  | 0  | 0  | 0  | 0  |\n\n\nWould be nice to have some line like this to separate train and test:\n\n****\n\nAlso this matrix might be best revealed on the right handside of the previous slide\n\n",
+      "code" : "### Semi-Supervised Classification\nAdd a few more lines to show this\n",
       "extraFields" : { }
     }
   }, {
@@ -37,7 +37,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "semi",
+      "code" : "multi",
       "extraFields" : { }
     }
   }, {
@@ -45,7 +45,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Semi-Supervised Classification\n| instanceID | label | f1 | f2 | f3 | f4 | f5 | f6 |\n| ---------- | ----- | -- | -- | -- | -- | -- | -- |\n| *train1*   | 1     | 1  | 0  | 1  | 1  | 0  | 1  |\n| *train2*   | 1     | 0  | 0  | 1  | 0  | 0  | 1  |\n| *train3*   | 0     | 1  | 1  | 0  | 0  | 1  | 0  |\n| *train4*   | 0     | 1  | 1  | 0  | 0  | 0  | 0  |\n| *test1*    | ?     | 1  | 0  | 1  | 1  | 0  | 0  |\n| *test2*    | ?     | 0  | 1  | 0  | 0  | 0  | 0  |\n| *unlab1*   | -     | 1  | 0  | 0  | 1  | 0  | 0  |\n| *unlab2*   | -     | 0  | 1  | 0  | 0  | 1  | 0  |\n\nadded the extra lines, better to do staging\n",
+      "code" : "\n### Multi-Label Classification\nAdd a few more columns\n",
       "extraFields" : { }
     }
   }, {
@@ -53,7 +53,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "multi",
+      "code" : "missing",
       "extraFields" : { }
     }
   }, {
@@ -61,7 +61,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "\n### Multi-Label Classification\n| instanceID | task1 | task2 | f1 | f2 | f3 | f4 | f5 | f6 |\n| ---------- | ----- | ----- | -- | -- | -- | -- | -- | -- |\n| *train1*   | 1     | 1     | 1  | 0  | 1  | 1  | 0  | 1  |\n| *train2*   | 1     | 0     | 0  | 0  | 1  | 0  | 0  | 1  |\n| *train3*   | 0     | 1     | 1  | 1  | 0  | 0  | 1  | 0  |\n| *train4*   | 0     | 0     | 1  | 1  | 0  | 0  | 0  | 0  |\n| *test1*    | ?     | ?     | 1  | 0  | 1  | 1  | 0  | 0  |\n| *test2*    | ?     | ?     | 0  | 1  | 0  | 0  | 0  | 0  |\n| *unlab1*   | -     | -     | 1  | 0  | 0  | 1  | 0  | 0  |\n| *unlab2*   | -     | -     | 0  | 1  | 0  | 0  | 1  | 0  |\n\nhighlight the extra tasks",
+      "code" : "### Missing Features\nremove some values\n\nmaybe show you can do regression too? Or this is too much?\n",
       "extraFields" : { }
     }
   }, {
@@ -69,7 +69,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "missing",
+      "code" : "notation",
       "extraFields" : { }
     }
   }, {
@@ -77,29 +77,13 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Missing Features\n| instanceID | task1 | task2 | f1 | f2 | f3 | f4 | f5 | f6 |\n| ---------- | ----- | ----- | -- | -- | -- | -- | -- | -- |\n| *train1*   | 1     | 1     | 1  | 0  | 1  | -  | 0  | 1  |\n| *train2*   | 1     | 0     | -  | -  | 1  | 0  | 0  | 1  |\n| *train3*   | 0     | 1     | 1  | 1  | 0  | -  | 1  | 0  |\n| *train4*   | 0     | 0     | 1  | -  | -  | 0  | 0  | 0  |\n| *test1*    | ?     | ?     | 1  | 0  | -  | 1  | 0  | 0  |\n| *test2*    | ?     | ?     | 0  | 1  | -  | 0  | -  | 0  |\n| *unlab1*   | -     | -     | 1  | 0  | -  | 1  | 0  | -  |\n| *unlab2*   | -     | -     | 0  | 1  | 0  | 0  | -  | -  |\n\nBetter spacing would be nice to have\n",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 10,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "notation",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 11,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### Notation\n\n- Scalars: lower-case letters \\\\(v,m\\\\)\n- Vectors: boldface lower-case letters \\\\(\\mathbf{v}\\\\)\n- Matrices: boldface capital letters \\\\(\\mathbf{M}\\\\)\n- \\\\(i\\\\)th element of a vector \\\\(\\mathbf{v}\\\\): \\\\(v_i\\\\) <!-- .element: class=\"fragment\" data-fragment-index=\"1\" -->\n- \\\\((i,j)\\\\)-element of a matrix \\\\(\\mathbf{M}\\\\): \\\\(m_{ij}\\\\) <!-- .element: class=\"fragment\" data-fragment-index=\"1\" -->\n- \\\\(i\\\\)th row of a matrix \\\\(\\mathbf{M}\\\\): \\\\(\\mathbf{m}_{i:}\\\\) <!-- .element: class=\"fragment\" data-fragment-index=\"1\" -->\n- \\\\(j\\\\)th column of a matrix \\\\(\\mathbf{M}\\\\): \\\\(\\mathbf{m}_{:j}\\\\) <!-- .element: class=\"fragment\" data-fragment-index=\"1\" -->\n",
+      "code" : "### Notation\n\n- Scalars: lower-case letters \\\\(v,m\\\\)\n- Vectors: boldface lower-case letters \\\\(\\mathbf{v}\\\\)\n- Matrices: boldface capital letters \\\\(\\mathbf{M}\\\\)\n\nTODO: staged?\n\n- \\\\(i\\\\)th element of a vector \\\\(\\mathbf{v}\\\\): \\\\(v_i\\\\) <!-- .element: class=\"fragment\" data-fragment-index=\"1\" -->\n- \\\\((i,j)\\\\)-element of a matrix \\\\(\\mathbf{M}\\\\): \\\\(m_{ij}\\\\) <!-- .element: class=\"fragment\" data-fragment-index=\"2\" -->\n- \\\\(i\\\\)th row of a matrix \\\\(\\mathbf{M}\\\\): \\\\(\\mathbf{m}_{i:}\\\\) <!-- .element: class=\"fragment\" data-fragment-index=\"3\" -->\n- \\\\(j\\\\)th column of a matrix \\\\(\\mathbf{M}\\\\): \\\\(\\mathbf{m}_{:j}\\\\) <!-- .element: class=\"fragment\" data-fragment-index=\"4\" -->\n",
       "extraFields" : {
         "hide_output" : "false"
       }
     }
   }, {
-    "id" : 12,
+    "id" : 10,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -107,15 +91,15 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 13,
+    "id" : 11,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Operations\n- the **inner product** is \\\\(\\langle u,v \\rangle := \\sum_{l=1}^L u_{l} v_l\\\\)\nwhere \\\\(u\\in\\Re^L\\\\) and \\\\(v\\in\\Re^L\\\\)\n- the **outer product**  \\\\( u \\otimes v \\\\) between vectors \\\\(u\\in\\Re^n\\\\) and \\\\(v\\in\\Re^m\\\\) is the \\\\(n\\times m\\\\) matrix with elements \\\\(u_iv_j\\\\), \\\\( i=\\{1,\\cdots,n\\} \\\\) and \\\\(j= \\{1,\\cdots,n\\} \\\\).\n- for matrices \\\\(\\mathbf{U} \\in\\Re^{n\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{L \\times m} \\\\), \\\\( \\mathbf{U} \\otimes \\mathbf{V} := \\sum_{\\ell=1}^L \\mathbf{U}_{:\\ell} \\otimes \\mathbf{V}_{\\ell:} \\\\)\n\n",
+      "code" : "### Matrix Operations\n- the **inner product** is \\\\(\\langle u,v \\rangle := \\sum_{l=1}^L u_{l} v_l\\\\)\nwhere \\\\(u\\in\\Re^L\\\\) and \\\\(v\\in\\Re^L\\\\)\n- the **outer product**  \\\\( u \\otimes v \\\\) between vectors \\\\(u\\in\\Re^n\\\\) and \\\\(v\\in\\Re^m\\\\) is the \\\\(n\\times m\\\\) matrix with elements \\\\(u_iv_j\\\\), \\\\( i=\\{1,\\cdots,n\\} \\\\) and \\\\(j= \\{1,\\cdots,n\\} \\\\).\n- for matrices \\\\(\\mathbf{U} \\in\\Re^{n\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{L \\times m} \\\\), \\\\( \\mathbf{U} \\otimes \\mathbf{V} := \\sum_{\\ell=1}^L \\mathbf{U}_{:\\ell} \\otimes \\mathbf{V}_{\\ell:} \\\\)",
       "extraFields" : { }
     }
   }, {
-    "id" : 14,
+    "id" : 12,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -123,7 +107,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 15,
+    "id" : 13,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
