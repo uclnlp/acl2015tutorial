@@ -30,7 +30,9 @@ object MatrixRenderer {
     }
   }
 
-  def render(matrices:Seq[Matrix]):HTML = {
+  case class Layout(cw:Int = 30, ch:Int = 30, rowHeaderSize:Int = 50, colHeaderSize:Int = 50, numCols:Int = 4, numRows:Int = 4)
+
+  def render(matrices:Seq[Matrix], layout: Layout = Layout()):HTML = {
 
     val actions = matrices.mkString(",")
 
@@ -39,16 +41,20 @@ object MatrixRenderer {
       |<div id = "$id" class="matrix">
       |</div>
       |<script>
-      |var width = 300,
-      |    height = 300,
+      |var cw = ${layout.cw},
+      |    ch = ${layout.ch},
+      |    rowHeaderSize = ${layout.rowHeaderSize},
+      |    colHeaderSize = ${layout.colHeaderSize},
+      |    numCols = ${layout.numCols},
+      |    numRows = ${layout.numRows};
+      |
+      |var width = numCols * cw + rowHeaderSize,
+      |    height = numRows * ch + colHeaderSize,
       |    div = d3.select('#$id'),
       |    svg = div.append('svg')
       |        .attr('width', width)
-      |        .attr('height', height),
-      |    rw = 95,
-      |    rh = 95;
+      |        .attr('height', height);
       |
-      |var cw = 100, ch = 100;
       |
       |var cells = svg.append("g");
       |var rows = svg.append("g");
@@ -65,9 +71,9 @@ object MatrixRenderer {
       |    text.enter().append("text")
       |        .attr("class", "cell")
       |
-      |    text.text(function(d) {return d.value;})
-      |        .attr("x", function(d) {return d.col * cw;} )
-      |        .attr("y", function(d) {return d.row * ch;} );
+      |    text.transition().text(function(d) {return d.value;})
+      |        .attr("x", function(d) {return d.col * cw + rowHeaderSize;} )
+      |        .attr("y", function(d) {return d.row * ch + colHeaderSize;} );
       |
       |    text.exit().remove();
       |}
@@ -80,7 +86,7 @@ object MatrixRenderer {
       |        .attr("class", "row")
       |
       |    text.attr("x", function(d) {return 0} )
-      |        .attr("y", function(d) {return d.row * ch;} )
+      |        .attr("y", function(d) {return d.row * ch + colHeaderSize;} )
       |        .text(function(d) {return d.name;})
       |
       |    text.exit().remove();
@@ -93,10 +99,10 @@ object MatrixRenderer {
       |    text.enter().append("text")
       |        .attr("class", "col")
       |
-      |    text.attr("x", function(d) {return d.col * cw;} )
-      |        .attr("y", function(d) {return 50;} )
+      |    text.attr("x", function(d) {return d.col * cw + rowHeaderSize;} )
+      |        .attr("y", function(d) {return colHeaderSize - ch;} )
       |        .text(function(d) {return d.name;})
-      |        .attr("transform",function(d) { return "rotate(-45 " + d.col * cw + ",50)" });
+      |        .attr("transform",function(d) { return "rotate(-45 " + (d.col * cw + rowHeaderSize) + "," + (colHeaderSize - ch) + ")" });
       |
       |    text.exit().remove();
       |}
@@ -108,10 +114,10 @@ object MatrixRenderer {
       |    line.enter().append("line")
       |        .attr("class", "hruler")
       |
-      |    line.attr("x1", function(d) {return 0;} )
-      |        .attr("y1", function(d) {return d * ch + ch / 2;} )
-      |        .attr("x2", function(d) {return 3 * cw;} )
-      |        .attr("y2", function(d) {return d * ch + ch / 2;} )
+      |    line.transition().attr("x1", function(d) {return 0;} )
+      |        .attr("y1", function(d) {return d * ch + ch / 2.4 + colHeaderSize;} )
+      |        .attr("x2", function(d) {return 3 * cw + rowHeaderSize;} )
+      |        .attr("y2", function(d) {return d * ch + ch / 2.4 + colHeaderSize;} )
       |
       |    line.exit().remove();
       |}

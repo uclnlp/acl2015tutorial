@@ -29,7 +29,7 @@
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "import uk.ac.ucl.cs.mr.acltutorial._\nimport MatrixRenderer._\n\nval m1 = Matrix(Seq(Cell(1,1,1.0)),Seq(RowLabel(1,\"row1\")),Seq(ColLabel(1,\"col1\")), Nil)\n\nval m2 = Matrix(Seq(Cell(1,1,1.0),Cell(2,2,\"Blah\")),Seq(RowLabel(1,\"row1\"),RowLabel(2,\"row2\")),Seq(ColLabel(1,\"col1\")), Seq(1))\n\nval matrices = Seq(m1,m2)\n\n\nMatrixRenderer.render(matrices)",
+      "code" : "import uk.ac.ucl.cs.mr.acltutorial._\nimport MatrixRenderer._\n\nval m1 = Matrix(Seq(Cell(0,0,1.0)),Seq(RowLabel(1,\"row1\")),Seq(ColLabel(0,\"col1\")), Nil)\n\nval m2 = Matrix(Seq(Cell(1,0,1.0),Cell(1,1,\"Blah\")),Seq(RowLabel(0,\"row1\"),RowLabel(1,\"row2\")),Seq(ColLabel(0,\"col1\")), Seq(0))\n\nval matrices = Seq(m1,m2)\n\n\nMatrixRenderer.render(matrices)",
       "extraFields" : {
         "aggregatedCells" : "[]"
       }
