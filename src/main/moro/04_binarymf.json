@@ -1,0 +1,101 @@
+{
+  "name" : "Binary Matrix Factorization",
+  "cells" : [ {
+    "id" : 0,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "1",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 1,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Binary Data\n\nsome example binary instead of real data here. Term Frequency vs exist link or not. ",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 3,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "2",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 2,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Logistic Loss\n\n* Map real values to a probability [0,1]\n* Think of scores as natural parameters of a Bernoulli \n* Now we can maximize log-likelihood of this data => Logistic loss\n\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 4,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "3   ",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 6,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Alternative View: Sign Rank\n\n* Low _rank_ not very powerful (can't do diagonal, triangle etc)\n* Let's make another assumption: low sign Rank \n\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 9,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "4",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 7,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Negative Data\n\n* Often we only observe 1s, 0s are hidden\n* Need to sample negative data (in advance, or during SGD)\n* BPR (ranking objective) \n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 11,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\n5",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 10,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Application: USchema\n\n* Problem: Combine Open and Closed IE\n* Show data matrix\n* Semisupervised learning\n* Results",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 8,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 5,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "",
+      "extraFields" : { }
+    }
+  } ],
+  "config" : { }
+}
