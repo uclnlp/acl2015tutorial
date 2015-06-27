@@ -21,16 +21,40 @@ object MatrixRenderer {
   case class ColLabel(col:Int, name:String) {
     override def toString = s"""{"col": $col, "name": "$name"}"""
   }
-  case class Matrix(cells:Seq[Cell], rowLabels:Seq[RowLabel], colLabels:Seq[ColLabel], hRulers:Seq[Int]) {
+  case class Matrix(cells:Seq[Cell] = Nil, rowLabels:Seq[RowLabel] = Nil,
+                    colLabels:Seq[ColLabel] = Nil, hRulers:Seq[Int] = Nil,
+                    boxes:Seq[Box] = Nil) {
     override def toString = {
       s"""{"cells": [${cells.mkString(",")}],
          |"cols":[${colLabels.mkString(",")}],
          |"rows":[${rowLabels.mkString(",")}],
+         |"boxes":[${boxes.mkString(",")}],
          |"hRulers":[${hRulers.mkString(",")}]}""".stripMargin
     }
+
+    def +(that:Matrix) = Matrix(cells ++ that.cells, rowLabels ++ that.rowLabels,
+      colLabels ++ that.colLabels, hRulers ++ that.hRulers, boxes ++ that.boxes)
   }
 
-  case class Layout(cw:Int = 30, ch:Int = 30, rowHeaderSize:Int = 50, colHeaderSize:Int = 50, numCols:Int = 4, numRows:Int = 4)
+  def colEmbedding(col:Int, rowOffset:Int, values:Seq[Any]) = {
+    val cells = for (row <- values.indices) yield Cell(row + rowOffset, col, values(row))
+    val box = Box(rowOffset,col,1,values.length)
+    Matrix(cells, boxes = Seq(box))
+  }
+
+  def rowEmbedding(row:Int, colOffset:Int, values:Seq[Any]) = {
+    val cells = for (col <- values.indices) yield Cell(row, col + colOffset, values(col))
+    val box = Box(row,colOffset,values.length,1)
+    Matrix(cells, boxes = Seq(box))
+  }
+
+
+  case class Box(row:Int, col:Int, width:Int, height:Int) {
+    override def toString: String =
+      s"""{"row":$row, "col": $col, "width": $width, "height":$height}"""
+  }
+
+  case class Layout(cw:Int = 30, ch:Int = 30, rowHeaderSize:Int = 50, colHeaderSize:Int = 100, numCols:Int = 4, numRows:Int = 4)
 
   def render(matrices:Seq[Matrix], layout: Layout = Layout()):HTML = {
 
@@ -47,6 +71,7 @@ object MatrixRenderer {
       |    colHeaderSize = ${layout.colHeaderSize},
       |    numCols = ${layout.numCols},
       |    numRows = ${layout.numRows};
+      |    boxPadding = 5;
       |
       |var width = numCols * cw + rowHeaderSize,
       |    height = numRows * ch + colHeaderSize,
@@ -55,6 +80,7 @@ object MatrixRenderer {
       |        .attr('width', width)
       |        .attr('height', height);
       |
+      |var textOffsetY = ch / 2
       |
       |var cells = svg.append("g");
       |var rows = svg.append("g");
@@ -72,8 +98,8 @@ object MatrixRenderer {
       |        .attr("class", "cell")
       |
       |    text.transition().text(function(d) {return d.value;})
-      |        .attr("x", function(d) {return d.col * cw + rowHeaderSize;} )
-      |        .attr("y", function(d) {return d.row * ch + colHeaderSize;} );
+      |        .attr("x", function(d) {return (d.col + 0.5) * cw + rowHeaderSize;} )
+      |        .attr("y", function(d) {return d.row * ch + colHeaderSize - textOffsetY;} );
       |
       |    text.exit().remove();
       |}
@@ -85,24 +111,25 @@ object MatrixRenderer {
       |    text.enter().append("text")
       |        .attr("class", "row")
       |
-      |    text.transition().attr("x", function(d) {return 0} )
-      |        .attr("y", function(d) {return d.row * ch + colHeaderSize;} )
+      |    text.attr("x", function(d) {return 0} )
+      |        .attr("y", function(d) {return d.row * ch + colHeaderSize - textOffsetY;} )
       |        .text(function(d) {return d.name;})
       |
       |    text.exit().remove();
       |}
       |
       |function updateCols(data) {
+      |    var padding = 4
       |    var text = cols.selectAll("text")
       |        .data(data)
       |
       |    text.enter().append("text")
       |        .attr("class", "col")
       |
-      |    text.transition().attr("x", function(d) {return d.col * cw + rowHeaderSize;} )
-      |        .attr("y", function(d) {return colHeaderSize - ch;} )
+      |    text.attr("x", function(d) {return (d.col + 0.5) * cw + rowHeaderSize;} )
+      |        .attr("y", function(d) {return colHeaderSize - ch - padding;} )
       |        .text(function(d) {return d.name;})
-      |        .attr("transform",function(d) { return "rotate(-45 " + (d.col * cw + rowHeaderSize) + "," + (colHeaderSize - ch) + ")" });
+      |        .attr("transform",function(d) { return "rotate(-45 " + ((d.col + 0.5) * cw + rowHeaderSize) + "," + (colHeaderSize - ch - padding) + ")" });
       |
       |    text.exit().remove();
       |}
@@ -115,11 +142,29 @@ object MatrixRenderer {
       |        .attr("class", "hruler")
       |
       |    line.transition().attr("x1", function(d) {return 0;} )
-      |        .attr("y1", function(d) {return d * ch + ch / 2.4 + colHeaderSize;} )
-      |        .attr("x2", function(d) {return 3 * cw + rowHeaderSize;} )
-      |        .attr("y2", function(d) {return d * ch + ch / 2.4 + colHeaderSize;} )
+      |        .attr("y1", function(d) {return (d-1) * ch + colHeaderSize;} )
+      |        .attr("x2", function(d) {return numCols * cw + rowHeaderSize;} )
+      |        .attr("y2", function(d) {return (d-1) * ch + colHeaderSize;} )
       |
       |    line.exit().remove();
+      |}
+      |
+      |function updateBoxes(data) {
+      |
+      |
+      |    var rect = hRulers.selectAll("rect")
+      |        .data(data)
+      |
+      |    rect.enter().append("rect")
+      |        .attr("class", "box")
+      |
+      |    rect.transition()
+      |        .attr("x", function(d) {return d.col * cw + rowHeaderSize + boxPadding;} )
+      |        .attr("y", function(d) {return (d.row - 1) * ch + colHeaderSize + boxPadding;} )
+      |        .attr("width", function(d) {return d.width * cw - 2 * boxPadding;} )
+      |        .attr("height", function(d) {return d.height * ch - 2 * boxPadding;} )
+      |
+      |    rect.exit().remove();
       |}
       |
       |function updateAll(action) {
@@ -127,14 +172,19 @@ object MatrixRenderer {
       |    updateRows(action.rows);
       |    updateCols(action.cols);
       |    updateHRulers(action.hRulers);
+      |    updateBoxes(action.boxes);
       |}
+      |
       |
       |var currentAction = 0;
       |updateAll(actions[currentAction]);
       |
       |
       |div.on("click", function() {
-      |        currentAction += 1;
+      |        if (currentAction < actions.length - 1)
+      |           currentAction += 1;
+      |        else
+      |           currentAction = 0;
       |        updateAll(actions[currentAction]);
       |})
       |
