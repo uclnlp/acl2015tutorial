@@ -11,6 +11,7 @@ cp application.conf moro/conf
 cd moro/public/
 ln -s ../../src/main/moro/figures
 cd ../..
+sbt compile
 #+END_SRC
 *** Running Moro notebook
 #+BEGIN_SRC sh
