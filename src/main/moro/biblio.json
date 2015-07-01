@@ -1,5 +1,23 @@
 {
   "name" : "Annotated Bibliography",
-  "cells" : [ ],
+  "cells" : [ {
+    "id" : 0,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "blah ",
+      "extraFields" : {
+        "aggregatedCells" : "[]"
+      }
+    }
+  }, {
+    "id" : 1,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\n\nKolda, Tamara G., and Brett W. Bader. \"Tensor decompositions and applications.\" SIAM review 51.3 (2009): 455-500. \\\n\n*Extensive overview of the topic, we adopted their notation in the tutorial*\n\nGoldberg, Andrew B., Zhu, Xiaojin, Recht, Benjamin, Xu, Jun-Ming, Nowak, Robert. \"Transduction with Matrix Completion: Three Birds with One Stone.\" In Advances in Neural Information Processing Systems (NIPS) 24. 2010.\n\n*First work to formulate semi-supervised multi-task learning with missing data explicitly as matrix completion*",
+      "extraFields" : { }
+    }
+  } ],
   "config" : { }
 }
