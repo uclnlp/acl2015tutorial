@@ -29,7 +29,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "## Definition\n\nGiven (fully observed) \\\\(\\mathbf{Y} \\in\\Re^{n\\times m} \\geq 0\\\\)\n\nFind \\\\(\\mathbf{U} \\in\\Re^{n\\times L} \\geq 0 \\\\) and \\\\(\\mathbf{V} \\in\\Re^{m\\times L} \\geq 0\\\\)\n\nthat minimize \\\\(||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}|| _2\\\\)",
+      "code" : "## Definition\n\nGiven (fully observed) \\\\(\\mathbf{Y} \\in\\Re^{N\\times M} \\geq 0\\\\)\n\nFind \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\geq 0 \\\\) and \\\\(\\mathbf{V} \\in\\Re^{M\\times L} \\geq 0\\\\)\n\nthat minimize \\\\(||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}|| _2\\\\)",
       "extraFields" : { }
     }
   }, {
@@ -45,7 +45,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Algorithms\n\nPopular approach due to Lee and Seung (2001):\n\n\n\n\n\n\n\n\n",
+      "code" : "### Algorithms\n\nMultiplicative update rules (Lee and Seung, 2001):\n\n\\\\(u_{n,l} = u_{n,l} \\frac{(\\mathbf{Y}\\mathbf{V})_{n,l}}{(\\mathbf{Y}\\mathbf{Y}^{T}\\mathbf{U})_{n,l}} \\\\)\n\n\\\\(v_{m,l} = v_{m,l} \\frac{(\\mathbf{Y}^T\\mathbf{U})_{m,l}}{(\\mathbf{Y}^{T}\\mathbf{Y}\\mathbf{V})_{m,l}} \\\\)\n\nSimilar updates if the matrices are normalized probability distributions with KL divergence as loss\n\nRelated to the additive SGD updates\n\n\n\n",
       "extraFields" : { }
     }
   }, {
