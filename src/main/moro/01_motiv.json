@@ -114,22 +114,6 @@
       "code" : "### Matrix Operations\n- the **inner product** is \\\\(\\langle u,v \\rangle := \\sum_{l=1}^L u_{l} v_l\\\\)\nwhere \\\\(u\\in\\Re^L\\\\) and \\\\(v\\in\\Re^L\\\\)\n- the **outer product**  \\\\( u \\otimes v \\\\) between vectors \\\\(u\\in\\Re^N\\\\) and \\\\(v\\in\\Re^M\\\\) is the \\\\(N\\times M\\\\) matrix with elements \\\\(u_nv_m\\\\), \\\\( n=\\{1,\\cdots,N\\} \\\\) and \\\\(m= \\{1,\\cdots,M\\} \\\\).\n- the **outer product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{L \\times M} \\\\), \\\\( \\mathbf{U} \\otimes \\mathbf{V} := \\sum_{\\ell=1}^L \\mathbf{U}_{:\\ell} \\otimes \\mathbf{V}_{\\ell:} \\\\)\n- the element-wise **Hadamard product**\n",
       "extraFields" : { }
     }
-  }, {
-    "id" : 14,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "references",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 15,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### References \n- Kolda, Tamara G., and Brett W. Bader. \"Tensor decompositions and applications.\" SIAM review 51.3 (2009): 455-500.\n- Goldberg, Andrew B., Zhu, Xiaojin, Recht, Benjamin, Xu, Jun-Ming, Nowak, Robert. \"Transduction with Matrix Completion: Three Birds with One Stone.\" In Advances in Neural Information Processing Systems (NIPS) 24. 2010. \n\nAre we going to have these after every section? I was thinking of having another \"chapter\" in the end, where we annotate them.",
-      "extraFields" : { }
-    }
   } ],
   "config" : { }
 }
