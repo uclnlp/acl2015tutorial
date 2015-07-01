@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Blah\n\nBlub",
+      "code" : "### Matrix Operations\n- the **inner product** is \\\\(\\langle u,v \\rangle := \\sum_{l=1}^L u_{l} v_l\\\\)\nwhere \\\\(u\\in\\Re^L\\\\) and \\\\(v\\in\\Re^L\\\\)",
       "extraFields" : { }
     }
   }, {
