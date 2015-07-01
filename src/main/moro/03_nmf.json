@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Non-negativity\n\n- Intepretability\n  - zero has special meaning\n\n- Modelling assumptions:\n  - negative objects in images\n  - negative topics in documents\n",
+      "code" : "### Non-negativity\n\nIntepretability\n\n- zero has special meaning\n\nModelling assumptions:\n\n- negative objects in images\n- negative topics in documents\n",
       "extraFields" : { }
     }
   }, {
@@ -45,7 +45,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Algorithm\n\nMultiplicative update rules (Lee and Seung, 2001):\n\n\\\\(u_{n,l} = u_{n,l} \\frac{(\\mathbf{Y}\\mathbf{V})_{n,l}}{(\\mathbf{Y}\\mathbf{Y}^{T}\\mathbf{U})_{n,l}} \\\\)\n\n\\\\(v_{m,l} = v_{m,l} \\frac{(\\mathbf{Y}^T\\mathbf{U})_{m,l}}{(\\mathbf{Y}^{T}\\mathbf{Y}\\mathbf{V})_{m,l}} \\\\)\n\nRelated to the additive SGD updates\n\n\n\n",
+      "code" : "### Algorithm (Lee and Seung, 2001)\n\nMultiplicative update rules:\n\n\\\\(u_{n,l} = u_{n,l} \\frac{(\\mathbf{Y}\\mathbf{V})_{n,l}}{(\\mathbf{Y}\\mathbf{Y}^{T}\\mathbf{U})_{n,l}} \\\\)\n\n\\\\(v_{m,l} = v_{m,l} \\frac{(\\mathbf{Y}^T\\mathbf{U})_{m,l}}{(\\mathbf{Y}^{T}\\mathbf{Y}\\mathbf{V})_{m,l}} \\\\)\n\nRelated to the additive SGD updates\n\n\n\n",
       "extraFields" : { }
     }
   }, {
@@ -53,7 +53,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "plsa",
+      "code" : "prob",
       "extraFields" : { }
     }
   }, {
@@ -61,7 +61,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Probabilstic Latent Semantic Analysis\n\n\nSimilar updates if the matrices are normalized probability distributions with KL divergence as loss, becomes equivalent to pLSI.\n\n",
+      "code" : "### NMF with KL divergence\n\nAssume that \\\\(\\mathbf{Y}\\\\) represents a probability distribution \\\\((\\sum_{n,m} y_{n,m} = 1)\\\\)\n\nMinimizing the Kullback-Leibler divergence:\n\n\\\\( KL_{div}(\\mathbf{Y}||\\mathbf{U}\\mathbf{V}^{T}) = \\sum_{n,m}(y_{n,m}\\log\\frac{y_{n,m}}{(\\mathbf{U}\\mathbf{V}^{T})_{n,m}} )  \\\\)\n\n- results in similar multiplicative updates\n- ensures that \\\\(\\mathbf{U}\\\\) and \\\\(\\mathbf{V}\\\\) also represent probability distributions\n\n",
       "extraFields" : { }
     }
   }, {
@@ -69,7 +69,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "lda",
+      "code" : "topic",
       "extraFields" : { }
     }
   }, {
@@ -77,7 +77,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Topic models\n\nEye candy\n\nShow how the topics correspond to the factors\n\nrecent work in topic modelling goes back to MF",
+      "code" : "### Probabilistic Latent Semantic Analysis/Indexing\n\nKL-NMF optimizes the same objective as pLSA/I (Gaussier and Goutte, 2005):\n\n\\\\(y_{n,m} = (P(n,m) = \\sum_l P(l) P(m|l) P(n|l) = u^\\prime_{n,l} v^\\prime_{l,m} \\\\)\n\nwhere \\\\(n\\\\) is a document and \\\\(m\\\\) a word.\n\n \\\\( \\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T} = (\\mathbf{U}\\mathbf{A}^{-1}\\mathbf{A})(\\mathbf{V}\\mathbf{B}^{-1}\\mathbf{B})^T = (\\mathbf{U}\\mathbf{A}^{-1})(\\mathbf{A}\\mathbf{B})(\\mathbf{V}\\mathbf{B}^{-1})^T\\\\)\n\nwhere \\\\(\\mathbf{A}\\\\) and \\\\(\\mathbf{B} \\in\\Re^{L\\times L} \\\\) are identity matrices with \\\\(a_{l,l} = \\sum_n v_{n,l}\\\\) and \\\\(b_{l,l} = \\sum_m u_{m,l}\\\\)\n",
       "extraFields" : { }
     }
   }, {
@@ -85,7 +85,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "sparsity",
+      "code" : "lda",
       "extraFields" : {
         "hide_output" : "false"
       }
@@ -95,7 +95,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Sparsity in NMF\n\n- better interpretability (fewer latent factors active per instance)\n- modelling flexibility\n\nFraction of zeros\n \nDefinition:<!-- .element: class=\"fragment\" data-fragment-index=\"1\" -->\n",
+      "code" : "### Topic models\n\nEye candy\n\nShow how the topics correspond to the factors\n\nrecent work in topic modelling goes back to MF\n",
       "extraFields" : { }
     }
   } ],
