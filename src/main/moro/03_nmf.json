@@ -29,7 +29,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "## Definition\n\nGiven \\\\(\\mathbf{M} \\in\\Re^{n\\times m} \\geq 0\\\\)\n\nFind \\\\(\\mathbf{U} \\in\\Re^{n\\times L} \\geq 0 \\\\) and \\\\(\\mathbf{V} \\in\\Re^{L\\times m} \\geq 0\\\\)\n\nthat minimize \\\\(| \\mathbf{M} - \\mathbf{U}\\mathbf{V} |\\\\)",
+      "code" : "## Definition\n\nGiven (fully observed) \\\\(\\mathbf{Y} \\in\\Re^{n\\times m} \\geq 0\\\\)\n\nFind \\\\(\\mathbf{U} \\in\\Re^{n\\times L} \\geq 0 \\\\) and \\\\(\\mathbf{V} \\in\\Re^{m\\times L} \\geq 0\\\\)\n\nthat minimize \\\\(||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}|| _2\\\\)",
       "extraFields" : { }
     }
   }, {

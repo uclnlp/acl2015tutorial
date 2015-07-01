@@ -45,7 +45,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Low-Rank Factorization\n\\\\(\\mathbf{M} approx \\mathbf{U}\\otimes \\mathbf{V}\\\\)\n",
+      "code" : "### Low-Rank Factorization\n\\\\(\\mathbf{Y} = \\mathbf{U}\\mathbf{V}^{T}\\\\)\n",
       "extraFields" : { }
     }
   }, {
