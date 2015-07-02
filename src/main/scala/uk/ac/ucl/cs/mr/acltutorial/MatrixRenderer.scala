@@ -4,6 +4,8 @@ import java.util.UUID
 
 import org.sameersingh.htmlgen.{RawHTML, HTML}
 
+import scala.xml.PrettyPrinter
+
 /**
 * @author riedelcastro
 */
@@ -54,9 +56,66 @@ object MatrixRenderer {
       s"""{"row":$row, "col": $col, "width": $width, "height":$height}"""
   }
 
-  case class Layout(cw:Int = 30, ch:Int = 30, rowHeaderSize:Int = 50, colHeaderSize:Int = 100, numCols:Int = 4, numRows:Int = 4)
+  case class Layout(cw:Int = 30, ch:Int = 30, rowHeaderSize:Int = 50, colHeaderSize:Int = 100, numCols:Int = 4,
+                    numRows:Int = 4, fragmentStart:Int = 1)
 
   def render(matrices:Seq[Matrix], layout: Layout = Layout()):HTML = {
+    import layout._
+    val printer = new PrettyPrinter(0,2)
+    val boxPadding = 5
+    val height = numCols * cw + rowHeaderSize
+    val width = numRows * ch + colHeaderSize
+    val textOffsetY = ch / 2
+
+    val matrixRenderings = for ((m,mIndex) <- matrices.zipWithIndex) yield {
+
+      val cells = for (d <- m.cells) yield {
+        val x = (d.col + 0.5) * cw + rowHeaderSize
+        val y = d.row * ch + colHeaderSize - textOffsetY
+        <text x={x.toString} y={y.toString} class="cell">{d.value.toString}</text>
+      }
+      val rows = for (r <- m.rowLabels) yield {
+        val x = 0
+        val y = r.row * ch + colHeaderSize - textOffsetY
+        <text x={x.toString} y={y.toString} class="row">{r.name}</text>
+      }
+      val cols = for (r <- m.colLabels) yield {
+        var padding = 4
+        val x = (r.col + 0.5) * cw + rowHeaderSize
+        val y = colHeaderSize - ch - padding
+        <text x={x.toString} y={y.toString} class="col" transform={"rotate(-45 " + ((r.col + 0.5) * cw + rowHeaderSize) + "," + (colHeaderSize - ch - padding) + ")"}>{r.name}</text>
+      }
+      val hRulers = for (d <- m.hRulers) yield {
+        val x1 = 0
+        val y1 = (d-1) * ch + colHeaderSize
+        val x2 = numCols * cw + rowHeaderSize
+        val y2 = (d-1) * ch + colHeaderSize
+        <line x1={x1.toString} y1={y1.toString} x2={x2.toString} y2={y2.toString} class="hruler"></line>
+      }
+      val boxes = for (d <- m.boxes) yield {
+        val x = d.col * cw + rowHeaderSize + boxPadding
+        val y = (d.row - 1) * ch + colHeaderSize + boxPadding
+        val width = d.width * cw - 2 * boxPadding
+        val height = d.height * ch - 2 * boxPadding
+        <rect x={x.toString} y={y.toString} width={width.toString} height={height.toString} class="box"></rect>
+      }
+
+      val result =
+        <g class="fragment current-visible" data-fragment-index={(mIndex + fragmentStart).toString} >
+          <g>{cells}</g>
+          <g>{rows}</g>
+          <g>{cols}</g>
+          <g>{hRulers}</g>
+          <g>{boxes}</g>
+        </g>
+      result
+    }
+    val html = <svg width={width.toString} height={height.toString} class="matrix">{matrixRenderings}</svg>
+    RawHTML(printer.format(html))
+  }
+
+
+  def renderD3(matrices:Seq[Matrix], layout: Layout = Layout()):HTML = {
 
     val actions = matrices.mkString(",")
 
