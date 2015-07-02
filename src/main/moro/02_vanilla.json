@@ -13,39 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Completion\n",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 2,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "assumptions",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 3,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### Modelling assumptions\n- exchangeability (row/column) -> rotation invariance (spectrum of the matrix)\n- low complexity measures for matrices -> (pseudo-) norms on the spectrum\n- sparsity for computational efficiency -> low-rank",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 4,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "lowrank",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 5,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### Low-Rank Factorization\n\\\\(\\mathbf{Y} = \\mathbf{U}\\mathbf{V}^{T}\\\\)\n",
+      "code" : "### Matrix Completion via Low-Rank Factorization\n\nGiven \\\\(\\mathbf{Y} \\in\\Re^{N\\times M} \\\\)\n\nFind \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in\\Re^{M\\times L} \\\\)\n\nso that \\\\(\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T}\\\\)\n\n",
       "extraFields" : { }
     }
   }, {
@@ -134,22 +102,6 @@
     "input" : {
       "sessionId" : null,
       "code" : "### Regularized Latent Semantic Analysis\n\n\n",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 17,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "references",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 18,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### References \n",
       "extraFields" : { }
     }
   } ],

@@ -29,7 +29,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "## Definition\n\nGiven (fully observed) \\\\(\\mathbf{Y} \\in\\Re^{N\\times M} \\geq 0\\\\)\n\nFind \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\geq 0 \\\\) and \\\\(\\mathbf{V} \\in\\Re^{M\\times L} \\geq 0\\\\)\n\nthat minimize \\\\(||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}|| _2\\\\)",
+      "code" : "## Definition\n\nGiven \\\\(\\mathbf{Y} \\in\\Re^{N\\times M} \\geq 0\\\\)\n\nFind \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\geq 0 \\\\) and \\\\(\\mathbf{V} \\in\\Re^{M\\times L} \\geq 0\\\\)\n\nthat minimize the difference between \\\\(\\mathbf{Y}\\\\) and \\\\(\\mathbf{U}\\mathbf{V}^{T}\\\\)",
       "extraFields" : { }
     }
   }, {
@@ -45,7 +45,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Algorithm (Lee and Seung, 2001)\n\nMultiplicative update rules:\n\n\\\\(u_{n,l} = u_{n,l} \\frac{(\\mathbf{Y}\\mathbf{V})_{n,l}}{(\\mathbf{Y}\\mathbf{Y}^{T}\\mathbf{U})_{n,l}} \\\\)\n\n\\\\(v_{m,l} = v_{m,l} \\frac{(\\mathbf{Y}^T\\mathbf{U})_{m,l}}{(\\mathbf{Y}^{T}\\mathbf{Y}\\mathbf{V})_{m,l}} \\\\)\n\nRelated to the additive SGD updates\n\n\n\n",
+      "code" : "### Algorithm (Lee and Seung, 2001)\n\nMultiplicative update rules to minimize \\\\(||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}|| _2\\\\):\n\n\\\\(u_{n,l} = u_{n,l} \\frac{(\\mathbf{Y}\\mathbf{V})_{n,l}}{(\\mathbf{Y}\\mathbf{Y}^{T}\\mathbf{U})_{n,l}} \\\\)\n\n\\\\(v_{m,l} = v_{m,l} \\frac{(\\mathbf{Y}^T\\mathbf{U})_{m,l}}{(\\mathbf{Y}^{T}\\mathbf{Y}\\mathbf{V})_{m,l}} \\\\)\n\nRelated to the additive SGD updates\n\n\n\n",
       "extraFields" : { }
     }
   }, {
