@@ -1,0 +1,189 @@
+{
+  "name" : "Combining Factorization with Structured Prediction",
+  "cells" : [ {
+    "id" : 0,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "drawbacks",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 1,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### S1\n\n<br />\n<img src=\"../../assets/figures/08/s8s1.png\" height=\"500\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 2,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "drawbacks1",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 3,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### S2\n\n<br />\n<img src=\"../../assets/figures/08/s8s2.png\" height=\"500\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 4,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "drawbacksTODO",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 5,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### S3\n\n<br />\n<img src=\"../../assets/figures/08/s8s3.png\" height=\"500\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 6,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "logic",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 7,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### S4\n\n<br />\n<img src=\"../../assets/figures/08/s8s4.png\" height=\"500\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 8,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "overview",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 9,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### S5\n\n<br />\n<img src=\"../../assets/figures/08/s8s5.png\" height=\"500\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 10,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "mflogic",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 11,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### S6\n\n<br />\n<img src=\"../../assets/figures/08/s8s6.png\" height=\"500\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 12,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "injectfacts",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 13,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### S7\n\n<br />\n<img src=\"../../assets/figures/08/s8s7.png\" height=\"500\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 14,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "difflogic",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 15,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### S8\n\n<br />\n<img src=\"../../assets/figures/08/s8s8.png\" height=\"500\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 16,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "backprop",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 17,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### S9\n\n<br />\n<img src=\"../../assets/figures/08/s8s9.png\" height=\"500\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 18,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "grounding",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 19,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### S10\n\n<br />\n<img src=\"../../assets/figures/08/s8s10.png\" height=\"500\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 20,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "experiments",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 21,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### S11\n\n<br />\n<img src=\"../../assets/figures/08/s8s11.png\" height=\"500\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 22,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "## References\n- Goller, Christoph, and Andreas Kuchler. \"Learning task-dependent distributed representations by backpropagation through structure.\" Neural Networks, 1996., IEEE International Conference on. Vol. 1. IEEE, 1996.",
+      "extraFields" : { }
+    }
+  } ],
+  "config" : { }
+}
