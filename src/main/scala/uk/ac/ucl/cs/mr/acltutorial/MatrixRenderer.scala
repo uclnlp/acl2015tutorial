@@ -63,8 +63,8 @@ object MatrixRenderer {
     import layout._
     val printer = new PrettyPrinter(0,2)
     val boxPadding = 5
-    val height = numCols * cw + rowHeaderSize
-    val width = numRows * ch + colHeaderSize
+    val width = numCols * cw + rowHeaderSize
+    val height = numRows * ch + colHeaderSize
     val textOffsetY = ch / 2
 
     val matrixRenderings = for ((m,mIndex) <- matrices.zipWithIndex) yield {
@@ -110,7 +110,10 @@ object MatrixRenderer {
         </g>
       result
     }
-    val html = <svg width={width.toString} height={height.toString} class="matrix">{matrixRenderings}</svg>
+    val html =
+      <div style="text-align:center;">
+        <svg class="matrix" style={s"width:${width}px; height:${height}px; display:inline; margin:auto"}>{matrixRenderings}</svg>
+      </div>
     RawHTML(printer.format(html))
   }
 
