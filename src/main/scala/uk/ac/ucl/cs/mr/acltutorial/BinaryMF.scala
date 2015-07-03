@@ -41,6 +41,11 @@ object BinaryMF {
 
   val moreSampledZeroes = allCells.copy(cells = toCells(randomGraph, v => v > 0.5 || myRandom.nextDouble() < 0.8))
 
+  val uSchemaRels = Seq("X, professor at Y", "X teaches at Y", "professorAt", "workedAt")
+  val uSchemaNoZeroes = allCells.copy(cells =
+    toCells(randomGraph, _ > 0.5).map(c => if (c.col > 1) c.copy(value = "?") else c), colLabels = toColLabels(uSchemaRels))
+
+
   val colEmbeddings = for (r <- relations.indices) yield Range(0, 2).map(_ => myRandom.nextGaussian())
   val rowEmbeddings = for (r <- 0 until numPairs) yield Range(0, 2).map(_ => myRandom.nextGaussian())
 
@@ -62,7 +67,7 @@ object BinaryMF {
         colEmbedding(neg1.col, numPairs, colEmbeddings(neg1.col).map(formatNumber))
       Seq(m1, m2)
     }
-    iteration() ++ iteration()
+    Seq(allCells) ++ iteration() ++ iteration()
   }
 
   val sgdUpdates = sgdWithNegativeSampling(allCells)
