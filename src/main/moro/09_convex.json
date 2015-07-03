@@ -1,0 +1,87 @@
+{
+  "name" : "Convexification",
+  "cells" : [ {
+    "id" : 0,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "Convexifying Matrix Factorization",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 1,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Matrix Factorization as a Rank-Constrained Problem\nMatrix \\\\( Y\\in\\Re^{n,d} \\\\). For any \\\\( K \\in \\mathbb{N} \\\\),\n\n\\\\( Y_{ij} = <U_i, V_j> \\\\)\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 10,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "Why Trace Norm?",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 11,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\n### Why Low-Rank\nWe want: A probabilistic model on matrices with:\n\n1) Invariance by permutation of rows and columns\n\n--> The model depends only on the eigenvalues\n\n2) A complexity measure\n\n--> A norm or pseudo-norm (\\\\(e.g. L_\\alpha, \\alpha\\ge 0\\\\) ) on the spectrum \n\n3) Fast and memory efficient\n\n--> \\\\(\\alpha\\le 1\\\\)\n\n4) Learnable\n\n--> \\\\(\\alpha\\ge 1\\\\)",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 2,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "Consequences\n\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 3,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### What Do We Gain By Making the Problem Convex?\nWe open the Pandor box of convex optimization tools!\n\nTheoretical guarantees\n\n- Convergence to the global optimum, no need for smart initialization\n- Speed of convergences\n- Polynomial time guarantees for a fixed accuracy \n\nBut more importantly, new algorithms:\n\n- Proximal methods (ISTA and FISTA)\n- Frank-Wolfe (Conjugate Gradient) algorithms\n- Augmented Lagrangian approaches (ADMM, splitting methods)\n- Stochastic variants\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 4,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "Combining regularization\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 5,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "// Matrices!\nval random = new scala.util.Random()\nMatrix((0 until 10).map(i => (0 until 10).map(j => (i+j)+2*random.nextDouble())))",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 6,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\\begin{equation}\n\\begin{array}{cc}a&b\\\\\nc&d\n\\end{array}\n\\end{equation}",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 7,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "f(10)",
+      "extraFields" : {
+        "aggregatedCells" : "[]"
+      }
+    }
+  } ],
+  "config" : { }
+}
