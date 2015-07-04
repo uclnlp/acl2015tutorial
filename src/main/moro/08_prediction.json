@@ -1,19 +1,83 @@
 {
-  "name" : "Combining Factorization with Structured Prediction",
+  "name" : "Discriminative Factorial Models",
   "cells" : [ {
+    "id" : 32,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "IntroToDiscriminativeFactorialModels",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 33,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Discriminative Factorial Models\n\nFactorization is an efficient way of reducing the effective number of parameters in discriminative/predictive models\n\nWe will introduce:\n* Multi-Task/Multi-Label Learning with Matrix Factorization\n* Factorization Machines\n* Structured Prediction with Factorized Parameters",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 34,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "MultiTask",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 31,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Multi-Task Learning\n* Inputs: \\\\(d\\\\) feature \\\\(\\mathbf\\phi(x_i)\\in\\Re^d\\\\)\n* Outputs: \\\\(K\\\\) labels \\\\(\\mathbf{y}_i\\in\\lbrace 0,1 \\rbrace^K\\\\)\n\n\\\\( P(\\mathbf{y}_{i}|x_i) = \\prod_{k=1}^K \\mathbf{\\sigma}(\\mathbf\\phi(x_i) \\mathbf{U} \\mathbf{V}_{k:}^T) \\\\)\n\nCan be interpreted as label embedding: \\\\(V_{k:}\\\\) is the \\\\(R\\\\)-dimensional embedding of the \\\\(k\\\\)-th label.",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 27,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "MatrixFactorizationAsLinReg",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 28,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Matrix Factorization as a Constrained Linear Regression\nMatrix \\\\( Y\\in\\Re^{n,d} \\\\). For any \\\\(K\\\\):\n\n\\\\( \\mathbb{E}[\\mathbf{Y}_{ij}=1|i,j] = \\langle \\mathbf{U}_{i:}, \\mathbf{V}_{j:}\\rangle \\\\) where \\\\(\\mathbf{U}\\in\\Re^{N\\times K}\\\\) and \\\\(\\mathbf{V}\\in\\Re^{M\\times K}\\\\)\n\nIs equivalent to:\n\n\\\\( P(y_{t}=1|x_t = (i,j) ) = \\sigma(\\langle\\mathbf{\\Theta}, \\mathbf{e}_i \\otimes \\mathbf{e}_j\\rangle) \\\\) \n\nwhere \\\\( \\mathbf{\\Theta} = \\mathbf{U} \\mathbf{V}^T \\\\)\n\nSo we can view Matrix Factorization as a Rank-Constrained Linear Regression",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 29,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "BinMFAsLogReg",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 26,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Binary Matrix Factorization as a Logistic Regression\nMatrix \\\\( Y\\in\\Re^{n,d} \\\\). For any \\\\(K\\\\):\n\n\\\\( P(\\mathbf{Y}_{ij}=1|i,j) = \\sigma(\\langle \\mathbf{U}_{i:}, \\mathbf{V}_{j:}\\rangle) \\\\) where \\\\(\\mathbf{U}\\in\\Re^{N\\times K}\\\\) and \\\\(\\mathbf{V}\\in\\Re^{M\\times K}\\\\)\n\nIs equivalent to:\n\n\\\\( P(y_{t}=1|x_t = (i,j) ) = \\sigma(\\langle\\mathbf{\\Theta}, \\mathbf{e}_i \\otimes \\mathbf{e}_j\\rangle) \\\\) ",
+      "extraFields" : { }
+    }
+  }, {
     "id" : 0,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "drawbacks",
+      "code" : "drawbacks\n\n",
       "extraFields" : { }
     }
   }, {
-    "id" : 1,
-    "compiler" : "markdown",
+    "id" : 23,
+    "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "### S1\n\n<br />\n<img src=\"../../assets/figures/08/s8s1.png\" height=\"500\">",
+      "code" : "<br />\n<img src=\"../../assets/figures/08/s8s1.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -25,11 +89,11 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 3,
-    "compiler" : "markdown",
+    "id" : 24,
+    "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "### S2\n\n<br />\n<img src=\"../../assets/figures/08/s8s2.png\" height=\"500\">",
+      "code" : "<br />\n<img src=\"../../assets/figures/08/s8s2.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -45,7 +109,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### S3\n\n<br />\n<img src=\"../../assets/figures/08/s8s3.png\" height=\"500\">",
+      "code" : "### Scoring function\n\n<br />\n<img src=\"../../assets/figures/08/s8s3.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -61,7 +125,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### S4\n\n<br />\n<img src=\"../../assets/figures/08/s8s4.png\" height=\"500\">",
+      "code" : "### Combinatorial Features (1)\n\n<br />\n<img src=\"../../assets/figures/08/s8s4.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -77,7 +141,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### S5\n\n<br />\n<img src=\"../../assets/figures/08/s8s5.png\" height=\"500\">",
+      "code" : "### Combinatorial Features (2)\n\n<br />\n<img src=\"../../assets/figures/08/s8s5.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -93,7 +157,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### S6\n\n<br />\n<img src=\"../../assets/figures/08/s8s6.png\" height=\"500\">",
+      "code" : "### Combinatorial Features (3)\n\n<br />\n<img src=\"../../assets/figures/08/s8s6.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -109,7 +173,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### S7\n\n<br />\n<img src=\"../../assets/figures/08/s8s7.png\" height=\"500\">",
+      "code" : "### Why Combinatorial Features?\n\n<br />\n<img src=\"../../assets/figures/08/s8s7.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -125,7 +189,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### S8\n\n<br />\n<img src=\"../../assets/figures/08/s8s8.png\" height=\"500\">",
+      "code" : "### \n\n<br />\n<img src=\"../../assets/figures/08/s8s8.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -137,11 +201,11 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 17,
-    "compiler" : "markdown",
+    "id" : 25,
+    "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "### S9\n\n<br />\n<img src=\"../../assets/figures/08/s8s9.png\" height=\"500\">",
+      "code" : "<br />\n<img src=\"../../assets/figures/08/s8s9.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -157,7 +221,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### S10\n\n<br />\n<img src=\"../../assets/figures/08/s8s10.png\" height=\"500\">",
+      "code" : "\n\n<br />\n<img src=\"../../assets/figures/08/s8s10.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -173,7 +237,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### S11\n\n<br />\n<img src=\"../../assets/figures/08/s8s11.png\" height=\"500\">",
+      "code" : " \n<br />\n<img src=\"../../assets/figures/08/s8s11.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
