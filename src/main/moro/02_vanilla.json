@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Completion\n",
+      "code" : "### Matrix Completion via Low-Rank Factorization\n\nGiven \\\\(\\mathbf{Y} \\in\\Re^{N\\times M} \\\\)\n\nFind \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in\\Re^{M\\times L} \\\\)\n\nso that \\\\(\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T}\\\\)",
       "extraFields" : { }
     }
   }, {
@@ -21,7 +21,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "assumptions",
+      "code" : "why",
       "extraFields" : { }
     }
   }, {
@@ -29,7 +29,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Modelling assumptions\n- exchangeability (row/column) -> rotation invariance (spectrum of the matrix)\n- low complexity measures for matrices -> (pseudo-) norms on the spectrum\n- sparsity for computational efficiency -> low-rank",
+      "code" : "### Why Low-Rank\nWe want: A probabilistic model on matrices with:\n\n1) Invariance by permutation of rows and columns\n\n--> The model depends only on the eigenvalues\n\n2) A complexity measure\n\n--> A norm or pseudo-norm (\\\\(e.g. L_\\alpha, \\alpha\\ge 0\\\\) ) on the spectrum \n\n3) Fast to compute and memory efficient\n\n--> \\\\(\\alpha\\le 1\\\\) (Sparsity-inducing)",
       "extraFields" : { }
     }
   }, {
@@ -37,7 +37,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "lowrank",
+      "code" : "svd",
       "extraFields" : { }
     }
   }, {
@@ -45,51 +45,11 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Low-Rank Factorization\n\\\\(\\mathbf{Y} = \\mathbf{U}\\mathbf{V}^{T}\\\\)\n",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 6,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "why",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 7,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "\n### Why Low-Rank\nWe want: A probabilistic model on matrices with:\n\n1) Invariance by permutation of rows and columns\n\n--> The model depends only on the eigenvalues\n\n2) A complexity measure\n\n--> A norm or pseudo-norm (\\\\(e.g. L_\\alpha, \\alpha\\ge 0\\\\) ) on the spectrum \n\n3) Fast to compute and memory efficient\n\n--> \\\\(\\alpha\\le 1\\\\) (Sparsity-inducing)",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 8,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "svd",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 9,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
       "code" : "### Singular Value Decomposition (SVD)\n\nSVD is a n optimal quadratic matrix approximator.\n\nThe problem\n\n\\\\( (\\hat{\\mathbf{U}}, \\hat{\\mathbf{V}}) \\in \\arg\\min_{\\mathbf{U}\\in\\Re^{N\\times K},\\mathbf{V}\\in\\Re^{M\\times K}} \\gamma(\\mathbf{U},\\mathbf{V}) \\\\)\n\nwhere\n\n\\\\(\n\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2 \n\\\\)\n\ncan be solved by a partial SVD algorithm:\n\n\\\\(\n[\\mathbf{U},\\mathbf{D},\\mathbf{V}] = \\texttt{sdvs}(\\mathbf{Y},K)\n\\\\)\n\n\\\\(\n\\hat{\\mathbf{U}} = \\mathbf{U}  \\texttt{sqrt}(\\mathbf{D})\n\\quad,\\quad\n\\hat{\\mathbf{V}} = \\mathbf{V}  \\texttt{sqrt}(\\mathbf{D})\n\\\\)\n\nWe can use other algorithms to minimize the same objective.",
       "extraFields" : { }
     }
   }, {
-    "id" : 10,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 11,
+    "id" : 7,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -97,31 +57,31 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 12,
+    "id" : 8,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Stochastic Gradient Descent\n\nObjective:\n\n\\\\(\n\\gamma(U,V) := \\sum_{(i,j)\\in\\Omega} (y_{ij} - \\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle)^2 \n\\\\)\n\nWhere \\\\(\\Omega=\\lbrace 1,\\cdots,N\\rbrace \\otimes \\lbrace1,\\cdots,M\\rbrace \\\\) \n\n\nThis is a large sum. We can pick one element and do a gradient step in this direction:\n\n1) Pick \\\\( (i,j) \\\\) uniformaly at random in \\\\(\\Omega\\\\) \n\n2) Gradient step\n\n\\\\(\\mathbf{u}_i \\leftarrow \\mathbf{u}_i - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{v}_j  \\\\)\n\n\\\\(\\mathbf{v}_j \\leftarrow \\mathbf{v}_j - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{u}_i \\\\)\n\nwhere \\\\(\\eta\\\\) is the gradient step size (can be adaptive)\n\n",
+      "code" : "### Stochastic Gradient Descent\n\nObjective:\n\n\\\\(\n\\gamma(U,V) := \\sum_{(i,j)\\in\\Omega} (y_{ij} - \\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle)^2 \n\\\\)\n\nWhere \\\\(\\Omega=\\lbrace 1,\\cdots,N\\rbrace \\otimes \\lbrace1,\\cdots,M\\rbrace \\\\) \n\nThis is a large sum. We can pick one element and do a gradient step in this direction:\n\n1) Pick \\\\( (i,j) \\\\) uniformaly at random in \\\\(\\Omega\\\\) \n\n2) Gradient step\n\n\\\\(\\mathbf{u}_i \\leftarrow \\mathbf{u}_i - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{v}_j  \\\\)\n\n\\\\(\\mathbf{v}_j \\leftarrow \\mathbf{v}_j - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{u}_i \\\\)\n\nwhere \\\\(\\eta\\\\) is the gradient step size (can be adaptive)",
       "extraFields" : { }
     }
   }, {
-    "id" : 13,
+    "id" : 9,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "\nals",
+      "code" : "als",
       "extraFields" : { }
     }
   }, {
-    "id" : 14,
+    "id" : 10,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Alternating Least Squares\nThe objective\n\\\\(\n\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2 \n\\\\)\ncan also be minimized by block-coordinate descent:\n\n\\\\(\n\\arg\\min_{\\mathbf{u}_i} \\gamma(U,V) = \\arg\\min_{u_i} \\||\\mathbf{Y}_{i:} - \\mathbf{u}_i\\mathbf{V}^{T}\\||_2^2 \n\\\\)\n\n\\\\(\n\\arg\\min_{\\mathbf{v}_j} \\gamma(U,V) = \\arg\\min_{v_j} \\||\\mathbf{Y}_{:j} - \\mathbf{U}\\mathbf{v_j}^{T}\\||_2^2 \n\\\\)\n\nLeast square problems! ==> Unique solutions:\n\n\\\\(\n\\mathbf{u}_i \\leftarrow (\\mathbf{V}^T\\mathbf{V})^{-1} \\mathbf{V}^T \\mathbf{Y}_{i:} \n\\\\)\n\n\n\\\\(\n\\mathbf{v}_j \\leftarrow (\\mathbf{U}^T\\mathbf{U})^{-1} \\mathbf{U}^T \\mathbf{Y}_{:j} \n\\\\)\n\nEach step can be parallelized efficiently (e.g. Regularized LSA)",
+      "code" : "### Alternating Least Squares\n\nThe objective\n\\\\(\n\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2 \n\\\\)\ncan also be minimized by block-coordinate descent:\n\n\\\\(\n\\arg\\min_{\\mathbf{u}_i} \\gamma(U,V) = \\arg\\min_{u_i} \\||\\mathbf{Y}_{i:} - \\mathbf{u}_i\\mathbf{V}^{T}\\||_2^2 \n\\\\)\n\n\\\\(\n\\arg\\min_{\\mathbf{v}_j} \\gamma(U,V) = \\arg\\min_{v_j} \\||\\mathbf{Y}_{:j} - \\mathbf{U}\\mathbf{v_j}^{T}\\||_2^2 \n\\\\)\n\nLeast square problems! ==> Unique solutions:\n\n\\\\(\n\\mathbf{u}_i \\leftarrow (\\mathbf{V}^T\\mathbf{V})^{-1} \\mathbf{V}^T \\mathbf{Y}_{i:} \n\\\\)\n\n\n\\\\(\n\\mathbf{v}_j \\leftarrow (\\mathbf{U}^T\\mathbf{U})^{-1} \\mathbf{U}^T \\mathbf{Y}_{:j} \n\\\\)\n\nEach step can be parallelized efficiently (e.g. Regularized LSA)",
       "extraFields" : { }
     }
   }, {
-    "id" : 15,
+    "id" : 11,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -129,27 +89,11 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 16,
+    "id" : 12,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Regularized Latent Semantic Analysis\n\n\n",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 17,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "references",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 18,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### References \n",
+      "code" : "### Regularized Latent Semantic Indexing\n\nblah\n",
       "extraFields" : { }
     }
   } ],
