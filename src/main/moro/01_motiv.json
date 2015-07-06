@@ -148,13 +148,23 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Notation\n\n- Scalars: lower-case letters \\\\(v,m\\\\)\n- Vectors: boldface lower-case letters \\\\(\\mathbf{v}\\\\)\n- Matrices: boldface capital letters \\\\(\\mathbf{M}\\\\)\n- \\\\(i\\\\)th element of a vector \\\\(\\mathbf{v}\\\\): \\\\(v_i\\\\) <!-- .element: class=\"fragment\" data-fragment-index=\"1\" -->\n- \\\\((i,j)\\\\)-element of a matrix \\\\(\\mathbf{M}\\\\): \\\\(m_{ij}\\\\) <!-- .element: class=\"fragment\" data-fragment-index=\"1\" -->\n- \\\\(i\\\\)th row of a matrix \\\\(\\mathbf{M}\\\\): \\\\(\\mathbf{m}_{i:}\\\\) <!-- .element: class=\"fragment\" data-fragment-index=\"1\" -->\n- \\\\(j\\\\)th column of a matrix \\\\(\\mathbf{M}\\\\): \\\\(\\mathbf{m}_{:j}\\\\) <!-- .element: class=\"fragment\" data-fragment-index=\"1\" -->\n",
+      "code" : "### Notation\n\n- Scalars: lower-case letters \\\\(v,m\\\\)\n- Vectors: boldface lower-case letters \\\\(\\mathbf{v}\\\\)\n- Matrices: boldface capital letters \\\\(\\mathbf{M}\\\\)",
       "extraFields" : {
         "hide_output" : "false"
       }
     }
   }, {
     "id" : 17,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "- \\\\(i\\\\)th element of a vector \\\\(\\mathbf{v}\\\\): \\\\(v_i\\\\)\n- \\\\((i,j)\\\\)-element of a matrix \\\\(\\mathbf{M}\\\\): \\\\(m_{ij}\\\\)\n- \\\\(i\\\\)th row of a matrix \\\\(\\mathbf{M}\\\\): \\\\(\\mathbf{m}_{i:}\\\\)\n- \\\\(j\\\\)th column of a matrix \\\\(\\mathbf{M}\\\\): \\\\(\\mathbf{m}_{:j}\\\\)",
+      "extraFields" : {
+        "fragment" : "true"
+      }
+    }
+  }, {
+    "id" : 18,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -162,11 +172,11 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 18,
+    "id" : 19,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Operations\n- the **inner product** is \\\\(\\langle u,v \\rangle := \\sum_{l=1}^L u_{l} v_l\\\\)\nwhere \\\\(u\\in\\Re^L\\\\) and \\\\(v\\in\\Re^L\\\\)\n- the **outer product**  \\\\( u \\otimes v \\\\) between vectors \\\\(u\\in\\Re^N\\\\) and \\\\(v\\in\\Re^M\\\\) is the \\\\(N\\times M\\\\) matrix with elements \\\\(u_nv_m\\\\), \\\\( n=\\{1,\\cdots,N\\} \\\\) and \\\\(m= \\{1,\\cdots,M\\} \\\\).\n- the **outer product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{L \\times M} \\\\), \\\\( \\mathbf{U} \\otimes \\mathbf{V} := \\sum_{\\ell=1}^L \\mathbf{U}_{:\\ell} \\otimes \\mathbf{V}_{\\ell:} \\\\)\n- the element-wise **Hadamard product** for matrices \\\\(\\mathbf{U},\\mathbf{V} \\in\\Re^{N\\times L} \\\\) is the \\\\(N\\times L\\\\) matrix \\\\(\\mathbf{U}\\circ \\mathbf{V}\\\\) with elements \\\\((\\mathbf{U}\\circ \\mathbf{V})_{n,l}:=u_{n,l}v_{n,l}\\\\).\n",
+      "code" : "### Matrix Operations\n- the **inner product** is \\\\(\\langle \\mathbf{u},\\mathbf{v} \\rangle := \\sum_{l=1}^L u_{l} v_l\\\\)\nwhere \\\\(\\mathbf{u}\\in\\Re^L\\\\) and \\\\(\\mathbf{v}\\in\\Re^L\\\\)\n- the **outer product**  \\\\( \\mathbf{u} \\otimes \\mathbf{v} \\\\) between vectors \\\\(\\mathbf{u}\\in\\Re^N\\\\) and \\\\(\\mathbf{v}\\in\\Re^M\\\\) is the \\\\(N\\times M\\\\) matrix with elements \\\\(u_nv_m\\\\), \\\\( n=\\{1,\\cdots,N\\} \\\\) and \\\\(m= \\{1,\\cdots,M\\} \\\\).\n- the **outer product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{L \\times M} \\\\), \\\\( \\mathbf{U} \\otimes \\mathbf{V} := \\sum_{\\ell=1}^L \\mathbf{U}_{:\\ell} \\otimes \\mathbf{V}_{\\ell:} \\\\)\n- the element-wise **Hadamard product** for matrices \\\\(\\mathbf{U},\\mathbf{V} \\in\\Re^{N\\times L} \\\\) is the \\\\(N\\times L\\\\) matrix \\\\(\\mathbf{U}\\circ \\mathbf{V}\\\\) with elements \\\\((\\mathbf{U}\\circ \\mathbf{V})_{n,l}:=u_{n,l}v_{n,l}\\\\).\n",
       "extraFields" : { }
     }
   } ],
