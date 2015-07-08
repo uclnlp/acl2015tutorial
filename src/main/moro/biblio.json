@@ -63,7 +63,7 @@
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "<div style=\"text-align:left;\">\nNickel, Maximilian, Volker Tresp, and Hans-Peter Kriegel. \"A three-way model for collective learning on multi-relational data.\" Proceedings of the 28th international conference on machine learning (ICML-11). 2011.\n<br><br>\nNickel, Maximilian, Volker Tresp, and Hans-Peter Kriegel. \"Factorizing YAGO: scalable machine learning for linked data.\" Proceedings of the 21st international conference on World Wide Web. ACM, 2012.\nAPA\n</div>",
+      "code" : "<div style=\"text-align:left;\">\nNickel, Maximilian, Volker Tresp, and Hans-Peter Kriegel. \"A three-way model for collective learning on multi-relational data.\" Proceedings of the 28th international conference on machine learning (ICML-11). 2011.\n<br><br>\nNickel, Maximilian, Volker Tresp, and Hans-Peter Kriegel. \"Factorizing YAGO: scalable machine learning for linked data.\" Proceedings of the 21st international conference on World Wide Web. ACM, 2012.\nAPA\n<br><br>\nGoller, Christoph, and Andreas Kuchler. \"Learning task-dependent distributed representations by backpropagation through structure.\" Neural Networks, 1996., IEEE International Conference on. Vol. 1. IEEE, 1996.\n</div>",
       "extraFields" : { }
     }
   } ],
