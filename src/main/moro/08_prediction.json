@@ -29,7 +29,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Multi-Task Learning\n* Inputs: \\\\(d\\\\) feature \\\\(\\mathbf\\phi(x_i)\\in\\Re^d\\\\)\n* Outputs: \\\\(K\\\\) labels \\\\(\\mathbf{y}_i\\in\\lbrace 0,1 \\rbrace^K\\\\)\n\n\\\\( P(\\mathbf{y}_{i}|x_i) = \\prod_{k=1}^K \\mathbf{\\sigma}(\\mathbf\\phi(x_i) \\mathbf{U} \\mathbf{V}_{k:}^T) \\\\)\n\nCan be interpreted as label embedding: \\\\(V_{k:}\\\\) is the \\\\(R\\\\)-dimensional embedding of the \\\\(k\\\\)-th label.",
+      "code" : "### Multi-Task Learning\n* Inputs: \\\\(d\\\\) feature \\\\(\\mathbf\\phi(x_i)\\in\\Re^d\\\\)\n* Outputs: \\\\(K\\\\) labels \\\\(\\mathbf{y}_i\\in\\lbrace 0,1 \\rbrace^K\\\\)\n\n\\\\( P(\\mathbf{y}_{i}|x_i) = \\prod_{k=1}^K \\mathbf{\\sigma}(\\mathbf\\phi(x_i) \\mathbf{U} \\mathbf{V}_{k:}^T) \\\\)\n\nCan be interpreted as label embedding: \\\\(V_{k:}\\\\) is the \\\\(R\\\\)-dimensional embedding of the \\\\(k\\\\)-th label.\n<img src=\"../../assets/figures/08/multitask.png\" height=\"250\">",
       "extraFields" : { }
     }
   }, {
