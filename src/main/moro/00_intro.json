@@ -45,7 +45,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Introduction\n- Formulating tasks as instances of matrix and tensor factorization becomes more common:\n- example1\n- example2",
+      "code" : "### Motivation\n<br>\nFormulating tasks as instances of matrix and tensor factorization is an important tool our arsenal\n\n- flexible\n- expressive\n- scalable\n",
       "extraFields" : { }
     }
   }, {
@@ -61,7 +61,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### This tutorial\n\nPart 1:\n\n",
+      "code" : "### This tutorial\n<br>\n**Part 1**\n<br>\n\n- Seeing the matrix\n\n- Matrix factorization basics\n\n- Non-negative matrix factorization\n\n- Binary matrix factorization\n\n- Tensor factorization basics\n \n\n",
       "extraFields" : { }
     }
   }, {
@@ -79,7 +79,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### This tutorial\n\nPart 2:\n",
+      "code" : "### This tutorial\n<br>\n**Part 2**\n<br>\n\n- Collective matrix factorization\n\n- Inclusion of prior knowledge in factorization\n\n- Factorization with a predictive model\n\n- Convexification\n",
       "extraFields" : { }
     }
   }, {
@@ -95,7 +95,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Outcomes\n- Seeing matrices\n- mathematical foundations\n- applications in NLP\n- software",
+      "code" : "### Outcomes\n<br>\n\n- Recognizing potential applications\n\n- Understanding of the mathematical concepts\n\n- Clarification of the connections among models\n\n- Familiarization with existing NLP applications\n",
       "extraFields" : { }
     }
   } ],
