@@ -225,7 +225,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 34,
+    "id" : 28,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -233,43 +233,11 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 35,
+    "id" : 29,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
       "code" : "### Results \n\n<img src=\"../../assets/figures/rescal-results.png\">\n\n",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 28,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "references1",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 31,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### References I\n\n- Kolda, Tamara G., and Brett W. Bader. \"Tensor decompositions and applications.\" SIAM review 51.3 (2009): 455-500.\n- Tucker, Ledyard R. \"Some mathematical notes on three-mode factor analysis.\" Psychometrika 31.3 (1966): 279-311.\n- Carroll, J. Douglas, and Jih-Jie Chang. \"Analysis of individual differences in multidimensional scaling via an N-way generalization of “Eckart-Young” decomposition.\" Psychometrika 35.3 (1970): 283-319.\n- Harshman, Richard A. \"Foundations of the PARAFAC procedure: Models and conditions for an\" explanatory\" multi-modal factor analysis.\" (1970): 1-84.\nAPA\t\n",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 32,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "references2",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 33,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### References II\n- Nickel, Maximilian, Volker Tresp, and Hans-Peter Kriegel. \"A three-way model for collective learning on multi-relational data.\" Proceedings of the 28th international conference on machine learning (ICML-11). 2011.\n- Nickel, Maximilian, Volker Tresp, and Hans-Peter Kriegel. \"Factorizing YAGO: scalable machine learning for linked data.\" Proceedings of the 21st international conference on World Wide Web. ACM, 2012.\nAPA\n",
       "extraFields" : { }
     }
   } ],

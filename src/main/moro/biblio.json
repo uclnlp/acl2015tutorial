@@ -5,17 +5,65 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "blah ",
+      "code" : "blah",
       "extraFields" : {
         "aggregatedCells" : "[]"
       }
     }
   }, {
     "id" : 1,
-    "compiler" : "markdown",
+    "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "Kolda, Tamara G., and Brett W. Bader. \"Tensor decompositions and applications.\" SIAM review 51.3 (2009): 455-500. \n\n*Extensive overview of the topic, we adopted their notation in the tutorial*\n\nGoldberg, Andrew B., Zhu, Xiaojin, Recht, Benjamin, Xu, Jun-Ming, Nowak, Robert. \"Transduction with Matrix Completion: Three Birds with One Stone.\" In Advances in Neural Information Processing Systems (NIPS) 24. 2010.\n\n*First work to formulate semi-supervised multi-task learning with missing data explicitly as matrix completion*\n\nLee, Daniel D., and H. Sebastian Seung. \"Algorithms for non-negative matrix factorization.\" Advances in Neural Information Processing Systems (NIPS) 15. 2001.\n\n*Multiplicative updates algorithm for NMF*\n\nGaussier, Eric, and Cyril Goutte. \"Relation between PLSA and NMF and implications.\" Proceedings of the 28th annual international ACM SIGIR conference on Research and development in information retrieval. ACM, 2005.\n\n*First paper to point out the connection between PLSA and NMF*\n\nArora, Sanjeev, Rong Ge, and Ankur Moitra. \"Learning topic models--going beyond SVD.\" Foundations of Computer Science (FOCS), 2012 IEEE 53rd Annual Symposium on. IEEE, 2012.\n\n*Theoretical justification of topic modeling as NMF*",
+      "code" : "<div style=\"text-align:left;\">\nKolda, Tamara G., and Brett W. Bader. \"Tensor decompositions and applications.\" SIAM review 51.3 (2009): 455-500. \n<br>\n<i>Extensive overview of the topic, we adopted their notation in the tutorial</i>\n<br>\n<br>\nGoldberg, Andrew B., Zhu, Xiaojin, Recht, Benjamin, Xu, Jun-Ming, Nowak, Robert. \"Transduction with Matrix Completion: Three Birds with One Stone.\" In Advances in Neural Information Processing Systems (NIPS) 24. 2010.\n<br>\n<i>First work to formulate semi-supervised multi-task learning with missing data explicitly as matrix completion</i>\n<br><br>\nKoren, Yehuda, Robert Bell, and Chris Volinsky. \"Matrix factorization techniques for recommender systems.\" Computer 8 (2009): 30-37.\n<br>\n<i>Description of SGD and ALS algoirthms for matrix factorization</i>\n</div>",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 2,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "bla",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 3,
+    "compiler" : "html",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<div style=\"text-align:left;\">\nWang, Quan, et al. \"Regularized latent semantic indexing.\" Proceedings of the 34th international ACM SIGIR conference on Research and development in Information Retrieval. ACM, 2011.\n<br>\n<i>Introduces regularized latent semantic indexing</i>\n<br><br>\nLee, Daniel D., and H. Sebastian Seung. \"Algorithms for non-negative matrix factorization.\" Advances in Neural Information Processing Systems (NIPS) 15. 2001.\n<br>\n<i>Multiplicative updates algorithm for NMF</i>\n<br><br>\nGaussier, Eric, and Cyril Goutte. \"Relation between PLSA and NMF and implications.\" Proceedings of the 28th annual international ACM SIGIR conference on Research and development in information retrieval. ACM, 2005.\n<br>\n<i>First paper to point out the connection between PLSA and NMF</i>\n</div>",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 4,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "bl",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 5,
+    "compiler" : "html",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<div style=\"text-align:left;\">\nArora, Sanjeev, Rong Ge, and Ankur Moitra. \"Learning topic models--going beyond SVD.\" Foundations of Computer Science (FOCS), 2012 IEEE 53rd Annual Symposium on. IEEE, 2012.\n<br>\n<i>Theoretical justification of topic modeling as NMF</i>\n<br>\n<br>\nTucker, Ledyard R. \"Some mathematical notes on three-mode factor analysis.\" Psychometrika 31.3 (1966): 279-311.\n<br><br>\nCarroll, J. Douglas, and Jih-Jie Chang. \"Analysis of individual differences in multidimensional scaling via an N-way generalization of “Eckart-Young” decomposition.\" Psychometrika 35.3 (1970): 283-319.\n<br><br>\nHarshman, Richard A. \"Foundations of the PARAFAC procedure: Models and conditions for an\" explanatory\" multi-modal factor analysis.\" (1970): 1-84.\nAPA\t\n</div>",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 6,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "b",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 7,
+    "compiler" : "html",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<div style=\"text-align:left;\">\nNickel, Maximilian, Volker Tresp, and Hans-Peter Kriegel. \"A three-way model for collective learning on multi-relational data.\" Proceedings of the 28th international conference on machine learning (ICML-11). 2011.\n<br><br>\nNickel, Maximilian, Volker Tresp, and Hans-Peter Kriegel. \"Factorizing YAGO: scalable machine learning for linked data.\" Proceedings of the 21st international conference on World Wide Web. ACM, 2012.\nAPA\n<br><br>\nGoller, Christoph, and Andreas Kuchler. \"Learning task-dependent distributed representations by backpropagation through structure.\" Neural Networks, 1996., IEEE International Conference on. Vol. 1. IEEE, 1996.\n</div>",
       "extraFields" : { }
     }
   } ],
