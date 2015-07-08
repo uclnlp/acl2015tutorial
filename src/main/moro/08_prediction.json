@@ -1,7 +1,7 @@
 {
   "name" : "Discriminative Factorial Models",
   "cells" : [ {
-    "id" : 32,
+    "id" : 0,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -9,7 +9,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 33,
+    "id" : 1,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -17,7 +17,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 34,
+    "id" : 2,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -25,7 +25,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 31,
+    "id" : 3,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -33,7 +33,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 27,
+    "id" : 4,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -41,7 +41,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 28,
+    "id" : 5,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -49,7 +49,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 29,
+    "id" : 6,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -57,7 +57,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 26,
+    "id" : 7,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -65,7 +65,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 0,
+    "id" : 8,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -73,7 +73,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 23,
+    "id" : 9,
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
@@ -81,7 +81,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 2,
+    "id" : 10,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -89,7 +89,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 24,
+    "id" : 11,
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
@@ -97,7 +97,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 4,
+    "id" : 12,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -105,7 +105,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 5,
+    "id" : 13,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -113,7 +113,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 6,
+    "id" : 14,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -121,7 +121,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 7,
+    "id" : 15,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -129,7 +129,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 8,
+    "id" : 16,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -137,7 +137,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 9,
+    "id" : 17,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -145,7 +145,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 10,
+    "id" : 18,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -153,7 +153,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 11,
+    "id" : 19,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -161,7 +161,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 12,
+    "id" : 20,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -169,7 +169,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 13,
+    "id" : 21,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -177,7 +177,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 14,
+    "id" : 22,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -185,7 +185,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 15,
+    "id" : 23,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -193,7 +193,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 16,
+    "id" : 24,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -209,7 +209,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 18,
+    "id" : 26,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -217,7 +217,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 19,
+    "id" : 27,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -225,7 +225,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 20,
+    "id" : 28,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -233,7 +233,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 21,
+    "id" : 29,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -241,7 +241,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 22,
+    "id" : 30,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
