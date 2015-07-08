@@ -221,11 +221,11 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### RESCAL\n(Nickel et al, 2011; 2012)\n\n- Is an instance of Tucker2 \n\n    \\\\(\\mathcal{T} \\approx \\mathcal{R} \\times_1 \\mathbf{A} \\times_2 \\mathbf{A}\\\\)\n    \n    - \\\\(\\mathcal{R}\\\\) holds one slice \\\\(\\mathbf{R}_s \\in \\mathbb{R}^{k \\,\\times\\, k}\\\\) for each relation \\\\(s\\\\)\n    - \\\\(\\mathbf{A} \\in \\mathbb{R}^{|E| \\,\\times\\, k}\\\\) is the dictonary-matrix for all entity embeddings\n    - Symmetry assumption: an entity has the same embedding whether used as first or second argument\n- Per relation view (\\\\(s\\\\) slices of \\\\(\\mathcal{T}\\\\) and \\\\(\\mathcal{R}\\\\)): \\\\(\\mathbf{T}_s \\approx \\mathbf{A} \\mathbf{R}_s \\mathbf{A}^T\\\\)\n\n- Loss function (excluding regularization)\n\n    \\\\(\\min_{\\mathbf{R}_s, \\mathbf{A}} \\sum_s|| \\mathbf{T}_s - \\mathbf{A}\\mathbf{R}_s\\mathbf{A}^T ||^2_F + \\lambda_R ||\\mathbf{R}_s||^2_F +\\lambda_A ||\\mathbf{A}||^2_F\\\\)\n    \n- Optimized using Alternating Least Squares    ",
+      "code" : "### RESCAL\n(Nickel et al, 2011; 2012)\n\n- Is an instance of Tucker2 \n\n    \\\\(\\mathcal{T} \\approx \\mathcal{R} \\times_1 \\mathbf{A} \\times_2 \\mathbf{A}\\\\)\n    \n    - \\\\(\\mathcal{R}\\\\) holds one slice \\\\(\\mathbf{R}_s \\in \\mathbb{R}^{k \\,\\times\\, k}\\\\) for each relation \\\\(s\\\\)\n    - \\\\(\\mathbf{A} \\in \\mathbb{R}^{|E| \\,\\times\\, k}\\\\) is the dictonary-matrix for all entity embeddings\n    - Symmetry assumption: an entity has the same embedding whether used as first or second argument\n- Per relation view (\\\\(s\\\\) slices of \\\\(\\mathcal{T}\\\\) and \\\\(\\mathcal{R}\\\\)): \\\\(\\mathbf{T}_s \\approx \\mathbf{A} \\mathbf{R}_s \\mathbf{A}^T\\\\)\n\n- Loss function\n\n    \\\\(\\min_{\\mathbf{R}_s, \\mathbf{A}} \\sum_s|| \\mathbf{T}_s - \\mathbf{A}\\mathbf{R}_s\\mathbf{A}^T ||^2_F + \\lambda_R ||\\mathbf{R}_s||^2_F +\\lambda_A ||\\mathbf{A}||^2_F\\\\)\n    \n- Optimized using Alternating Least Squares    ",
       "extraFields" : { }
     }
   }, {
-    "id" : 34,
+    "id" : 28,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -233,7 +233,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 35,
+    "id" : 29,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -241,7 +241,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 28,
+    "id" : 30,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
