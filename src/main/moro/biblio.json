@@ -47,7 +47,23 @@
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "<div style=\"text-align:left;\">\nArora, Sanjeev, Rong Ge, and Ankur Moitra. \"Learning topic models--going beyond SVD.\" Foundations of Computer Science (FOCS), 2012 IEEE 53rd Annual Symposium on. IEEE, 2012.\n<br>\n<i>Theoretical justification of topic modeling as NMF</i>\n<br>\n<br>\n</div>",
+      "code" : "<div style=\"text-align:left;\">\nArora, Sanjeev, Rong Ge, and Ankur Moitra. \"Learning topic models--going beyond SVD.\" Foundations of Computer Science (FOCS), 2012 IEEE 53rd Annual Symposium on. IEEE, 2012.\n<br>\n<i>Theoretical justification of topic modeling as NMF</i>\n<br>\n<br>\nTucker, Ledyard R. \"Some mathematical notes on three-mode factor analysis.\" Psychometrika 31.3 (1966): 279-311.\n<br><br>\nCarroll, J. Douglas, and Jih-Jie Chang. \"Analysis of individual differences in multidimensional scaling via an N-way generalization of “Eckart-Young” decomposition.\" Psychometrika 35.3 (1970): 283-319.\n<br><br>\nHarshman, Richard A. \"Foundations of the PARAFAC procedure: Models and conditions for an\" explanatory\" multi-modal factor analysis.\" (1970): 1-84.\nAPA\t\n</div>",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 6,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "b",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 7,
+    "compiler" : "html",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<div style=\"text-align:left;\">\nNickel, Maximilian, Volker Tresp, and Hans-Peter Kriegel. \"A three-way model for collective learning on multi-relational data.\" Proceedings of the 28th international conference on machine learning (ICML-11). 2011.\n<br><br>\nNickel, Maximilian, Volker Tresp, and Hans-Peter Kriegel. \"Factorizing YAGO: scalable machine learning for linked data.\" Proceedings of the 21st international conference on World Wide Web. ACM, 2012.\nAPA\n</div>",
       "extraFields" : { }
     }
   } ],
