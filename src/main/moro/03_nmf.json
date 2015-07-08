@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Non-negativity\n\nIntepretability\n\n- zero has special meaning\n\nModelling assumptions\n\n- negative objects in images?\n- negative topics in documents?\n",
+      "code" : "### Non-negativity\n<br>\n\n- Intepretability\n\n    - zero has special meaning\n\n- Modelling assumptions\n\n    - negative objects in images?\n    \n    - negative topics in documents?\n",
       "extraFields" : { }
     }
   }, {
@@ -26,10 +26,10 @@
     }
   }, {
     "id" : 3,
-    "compiler" : "markdown",
+    "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "## Definition\n\nGiven \\\\(\\mathbf{Y} \\in\\Re^{N\\times M} \\geq 0\\\\)\n\nFind \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\geq 0 \\\\) and \\\\(\\mathbf{V} \\in\\Re^{M\\times L} \\geq 0\\\\)\n\nthat minimize the difference between \\\\(\\mathbf{Y}\\\\) and \\\\(\\mathbf{U}\\mathbf{V}^{T}\\\\)",
+      "code" : "<h3>Definition</h3>\n\n<br>\n<div style=\"text-align:center;\">\nGiven \\(\\mathbf{Y} \\in\\Re^{N\\times M}  \\geq 0 \\) <br>\n<br>\nfind \\(\\mathbf{U} \\in\\Re^{N\\times L}  \\geq 0\\) and \\(\\mathbf{V} \\in\\Re^{M\\times L} \\geq 0 \\) <br>\n<br>\nso that \\(\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T}\\)\n</div>\n\n",
       "extraFields" : { }
     }
   }, {
@@ -45,7 +45,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Algorithm (Lee and Seung, 2001)\n\nMultiplicative update rules to minimize \\\\(||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}|| _2\\\\):\n\n\\\\(u_{n,l} = u_{n,l} \\frac{(\\mathbf{Y}\\mathbf{V})_{n,l}}{(\\mathbf{Y}\\mathbf{Y}^{T}\\mathbf{U})_{n,l}} \\\\)\n\n\\\\(v_{m,l} = v_{m,l} \\frac{(\\mathbf{Y}^T\\mathbf{U})_{m,l}}{(\\mathbf{Y}^{T}\\mathbf{Y}\\mathbf{V})_{m,l}} \\\\)\n\nRelated to the additive SGD updates\n\n\n\n",
+      "code" : "### Algorithm (Lee and Seung, 2001)\n<br>\nMultiplicative update rules to minimize \\\\(||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}|| _2\\\\):\n<br>\n\n\\\\(u_{n,l} = u_{n,l} \\frac{(\\mathbf{Y}\\mathbf{V})_{n,l}}{(\\mathbf{Y}\\mathbf{Y}^{T}\\mathbf{U})_{n,l}} \\\\)\n\n\\\\(v_{m,l} = v_{m,l} \\frac{(\\mathbf{Y}^T\\mathbf{U})_{m,l}}{(\\mathbf{Y}^{T}\\mathbf{Y}\\mathbf{V})_{m,l}} \\\\)\n<br>\n\nRelated to the additive SGD updates\n\n\n\n",
       "extraFields" : { }
     }
   }, {
@@ -61,7 +61,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### NMF with KL divergence\n\nAssume that \\\\(\\mathbf{Y}\\\\) represents a probability distribution \\\\((\\sum_{n,m} y_{n,m} = 1)\\\\)\n\nMinimizing the Kullback-Leibler divergence:\n\n\\\\( KL_{div}(\\mathbf{Y}||\\mathbf{U}\\mathbf{V}^{T}) = \\sum_{n,m}(y_{n,m}\\log\\frac{y_{n,m}}{(\\mathbf{U}\\mathbf{V}^{T})_{n,m}} )  \\\\)\n\n- results in similar multiplicative updates\n- ensures that \\\\(\\mathbf{U}\\\\) and \\\\(\\mathbf{V}\\\\) also represent probability distributions\n\n",
+      "code" : "### NMF with KL divergence\n<br>\n\nAssume that \\\\(\\mathbf{Y}\\\\) represents a probability distribution \\\\((\\sum_{n,m} y_{n,m} = 1)\\\\)\n<br>\n\nMinimize the Kullback-Leibler divergence:\n\n\\\\( KL_{div}(\\mathbf{Y}||\\mathbf{U}\\mathbf{V}^{T}) = \\sum_{n,m}(y_{n,m}\\log\\frac{y_{n,m}}{(\\mathbf{U}\\mathbf{V}^{T})_{n,m}} )  \\\\)\n<br>\n\n- results in similar multiplicative updates\n- ensures that \\\\(\\mathbf{U}\\\\) and \\\\(\\mathbf{V}\\\\) also represent probability distributions\n\n",
       "extraFields" : { }
     }
   }, {
@@ -77,7 +77,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Probabilistic Latent Semantic Analysis/Indexing\n\nKL-NMF optimizes the same objective as pLSA/I (Gaussier and Goutte, 2005):\n\n\\\\(y_{n,m} = P(n,m) = \\sum_l P(l) P(m|l) P(n|l) = u^\\prime_{n,l} v^{\\prime}_{l,m} \\\\)\n\nwhere \\\\(n\\\\) is a document, \\\\(m\\\\) a word and \\\\(l\\\\) a component.\n\n \\\\( \\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T} = (\\mathbf{U}\\mathbf{A}^{-1}\\mathbf{A})(\\mathbf{V}\\mathbf{B}^{-1}\\mathbf{B})^T = (\\mathbf{U}\\mathbf{A}^{-1})(\\mathbf{A}\\mathbf{B})(\\mathbf{V}\\mathbf{B}^{-1})^T\\\\)\n\nwhere \\\\(\\mathbf{A}\\\\) and \\\\(\\mathbf{B} \\in\\Re^{L\\times L} \\\\) are identity matrices with \\\\(a_{l,l} = \\sum_n v_{n,l}\\\\) and \\\\(b_{l,l} = \\sum_m u_{m,l}\\\\)\n\npLSA uses Expectation-Maximization for parameter estimation and converges to different local optima.\n",
+      "code" : "### Probabilistic Latent Semantic Analysis/Indexing\n<br>\n\nKL-NMF optimizes the same objective as pLSA/I (Gaussier and Goutte, 2005):\n\n<br>\n\n\\\\(y_{n,m} = P(n,m) = \\sum_l P(l) P(m|l) P(n|l) = u^\\prime_{n,l} v^{\\prime}_{l,m} \\\\)\n\nwhere \\\\(n\\\\) is a document, \\\\(m\\\\) a word and \\\\(l\\\\) a component.\n\n<br>\n\n \\\\( \\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T} = (\\mathbf{U}\\mathbf{A}^{-1}\\mathbf{A})(\\mathbf{V}\\mathbf{B}^{-1}\\mathbf{B})^T = (\\mathbf{U}\\mathbf{A}^{-1})(\\mathbf{A}\\mathbf{B})(\\mathbf{V}\\mathbf{B}^{-1})^T\\\\)\n\nwhere \\\\(\\mathbf{A}\\\\) and \\\\(\\mathbf{B} \\in\\Re^{L\\times L} \\\\) are diagonal matrices with \\\\(a_{l,l} = \\sum_n v_{n,l}\\\\) and \\\\(b_{l,l} = \\sum_m u_{m,l}\\\\)\n\n<br>\n\npLSA uses Expectation-Maximization for parameter estimation and converges to different local optima.\n",
       "extraFields" : { }
     }
   }, {
@@ -95,7 +95,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Latent Dirichlet Allocation\nGenerative story:\n\n- For each topic \\\\(l\\\\)\n    - draw multinomial params over words \\\\(\\mathbf{v}_{:l}\\in\\Re^M\\\\) from \\\\(Dir(\\beta)\\\\)\n- For each document \\\\(n\\\\)\n    - draw multinomial params over topics \\\\(\\mathbf{u}_{n:}\\in\\Re^L\\\\) from \\\\(Dir(\\alpha)\\\\)\n    - for each word \\\\(i\\\\)\n        - sample a topic assignment \\\\(z_i \\\\) from \\\\(\\mathbf{u}_{n:}\\\\)\n        - sample a word \\\\(w_i \\\\) from \\\\(\\mathbf{v}_{:z_i}\\\\)\n\nGiven the row-normalized document-term matrix \\\\(\\mathbf{Y}\\\\), find the factors \\\\(\\mathbf{U}\\\\) and \\\\(\\mathbf{V}\\\\) that reconstruct it. (Arora et al, 2012)\n\nCompared to standard NMF the challenge is that the samples forming the rows, i.e. the words per document, are very few and thus very noisy estimates.\n",
+      "code" : "### Latent Dirichlet Allocation\n\n- For each topic \\\\(l\\\\)\n    - draw multinomial params over words \\\\(\\mathbf{v}_{:l}\\in\\Re^M\\\\) from \\\\(Dir(\\beta)\\\\)\n- For each document \\\\(n\\\\)\n    - draw multinomial params over topics \\\\(\\mathbf{u}_{n:}\\in\\Re^L\\\\) from \\\\(Dir(\\alpha)\\\\)\n    - for each word \\\\(i\\\\)\n        - sample a topic assignment \\\\(z_i \\\\) from \\\\(\\mathbf{u}_{n:}\\\\)\n        - sample a word \\\\(w_i \\\\) from \\\\(\\mathbf{v}_{:z_i}\\\\)\n\n<br>\n\nGiven the row-normalized document-term matrix \\\\(\\mathbf{Y}\\\\), find the factors \\\\(\\mathbf{U}\\\\) and \\\\(\\mathbf{V}\\\\) that reconstruct it. (Arora et al, 2012)\n\nCompared to standard NMF the challenge is that the samples forming the rows are very few and thus very noisy estimates.\n",
       "extraFields" : { }
     }
   } ],
