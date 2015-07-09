@@ -64,7 +64,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Alternative View: Generalized PCA\n\n\n",
+      "code" : "### Equivalent View: Generalized PCA\n\n\n",
       "extraFields" : { }
     }
   }, {
@@ -83,7 +83,7 @@
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "<ul>\n    <li class=\"fragment1\">Generate Embeddings \\(U\\) and \\(V\\) using Gaussians</li>\n    <li class=\"fragment2\">Calculate natural parameters parameters \\( \\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle \\)</li>\n    <li class=\"fragment3\">Apply sigmoid to get Bernoulli probabilities</li>\n    <li class=\"fragment4\">Draw a Boolean value from Bernoulli</li>\n</ul>\n\n",
+      "code" : "<ul>\n    <li class=\"fragment1\">Generate Embeddings \\(U\\) and \\(V\\) using Gaussians</li>\n    <li class=\"fragment2\">Calculate natural parameters \\( \\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle \\)</li>\n    <li class=\"fragment3\">Apply sigmoid to get Bernoulli probabilities</li>\n    <li class=\"fragment4\">Draw a Boolean value from Bernoulli</li>\n</ul>\n\n",
       "extraFields" : { }
     }
   }, {
