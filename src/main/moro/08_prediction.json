@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Discriminative Factorial Models\n\nFactorization is an efficient way of reducing the effective number of parameters in discriminative/predictive models\n\nWe will introduce:\n* Multi-Task/Multi-Label Learning with Matrix Factorization\n* Factorization Machines\n* Structured Prediction with Factorized Parameters",
+      "code" : "### Discriminative Factorial Models\n\nFactorization is an efficient way of reducing the effective number of parameters in discriminative/predictive models\n\nWe introduce:\n\n* Multi-Task/Multi-Label Learning with Matrix Factorization\n* Factorization Machines\n* Structured Prediction with Factorized Parameters",
       "extraFields" : { }
     }
   }, {
@@ -29,7 +29,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Multi-Task Learning\n* Inputs: \\\\(d\\\\) feature \\\\(\\mathbf\\phi(x_i)\\in\\Re^d\\\\)\n* Outputs: \\\\(K\\\\) labels \\\\(\\mathbf{y}_i\\in\\lbrace 0,1 \\rbrace^K\\\\)\n\n\\\\( P(\\mathbf{y}_{i}|x_i) = \\prod_{k=1}^K \\mathbf{\\sigma}(\\mathbf\\phi(x_i) \\mathbf{U} \\mathbf{V}_{k:}^T) \\\\)\n\nCan be interpreted as label embedding: \\\\(V_{k:}\\\\) is the \\\\(R\\\\)-dimensional embedding of the \\\\(k\\\\)-th label.",
+      "code" : "### Multi-Task Learning\n* Inputs: \\\\(d\\\\) feature \\\\(\\mathbf\\phi(x_i)\\in\\Re^d\\\\)\n* Outputs: \\\\(K\\\\) labels \\\\(\\mathbf{y}_i\\in\\lbrace 0,1 \\rbrace^K\\\\)\n\n\\\\( P(\\mathbf{y}_{i}|x_i) = \\prod_{k=1}^K \\mathbf{\\sigma}(\\mathbf\\phi(x_i) \\mathbf{U} \\mathbf{V}_{k:}^T) \\\\)\n\nCan be interpreted as label embedding: \\\\(\\mathbf{V}_{k:}\\\\) is the \\\\(R\\\\)-dimensional embedding of the \\\\(k\\\\)-th label.",
       "extraFields" : { }
     }
   }, {
@@ -45,7 +45,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Factorization as a Constrained Linear Regression\nMatrix \\\\( Y\\in\\Re^{n,d} \\\\). For any \\\\(K\\\\):\n\n\\\\( \\mathbb{E}[\\mathbf{Y}_{ij}=1|i,j] = \\langle \\mathbf{U}_{i:}, \\mathbf{V}_{j:}\\rangle \\\\) where \\\\(\\mathbf{U}\\in\\Re^{N\\times K}\\\\) and \\\\(\\mathbf{V}\\in\\Re^{M\\times K}\\\\)\n\nIs equivalent to:\n\n\\\\( P(y_{t}=1|x_t = (i,j) ) = \\sigma(\\langle\\mathbf{\\Theta}, \\mathbf{e}_i \\otimes \\mathbf{e}_j\\rangle) \\\\) \n\nwhere \\\\( \\mathbf{\\Theta} = \\mathbf{U} \\mathbf{V}^T \\\\)\n\nSo we can view Matrix Factorization as a Rank-Constrained Linear Regression",
+      "code" : "### Matrix Factorization as a Constrained Linear Regression\nMatrix \\\\( \\mathbf{Y}\\in\\Re^{n \\times d} \\\\). For any \\\\(K\\\\):\n\n\\\\( \\mathbb{E}[y_{ij}=1|i,j] = \\langle \\mathbf{U}_{i:}, \\mathbf{V}_{j:}\\rangle \\\\) where \\\\(\\mathbf{U}\\in\\Re^{N\\times K}\\\\) and \\\\(\\mathbf{V}\\in\\Re^{M\\times K}\\\\)\n\nEquivalently, we consider the prediction of the matrix values \\\\(y_{ij}\\\\) given the row and column indices:\n\n\\\\( P(y_{t}=1|x_t = (i,j) ) = \\sigma(\\langle\\mathbf{\\Theta}, \\mathbf{e}_i \\otimes \\mathbf{e}_j\\rangle) \\\\) \n\nwhere \\\\( \\mathbf{\\Theta} = \\mathbf{U} \\mathbf{V}^T \\\\)\n\nSo we can view Matrix Factorization as a Rank-Constrained Linear Regression\n\n==> called **factorization machine** [Rendle 2010]",
       "extraFields" : { }
     }
   }, {
@@ -77,7 +77,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Structured Prediction\n\nGoal: Predict \\\\(y^* = argmax S(x,y;\\Theta), y \\in T(x) \\\\)\n\n- *y is a structured output\n\n- *\\\\(S(x,y;\\Theta)\\\\) is the score function\n\n- *\\\\(T(x)\\\\) is all possible structures",
+      "code" : "### Structured Prediction\n\nGoal: Predict \\\\(y^* = \\arg\\max_{y\\in T(x)} S(x,y;\\Theta)\\\\)\n\n- y is a structured output\n\n- \\\\(S(x,y;\\Theta)\\\\) is a score function\n\n- \\\\(T(x)\\\\) is all possible structures\n\nIn many cases, \\\\(\\Theta\\\\) includes matrices or tensors",
       "extraFields" : { }
     }
   }, {
@@ -221,7 +221,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Learning\n\n - Training Objective: \n\n $$ C \\sum_i \\eta_i + ||U||^2 + ||V||^2 + ||W||^2 + ||\\Theta||^2 $$ \n\n Solve non-convex optimization (PA, Crammer, 2006): \n\n For each instance, update \\\\(\\Theta\\\\) and one of the feature tensors as follows: \n\n - \\\\( \\Theta^{(t + 1)} = \\Theta^t + \\Delta \\Theta \\\\) \n\n \\\\( U^{(t+1)} = U^t + \\Delta U \\\\) \n\n Use closed form solution: \n\n $$ \\min_{\\Delta \\Theta, \\Delta U} \\frac{1}{2} ||\\Delta \\Theta ||^2 + \\frac{1}{2} ||\\Delta \\Theta ||^2 + C \\eta_i $$ ",
+      "code" : "### Learning\n\n - Training Objective: \n\n $$ C \\sum_i \\eta_i + ||U||_F^2 + ||V||_F^2 + ||W||_F^2 + ||\\Theta||_F^2 $$ \n\n Solve non-convex optimization (PA, Crammer, 2006): \n\n For each instance, update \\\\(\\Theta\\\\) and one of the feature tensors as follows: \n\n - \\\\( \\Theta^{(t + 1)} = \\Theta^t + \\Delta \\Theta \\\\) \n\n \\\\( U^{(t+1)} = U^t + \\Delta U \\\\) \n\n Use closed form solution: \n\n $$ \\min_{\\Delta \\Theta, \\Delta U} \\frac{1}{2} ||\\Delta \\Theta ||_F^2 + \\frac{1}{2} ||\\Delta \\Theta ||_F^2 + C \\eta_i $$ ",
       "extraFields" : { }
     }
   }, {
@@ -238,6 +238,22 @@
     "input" : {
       "sessionId" : null,
       "code" : "### Performance\n\n<br />\n<img src=\"../../assets/figures/08/parse_results.png\" height=\"400\">\n\n - Rank 50 tensors\n\n - Results averaged over 14 languages (CoNLL data)",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 30,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "conclusion  ",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 31,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Conclusion \n\n* **Discriminative** models often have matrix and tensor parameters\n* **Low-rank** asumption enables **parameter sharing**\n    * **Multi-task** learning: corresponds to label-embedding\n    * **Vanilla matrix factorization** can be expressed as a \\\\(N\\times M\\\\)-dimensional **logistic regression with rank constraint**\n    * **structured prediction** with low rank parameters has a lot of potential\n\n",
       "extraFields" : { }
     }
   } ],
