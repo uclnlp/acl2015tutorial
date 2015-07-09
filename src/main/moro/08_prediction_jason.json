@@ -2,7 +2,7 @@
   "name" : "Discriminative Factorial Models",
   "cells" : [ {
     "id" : 0,
-    "compiler" : "markdown",
+    "compiler" : "section",
     "input" : {
       "sessionId" : null,
       "code" : "IntroToDiscriminativeFactorialModels",
@@ -18,7 +18,7 @@
     }
   }, {
     "id" : 2,
-    "compiler" : "markdown",
+    "compiler" : "section",
     "input" : {
       "sessionId" : null,
       "code" : "MultiTask",
