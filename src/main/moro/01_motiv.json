@@ -166,7 +166,23 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Operations\n- the **inner product** is \\\\(\\langle \\mathbf{u},\\mathbf{v} \\rangle := \\sum_{\\ell=1}^L u_{\\ell} v_\\ell\\\\)\nwhere \\\\(\\mathbf{u}\\in\\Re^L\\\\) and \\\\(\\mathbf{v}\\in\\Re^L\\\\)\n\n- the **outer product**  \\\\( \\mathbf{u} \\otimes \\mathbf{v} \\\\) between vectors \\\\(\\mathbf{u}\\in\\Re^N\\\\) and \\\\(\\mathbf{v}\\in\\Re^M\\\\) is the \\\\(N\\times M\\\\) matrix with elements \\\\(u_nv_m\\\\), \\\\( n=\\{1,\\cdots,N\\} \\\\) and \\\\(m= \\{1,\\cdots,M\\} \\\\)\n\n- the **outer product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{M \\times L} \\\\), \\\\( \\mathbf{U} \\otimes \\mathbf{V} := \\sum_{\\ell=1}^L \\mathbf{U}_{:\\ell} \\otimes \\mathbf{V}_{:\\ell} \\\\)\n\n- the element-wise **Hadamard product** for matrices \\\\(\\mathbf{U},\\mathbf{V} \\in\\Re^{N\\times L} \\\\) is the \\\\(N\\times L\\\\) matrix \\\\(\\mathbf{U}\\circ \\mathbf{V}\\\\) with elements \\\\((\\mathbf{U}\\circ \\mathbf{V})_{n,l}:=u_{n,l}v_{n,l}\\\\)\n\n- the element-wise matrix **\\\\(p\\\\)-norm** is \\\\(||\\mathbf{U}||_p := \\left(\\sum_{m=1}^M\\sum_{n=1}^N |u_{n,m}|^p \\right)^{1/p} \\\\)\n\n- the **Frobenius norm** is \\\\(||\\mathbf{U}||_F := ||\\mathbf{U}||_2\\\\)",
+      "code" : "### Matrix Operations\n- the **inner product** is \\\\(\\langle \\mathbf{u},\\mathbf{v} \\rangle := \\sum_{\\ell=1}^L u_{\\ell} v_\\ell\\\\)\nwhere \\\\(\\mathbf{u}\\in\\Re^L\\\\) and \\\\(\\mathbf{v}\\in\\Re^L\\\\)\n\n- the **outer product**  \\\\( \\mathbf{u} \\otimes \\mathbf{v} \\\\) between vectors \\\\(\\mathbf{u}\\in\\Re^N\\\\) and \\\\(\\mathbf{v}\\in\\Re^M\\\\) is the \\\\(N\\times M\\\\) matrix with elements \\\\(u_nv_m\\\\), \\\\( n=\\{1,\\cdots,N\\} \\\\) and \\\\(m= \\{1,\\cdots,M\\} \\\\)\n\n- the **outer product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{M \\times L} \\\\), \\\\( \\mathbf{U} \\otimes \\mathbf{V} := \\sum_{\\ell=1}^L \\mathbf{U}_{:\\ell} \\otimes \\mathbf{V}_{:\\ell} \\\\)\n\n- the element-wise **Hadamard product** for matrices \\\\(\\mathbf{U},\\mathbf{V} \\in\\Re^{N\\times L} \\\\) is the \\\\(N\\times L\\\\) matrix \\\\(\\mathbf{U}\\circ \\mathbf{V}\\\\) with elements \\\\((\\mathbf{U}\\circ \\mathbf{V})_{n,l}:=u_{n,l}v_{n,l}\\\\)\n\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 19,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "norms",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 20,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Norms\n<br>\n\n**magnitude** of a matrix:\n<br>\n\n- the element-wise matrix **\\\\(p\\\\)-norm** is $$||\\mathbf{U}||_p := \\left(\\sum_{m=1}^M\\sum_{n=1}^N |u_{n,m}|^p \\right)^{1/p} $$\n\n- the **Frobenius norm** is \\\\(||\\mathbf{U}||_F := ||\\mathbf{U}||_2\\\\)",
       "extraFields" : { }
     }
   } ],
