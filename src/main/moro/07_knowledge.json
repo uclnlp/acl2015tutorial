@@ -240,22 +240,6 @@
       "code" : "## Summary\n- Matrix factorization for relation extraction generalizes well\n    - Hard to fix mistakes\n    - Fails for new or spare relations\n- Formalize background knowledge as logical formulae\n    - Brittle and no generalization\n- Formulae can be injected into embeddings\n    - Make logical background knowledge differentiable\n    - Jointly optimize over factual and first-order knowledge\n        - Learns relations with no or little prior information in databases\n        - Generalizes beyond textual patterns mentioned in formulae\n        - Joint optimization > Pre-factorization inference > Post-factorization inference > Logical inference",
       "extraFields" : { }
     }
-  }, {
-    "id" : 30,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "reference",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 31,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "## References\n- Goller, Christoph, and Andreas Kuchler. \"Learning task-dependent distributed representations by backpropagation through structure.\" Neural Networks, 1996., IEEE International Conference on. Vol. 1. IEEE, 1996.",
-      "extraFields" : { }
-    }
   } ],
   "config" : { }
 }

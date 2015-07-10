@@ -10,10 +10,10 @@
     }
   }, {
     "id" : 1,
-    "compiler" : "markdown",
+    "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Completion via Low-Rank Factorization\n\nGiven \\\\(\\mathbf{Y} \\in\\Re^{N\\times M} \\\\)\n\nFind \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in\\Re^{M\\times L} \\\\)\n\nso that \\\\(\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T}\\\\)",
+      "code" : "<h3>Matrix Completion via Low-Rank Factorization</h3>\n<br>\n<div style=\"text-align:center;\">\nGiven \\(\\mathbf{Y} \\in\\Re^{N\\times M} \\) <br>\n<br>\nfind \\(\\mathbf{U} \\in\\Re^{N\\times L}\\) and \\(\\mathbf{V} \\in\\Re^{M\\times L} \\) <br>\n<br>\nso that \\(\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T}\\)\n</div>",
       "extraFields" : { }
     }
   }, {
@@ -29,7 +29,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Why Low-Rank\nWe want: A probabilistic model on matrices with:\n\n1) Invariance by permutation of rows and columns\n\n--> The model depends only on the eigenvalues\n\n2) A complexity measure\n\n--> A norm or pseudo-norm (\\\\(e.g. L_\\alpha, \\alpha\\ge 0\\\\) ) on the spectrum \n\n3) Fast to compute and memory efficient\n\n--> \\\\(\\alpha\\le 1\\\\) (Sparsity-inducing)",
+      "code" : "### Why Low-Rank\n<br>\nWe want: A probabilistic model on matrices with:\n<br>\n<br>\n\n1. Invariance by permutation of rows and columns\n    \n    --> The model depends only on the eigenvalues\n\n2. A complexity measure\n\n    --> A norm or pseudo-norm (\\\\(e.g. L_\\alpha, \\alpha\\ge 0\\\\) ) on the spectrum \n\n3. Fast to compute and memory efficient\n\n    --> \\\\(\\alpha\\le 1\\\\) (Sparsity-inducing)",
       "extraFields" : { }
     }
   }, {
@@ -45,11 +45,11 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Singular Value Decomposition (SVD)\n\nSVD is a n optimal quadratic matrix approximator.\n\nThe problem\n\n\\\\( (\\hat{\\mathbf{U}}, \\hat{\\mathbf{V}}) \\in \\arg\\min_{\\mathbf{U}\\in\\Re^{N\\times K},\\mathbf{V}\\in\\Re^{M\\times K}} \\gamma(\\mathbf{U},\\mathbf{V}) \\\\)\n\nwhere\n\n\\\\(\n\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2 \n\\\\)\n\ncan be solved by a partial SVD algorithm:\n\n\\\\(\n[\\mathbf{U},\\mathbf{D},\\mathbf{V}] = \\texttt{sdvs}(\\mathbf{Y},K)\n\\\\)\n\n\\\\(\n\\hat{\\mathbf{U}} = \\mathbf{U}  \\texttt{sqrt}(\\mathbf{D})\n\\quad,\\quad\n\\hat{\\mathbf{V}} = \\mathbf{V}  \\texttt{sqrt}(\\mathbf{D})\n\\\\)\n\nWe can use other algorithms to minimize the same objective.",
+      "code" : "### Singular Value Decomposition (SVD)\n<br>\nSVD is a n optimal quadratic matrix approximator:\n\n\\\\( (\\hat{\\mathbf{U}}, \\hat{\\mathbf{V}}) \\in \\arg\\min_{\\mathbf{U}\\in\\Re^{N\\times K},\\mathbf{V}\\in\\Re^{M\\times K}} \\gamma(\\mathbf{U},\\mathbf{V}) \\\\)\n\nwhere  \\\\(\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2\\\\)\n<br><br>\nIt can be solved by a partial SVD algorithm:\n\n\\\\(\n[\\mathbf{U},\\mathbf{D},\\mathbf{V}] = \\texttt{sdvs}(\\mathbf{Y},K)\n\\\\)\n\n\\\\(\n\\hat{\\mathbf{U}} = \\mathbf{U}  \\texttt{sqrt}(\\mathbf{D})\n,\n\\hat{\\mathbf{V}} = \\mathbf{V}  \\texttt{sqrt}(\\mathbf{D})\n,\n\\mathbf{D}=\\texttt{diag}(d_1,...d_K,)\n\\\\)\n<br><br>\nWe can use other algorithms to minimize the same objective.",
       "extraFields" : { }
     }
   }, {
-    "id" : 7,
+    "id" : 6,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -57,15 +57,15 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 8,
+    "id" : 7,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Stochastic Gradient Descent\n\nObjective:\n\n\\\\(\n\\gamma(U,V) := \\sum_{(i,j)\\in\\Omega} (y_{ij} - \\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle)^2 \n\\\\)\n\nWhere \\\\(\\Omega=\\lbrace 1,\\cdots,N\\rbrace \\otimes \\lbrace1,\\cdots,M\\rbrace \\\\) \n\nThis is a large sum. We can pick one element and do a gradient step in this direction:\n\n1) Pick \\\\( (i,j) \\\\) uniformaly at random in \\\\(\\Omega\\\\) \n\n2) Gradient step\n\n\\\\(\\mathbf{u}_i \\leftarrow \\mathbf{u}_i - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{v}_j  \\\\)\n\n\\\\(\\mathbf{v}_j \\leftarrow \\mathbf{v}_j - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{u}_i \\\\)\n\nwhere \\\\(\\eta\\\\) is the gradient step size (can be adaptive)",
+      "code" : "### Stochastic Gradient Descent\n<br>\nObjective:\n\\\\(\n\\gamma(U,V) := \\sum_{(i,j)\\in\\Omega} (y_{ij} - \\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle)^2 \n\\\\)\n\nwhere \\\\(\\Omega=\\lbrace 1,\\cdots,N\\rbrace \\otimes \\lbrace1,\\cdots,M\\rbrace \\\\) \n\n<br>\n**Algorithm**:\n\n1. Pick \\\\( (i,j)\\in\\Omega \\\\) uniformly at random\n\n2. Gradient steps\n\n\\\\(\\mathbf{u}_i \\leftarrow \\mathbf{u}_i - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{v}_j  \\\\)\n\n\\\\(\\mathbf{v}_j \\leftarrow \\mathbf{v}_j - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{u}_i \\\\)\n\nwhere \\\\(\\eta\\\\) is the gradient step size (can be adaptive)",
       "extraFields" : { }
     }
   }, {
-    "id" : 9,
+    "id" : 8,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -73,27 +73,27 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 10,
+    "id" : 9,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Alternating Least Squares\n\nThe objective\n\\\\(\n\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2 \n\\\\)\ncan also be minimized by block-coordinate descent:\n\n\\\\(\n\\arg\\min_{\\mathbf{u}_i} \\gamma(U,V) = \\arg\\min_{u_i} \\||\\mathbf{Y}_{i:} - \\mathbf{u}_i\\mathbf{V}^{T}\\||_2^2 \n\\\\)\n\n\\\\(\n\\arg\\min_{\\mathbf{v}_j} \\gamma(U,V) = \\arg\\min_{v_j} \\||\\mathbf{Y}_{:j} - \\mathbf{U}\\mathbf{v_j}^{T}\\||_2^2 \n\\\\)\n\nLeast square problems! ==> Unique solutions:\n\n\\\\(\n\\mathbf{u}_i \\leftarrow (\\mathbf{V}^T\\mathbf{V})^{-1} \\mathbf{V}^T \\mathbf{Y}_{i:} \n\\\\)\n\n\n\\\\(\n\\mathbf{v}_j \\leftarrow (\\mathbf{U}^T\\mathbf{U})^{-1} \\mathbf{U}^T \\mathbf{Y}_{:j} \n\\\\)\n\nEach step can be parallelized efficiently (e.g. Regularized LSA)",
+      "code" : "### Alternating Least Squares\n<br>\nObjective:\n\\\\(\n\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2 \n\\\\)\n\n<br>\n**block-coordinate descent**:\n\n\\\\(\n\\arg\\min_{\\mathbf{u}_i} \\gamma(U,V) = \\arg\\min_{u_i} \\||\\mathbf{Y}_{i:} - \\mathbf{u}_i\\mathbf{V}^{T}\\||_F^2 \n\\\\)\n\n\\\\(\n\\arg\\min_{\\mathbf{v}_j} \\gamma(U,V) = \\arg\\min_{v_j} \\||\\mathbf{Y}_{:j} - \\mathbf{U}\\mathbf{v_j}^{T}\\||_F^2 \n\\\\)\n\n<br>\nLeast square problems! ==> Unique solutions:\n\n\\\\(\n\\mathbf{u}_i \\leftarrow (\\mathbf{V}^T\\mathbf{V})^{-1} \\mathbf{V}^T \\mathbf{Y}_{i:} \n\\\\)\n\n\n\\\\(\n\\mathbf{v}_j \\leftarrow (\\mathbf{U}^T\\mathbf{U})^{-1} \\mathbf{U}^T \\mathbf{Y}_{:j} \n\\\\)\n<br>\nEach step can be parallelized efficiently",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 10,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "rlsa",
       "extraFields" : { }
     }
   }, {
     "id" : 11,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "lsa",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 12,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Regularized Latent Semantic Indexing\n\nblah\n",
+      "code" : "### Regularized Latent Semantic Indexing\n<br>\nObjective:\n\\\\(\n\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2 + \\lambda_1||\\mathbf{U}||_2^2 + \\lambda_2||\\mathbf{V}||_1\n\\\\)\n\nL2 for compact document-topic matrix \\\\(\\mathbf{U}\\\\) \n\nL1 for sparse term-topic matrix \\\\(\\mathbf{V}\\\\)\n\n<br>\n**block-coordinate descent**:\n\n\\\\(\n\\arg\\min_{\\mathbf{u}_i} \\gamma(U,V) = \\arg\\min_{u_i} \\||\\mathbf{Y}_{i:} - \\mathbf{u}_i\\mathbf{V}^{T}\\||_F^2\n+ \\lambda_1||\\mathbf{u_i}||_F^2\n\\\\)\n\n\\\\(\n\\arg\\min_{\\mathbf{v}_j} \\gamma(U,V) = \\arg\\min_{v_j} \\||\\mathbf{Y}_{:j} - \\mathbf{U}\\mathbf{v_j}^{T}\\||_F^2 \n+ \\lambda_2||\\mathbf{v_j}||_1\n\\\\)\n\n<br>\nRegularized least square problems:\n\n\\\\(\n\\mathbf{u}_i \\leftarrow (\\mathbf{V}^T\\mathbf{V} + \\lambda_1\\mathbf{I})^{-1} \\mathbf{V}^T \\mathbf{Y}_{i:} \n\\\\) (ridge regression)\n\n\\\\(\\mathbf{v}_j\\\\) not differentiable, but can apply co-ordinate descent\n",
       "extraFields" : { }
     }
   } ],

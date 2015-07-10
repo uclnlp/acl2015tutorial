@@ -1,7 +1,7 @@
 {
   "name" : "Discriminative Factorial Models",
   "cells" : [ {
-    "id" : 32,
+    "id" : 0,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -9,7 +9,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 33,
+    "id" : 1,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -17,7 +17,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 34,
+    "id" : 2,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -25,75 +25,11 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 31,
+    "id" : 3,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Multi-Task Learning\n* Inputs: \\\\(d\\\\) feature \\\\(\\mathbf\\phi(x_i)\\in\\Re^d\\\\)\n* Outputs: \\\\(K\\\\) labels \\\\(\\mathbf{y}_i\\in\\lbrace 0,1 \\rbrace^K\\\\)\n\n\\\\( P(\\mathbf{y}_{i}|x_i) = \\prod_{k=1}^K \\mathbf{\\sigma}(\\mathbf\\phi(x_i) \\mathbf{U} \\mathbf{V}_{k:}^T) \\\\)\n\nCan be interpreted as label embedding: \\\\(V_{k:}\\\\) is the \\\\(R\\\\)-dimensional embedding of the \\\\(k\\\\)-th label.",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 27,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "MatrixFactorizationAsLinReg",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 28,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### Matrix Factorization as a Constrained Linear Regression\nMatrix \\\\( Y\\in\\Re^{n,d} \\\\). For any \\\\(K\\\\):\n\n\\\\( \\mathbb{E}[\\mathbf{Y}_{ij}=1|i,j] = \\langle \\mathbf{U}_{i:}, \\mathbf{V}_{j:}\\rangle \\\\) where \\\\(\\mathbf{U}\\in\\Re^{N\\times K}\\\\) and \\\\(\\mathbf{V}\\in\\Re^{M\\times K}\\\\)\n\nIs equivalent to:\n\n\\\\( P(y_{t}=1|x_t = (i,j) ) = \\sigma(\\langle\\mathbf{\\Theta}, \\mathbf{e}_i \\otimes \\mathbf{e}_j\\rangle) \\\\) \n\nwhere \\\\( \\mathbf{\\Theta} = \\mathbf{U} \\mathbf{V}^T \\\\)\n\nSo we can view Matrix Factorization as a Rank-Constrained Linear Regression",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 29,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "BinMFAsLogReg",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 26,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### Binary Matrix Factorization as a Logistic Regression\nMatrix \\\\( Y\\in\\Re^{n,d} \\\\). For any \\\\(K\\\\):\n\n\\\\( P(\\mathbf{Y}_{ij}=1|i,j) = \\sigma(\\langle \\mathbf{U}_{i:}, \\mathbf{V}_{j:}\\rangle) \\\\) where \\\\(\\mathbf{U}\\in\\Re^{N\\times K}\\\\) and \\\\(\\mathbf{V}\\in\\Re^{M\\times K}\\\\)\n\nIs equivalent to:\n\n\\\\( P(y_{t}=1|x_t = (i,j) ) = \\sigma(\\langle\\mathbf{\\Theta}, \\mathbf{e}_i \\otimes \\mathbf{e}_j\\rangle) \\\\) ",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 0,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "drawbacks\n\n",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 23,
-    "compiler" : "html",
-    "input" : {
-      "sessionId" : null,
-      "code" : "<br />\n<img src=\"../../assets/figures/08/s8s1.png\" height=\"500\">",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 2,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "drawbacks1",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 24,
-    "compiler" : "html",
-    "input" : {
-      "sessionId" : null,
-      "code" : "<br />\n<img src=\"../../assets/figures/08/s8s2.png\" height=\"500\">",
+      "code" : "### Multi-Task Learning\n* Inputs: \\\\(d\\\\) feature \\\\(\\mathbf\\phi(x_i)\\in\\Re^d\\\\)\n* Outputs: \\\\(K\\\\) labels \\\\(\\mathbf{y}_i\\in\\lbrace 0,1 \\rbrace^K\\\\)\n\n\\\\( P(\\mathbf{y}_{i}|x_i) = \\prod_{k=1}^K \\mathbf{\\sigma}(\\mathbf\\phi(x_i) \\mathbf{U} \\mathbf{V}_{k:}^T) \\\\)\n\nCan be interpreted as label embedding: \\\\(V_{k:}\\\\) is the \\\\(R\\\\)-dimensional embedding of the \\\\(k\\\\)-th label.\n<img src=\"../../assets/figures/08/multitask.png\" height=\"250\">",
       "extraFields" : { }
     }
   }, {
@@ -101,7 +37,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "drawbacksTODO",
+      "code" : "MatrixFactorizationAsLinReg",
       "extraFields" : { }
     }
   }, {
@@ -109,7 +45,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Scoring function\n\n<br />\n<img src=\"../../assets/figures/08/s8s3.png\" height=\"500\">",
+      "code" : "### Matrix Factorization as a Constrained Linear Regression\nMatrix \\\\( Y\\in\\Re^{n,d} \\\\). For any \\\\(K\\\\):\n\n\\\\( \\mathbb{E}[\\mathbf{Y}_{ij}=1|i,j] = \\langle \\mathbf{U}_{i:}, \\mathbf{V}_{j:}\\rangle \\\\) where \\\\(\\mathbf{U}\\in\\Re^{N\\times K}\\\\) and \\\\(\\mathbf{V}\\in\\Re^{M\\times K}\\\\)\n\nIs equivalent to:\n\n\\\\( P(y_{t}=1|x_t = (i,j) ) = \\sigma(\\langle\\mathbf{\\Theta}, \\mathbf{e}_i \\otimes \\mathbf{e}_j\\rangle) \\\\) \n\nwhere \\\\( \\mathbf{\\Theta} = \\mathbf{U} \\mathbf{V}^T \\\\)\n\nSo we can view Matrix Factorization as a Rank-Constrained Linear Regression",
       "extraFields" : { }
     }
   }, {
@@ -117,7 +53,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "logic",
+      "code" : "BinMFAsLogReg",
       "extraFields" : { }
     }
   }, {
@@ -125,7 +61,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Combinatorial Features (1)\n\n<br />\n<img src=\"../../assets/figures/08/s8s4.png\" height=\"500\">",
+      "code" : "### Binary Matrix Factorization as a Logistic Regression\nMatrix \\\\( Y\\in\\Re^{n,d} \\\\). For any \\\\(K\\\\):\n\n\\\\( P(\\mathbf{Y}_{ij}=1|i,j) = \\sigma(\\langle \\mathbf{U}_{i:}, \\mathbf{V}_{j:}\\rangle) \\\\) where \\\\(\\mathbf{U}\\in\\Re^{N\\times K}\\\\) and \\\\(\\mathbf{V}\\in\\Re^{M\\times K}\\\\)\n\nIs equivalent to:\n\n\\\\( P(y_{t}=1|x_t = (i,j) ) = \\sigma(\\langle\\mathbf{\\Theta}, \\mathbf{e}_i \\otimes \\mathbf{e}_j\\rangle) \\\\) ",
       "extraFields" : { }
     }
   }, {
@@ -133,15 +69,15 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "overview",
+      "code" : "drawbacks\n\n",
       "extraFields" : { }
     }
   }, {
     "id" : 9,
-    "compiler" : "markdown",
+    "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "### Combinatorial Features (2)\n\n<br />\n<img src=\"../../assets/figures/08/s8s5.png\" height=\"500\">",
+      "code" : "<br />\n<img src=\"../../assets/figures/08/s8s1.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -149,15 +85,15 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "mflogic",
+      "code" : "drawbacks1",
       "extraFields" : { }
     }
   }, {
     "id" : 11,
-    "compiler" : "markdown",
+    "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "### Combinatorial Features (3)\n\n<br />\n<img src=\"../../assets/figures/08/s8s6.png\" height=\"500\">",
+      "code" : "<br />\n<img src=\"../../assets/figures/08/s8s2.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -165,7 +101,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "injectfacts",
+      "code" : "drawbacksTODO",
       "extraFields" : { }
     }
   }, {
@@ -173,7 +109,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Why Combinatorial Features?\n\n<br />\n<img src=\"../../assets/figures/08/s8s7.png\" height=\"500\">",
+      "code" : "### Scoring function\n\n<br />\n<img src=\"../../assets/figures/08/s8s3.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -181,7 +117,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "difflogic",
+      "code" : "logic",
       "extraFields" : { }
     }
   }, {
@@ -189,11 +125,75 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### \n\n<br />\n<img src=\"../../assets/figures/08/s8s8.png\" height=\"500\">",
+      "code" : "### Combinatorial Features (1)\n\n<br />\n<img src=\"../../assets/figures/08/s8s4.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
     "id" : 16,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "overview",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 17,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Combinatorial Features (2)\n\n<br />\n<img src=\"../../assets/figures/08/s8s5.png\" height=\"500\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 18,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "mflogic",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 19,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Combinatorial Features (3)\n\n<br />\n<img src=\"../../assets/figures/08/s8s6.png\" height=\"500\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 20,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "injectfacts",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 21,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Why Combinatorial Features?\n\n<br />\n<img src=\"../../assets/figures/08/s8s7.png\" height=\"500\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 22,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "difflogic",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 23,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### \n\n<br />\n<img src=\"../../assets/figures/08/s8s8.png\" height=\"500\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 24,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -209,7 +209,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 18,
+    "id" : 26,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -217,7 +217,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 19,
+    "id" : 27,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -225,7 +225,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 20,
+    "id" : 28,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -233,7 +233,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 21,
+    "id" : 29,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -241,7 +241,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 22,
+    "id" : 30,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,

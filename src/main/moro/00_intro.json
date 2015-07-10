@@ -6,91 +6,97 @@
     "input" : {
       "sessionId" : null,
       "code" : "intro",
-      "extraFields" : { },
-      "outputFormat" : "<h5 id=\"intro\" class=\"section\"><a href=\"#intro\" class=\"muted\"><small>#intro</small></a></h5>\n<hr>"
+      "extraFields" : { }
     }
   }, {
     "id" : 1,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Eyecandy\n",
-      "extraFields" : { },
-      "outputFormat" : "<h3>Eyecandy</h3>"
+      "code" : "<img src=\"../../assets/figures/01/s1f1.png\" height=\"500\">",
+      "extraFields" : { }
     }
   }, {
     "id" : 2,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "Blah",
-      "extraFields" : { },
-      "outputFormat" : "<h5 id=\"Blah\" class=\"section\"><a href=\"#Blah\" class=\"muted\"><small>#Blah</small></a></h5>\n<hr>"
+      "code" : "intro2",
+      "extraFields" : { }
     }
   }, {
     "id" : 3,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Introduction\n- Formulating tasks as instances of matrix and tensor factorization becomes more common:\n- example1\n- example2",
-      "extraFields" : { },
-      "outputFormat" : "<h3>Introduction</h3>\n<ul>\n  <li>Formulating tasks as instances of matrix and tensor factorization becomes more common:</li>\n  <li>example1</li>\n  <li>example2</li>\n</ul>"
+      "code" : "<img src=\"../../assets/figures/01/s1f2.png\" height=\"500\">",
+      "extraFields" : { }
     }
   }, {
     "id" : 4,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "Part 1",
-      "extraFields" : { },
-      "outputFormat" : "<h5 id=\"Part 1\" class=\"section\"><a href=\"#Part 1\" class=\"muted\"><small>#Part 1</small></a></h5>\n<hr>"
+      "code" : "Blah",
+      "extraFields" : { }
     }
   }, {
     "id" : 5,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### This tutorial\n\nPart 1:\n\n",
-      "extraFields" : { },
-      "outputFormat" : "<h3>This tutorial</h3><p>Part 1:</p>"
+      "code" : "### Motivation\n<br>\nFormulating tasks as instances of matrix and tensor factorization is an important tool our arsenal\n\n- flexible\n- expressive\n- scalable\n",
+      "extraFields" : { }
     }
   }, {
     "id" : 6,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "Part 2",
-      "extraFields" : {
-        "hide_output" : "false"
-      },
-      "outputFormat" : ""
+      "code" : "Part1",
+      "extraFields" : { }
     }
   }, {
     "id" : 7,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### This tutorial\n\nPart 2:\n",
-      "extraFields" : { },
-      "outputFormat" : "<h3>This tutorial</h3><p>Part 2:</p>"
+      "code" : "### This tutorial\n<br>\n**Part 1**\n<br>\n\n- Seeing the matrix\n\n- Matrix factorization basics\n\n- Non-negative matrix factorization\n\n- Binary matrix factorization\n\n- Tensor factorization basics\n \n\n",
+      "extraFields" : { }
     }
   }, {
     "id" : 8,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "outcome",
-      "extraFields" : { },
-      "outputFormat" : "<h5 id=\"outcome\" class=\"section\"><a href=\"#outcome\" class=\"muted\"><small>#outcome</small></a></h5>\n<hr>"
+      "code" : "Part2",
+      "extraFields" : {
+        "hide_output" : "false"
+      }
     }
   }, {
     "id" : 9,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Outcomes\n- Seeing matrices\n- mathematical foundations\n- applications in NLP\n- software",
-      "extraFields" : { },
-      "outputFormat" : "<h3>Outcomes</h3>\n<ul>\n  <li>Seeing matrices</li>\n  <li>mathematical foundations</li>\n  <li>applications in NLP</li>\n  <li>software</li>\n</ul>"
+      "code" : "### This tutorial\n<br>\n**Part 2**\n<br>\n\n- Collective matrix factorization\n\n- Inclusion of prior knowledge in factorization\n\n- Factorization with a predictive model\n\n- Convexification\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 10,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "outcome",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 11,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Outcomes\n<br>\n\n- Recognizing potential applications\n\n- Understanding of the mathematical concepts\n\n- Clarification of the connections among models\n\n- Familiarization with existing NLP applications\n",
+      "extraFields" : { }
     }
   } ],
   "config" : { }
