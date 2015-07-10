@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Factorization as a Rank-Constrained Problem\nMatrix \\\\( Y\\in\\Re^{n,d} \\\\). For any \\\\( K \\in \\mathbb{N} \\\\),\n\n- \\\\( \\min_{\\mathbf{U}\\in\\Re^{N\\times K},\\mathbf{V}\\in\\Re^{M\\times K}} \\||_F \\mathbf{Y} - \\mathbf{U} \\mathbf{V}^T \\|| \\\\)\n\nIs equivalent to:\n\n- \\\\( \\min_{\\mathbf{X}\\in\\Re^{N\\times M},\\mathtt{rank}(\\mathbf{X})\\le K} \\||_F \\mathbf{Y} - \\mathbf{X} \\|| \\\\)\n\n",
+      "code" : "### Matrix Factorization as a Rank-Constrained Problem\nMatrix \\\\( Y\\in\\Re^{n,d} \\\\). For any \\\\( K \\in \\mathbb{N} \\\\),\n\n(1) \\\\( \\min_{\\mathbf{U}\\in\\Re^{N\\times K},\\mathbf{V}\\in\\Re^{M\\times K}} \\|| \\mathbf{Y} - \\mathbf{U} \\mathbf{V}^T \\||_F \\\\)\n\nIs equivalent to:\n\n(2) \\\\( \\min_{\\mathbf{X}\\in\\Re^{N\\times M},\\mathtt{rank}(\\mathbf{X})\\le K} \\|| \\mathbf{Y} - \\mathbf{X} \\||_F \\\\)\n\nWhich is relaxed into:\n\n(3) \\\\( \\min_{\\mathbf{X}\\in\\Re^{N\\times M},\\||\\mathbf{X}||_*\\le K} \\|| \\mathbf{Y} - \\mathbf{X} \\||_F \\\\)\n\n(3) is convex and solvable in polynomial time, while (1) and (2) are not.\n",
       "extraFields" : { }
     }
   }, {
@@ -61,15 +61,39 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Combining Regularizations\n\nConvex penalties can be added to get better models\n\n- Sparse plus low-rank\n\n    \\\\(L_1\\\\) penalty added to the trace-norm\n  \n* Convex Cannonical Correlation Analysis\n    \n    Sum of trace norms\n",
+      "code" : "### Combining Regularizations\n\nConvex penalties can be added to get better models\n\n- Sparse plus low-rank\n\n    \\\\(L_1\\\\) penalty added to the trace-norm\n  \n* Convex Cannonical Correlation Analysis\n    \n    Sum of trace norms\n\n    \\\\( \\min_{\\mathbf{S}+\\mathbf{L}} \\ell(S+L;Y) + \\lambda||S||_1 + \\mu||L||_* \n\\\\)\n\nVery popular in image processing ==> should also be useful in NLP!\n\n\n",
       "extraFields" : { }
     }
   }, {
     "id" : 8,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "Spectral1",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 9,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "",
+      "code" : "### Spectral Learning in NLP\n\nA promising application of convex factorization: **polynomial-time** learning of \n\n* HMMs\n* WFSAs\n* Grammars\n\n*Idea*: factorization of redundant moment matrices. \n\n**Example** \n    \n> **Empirical Hankel matrix of a string** \n\n> Matrix of counts of all possible prefixes and suffixes \n\n<img src=\"../../assets/figures/09/make_hankel.png\" width=\"500\">\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 10,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "conclusion",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 11,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Summary of Convex Factorization\n\n* **Trace norm** is great\n    * from intractable to tractable problems\n* **Spectral learning** combines well with trace norm\n    * Learning latent variable with computational guarantees\n    \n",
       "extraFields" : { }
     }
   } ],

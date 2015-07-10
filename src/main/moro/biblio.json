@@ -95,7 +95,7 @@
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "<div style=\"text-align:left;\">\nRendle, Steffen. \"Factorization machines.\" Data Mining (ICDM), 2010 IEEE 10th International Conference on. IEEE, 2010.\n<br><br>\n\n</div>",
+      "code" : "<div style=\"text-align:left;\">\nRendle, Steffen. \"Factorization machines.\" Data Mining (ICDM), 2010 IEEE 10th International Conference on. IEEE, 2010.\n<br><br>\nCohen, S. B., Stratos, K., Collins, M., Foster, D. P., and Ungar, L. 2014. Spectral learning of latent-variable PCFGs: Algorithms and sample complexity. Journal of Machine Learning Research.\n<br><br>\nBailly, R., Carreras, X., Luque, F., and Quattoni, A. 2013.\nUnsupervised spectral learning of WCFG as low-rank matrix\ncompletion.\n<br><br>\n\n</div>",
       "extraFields" : { }
     }
   } ],
