@@ -5,7 +5,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "MotivatingExample",
+      "code" : "Motivating_Example",
       "extraFields" : { }
     }
   }, {
@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Motivating Example\nAssume we have 2 relations:\n\n1. Document - Word matrix \\\\( Y^{(1)} \\in ( \\Re \\cup \\lbrace ? \\rbrace )^{n\\times F} \\\\)\n2. Document - Label matrix  \\\\( Y^{(2)} \\in \\lbrace 0,1,? \\rbrace ^{n\\times K} \\\\)\n\nRepresenting is a a 2-slices tensor is overly complicated and not needed.\nA simple and effective way to represent it is by concatenating the two matrices into a big \\\\( n\\times (F+K) \\\\) matrix:\n\n\\\\( Y := [ Y^{(1)} \\ Y^{(2)}]  \\\\)\n\nWe can estimate a probabilitic model on \\\\(Y\\\\) by factorizing it.\n\nJust use the binary matrix factorization technique we saw before. This is a new method for supervised classification!\n\n - Handles missing data in the input\n - Can work with partially labelled documents\n - Takes advantage of unlabelled data\n",
+      "code" : "### Arbitrary Database Factorization\n*Objective*: A probabilistic model for any database\n\n*Example*: Health data\n\n<br />\n<img src=\"../../assets/figures/06/relational_database_health.png\" width=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -21,7 +21,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "MotivatingExampleContinued",
+      "code" : "tworel",
       "extraFields" : { }
     }
   }, {
@@ -29,7 +29,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Motivating Example\nWe have more information. We want to add a relation corresponding to labelled features:\n\n3. Word - Label matrix \\\\( Y^{(3)} \\in \\lbrace 0, 1 ,? \\rbrace ^{F\\times K} \\\\)\n\nBy concatenation, we have a \\\\( (n + F) \\times (F+K) \\\\) matrix:\n\n\\\\( Y := \\begin{array}{cc} \nY^{(1)} & Y^{(2)} \\\\\nY^{(3)} & [?]_{F\\times F} \n\\end{array}  \\\\)\n\nWe can estimate a probabilitic model on \\\\(Y\\\\) by factorizing it. This additional relation enables feature labelling and increase prediction capabilities when similar rare words share similar labels.\n",
+      "code" : "### Modeling Two Relations\nAssume we have 2 relations:\n\n1. Document - Word matrix \\\\( Y^{(1)} \\in ( \\Re \\cup \\lbrace ? \\rbrace )^{n\\times F} \\\\)\n2. Document - Label matrix  \\\\( Y^{(2)} \\in \\lbrace 0,1,? \\rbrace ^{n\\times K} \\\\)\n\nRepresenting is a a 2-slices tensor is overly complicated and not needed.\nA simple and effective way to represent it is by concatenating the two matrices into a big \\\\( n\\times (F+K) \\\\) matrix:\n\n\\\\( Y := [ Y^{(1)} \\ Y^{(2)}]  \\\\)\n\nWe can estimate a probabilitic model on \\\\(Y\\\\) by factorizing it.\n\nJust use the binary matrix factorization technique we saw before. This is a new method for supervised classification!\n\n - Handles missing data in the input\n - Can work with partially labelled documents\n - Takes advantage of unlabelled data\n",
       "extraFields" : { }
     }
   }, {
@@ -37,15 +37,95 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "MotivatingExampleFinal",
+      "code" : "Motivating example - continued",
       "extraFields" : { }
     }
   }, {
     "id" : 5,
+    "compiler" : "html",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<h3>Motivating Example</h3>\n<ul>\n<li>Document - Word matrix \\(Y^{(1)} \\in ( \\Re \\cup \\lbrace ? \\rbrace )^{N\\times F}\\)\n</li>\n<li>Document - Label matrix  \\(Y^{(2)} \\in \\lbrace 0,1,? \\rbrace ^{N\\times K}\\)\n</li>\n<li>\nWord - Label matrix \\( Y^{(3)} \\in \\lbrace 0, 1 ,? \\rbrace ^{K\\times F} \\)\n</li>\n</ul>\n\nNaive concatenation:\n\n$$\nY := \n\\left[\\begin{array}{cc} \nY^{(3)} & [?]_{K\\times K} \n\\\\\nY^{(1)} & Y^{(2)} \n\\end{array}\\right] \n$$\n\nWe can estimate a probabilitic model on \\(Y\\) by factorizing it. This additional relation enables feature labelling and increase prediction capabilities when similar rare words share similar labels",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 6,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "correctcmf",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 7,
+    "compiler" : "html",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<h3>Symmetric Block Matrix</h3>\n<ul>\n<li>Document - Word matrix \\(Y^{(1)} \\in ( \\Re \\cup \\lbrace ? \\rbrace )^{N\\times F}\\)\n</li>\n<li>Document - Label matrix  \\(Y^{(2)} \\in \\lbrace 0,1,? \\rbrace ^{N\\times K}\\)\n</li>\n<li>\nWord - Label matrix \\( Y^{(3)} \\in \\lbrace 0, 1 ,? \\rbrace ^{F\\times K} \\)\n</li>\n</ul>\n\nA \\((n + F + K) \\times (n + F + K) \\) symmetric block-matrix:\n\n$$\nY := \n\\left[\\begin{array}{ccc} \n[?]_{F\\times F} & Y^{(3)T} &Y^{(1)T}\n\\\\\nY^{(3)} & [?]_{K\\times K} & Y^{(2)T}\n\\\\\nY^{(1)} & Y^{(2)} & [?]_{N\\times N}\n\\end{array}\\right] \n$$\n\nLet factorize it!",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 15,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "generalization",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 14,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Motivating Example\nSomething is missing: the labels of the words and of the documents are the same, but the model does not use this information.\n\nWe will create a \\\\( (n + F + K) \\times (n + F + K) \\\\) symmetric matrix:\n\n\\\\( Y := \\begin{array}{cc} \n[?]_{n\\times n} Y^{(1)} & Y^{(2)} \\\\\nY^{(1)T} & [?]_{F\\times F} & Y^{(3)T} \\\\ \nY^{(2)T} & Y^{(3)} & [?]_{K\\times K}\n\\end{array}  \\\\)\n\nWe can estimate a probabilitic model on \\\\(Y\\\\) by factorizing it. This duplication of data enables the factorization to use the data from both document and word in the label embeddings.\n",
+      "code" : "### Generalization to Arbitrary Databases\n\n<br />\n<img src=\"../../assets/figures/06/cmf_databases.png\" width=\"95%\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 8,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "example_denoising_faces\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 9,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Example: Augmented Multi-View\n*Objective*: Predict one view given the other\n\nPixel similarity should help. We create a binary matrix linking pixels.\n\n<br />\n<img src=\"../../assets/figures/06/faces.png\" width=\"45%\">\n<img src=\"../../assets/figures/06/faces_expt.png\" width=\"45%\">\n\n\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 11,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "genes",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 12,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Gene Expression Data Experiment\n\n40 patients with breast cancer\n\n* *Views*: 2 measurements of 4287 genes.\n\n* *Task*: predicting random missing entries\n\n<br />\n<img src=\"../../assets/figures/06/gene_expression.png\" width=\"500\">\n\n\n\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 13,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "conclusion",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 10,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Conclusion\n\nLearn more by fusing multiple databases\n",
       "extraFields" : { }
     }
   } ],
