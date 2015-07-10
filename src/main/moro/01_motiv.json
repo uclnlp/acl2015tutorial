@@ -182,7 +182,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "- the element-wise matrix **\\\\(p\\\\)-norm** is $$||\\mathbf{U}||_p := \\left(\\sum_{m=1}^M\\sum_{n=1}^N |u_{n,m}|^p \\right)^{1/p} $$\n\n- the **Frobenius norm** is \\\\(||\\mathbf{U}||_F := ||\\mathbf{U}||_2\\\\)",
+      "code" : "### Norms\n<br>\n\n**magnitude** of a matrix:\n<br>\n\n- the element-wise matrix **\\\\(p\\\\)-norm** is $$||\\mathbf{U}||_p := \\left(\\sum_{m=1}^M\\sum_{n=1}^N |u_{n,m}|^p \\right)^{1/p} $$\n\n- the **Frobenius norm** is \\\\(||\\mathbf{U}||_F := ||\\mathbf{U}||_2\\\\)",
       "extraFields" : { }
     }
   } ],
