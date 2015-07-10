@@ -245,7 +245,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "conclusion  ",
+      "code" : "conclusion",
       "extraFields" : { }
     }
   }, {
