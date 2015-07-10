@@ -237,7 +237,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Results \n\n<img src=\"../../assets/figures/rescal-results.png\">\n\n",
+      "code" : "### Results \n\n<img src=\"../../assets/figures/rescal-results.png\" width=\"60%\" height=\"60%\">\n\n",
       "extraFields" : { }
     }
   } ],
