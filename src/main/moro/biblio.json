@@ -84,7 +84,7 @@
     }
   }, {
     "id" : 10,
-    "compiler" : "markdown",
+    "compiler" : "section",
     "input" : {
       "sessionId" : null,
       "code" : "k",
