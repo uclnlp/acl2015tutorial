@@ -5,15 +5,15 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "Convexifying Matrix Factorization",
+      "code" : "ConvexifyingMatrixFactorization",
       "extraFields" : { }
     }
   }, {
-    "id" : 1,
+    "id" : 12,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Factorization as a Rank-Constrained Problem\nMatrix \\\\( Y\\in\\Re^{n,d} \\\\). For any \\\\( K \\in \\mathbb{N} \\\\),\n\n(1) \\\\( \\min_{\\mathbf{U}\\in\\Re^{N\\times K},\\mathbf{V}\\in\\Re^{M\\times K}} \\|| \\mathbf{Y} - \\mathbf{U} \\mathbf{V}^T \\||_F \\\\)\n\nIs equivalent to:\n\n(2) \\\\( \\min_{\\mathbf{X}\\in\\Re^{N\\times M},\\mathtt{rank}(\\mathbf{X})\\le K} \\|| \\mathbf{Y} - \\mathbf{X} \\||_F \\\\)\n\nWhich is relaxed into:\n\n(3) \\\\( \\min_{\\mathbf{X}\\in\\Re^{N\\times M},\\||\\mathbf{X}||_*\\le K} \\|| \\mathbf{Y} - \\mathbf{X} \\||_F \\\\)\n\n(3) is convex and solvable in polynomial time, while (1) and (2) are not.\n",
+      "code" : "### Convexification\n\nMatrix \\\\( Y\\in\\Re^{n,d} \\\\). For any \\\\( K \\in \\mathbb{N} \\\\),\n\n(1) \\\\( \\min_{\\mathbf{U}\\in\\Re^{N\\times K},\\mathbf{V}\\in\\Re^{M\\times K}} \\|| \\mathbf{Y} - \\mathbf{U} \\mathbf{V}^T \\||_F \\\\)\n\nIs equivalent to:\n\n(2) \\\\( \\min_{\\mathbf{X}\\in\\Re^{N\\times M},\\mathtt{rank}(\\mathbf{X})\\le K} \\|| \\mathbf{Y} - \\mathbf{X} \\||_F \\\\)\n\nWhich is relaxed into:\n\n(3) \\\\( \\min_{\\mathbf{X}\\in\\Re^{N\\times M},\\||\\mathbf{X}||_*\\le K} \\|| \\mathbf{Y} - \\mathbf{X} \\||_F \\\\)\n\n(1) and (2) are not convex; (3) is convex",
       "extraFields" : { }
     }
   }, {
@@ -37,7 +37,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "Consequences\n\n",
+      "code" : "Consequences",
       "extraFields" : { }
     }
   }, {
@@ -82,7 +82,7 @@
     }
   }, {
     "id" : 10,
-    "compiler" : "markdown",
+    "compiler" : "section",
     "input" : {
       "sessionId" : null,
       "code" : "conclusion",
