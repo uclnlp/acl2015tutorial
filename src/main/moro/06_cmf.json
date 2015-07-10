@@ -85,7 +85,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "example_denoising_faces\n",
+      "code" : "example_denoising_faces",
       "extraFields" : { }
     }
   }, {
