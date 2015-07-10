@@ -17,6 +17,14 @@
       "extraFields" : { }
     }
   }, {
+    "id" : 7,
+    "compiler" : "html",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<ul>\n<li>the inner product is \\(\\langle u,v \\rangle := \\sum_{l=1}^L u_{l} v_l\\)</li>\n</ul>",
+      "extraFields" : { }
+    }
+  }, {
     "id" : 2,
     "compiler" : "section",
     "input" : {

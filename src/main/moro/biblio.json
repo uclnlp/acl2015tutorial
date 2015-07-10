@@ -66,6 +66,38 @@
       "code" : "<div style=\"text-align:left;\">\nNickel, Maximilian, Volker Tresp, and Hans-Peter Kriegel. \"A three-way model for collective learning on multi-relational data.\" Proceedings of the 28th international conference on machine learning (ICML-11). 2011.\n<br><br>\nNickel, Maximilian, Volker Tresp, and Hans-Peter Kriegel. \"Factorizing YAGO: scalable machine learning for linked data.\" Proceedings of the 21st international conference on World Wide Web. ACM, 2012.\nAPA\n<br><br>\nGoller, Christoph, and Andreas Kuchler. \"Learning task-dependent distributed representations by backpropagation through structure.\" Neural Networks, 1996., IEEE International Conference on. Vol. 1. IEEE, 1996.\n</div>",
       "extraFields" : { }
     }
+  }, {
+    "id" : 8,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "j",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 9,
+    "compiler" : "html",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<div style=\"text-align:left;\">\nKoby Crammer, Ofer Dekel, Joseph Keshet, Shia Shalev-Shwartz, and Yoram Singer. \"Online Passive-Aggressive Algorithms\".JMLR. 2006. \n<br><br>\n Tao Lei, Yu Xin, Yuan Zhang, Regina Barzilay and Tommi Jaakkola. \" Low-Rank Tensors for Scoring Dependency Structures.\"In Proceedings of the 52nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pp 1381--1391, Baltimore, Maryland, June. \n<br><br>\n Hai Zhao, Wenliang Chen, Chunyu Kit, Guodong Zhou. \"Multilingual Dependency Learning: A Huge Feature Engineering Method to Semantic Dependency Parsing\", CoNLL, 2009.\n</div>",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 10,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "k",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 11,
+    "compiler" : "html",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<div style=\"text-align:left;\">\nRendle, Steffen. \"Factorization machines.\" Data Mining (ICDM), 2010 IEEE 10th International Conference on. IEEE, 2010.\n<br><br>\n\n</div>",
+      "extraFields" : { }
+    }
   } ],
   "config" : { }
 }
