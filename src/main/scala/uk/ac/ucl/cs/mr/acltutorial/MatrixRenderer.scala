@@ -29,7 +29,7 @@ object MatrixRenderer {
   }
 
   case class Matrix(cells: Seq[Cell] = Nil, rowLabels: Seq[RowLabel] = Nil,
-                    colLabels: Seq[ColLabel] = Nil, hRulers: Seq[Int] = Nil,
+                    colLabels: Seq[ColLabel] = Nil, hRulers: Seq[Int] = Nil, vRulers:Seq[Int] = Nil,
                     boxes: Seq[Box] = Nil) {
     override def toString = {
       s"""{"cells": [${cells.mkString(",")}],
@@ -40,7 +40,7 @@ object MatrixRenderer {
     }
 
     def +(that: Matrix) = Matrix(cells ++ that.cells, rowLabels ++ that.rowLabels,
-      colLabels ++ that.colLabels, hRulers ++ that.hRulers, boxes ++ that.boxes)
+      colLabels ++ that.colLabels, hRulers ++ that.hRulers, vRulers ++ that.vRulers, boxes ++ that.boxes)
   }
 
   def colEmbedding(col: Int, rowOffset: Int, values: Seq[Any]) = {
@@ -107,6 +107,15 @@ object MatrixRenderer {
         val y2 = (d - 1) * ch + colHeaderSize
         <line x1={x1.toString} y1={y1.toString} x2={x2.toString} y2={y2.toString} class="hruler"></line>
       }
+
+      val vRulers = for (d <- m.vRulers) yield {
+        val x1 = d * cw + rowHeaderSize
+        val y1 = -ch + colHeaderSize
+        val x2 = d * cw + rowHeaderSize
+        val y2 = numRows * ch + colHeaderSize
+        <line x1={x1.toString} y1={y1.toString} x2={x2.toString} y2={y2.toString} class="vruler"></line>
+      }
+
       val boxes = for (d <- m.boxes) yield {
         val x = d.col * cw + rowHeaderSize + boxPadding
         val y = (d.row - 1) * ch + colHeaderSize + boxPadding
@@ -129,6 +138,9 @@ object MatrixRenderer {
           </g>
           <g>
             {hRulers}
+          </g>
+          <g>
+            {vRulers}
           </g>
           <g>
             {boxes}

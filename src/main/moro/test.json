@@ -17,7 +17,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 7,
+    "id" : 2,
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
@@ -25,7 +25,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 2,
+    "id" : 3,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -33,7 +33,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 3,
+    "id" : 4,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -41,17 +41,17 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 4,
+    "id" : 5,
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "import uk.ac.ucl.cs.mr.acltutorial._\nimport MatrixRenderer._\n\nval layout = Layout(colHeaderSize=100, ch=30, cw=40)\n\n// first matrix just one cell\nval m1 = Matrix(Seq(Cell(0,0,1.0)),Seq(RowLabel(0,\"row1\")),Seq(ColLabel(0,\"col1\")), Nil) \n\n// on the fly creation of a column embedding, i.e. a \nval col1Embedding = colEmbedding(0,2, Seq(1,2))\n\nval m2 = Matrix(Seq(Cell(1,0,1.0),Cell(1,1,\"Blah\")),Seq(RowLabel(1,\"row1\"),RowLabel(0,\"row2\")),Seq(ColLabel(1,\"col2\")), Seq(1)) + colEmbedding(0,2, Seq(1,2)) + colEmbedding(1,2, Seq(1,2)) + rowEmbedding(1,2,Seq(2,1))\n\n// stages/overlays/fragments (3 of them)\nval matrices = Seq(m1,m2,m2 + rowEmbedding(0,2,Seq(2,1)))\n\n\nMatrixRenderer.render(matrices,layout)",
+      "code" : "import uk.ac.ucl.cs.mr.acltutorial._\nimport MatrixRenderer._\n\nval layout = Layout(colHeaderSize=100, rowHeaderSize=100,ch=50, cw=50)\n\n// first matrix just one cell\nval m1 = Matrix(Seq(Cell(0,0,1.0)),Seq(RowLabel(0,\"row1\")),Seq(ColLabel(0,\"col1\")), Nil) \n\n// on the fly creation of a column embedding, i.e. a \nval col1Embedding = colEmbedding(0,2, Seq(1,2))\n\nval m2 = Matrix(Seq(Cell(1,0,1.0),Cell(1,1,\"Blah\")),Seq(RowLabel(1,\"row1\"),RowLabel(0,\"row2\")),Seq(ColLabel(1,\"col2\")), Seq(0),Seq(1)) + colEmbedding(0,2, Seq(1,2)) + colEmbedding(1,2, Seq(1,2)) + rowEmbedding(1,2,Seq(2,1))\n\n// stages/overlays/fragments (3 of them)\nval matrices = Seq(m1,m2,m2 + rowEmbedding(0,2,Seq(2,1)))\n\n\nMatrixRenderer.render(matrices,layout)",
       "extraFields" : {
         "aggregatedCells" : "[]"
       }
     }
   }, {
-    "id" : 5,
+    "id" : 6,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
