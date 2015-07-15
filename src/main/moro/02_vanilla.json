@@ -45,7 +45,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Singular Value Decomposition (SVD)\n<br>\nSVD is a n optimal quadratic matrix approximator:\n\n\\\\( (\\hat{\\mathbf{U}}, \\hat{\\mathbf{V}}) \\in \\arg\\min_{\\mathbf{U}\\in\\Re^{N\\times K},\\mathbf{V}\\in\\Re^{M\\times K}} \\gamma(\\mathbf{U},\\mathbf{V}) \\\\)\n\nwhere  \\\\(\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2\\\\)\n<br><br>\nIt can be solved by a partial SVD algorithm:\n\n\\\\(\n[\\mathbf{U},\\mathbf{D},\\mathbf{V}] = \\texttt{sdvs}(\\mathbf{Y},K)\n\\\\)\n\n\\\\(\n\\hat{\\mathbf{U}} = \\mathbf{U}  \\texttt{sqrt}(\\mathbf{D})\n,\n\\hat{\\mathbf{V}} = \\mathbf{V}  \\texttt{sqrt}(\\mathbf{D})\n,\n\\mathbf{D}=\\texttt{diag}(d_1,...d_K,)\n\\\\)\n<br><br>\nWe can use other algorithms to minimize the same objective.",
+      "code" : "### Singular Value Decomposition (SVD)\n<br>\nSVD is an optimal quadratic matrix approximator:\n\n\\\\( (\\hat{\\mathbf{U}}, \\hat{\\mathbf{V}}) \\in \\arg\\min_{\\mathbf{U}\\in\\Re^{N\\times K},\\mathbf{V}\\in\\Re^{M\\times K}} \\gamma(\\mathbf{U},\\mathbf{V}) \\\\)\n\nwhere  \\\\(\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2\\\\)\n<br><br>\nIt can be solved by a partial SVD algorithm:\n\n\\\\(\n[\\mathbf{U},\\mathbf{D},\\mathbf{V}] = \\texttt{sdvs}(\\mathbf{Y},K)\n\\\\)\n\n\\\\(\n\\hat{\\mathbf{U}} = \\mathbf{U}  \\texttt{sqrt}(\\mathbf{D})\n,\n\\hat{\\mathbf{V}} = \\mathbf{V}  \\texttt{sqrt}(\\mathbf{D})\n,\n\\mathbf{D}=\\texttt{diag}(d_1,...d_K,)\n\\\\)\n<br><br>\nWe can use other algorithms to minimize the same objective.",
       "extraFields" : { }
     }
   }, {
@@ -61,7 +61,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Stochastic Gradient Descent\n<br>\nObjective:\n\\\\(\n\\gamma(U,V) := \\sum_{(i,j)\\in\\Omega} (y_{ij} - \\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle)^2 \n\\\\)\n\nwhere \\\\(\\Omega=\\lbrace 1,\\cdots,N\\rbrace \\otimes \\lbrace1,\\cdots,M\\rbrace \\\\) \n\n<br>\n**Algorithm**:\n\n1. Pick \\\\( (i,j)\\in\\Omega \\\\) uniformly at random\n\n2. Gradient steps\n\n\\\\(\\mathbf{u}_i \\leftarrow \\mathbf{u}_i - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{v}_j  \\\\)\n\n\\\\(\\mathbf{v}_j \\leftarrow \\mathbf{v}_j - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{u}_i \\\\)\n\nwhere \\\\(\\eta\\\\) is the gradient step size (can be adaptive)",
+      "code" : "### MF with Stochastic Gradient Descent\n<br>\nObjective:\n\\\\(\n\\gamma(U,V) := \\sum_{(i,j)\\in\\Omega} (y_{ij} - \\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle)^2 \n\\\\)\n\nwhere \\\\(\\Omega=\\lbrace 1,\\cdots,N\\rbrace \\otimes \\lbrace1,\\cdots,M\\rbrace \\\\) \n\n<br>\n**Algorithm**:\n\n1. Pick \\\\( (i,j)\\in\\Omega \\\\) uniformly at random\n\n2. Gradient steps\n\n\\\\(\\mathbf{u}_i \\leftarrow \\mathbf{u}_i - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{v}_j  \\\\)\n\n\\\\(\\mathbf{v}_j \\leftarrow \\mathbf{v}_j - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{u}_i \\\\)\n\nwhere \\\\(\\eta\\\\) is the gradient step size (can be adaptive)",
       "extraFields" : { }
     }
   }, {
