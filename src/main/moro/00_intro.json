@@ -69,7 +69,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### This tutorial\n<br>\n**Part 1**\n<br>\n\n- Seeing the matrix\n\n- Matrix factorization basics\n\n- Non-negative matrix factorization\n\n- Binary matrix factorization\n\n- Tensor factorization basics\n \n\n",
+      "code" : "### This tutorial\n<br>\n**Part 1**\n<br>\n\n- Seeing the matrix\n\n- Matrix factorization basics\n\n- Non-negative matrix factorization\n\n- Binary matrix factorization\n\n- Inclusion of prior knowledge in factorization\n \n\n",
       "extraFields" : { }
     }
   }, {
@@ -87,7 +87,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### This tutorial\n<br>\n**Part 2**\n<br>\n\n- Collective matrix factorization\n\n- Inclusion of prior knowledge in factorization\n\n- Factorization with a predictive model\n\n- Convexification\n",
+      "code" : "### This tutorial\n<br>\n**Part 2**\n<br>\n\n- Tensor factorization basics\n\n- Factorization with a predictive model\n\n- Collective matrix factorization\n\n- Convexification\n",
       "extraFields" : { }
     }
   }, {
