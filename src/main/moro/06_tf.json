@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Tensors\n- Many real-world data has multiple *(>2)* interacting variables\n    - Subject, verb, object triplets \\\\((s,v,o)\\\\)\n    - Binary relation triplets \\\\((r_s, e_i, e_j)\\\\)\n    - Tag-recommendation: user, item, tag triplets \\\\((u, i, t)\\\\)\n- 2D Matrix representation is an unnatural choice\n- *Tensors* are the higher-order generalization of matrices",
+      "code" : "### Tensors\n- In many real-world data more then two variables are interacting\n    - Subject, verb, object triplets \\\\((s,v,o)\\\\)\n    - Binary relation triplets \\\\((r_s, e_i, e_j)\\\\)\n    - Tag-recommendation: user, item, tag triplets \\\\((u, i, t)\\\\)\n- 2D Matrix representation is an unnatural choice\n- *Tensors* are the higher-order generalization of matrices",
       "extraFields" : { }
     }
   }, {
@@ -173,7 +173,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### CANDECOMP/PARAFAC\n(Carroll and Chang, 1970; Harshman, 1970)\n\n- Rank-\\\\(1\\\\) tensor: outer product of three vectors\n\n    \\\\(\\mathcal{X} = \\mathbf{a} \\circ \\mathbf{b} \\circ \\mathbf{c}\\\\) \n- Approximate \\\\(\\mathcal{T}\\\\) with a sum of \\\\(n\\\\) rank-\\\\(1\\\\) tensors\n\n    \\\\(\\mathcal{T} \\approx \\sum_{i=1}^n \\mathbf{a}_i \\circ \\mathbf{b}_i \\circ \\mathbf{c}_i\\\\)\n    \n- Loss\n\n    \\\\(\\min_{\\mathbf{a}_i\\mathbf{b}_i\\mathbf{c}_i} ||\\mathcal{T} - \\sum_{i=1}^n \\mathbf{a}_i \\circ \\mathbf{b}_i \\circ \\mathbf{c}_i||_2^F\\\\)",
+      "code" : "### CANDECOMP/PARAFAC\n(Carroll and Chang, 1970; Harshman, 1970)\n\n- Rank-\\\\(1\\\\) tensor: outer product of three vectors\n\n    \\\\(\\mathcal{X} = \\mathbf{a} \\circ \\mathbf{b} \\circ \\mathbf{c}\\\\) \n- Approximate \\\\(\\mathcal{T}\\\\) with a sum of \\\\(n\\\\) rank-\\\\(1\\\\) tensors\n\n    \\\\(\\mathcal{T} \\approx \\sum_{i=1}^n \\mathbf{a}_i \\circ \\mathbf{b}_i \\circ \\mathbf{c}_i\\\\)\n    \n- Loss\n\n    \\\\(\\min_{\\mathbf{a}_i\\mathbf{b}_i\\mathbf{c}_i} ||\\mathcal{T} - \\sum_{i=1}^n \\mathbf{a}_i \\circ \\mathbf{b}_i \\circ \\mathbf{c}_i||_F^2\\\\)",
       "extraFields" : { }
     }
   }, {
