@@ -5,7 +5,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<br>\n\n**Guillaume Bouchard, Jason Naradowsky, Sebastian Riedel,**\n\n**Tim Rocktäschel, Andreas Vlachos**\n\n<br>\n\n*Computer Science Department*\n\n*University College London*",
+      "code" : "<br>\n\n**Guillaume Bouchard,&nbsp; Jason Naradowsky,&nbsp; Sebastian Riedel,**\n\n**Tim Rocktäschel,&nbsp; Andreas Vlachos**\n\n<br>\n\n*Computer Science Department*\n\n*University College London*",
       "extraFields" : { }
     }
   }, {
