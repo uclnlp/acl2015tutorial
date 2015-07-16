@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Tensors\n- In many real-world data more then two variables are interacting\n    - Subject, verb, object triplets \\\\((s,v,o)\\\\)\n    - Binary relation triplets \\\\((r_s, e_i, e_j)\\\\)\n    - Tag-recommendation: user, item, tag triplets \\\\((u, i, t)\\\\)\n- 2D Matrix representation is an unnatural choice\n- *Tensors* are the higher-order generalization of matrices",
+      "code" : "### Tensors\n- In many real-world data more then two variables are interacting\n    - Subject, verb, object triplets \\\\((s,v,o)\\\\)\n    - Binary relation triplets \\\\((r_s, e_i, e_j)\\\\)\n    - Tag-recommendation: user, item, tag triplets \\\\((u, i, t)\\\\)\n- 2D Matrix representation is an unnatural choice\n- **Tensors** are the higher-order generalization of matrices",
       "extraFields" : { }
     }
   }, {
@@ -61,7 +61,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Order-3 Tensor Fibers\n\n<img src=\"../../assets/figures/fibers.png\" height=\"300\">\n\n- \\\\(\\mathbf{t}_{\\cdot jk}\\\\) is used to denote the mode-1 column fiber when fixing mode 2 to j and mode 3 to k\n- \\\\(\\mathbf{t}_{i \\cdot k}\\\\) mode-2 row fiber\n- \\\\(\\mathbf{t}_{ij \\cdot}\\\\) mode-3 tube fiber",
+      "code" : "### Order-3 Tensor Fibers\n\n<img src=\"../../assets/figures/fibers.png\" height=\"300\">\n\n- \\\\(\\mathbf{t}_{\\cdot jk}\\\\) is used to denote the mode-1 **column fiber** when fixing mode 2 to j and mode 3 to k\n- \\\\(\\mathbf{t}_{i \\cdot k}\\\\) mode-2 **row fiber**\n- \\\\(\\mathbf{t}_{ij \\cdot}\\\\) mode-3 **tube fiber**",
       "extraFields" : { }
     }
   }, {
@@ -77,7 +77,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Order-3 Tensor Slices\n\n<img src=\"../../assets/figures/slices.png\" height=\"300\">\n\n- \\\\(\\mathbf{T}_{i\\cdot\\cdot}\\\\) denotes the horizontal slice when fixing the mode-1 index to i\n- \\\\(\\mathbf{T}_{\\cdot j \\cdot}\\\\) vertical slice\n- \\\\(\\mathbf{T}_{\\cdot\\cdot k}\\\\) lateral slice",
+      "code" : "### Order-3 Tensor Slices\n\n<img src=\"../../assets/figures/slices.png\" height=\"300\">\n\n- \\\\(\\mathbf{T}_{i\\cdot\\cdot}\\\\) denotes the **horizontal slice** when fixing the mode-1 index to i\n- \\\\(\\mathbf{T}_{\\cdot j \\cdot}\\\\) **vertical slice**\n- \\\\(\\mathbf{T}_{\\cdot\\cdot k}\\\\) **lateral slice**",
       "extraFields" : { }
     }
   }, {
@@ -93,7 +93,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Tensor Operations\n- Mode-\\\\(N\\\\) tensor-vector product \\\\(\\mathcal{T} \\times_N \\mathbf{v}\\\\)\n    - Dot product of each mode-\\\\(N\\\\) fiber in \\\\(\\mathcal{T}\\\\) with \\\\(\\mathbf{v}\\\\)\n- Mode-\\\\(N\\\\) tensor-matrix product \\\\(\\mathcal{T} \\times_N \\mathbf{M}\\\\)\n    - Matrix-vector product of each mode-\\\\(N\\\\) fiber in \\\\(\\mathcal{T}\\\\) with \\\\(\\mathbf{M}\\\\)\n- Mode-\\\\(N\\\\) matricization \\\\(\\mathbf{T}_{(N)}\\\\)\n    - Arrange all mode-\\\\(N\\\\) fibers as columns\n",
+      "code" : "### Tensor Operations\n- Mode-\\\\(N\\\\) **tensor-vector product** \\\\(\\mathcal{T} \\times_N \\mathbf{v}\\\\)\n    - Dot product of each mode-\\\\(N\\\\) fiber in \\\\(\\mathcal{T}\\\\) with \\\\(\\mathbf{v}\\\\)\n- Mode-\\\\(N\\\\) **tensor-matrix product** \\\\(\\mathcal{T} \\times_N \\mathbf{M}\\\\)\n    - Matrix-vector product of each mode-\\\\(N\\\\) fiber in \\\\(\\mathcal{T}\\\\) with \\\\(\\mathbf{M}\\\\)\n- Mode-\\\\(N\\\\) **matricization** \\\\(\\mathbf{T}_{(N)}\\\\)\n    - Arrange all mode-\\\\(N\\\\) fibers as columns\n",
       "extraFields" : { }
     }
   }, {
@@ -109,7 +109,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Tucker Decomposition\n(Tucker, 1966)\n\n- Given: \\\\(\\mathcal{T} \\in \\mathbb{R}^{p \\,\\times\\, q \\,\\times\\, r}\\\\)\n- \\\\(\\mathcal{T} \\approx \\mathcal{G} \\times_1 \\mathbf{A} \\times_2 \\mathbf{B} \\times_3 \\mathbf{C}\\\\)\n    - \\\\(\\mathcal{G}\\\\) is called *core tensor*\n        - Models linear interactions between all three variables\n    - \\\\(\\mathbf{A}\\\\), \\\\(\\mathbf{B}\\\\) and \\\\(\\mathbf{C}\\\\) are called *loading matrices*         \n    - \\\\(\\mathcal{G} \\in \\mathbb{R}^{N_1 \\,\\times\\, N_2 \\,\\times\\, N_3}\\\\), \\\\(\\mathbf{A} \\in \\mathbb{R}^{N_1 \\,\\times\\, p}\\\\), \\\\(\\mathbf{B} \\in \\mathbb{R}^{N_2 \\,\\times\\, q}\\\\), \\\\(\\mathbf{C} \\in \\mathbb{R}^{N_3 \\,\\times\\, r}\\\\)\n    \n\n",
+      "code" : "### Tucker Decomposition\n(Tucker, 1966)\n\n- Given: \\\\(\\mathcal{T} \\in \\mathbb{R}^{p \\,\\times\\, q \\,\\times\\, r}\\\\)\n- \\\\(\\mathcal{T} \\approx \\mathcal{G} \\times_1 \\mathbf{A} \\times_2 \\mathbf{B} \\times_3 \\mathbf{C}\\\\)\n    - \\\\(\\mathcal{G}\\\\) is called **core tensor**\n        - Models linear interactions between all three variables\n    - \\\\(\\mathbf{A}\\\\), \\\\(\\mathbf{B}\\\\) and \\\\(\\mathbf{C}\\\\) are called **loading matrices**         \n    - \\\\(\\mathcal{G} \\in \\mathbb{R}^{N_1 \\,\\times\\, N_2 \\,\\times\\, N_3}\\\\), \\\\(\\mathbf{A} \\in \\mathbb{R}^{N_1 \\,\\times\\, p}\\\\), \\\\(\\mathbf{B} \\in \\mathbb{R}^{N_2 \\,\\times\\, q}\\\\), \\\\(\\mathbf{C} \\in \\mathbb{R}^{N_3 \\,\\times\\, r}\\\\)\n    \n\n",
       "extraFields" : { }
     }
   }, {
@@ -125,7 +125,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Example\n\n<img src=\"../../assets/figures/tucker3.png\" height=\"250\">\n\n- Problem: in practice hard to estimate parameters\n    - SGD expensive for core tensor \\\\(\\mathcal{G}\\\\)\n- Often one mode is kept fixed (Tucker2)",
+      "code" : "### Example\n\n- \\\\(\\mathcal{T} \\approx \\mathcal{G} \\times_1 \\mathbf{R} \\times_2 \\mathbf{E_1} \\times_3 \\mathbf{E}_2\\\\)\n    - \\\\(\\mathcal{T} \\in \\mathbb{R}^{|R| \\,\\times\\, |E| \\,\\times\\, |E|}, \\mathcal{G} \\in \\mathbb{R}^{k \\,\\times\\, k \\,\\times\\, k}\\\\)\n    - \\\\(\\mathbf{R} \\in \\mathbb{R}^{|R| \\,\\times\\, k}, \\mathbf{E}_1 \\in \\mathbb{R}^{|E| \\,\\times\\, k}, \\mathbf{E}_2 \\in \\mathbb{E}^{|R| \\,\\times\\, k}\\\\)\n<img src=\"../../assets/figures/tucker3.png\" height=\"250\">\n- Problem: in practice hard to estimate parameters\n    - SGD expensive for core tensor \\\\(\\mathcal{G}\\\\)\n- Often one mode is kept fixed (Tucker2)",
       "extraFields" : { }
     }
   }, {
@@ -141,7 +141,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Tucker2 Decomposition\n\n- Full Tucker decomposition is called Tucker3\n    - Factorizes along all three modes\n- Tucker2 factorizes only along two modes\n    - One of the loading matrices is the identity matrix\n    - \\\\(\\mathcal{T} \\approx \\mathcal{G} \\times_1 \\mathbf{A} \\times_2 \\mathbf{B}\\\\)\n<br />\n\n#### Example\n\n<img src=\"../../assets/figures/tucker2.png\" height=\"250\">",
+      "code" : "### Tucker2 Decomposition\n\n- Full Tucker decomposition is called **Tucker3**\n    - Factorizes along all three modes\n- **Tucker2** factorizes only along two modes\n    - One of the loading matrices is the identity matrix\n    - \\\\(\\mathcal{T} \\approx \\mathcal{G} \\times_1 \\mathbf{A} \\times_2 \\mathbf{B}\\\\)\n- Example:\n\n<img src=\"../../assets/figures/tucker2.png\" height=\"250\">",
       "extraFields" : { }
     }
   }, {
@@ -157,7 +157,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Factorization as Tucker1 Decomposition\n\n- Tucker1 factorizes only along one mode\n- Is an instance of matrix factorization\n    - Learns vectors for pairs of variables of two modes\n\n<br />\n\n#### Example\n\n<img src=\"../../assets/figures/tucker1.png\" height=\"250\">\n",
+      "code" : "### Matrix Factorization as Tucker1 Decomposition\n\n- **Tucker1** factorizes only along one mode\n- Is an instance of matrix factorization\n    - Learns vectors for pairs of variables of two modes\n- Example:\n\n<img src=\"../../assets/figures/tucker1.png\" height=\"250\">\n",
       "extraFields" : { }
     }
   }, {
@@ -173,23 +173,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### CANDECOMP/PARAFAC\n(Carroll and Chang, 1970; Harshman, 1970)\n\n- Rank-\\\\(1\\\\) tensor: outer product of three vectors\n\n    \\\\(\\mathcal{X} = \\mathbf{a} \\circ \\mathbf{b} \\circ \\mathbf{c}\\\\) \n- Approximate \\\\(\\mathcal{T}\\\\) with a sum of \\\\(n\\\\) rank-\\\\(1\\\\) tensors\n\n    \\\\(\\mathcal{T} \\approx \\sum_{i=1}^n \\mathbf{a}_i \\circ \\mathbf{b}_i \\circ \\mathbf{c}_i\\\\)\n    \n- Loss\n\n    \\\\(\\min_{\\mathbf{a}_i\\mathbf{b}_i\\mathbf{c}_i} ||\\mathcal{T} - \\sum_{i=1}^n \\mathbf{a}_i \\circ \\mathbf{b}_i \\circ \\mathbf{c}_i||_F^2\\\\)",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 22,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "application",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 23,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "# Application\n## Multi-relational Knowledge Base Factorization",
+      "code" : "### CANDECOMP/PARAFAC\n(Carroll and Chang, 1970; Harshman, 1970)\n\n- **Rank-\\\\(1\\\\) tensor**: outer product of three vectors\n\n    \\\\(\\mathcal{X} = \\mathbf{a} \\circ \\mathbf{b} \\circ \\mathbf{c}\\\\) \n- Approximate \\\\(\\mathcal{T}\\\\) with a sum of \\\\(n\\\\) rank-\\\\(1\\\\) tensors\n\n    \\\\(\\mathcal{T} \\approx \\sum_{i=1}^n \\mathbf{a}_i \\circ \\mathbf{b}_i \\circ \\mathbf{c}_i\\\\)\n    \n- Loss\n\n    \\\\(\\min_{\\mathbf{a}_i\\mathbf{b}_i\\mathbf{c}_i} ||\\mathcal{T} - \\sum_{i=1}^n \\mathbf{a}_i \\circ \\mathbf{b}_i \\circ \\mathbf{c}_i||_F^2\\\\)",
       "extraFields" : { }
     }
   }, {
@@ -238,6 +222,22 @@
     "input" : {
       "sessionId" : null,
       "code" : "### Results \n\n<img src=\"../../assets/figures/rescal-results.png\" width=\"60%\" height=\"60%\">\n\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 30,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "van",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 31,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Factorization Model of Semantic Compositionality\n(Van de Cruys et al, 2013)\n\n<br />\n<img src=\"../../assets/figures/van.png\" height=\"400\">",
       "extraFields" : { }
     }
   } ],

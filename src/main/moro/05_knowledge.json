@@ -109,7 +109,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### First-order Logic Prior Knowledge\n\n- *Representation Learning*: hard to fix mistakes\n$$\n\\neg \\text{person}(x) \\Rightarrow \\neg \\text{place of birth}(x,y)\n$$\n- *Distant Supervision*: fails for no or little alignment\n$$\n\\text{#1-is-a-student-in-#2-'s-lab}(x,y) \\Rightarrow \\text{supervisedBy}(x,y)$$\n- Pros: Formulae are easy to modify and improve\n- Cons: Brittle, no generalization and inference can become intractable\n- Markov Logic Networks: easy to modify, generalize well, but inference often intractable in practice",
+      "code" : "### First-order Logic Prior Knowledge\n\n- **Representation Learning**: hard to fix mistakes\n$$\n\\neg \\text{person}(x) \\Rightarrow \\neg \\text{place of birth}(x,y)\n$$\n- **Distant Supervision**: fails for no or little alignment\n$$\n\\text{#1-is-a-student-in-#2-'s-lab}(x,y) \\Rightarrow \\text{supervisedBy}(x,y)$$\n- **Pros**: Formulae are easy to modify and improve\n- **Cons**: Brittle, no generalization and inference can become intractable\n- *Markov Logic Networks*: easy to modify, generalize well, but inference often intractable in practice",
       "extraFields" : { }
     }
   }, {
@@ -353,7 +353,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 46,
+    "id" : 44,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -361,15 +361,15 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 47,
+    "id" : 45,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "## Matrix Factorization is “Injecting” Atomic Formulae\n\n- Training facts are ground atoms: $$\\mathcal{F} = r_s(e_i, e_j)$$\n- Let [•] denote mapping from symbolic formulae to expectations\n$$[r_s(e_i, e_j)] := \\sigma(\\mathbf{v}_{s} \\cdot \\mathbf{v}_{ij})$$\n- Training objective:\n    \\\\(\\max_{\\{\\mathbf{v}_s\\}, \\{\\mathbf{v}_{ij}\\}} \\sum_{\\mathcal{F} \\in \\mathfrak{F}} \\log([\\mathcal{F}])\\\\)\n\n- Can we do this for any propositional formulae? \n  $$[\\mathcal{F}] = [r_1(e_i\\,e_j) \\wedge \\neg r_2(e_i\\,e_j) \\Rightarrow r_3(e_i\\,e_j)]$$\n",
+      "code" : "## Matrix Factorization is “Injecting” Atomic Formulae\n\n- Training facts are ground atoms: $$\\mathcal{F} = r_s(e_i, e_j)$$\n- Let [•] denote mapping from symbolic formulae to expectations\n$$[r_s(e_i, e_j)] := \\sigma(\\mathbf{v}_{s} \\cdot \\mathbf{v}_{ij})$$\n- Training objective:\n    \\\\(\\max_{\\{\\mathbf{v}_s\\}, \\{\\mathbf{v}_{ij}\\}} \\sum_{\\mathcal{F} \\in \\mathfrak{F}} \\log([\\mathcal{F}])\\\\)\n\n- Can we do this for **any** propositional formulae? \n  $$[\\mathcal{F}] = [r_1(e_i\\,e_j) \\wedge \\neg r_2(e_i\\,e_j) \\Rightarrow r_3(e_i\\,e_j)]$$\n",
       "extraFields" : { }
     }
   }, {
-    "id" : 48,
+    "id" : 46,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -377,7 +377,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 49,
+    "id" : 47,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -385,7 +385,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 50,
+    "id" : 48,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -393,7 +393,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 51,
+    "id" : 49,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -401,7 +401,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 52,
+    "id" : 50,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -409,7 +409,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 53,
+    "id" : 51,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -417,7 +417,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 54,
+    "id" : 52,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -425,15 +425,15 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 55,
+    "id" : 53,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "## Expriments\n- Relation extraction corpus (Riedel et al., 2013)\n    - ~4k textual patterns from New York Times corpus and 151 Freebase relations, ~42k entity-pairs, ~100k training facts \n    - Metric: mean average precision (*MAP*) on manually annotated predictions for Freebase relations\n- *Zero-shot Relation Learning*: \n    - All Freebase training facts are removed\n    - No alignment between Freebase relations and textual patterns\n- *Relations with Few Distant Labels*:\n    - Varying degree of alignment between relations and textual patterns\n",
+      "code" : "## Expriments\n- Relation extraction corpus (Riedel et al., 2013)\n    - ~4k textual patterns from New York Times corpus and 151 Freebase relations, ~42k entity-pairs, ~100k training facts \n    - Metric: mean average precision ( **MAP** ) on manually annotated predictions for Freebase relations\n- **Zero-shot Relation Learning**: \n    - All Freebase training facts are removed\n    - No alignment between Freebase relations and textual patterns\n- **Relations with Few Distant Labels**:\n    - Varying degree of alignment between relations and textual patterns\n",
       "extraFields" : { }
     }
   }, {
-    "id" : 56,
+    "id" : 54,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -441,15 +441,15 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 57,
+    "id" : 55,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "## Evaluation\n- Formulae extracted from predictions of a matrix factorization model (Sanchez et al., 2015)\n- Annotated manually\n- Given these formulae, which method can best make use of them?\n    - Logical Inference\n    - Post-Factorization Inference\n    - Pre-Factorization Inference\n    - Joint Optimization\n- Example: \n    \\\\(\\forall x,y: \\verb~#2-minister-#1~(x,y) \\Rightarrow \\verb~person/nationality~(x,y)\\\\)",
+      "code" : "## Evaluation\n- Formulae extracted from predictions of a matrix factorization model (Sanchez et al., 2015)\n- Annotated manually\n- Given these formulae, which method can best make use of them?\n    - **Logical Inference**\n    - **Post-Factorization Inference**\n    - **Pre-Factorization Inference**\n    - **Joint Optimization**\n- Example: \n    \\\\(\\forall x,y: \\verb~#2-minister-#1~(x,y) \\Rightarrow \\verb~person/nationality~(x,y)\\\\)",
       "extraFields" : { }
     }
   }, {
-    "id" : 58,
+    "id" : 56,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -457,7 +457,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 59,
+    "id" : 57,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -465,7 +465,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 60,
+    "id" : 58,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -473,7 +473,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 61,
+    "id" : 59,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -481,7 +481,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 62,
+    "id" : 60,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -489,7 +489,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 63,
+    "id" : 61,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -497,7 +497,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 64,
+    "id" : 62,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -505,7 +505,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 65,
+    "id" : 63,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -513,7 +513,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 66,
+    "id" : 64,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -521,7 +521,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 67,
+    "id" : 65,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -529,7 +529,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 68,
+    "id" : 66,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -537,7 +537,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 69,
+    "id" : 67,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -545,7 +545,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 70,
+    "id" : 68,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -553,7 +553,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 71,
+    "id" : 69,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -561,7 +561,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 72,
+    "id" : 70,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -569,7 +569,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 73,
+    "id" : 71,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
