@@ -53,7 +53,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Motivation\n<br>\nFormulating tasks as instances of matrix and tensor factorization is an important tool our arsenal\n\n- flexible\n- expressive\n- scalable\n",
+      "code" : "### Motivation\n<br>\n**Matrix/tensor factorization**\n<br>\n\n- encompasses a variety of learning problems \n\n- well-studied in ML/stats literature\n\n- state-of-the-art performance in many tasks\n",
       "extraFields" : { }
     }
   }, {
@@ -69,7 +69,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### This tutorial\n<br>\n**Part 1**\n<br>\n\n- Seeing the matrix\n\n- Matrix factorization basics\n\n- Non-negative matrix factorization\n\n- Binary matrix factorization\n\n- Inclusion of prior knowledge in factorization\n \n\n",
+      "code" : "### This tutorial\n<br>\n**Part 1**\n<br>\n\n- Seeing the matrix\n\n- Matrix factorization basics\n\n- Non-negative matrix factorization\n\n- Binary matrix factorization\n\n- Inclusion of prior knowledge\n \n\n",
       "extraFields" : { }
     }
   }, {
