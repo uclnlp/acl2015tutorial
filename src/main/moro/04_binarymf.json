@@ -169,22 +169,11 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Application: Relation Extraction",
+      "code" : "### Application: Relation Extraction\n\n<img src=\"../../assets/figures/KBP_MF_application.png\" height=\"200\">",
       "extraFields" : { }
     }
   }, {
     "id" : 20,
-    "compiler" : "scala",
-    "input" : {
-      "sessionId" : null,
-      "code" : "render(Seq(uSchemaNoZeroes),layout.copy(colHeaderSize=200))",
-      "extraFields" : {
-        "showEditor" : "false",
-        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\nimport math._\\n\\ndef format(vect:Double) = f\\\"$vect%2.2f\\\"\\n\\nval layout = Layout(\\n    colHeaderSize=170, rowHeaderSize=220,\\n    ch=50, cw=100)\\nval random = new scala.util.Random(1)\\nval n = 3\\nval docRows = for (row <- 0 until n) yield RowLabel(row, \\\"Doc\\\" + (row + 1))\\nval docCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(random.nextGaussian() + 2.0))\\nval docCols = Seq(\\n  ColLabel(0,\\\"the\\\"),\\n  ColLabel(1,\\\"cat\\\"),\\n  ColLabel(2,\\\"sat\\\"))\\n\\nval docMatrix = Matrix(docCells,docRows,docCols)\\n\\nval graphRows = Seq(\\n  RowLabel(0,\\\"(Blunsom,Oxford)\\\"),\\n  RowLabel(1,\\\"(Riedel,UCL)\\\"), \\n  RowLabel(2,\\\"(Vlachos,Sheffield)\\\"))\\n\\nval graphCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,f\\\"${random.nextInt(2)}\\\")\\nval graphCols = Seq(\\n  ColLabel(0,\\\"worksFor\\\"),\\n  ColLabel(1,\\\"lecturerAt\\\"),\\n  ColLabel(2,\\\"profAt\\\"))\\n\\n\\nval graphMatrix = Matrix(graphCells,graphRows,graphCols)\\n//render the matrices\\nrender(Seq(docMatrix,graphMatrix),layout)\",\"import cc.factorie.la._\\nimport ml.wolfe.util._\\n\\ndef randomEmbedding = Range(0,2).map(_ => random.nextGaussian()) \\nval rowEmbeddings = Range(0,n).map(row => randomEmbedding)\\nval colEmbeddings = Range(0,n).map(row => randomEmbedding)\\n\\nval colEmbeddingsMatrix = Range(0,n).map(i => colEmbedding(i,3,colEmbeddings(i).map(format))).reduce(_ + _)\\nval rowEmbeddingsMatrix = Range(0,n).map(i => rowEmbedding(i,3,rowEmbeddings(i).map(format))).reduce(_ + _)\\n\\ndef score(row:Int,col:Int) = \\n  new DenseTensor1(rowEmbeddings(row).toArray) dot \\n  new DenseTensor1(colEmbeddings(col).toArray)\\n\\nval scores = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(score(row,col)))\\n\\nval probs = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(Math.sigmoid(score(row,col))))\\n\\nval labels = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,if (random.nextDouble < Math.sigmoid(score(row,col))) 1 else 0)\\n\\nval m1 = Matrix(Nil,graphRows,graphCols)\\nval m3 = m1 + rowEmbeddingsMatrix + colEmbeddingsMatrix\\nval m4 = m3 + Matrix(scores)\\nval m5 = m3 + Matrix(probs)\\nval m6 = m3 + Matrix(labels)\\n\\nrender(Seq(m1,m3,m4,m5,m6),layout)\\n\",\"import uk.ac.ucl.cs.mr.acltutorial.BinaryMF._\\nrender(Seq(allCells,noZeroes,someSampledZeroes,moreSampledZeroes),layout)\",\"render(sgdUpdates,layout)\"]"
-      }
-    }
-  }, {
-    "id" : 21,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -192,7 +181,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 22,
+    "id" : 21,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -200,7 +189,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 23,
+    "id" : 22,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
