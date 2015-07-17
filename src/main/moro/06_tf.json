@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Tensors\n- In many real-world data more then two variables are interacting\n    - Subject, verb, object triplets \\\\((s,v,o)\\\\)\n    - Binary relation triplets \\\\((r_s, e_i, e_j)\\\\)\n    - Tag-recommendation: user, item, tag triplets \\\\((u, i, t)\\\\)\n- 2D Matrix representation is an unnatural choice\n- **Tensors** are the higher-order generalization of matrices",
+      "code" : "### Tensors\n- In many real-world data more then two variables are interacting\n    - Subject, verb, object triplets \\\\((s,v,o)\\\\)\n    - Binary relation triplets \\\\((r_s, e_i, e_j)\\\\)\n    - Tag-recommendation: user, item, tag triplets \\\\((u, i, t)\\\\)\n- 2D Matrix representation is an unnatural choice\n- **Tensors** are the higher-order generalization of matrices\n- Can be used to model \\\\(N\\\\)-way interactions",
       "extraFields" : { }
     }
   }, {
@@ -101,7 +101,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "tucker",
+      "code" : "tensorrank",
       "extraFields" : { }
     }
   }, {
@@ -109,7 +109,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Tucker Decomposition\n(Tucker, 1966)\n\n- Given: \\\\(\\mathcal{T} \\in \\mathbb{R}^{p \\,\\times\\, q \\,\\times\\, r}\\\\)\n- \\\\(\\mathcal{T} \\approx \\mathcal{G} \\times_1 \\mathbf{A} \\times_2 \\mathbf{B} \\times_3 \\mathbf{C}\\\\)\n    - \\\\(\\mathcal{G}\\\\) is called **core tensor**\n        - Models linear interactions between all three variables\n    - \\\\(\\mathbf{A}\\\\), \\\\(\\mathbf{B}\\\\) and \\\\(\\mathbf{C}\\\\) are called **loading matrices**         \n    - \\\\(\\mathcal{G} \\in \\mathbb{R}^{N_1 \\,\\times\\, N_2 \\,\\times\\, N_3}\\\\), \\\\(\\mathbf{A} \\in \\mathbb{R}^{N_1 \\,\\times\\, p}\\\\), \\\\(\\mathbf{B} \\in \\mathbb{R}^{N_2 \\,\\times\\, q}\\\\), \\\\(\\mathbf{C} \\in \\mathbb{R}^{N_3 \\,\\times\\, r}\\\\)\n    \n\n",
+      "code" : "### Tensor Rank\n\n- **Rank-\\\\(1\\\\) tensor**: outer product of three vectors\n- Rank of a tensor \\\\(\\mathcal{T}\\\\): smallest number of rank-\\\\(1\\\\) tensor that generate \\\\(\\mathcal{T}\\\\)",
       "extraFields" : { }
     }
   }, {
@@ -117,7 +117,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "tucker3example",
+      "code" : "tucker",
       "extraFields" : { }
     }
   }, {
@@ -125,7 +125,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Example\n\n- \\\\(\\mathcal{T} \\approx \\mathcal{G} \\times_1 \\mathbf{R} \\times_2 \\mathbf{E_1} \\times_3 \\mathbf{E}_2\\\\)\n    - \\\\(\\mathcal{T} \\in \\mathbb{R}^{|R| \\,\\times\\, |E| \\,\\times\\, |E|}, \\mathcal{G} \\in \\mathbb{R}^{k \\,\\times\\, k \\,\\times\\, k}\\\\)\n    - \\\\(\\mathbf{R} \\in \\mathbb{R}^{|R| \\,\\times\\, k}, \\mathbf{E}_1 \\in \\mathbb{R}^{|E| \\,\\times\\, k}, \\mathbf{E}_2 \\in \\mathbb{E}^{|R| \\,\\times\\, k}\\\\)\n<img src=\"../../assets/figures/tucker3.png\" height=\"250\">\n- Problem: in practice hard to estimate parameters\n    - SGD expensive for core tensor \\\\(\\mathcal{G}\\\\)\n- Often one mode is kept fixed (Tucker2)",
+      "code" : "### Tucker Decomposition\n(Tucker, 1966)\n\n- Given: \\\\(\\mathcal{T} \\in \\mathbb{R}^{p \\,\\times\\, q \\,\\times\\, r}\\\\)\n- \\\\(\\mathcal{T} \\approx \\mathcal{G} \\times_1 \\mathbf{A} \\times_2 \\mathbf{B} \\times_3 \\mathbf{C}\\\\)\n    - \\\\(\\mathcal{G}\\\\) is called **core tensor**\n        - Models linear interactions between all three variables\n    - \\\\(\\mathbf{A}\\\\), \\\\(\\mathbf{B}\\\\) and \\\\(\\mathbf{C}\\\\) are called **loading matrices**         \n    - \\\\(\\mathcal{G} \\in \\mathbb{R}^{N_1 \\,\\times\\, N_2 \\,\\times\\, N_3}\\\\), \\\\(\\mathbf{A} \\in \\mathbb{R}^{N_1 \\,\\times\\, p}\\\\), \\\\(\\mathbf{B} \\in \\mathbb{R}^{N_2 \\,\\times\\, q}\\\\), \\\\(\\mathbf{C} \\in \\mathbb{R}^{N_3 \\,\\times\\, r}\\\\)\n\n\n",
       "extraFields" : { }
     }
   }, {
@@ -133,7 +133,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "tucker2",
+      "code" : "tucker3example",
       "extraFields" : { }
     }
   }, {
@@ -141,7 +141,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Tucker2 Decomposition\n\n- Full Tucker decomposition is called **Tucker3**\n    - Factorizes along all three modes\n- **Tucker2** factorizes only along two modes\n    - One of the loading matrices is the identity matrix\n    - \\\\(\\mathcal{T} \\approx \\mathcal{G} \\times_1 \\mathbf{A} \\times_2 \\mathbf{B}\\\\)\n- Example:\n\n<img src=\"../../assets/figures/tucker2.png\" height=\"250\">",
+      "code" : "### Example\n\n- \\\\(\\mathcal{T} \\approx \\mathcal{G} \\times_1 \\mathbf{R} \\times_2 \\mathbf{E_1} \\times_3 \\mathbf{E}_2\\\\)\n    - \\\\(\\mathcal{T} \\in \\mathbb{R}^{|R| \\,\\times\\, |E| \\,\\times\\, |E|}, \\mathcal{G} \\in \\mathbb{R}^{k \\,\\times\\, k \\,\\times\\, k}\\\\)\n    - \\\\(\\mathbf{R} \\in \\mathbb{R}^{|R| \\,\\times\\, k}, \\mathbf{E}_1 \\in \\mathbb{R}^{|E| \\,\\times\\, k}, \\mathbf{E}_2 \\in \\mathbb{E}^{|R| \\,\\times\\, k}\\\\)\n<img src=\"../../assets/figures/tucker3.png\" height=\"250\">\n- Problem: in practice hard to estimate parameters\n    - SGD expensive for core tensor \\\\(\\mathcal{G}\\\\)\n    - Tucker decomposition is not unique\n- Often one mode is kept fixed (Tucker2)",
       "extraFields" : { }
     }
   }, {
@@ -149,7 +149,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "tucker1",
+      "code" : "tucker2",
       "extraFields" : { }
     }
   }, {
@@ -157,7 +157,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Factorization as Tucker1 Decomposition\n\n- **Tucker1** factorizes only along one mode\n- Is an instance of matrix factorization\n    - Learns vectors for pairs of variables of two modes\n- Example:\n\n<img src=\"../../assets/figures/tucker1.png\" height=\"250\">\n",
+      "code" : "### Tucker2 Decomposition\n\n- Full Tucker decomposition is called **Tucker3**\n    - Factorizes along all three modes\n- **Tucker2** factorizes only along two modes\n    - One of the loading matrices is the identity matrix\n    - \\\\(\\mathcal{T} \\approx \\mathcal{G} \\times_1 \\mathbf{A} \\times_2 \\mathbf{B}\\\\)\n- Example:\n\n<img src=\"../../assets/figures/tucker2.png\" height=\"250\">",
       "extraFields" : { }
     }
   }, {
@@ -165,11 +165,27 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "candecomp",
+      "code" : "tucker1",
       "extraFields" : { }
     }
   }, {
     "id" : 21,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Matrix Factorization as Tucker1 Decomposition\n\n- **Tucker1** factorizes only along one mode\n- Is an instance of matrix factorization\n    - Learns vectors for pairs of variables of two modes\n- Example:\n\n<img src=\"../../assets/figures/tucker1.png\" height=\"250\">\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 22,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "candecomp",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 23,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -237,7 +253,39 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Factorization Model of Semantic Compositionality\n(Van de Cruys et al, 2013)\n\n<br />\n<img src=\"../../assets/figures/van.png\" height=\"400\">",
+      "code" : "### Factorization Model of Semantic Compositionality\n(Van de Cruys et al, 2013)\n\n<br />\n\n<img src=\"../../assets/figures/van.png\" height=\"350\">\n\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 32,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "van2",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 33,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Factorization Model of Semantic Compositionality\n(Van de Cruys et al, 2013)\n\n- Captures three-way interaction of subject, verb, object triplets\n- Instance of Tucker2 decomposition\n    - \\\\(\\mathcal{T} \\approx \\mathcal{V} \\times_1 \\mathbf{N} \\times_2 \\mathbf{N}\\\\)\n    - \\\\(\\mathbf{N} \\in \\mathbb{R}^{|N| \\,\\times\\, k}\\\\) is the dictionary matrix of all noun embeddings\n    - \\\\(\\mathcal{V}\\\\) holds slice \\\\(\\mathbf{V}_s\\in \\mathbb{R}^{k \\,\\times\\, k}\\\\) for each verb \\\\(s\\\\)\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 34,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "nn",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 35,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Relationship to Neural Networks\n\n- **TODO**",
       "extraFields" : { }
     }
   } ],
