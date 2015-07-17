@@ -63,7 +63,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 13,
+    "id" : 7,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -71,17 +71,17 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 14,
+    "id" : 8,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Notation\n\n- Scalars: lower-case letters \\\\(v,m\\\\)\n<br/>\n- Vectors: boldface lower-case letters \\\\(\\mathbf{v}\\\\)\n$$ \\mathbf{v} = \\begin{pmatrix} v_{1} & v_{2} & \\cdots & v_{n} \\end{pmatrix}$$\n<br/>\n- Matrices: boldface capital letters \\\\(\\mathbf{M}\\\\)\n<br/>\n<br/>\n$$ \\mathbf{M} = \\begin{pmatrix} m_{1,1} & m_{1,2} & \\cdots & m_{1,J} \\\\\\\nm_{2,1} & m_{2,2} & \\cdots & m_{2,J} \\\\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\\\nm_{I,1} & m_{I,2} & \\cdots & m_{I,J} \\end{pmatrix} $$\n<br/>\n- \\\\(i\\\\)th row of \\\\(\\mathbf{M}\\\\)&nbsp; \\\\(\\mathbf{m}_{i:}\\\\), \\\\(j\\\\)th column of \\\\(\\mathbf{M}\\\\)&nbsp; \\\\(\\mathbf{m}_{:j}\\\\)",
+      "code" : "### Notation\n\n- Scalars: lower-case letters \\\\(v,m\\\\)\n<br/>\n- Vectors: boldface lower-case letters \\\\(\\mathbf{v}\\\\)\n<br/>\n<br/>\n$$ \\begin{pmatrix} v_{1} & v_{2} & \\cdots & v_{n} \\end{pmatrix}$$\n<br/>\n- Matrices: boldface capital letters \\\\(\\mathbf{M}\\\\)\n<br/>\n<br/>\n$$ \\begin{pmatrix} m_{1,1} & m_{1,2} & \\cdots & m_{1,J} \\\\\\\nm_{2,1} & m_{2,2} & \\cdots & m_{2,J} \\\\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\\\nm_{I,1} & m_{I,2} & \\cdots & m_{I,J} \\end{pmatrix} $$\n<br/>\n- \\\\(i\\\\)th row of \\\\(\\mathbf{M}\\\\): \\\\\\(\\mathbf{m}_{i:}\\\\),&nbsp; \\\\(j\\\\)th column of \\\\(\\mathbf{M}\\\\):\\\\(\\mathbf{m}_{:j}\\\\)",
       "extraFields" : {
         "hide_output" : "false"
       }
     }
   }, {
-    "id" : 15,
+    "id" : 9,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -89,15 +89,47 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 16,
+    "id" : 10,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Operations\n\n- the **inner product** between vectors \\\\(\\mathbf{u}\\in\\Re^L\\\\) and \\\\(\\mathbf{v}\\in\\Re^L\\\\)\n$$\\langle \\mathbf{u},\\mathbf{v} \\rangle := \\sum_{\\ell=1}^L u_{\\ell} v_\\ell$$\n\n- the **outer product**  \\\\( \\mathbf{u} \\otimes \\mathbf{v} \\\\) between vectors \\\\(\\mathbf{u}\\in\\Re^N\\\\) and \\\\(\\mathbf{v}\\in\\Re^M\\\\) is the \\\\(N\\times M\\\\) matrix with elements \\\\(u_nv_m\\\\), \\\\( n=\\{1,\\cdots,N\\} \\\\) and \\\\(m= \\{1,\\cdots,M\\} \\\\)\n\n- the **outer product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{M \\times L} \\\\), \\\\( \\mathbf{U} \\otimes \\mathbf{V} := \\sum_{\\ell=1}^L \\mathbf{U}_{:\\ell} \\otimes \\mathbf{V}_{:\\ell} \\\\)\n\n- the element-wise **Hadamard product** for matrices \\\\(\\mathbf{U},\\mathbf{V} \\in\\Re^{N\\times L} \\\\) is the \\\\(N\\times L\\\\) matrix \\\\(\\mathbf{U}\\circ \\mathbf{V}\\\\) with elements \\\\((\\mathbf{U}\\circ \\mathbf{V})_{n,l}:=u_{n,l}v_{n,l}\\\\)\n\n",
+      "code" : "### Vector Operations\n<br/>\n- the **inner product** between vectors \\\\(\\mathbf{u}\\in\\Re^L\\\\) and \\\\(\\mathbf{v}\\in\\Re^L\\\\)\n$$\\langle \\mathbf{u},\\mathbf{v} \\rangle := \\sum_{\\ell=1}^L u_{\\ell} v_\\ell$$\n<br/>\n- the **outer product** between vectors \\\\(\\mathbf{u}\\in\\Re^N\\\\) and \\\\(\\mathbf{v}\\in\\Re^M\\\\)\n\n$$\\mathbf{u} \\otimes \\mathbf{v} := \\begin{pmatrix} u_{1} v_{1} & u_{1} v_{2} & \\cdots & u_{1} v_{M}  \\\\\\ u_{2} v_{1} & u_{2} v_{2} & \\cdots & u_{2} v_{M} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ u_{N} v_{1} & u_{N} v_{2} & \\cdots & u_{N} v_{M} \\end{pmatrix}\n$$",
       "extraFields" : { }
     }
   }, {
-    "id" : 17,
+    "id" : 11,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "algebra2",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 12,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Matrix Operations\n\n- the **inner product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{L \\times M} \\\\)\n$$\\mathbf{U} \\mathbf{V}:= \\begin{pmatrix} \\sum_{\\ell}u_{1,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{1,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{1,\\ell} v_{\\ell,M}  \\\\\\ \\sum_{\\ell}u_{2,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{2,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{2,\\ell} v_{\\ell,M} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ \\sum_{\\ell}u_{N,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{N,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{N,\\ell} v_{\\ell,M} \\end{pmatrix}$$",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 13,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "algebra3",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 14,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Matrix Operations\n\n- the element-wise **Hadamard product** for \\\\(\\mathbf{U},\\mathbf{V} \\in\\Re^{N\\times L} \\\\) \n\n$$\\mathbf{U} \\circ \\mathbf{V} := \\begin{pmatrix} u_{1,1} v_{1,1} & u_{1,2} v_{1,2} & \\cdots & u_{1,L} v_{1,L}  \\\\\\ u_{2,1} v_{2,1} & u_{2,2} v_{2,2} & \\cdots & u_{2,L} v_{2,L} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ u_{N,1} v_{N,1} & u_{N,2} v_{N,2} & \\cdots & u_{N,L} v_{N,L} \\end{pmatrix}\n$$\n<br/>\n- the **outer product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{M \\times L} \\\\) \n$$\\mathbf{U} \\otimes \\mathbf{V} := \\sum_{\\ell=1}^L \\mathbf{u}_{:\\ell} \\otimes \\mathbf{v}_{:\\ell} $$\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 15,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -105,7 +137,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 18,
+    "id" : 16,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
