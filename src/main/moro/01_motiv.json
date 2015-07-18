@@ -75,7 +75,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Notation\n\n- Scalars: lower-case letters \\\\(v,m\\\\)\n<br/>\n- Vectors: boldface lower-case letters \\\\(\\mathbf{v}\\\\)\n<br/>\n<br/>\n$$ \\begin{pmatrix} v_{1} & v_{2} & \\cdots & v_{n} \\end{pmatrix}$$\n<br/>\n- Matrices: boldface capital letters \\\\(\\mathbf{M}\\\\)\n<br/>\n<br/>\n$$ \\begin{pmatrix} m_{1,1} & m_{1,2} & \\cdots & m_{1,J} \\\\\\\nm_{2,1} & m_{2,2} & \\cdots & m_{2,J} \\\\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\\\nm_{I,1} & m_{I,2} & \\cdots & m_{I,J} \\end{pmatrix} $$\n<br/>\n- \\\\(i\\\\)th row of \\\\(\\mathbf{M}\\\\): \\\\\\(\\mathbf{m}_{i:}\\\\),&nbsp; \\\\(j\\\\)th column of \\\\(\\mathbf{M}\\\\):\\\\(\\mathbf{m}_{:j}\\\\)",
+      "code" : "### Notation\n\n- Scalars: lower-case letters \\\\(v,m\\\\)\n- Vectors: boldface lower-case letters \\\\(\\mathbf{v}\\\\)\n$$ \\begin{pmatrix} v_{1} & v_{2} & \\cdots & v_{n} \\end{pmatrix}$$\n- Matrices: boldface capital letters \\\\(\\mathbf{M}\\\\)\n$$ \\begin{pmatrix} m_{1,1} & m_{1,2} & \\cdots & m_{1,J} \\\\\\\nm_{2,1} & m_{2,2} & \\cdots & m_{2,J} \\\\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\\\nm_{I,1} & m_{I,2} & \\cdots & m_{I,J} \\end{pmatrix} $$\n- \\\\(i\\\\)th row of \\\\(\\mathbf{M}\\\\): \\\\\\(\\mathbf{m}_{i:}\\\\)\n- \\\\(j\\\\)th column of \\\\(\\mathbf{M}\\\\):\\\\(\\mathbf{m}_{:j}\\\\)",
       "extraFields" : {
         "hide_output" : "false"
       }
@@ -109,7 +109,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Operations\n\n- the **inner product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{L \\times M} \\\\)\n$$\\mathbf{U} \\mathbf{V}:= \\begin{pmatrix} \\sum_{\\ell}u_{1,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{1,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{1,\\ell} v_{\\ell,M}  \\\\\\ \\sum_{\\ell}u_{2,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{2,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{2,\\ell} v_{\\ell,M} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ \\sum_{\\ell}u_{N,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{N,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{N,\\ell} v_{\\ell,M} \\end{pmatrix}$$",
+      "code" : "### Matrix Operations\n\n- the **inner product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{L \\times M} \\\\)\n$$\\mathbf{U} \\mathbf{V}:= \\begin{pmatrix} \\sum_{\\ell}u_{1,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{1,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{1,\\ell} v_{\\ell,M}  \\\\\\ \\sum_{\\ell}u_{2,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{2,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{2,\\ell} v_{\\ell,M} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ \\sum_{\\ell}u_{N,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{N,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{N,\\ell} v_{\\ell,M} \\end{pmatrix}$$\n\n- the **outer product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{M \\times L} \\\\) \n$$\\mathbf{U} \\otimes \\mathbf{V} := \\sum_{\\ell=1}^L \\mathbf{u}_{:\\ell} \\otimes \\mathbf{v}_{:\\ell} $$",
       "extraFields" : { }
     }
   }, {
@@ -125,7 +125,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Operations\n\n- the element-wise **Hadamard product** for \\\\(\\mathbf{U},\\mathbf{V} \\in\\Re^{N\\times L} \\\\) \n\n$$\\mathbf{U} \\circ \\mathbf{V} := \\begin{pmatrix} u_{1,1} v_{1,1} & u_{1,2} v_{1,2} & \\cdots & u_{1,L} v_{1,L}  \\\\\\ u_{2,1} v_{2,1} & u_{2,2} v_{2,2} & \\cdots & u_{2,L} v_{2,L} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ u_{N,1} v_{N,1} & u_{N,2} v_{N,2} & \\cdots & u_{N,L} v_{N,L} \\end{pmatrix}\n$$\n<br/>\n- the **outer product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{M \\times L} \\\\) \n$$\\mathbf{U} \\otimes \\mathbf{V} := \\sum_{\\ell=1}^L \\mathbf{u}_{:\\ell} \\otimes \\mathbf{v}_{:\\ell} $$\n",
+      "code" : "### Matrix Operations\n\n- the element-wise **Hadamard product** for \\\\(\\mathbf{U},\\mathbf{V} \\in\\Re^{N\\times L} \\\\) \n\n$$\\mathbf{U} \\circ \\mathbf{V} := \\begin{pmatrix} u_{1,1} v_{1,1} & u_{1,2} v_{1,2} & \\cdots & u_{1,L} v_{1,L}  \\\\\\ u_{2,1} v_{2,1} & u_{2,2} v_{2,2} & \\cdots & u_{2,L} v_{2,L} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ u_{N,1} v_{N,1} & u_{N,2} v_{N,2} & \\cdots & u_{N,L} v_{N,L} \\end{pmatrix}\n$$\n\n",
       "extraFields" : { }
     }
   }, {
