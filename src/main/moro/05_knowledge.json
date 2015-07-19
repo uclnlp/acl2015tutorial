@@ -381,7 +381,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "## Differentiable Logic Formulae\n$$\n[\\mathcal{F}] = \\begin{cases}\n   \\sigma(\\mathbf{v}_s \\cdot \\mathbf{v}_{ij}) & \\text{ if } \\mathcal{F} = r_s(e_i, e_j), \\text{ i.e., facts}\\newline\n   (1 - [\\mathcal{A}] & \\text{ if } \\mathcal{F} = \\neg\\mathcal{A}\\newline\n  ([\\mathcal{A}] * [\\mathcal{B}] &\\text{ if } \\mathcal{F} = \\mathcal{A} \\wedge \\mathcal{B}\n\\end{cases}\n$$\n\n- From negation and conjunction we can build any propositional formula\n    - Disjunction:\n        \\\\([\\mathcal{A} \\vee \\mathcal{B}] = 1 - (1 - [\\mathcal{A}])*(1 - [\\mathcal{B}])\\\\)\n    - Implication:\n        \\\\([\\mathcal{A} \\Rightarrow \\mathcal{B}] = [\\mathcal{A}]([\\mathcal{B}] - 1) + 1\\\\)\n- Jointly maximize the log-likelihood of atomic and propositional formulae \n \n     \\\\(\\max_{\\{\\mathbf{v}_s\\}, \\{\\mathbf{v}_{ij}\\}} \\sum_{\\mathcal{F} \\in \\mathfrak{F}} \\log([\\mathcal{F}])\\\\)",
+      "code" : "## Differentiable Logic Formulae\n$$\n[\\mathcal{F}] = \\begin{cases}\n   \\sigma(\\mathbf{v}_s \\cdot \\mathbf{v}_{ij}) & \\text{ if } \\mathcal{F} = r_s(e_i, e_j), \\text{ i.e., facts}\\newline\n   1 - [\\mathcal{A}] & \\text{ if } \\mathcal{F} = \\neg\\mathcal{A}\\newline\n  [\\mathcal{A}] * [\\mathcal{B}] &\\text{ if } \\mathcal{F} = \\mathcal{A} \\wedge \\mathcal{B}\n\\end{cases}\n$$\n\n- From negation and conjunction we can build any propositional formula\n    - Disjunction:\n        \\\\([\\mathcal{A} \\vee \\mathcal{B}] = 1 - (1 - [\\mathcal{A}])*(1 - [\\mathcal{B}])\\\\)\n    - Implication:\n        \\\\([\\mathcal{A} \\Rightarrow \\mathcal{B}] = [\\mathcal{A}]([\\mathcal{B}] - 1) + 1\\\\)\n- Jointly maximize the log-likelihood of atomic and propositional formulae \n \n     \\\\(\\max_{\\{\\mathbf{v}_s\\}, \\{\\mathbf{v}_{ij}\\}} \\sum_{\\mathcal{F} \\in \\mathfrak{F}} \\log([\\mathcal{F}])\\\\)",
       "extraFields" : { }
     }
   }, {
@@ -573,7 +573,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "## Summary\n- Matrix factorization for relation extraction generalizes well\n    - Hard to fix mistakes\n    - Fails for new or spare relations\n- Formalize background knowledge as logical formulae\n    - Brittle and no generalization\n- Formulae can be injected into embeddings\n    - Make logical background knowledge differentiable\n    - Jointly optimize over factual and first-order knowledge\n        - Learns relations with no or little prior information in databases\n        - Generalizes beyond textual patterns mentioned in formulae\n        - Joint optimization > Pre-factorization inference > Post-factorization inference > Logical inference",
+      "code" : "## Summary\n- Matrix factorization for relation extraction generalizes well\n    - Hard to fix mistakes\n    - Fails for new or sparse relations\n- Formalize background knowledge as logical formulae\n    - Brittle and no generalization\n- Formulae can be injected into embeddings\n    - Make logical background knowledge differentiable\n    - Jointly optimize over factual and first-order knowledge\n        - Learns relations with no or little prior information in databases\n        - Generalizes beyond textual patterns mentioned in formulae\n        - Joint optimization > Pre-factorization inference > Post-factorization inference > Logical inference",
       "extraFields" : { }
     }
   } ],
