@@ -13,7 +13,23 @@
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "<h3>Matrix Completion via Low-Rank Factorization</h3>\n<br>\n<div style=\"text-align:center;\">\nGiven \\(\\mathbf{Y} \\in\\Re^{N\\times M} \\) <br>\n<br>\nfind \\(\\mathbf{U} \\in\\Re^{N\\times L}\\) and \\(\\mathbf{V} \\in\\Re^{M\\times L} \\) <br>\n<br>\nso that \\(\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T}\\)\n</div>",
+      "code" : "<h3>Matrix Completion via Low-Rank Factorization</h3>\n<br>\n<div style=\"text-align:center;\">\nGiven \\(\\mathbf{Y} \\in\\Re^{N\\times M} \\) <br>\n<br>\nfind \\(\\mathbf{U} \\in\\Re^{N\\times L}\\) and \\(\\mathbf{V} \\in\\Re^{M\\times L} \\) <br>\n<br>\nso that \\(\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T}\\)<br>\n<br>\n<b>low rank</b> assumption: \\( rank(\\mathbf{Y})=L\\lt\\lt M,N \\)\n</div>",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 12,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "whyApp",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 13,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Why Low-Rank\n<br/>\n\n- low-rank assumption usually does not hold \n- reconstruction unlikely to be perfect\n<br/>\n<br/>\n\nBut:\n<br/>\n\n> original matrix exhibits **noise** and **redundancy**,<br/> low-rank reconstruction addresses these issues\n",
       "extraFields" : { }
     }
   }, {
@@ -37,6 +53,22 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
+      "code" : "factorize",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 17,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Four ways to Factorize",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 16,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
       "code" : "svd",
       "extraFields" : { }
     }
@@ -45,7 +77,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Singular Value Decomposition (SVD)\n<br>\nSVD is an optimal quadratic matrix approximator:\n\n\\\\( (\\hat{\\mathbf{U}}, \\hat{\\mathbf{V}}) \\in \\arg\\min_{\\mathbf{U}\\in\\Re^{N\\times K},\\mathbf{V}\\in\\Re^{M\\times K}} \\gamma(\\mathbf{U},\\mathbf{V}) \\\\)\n\nwhere  \\\\(\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2\\\\)\n<br><br>\nIt can be solved by a partial SVD algorithm:\n\n\\\\(\n[\\mathbf{U},\\mathbf{D},\\mathbf{V}] = \\texttt{sdvs}(\\mathbf{Y},K)\n\\\\)\n\n\\\\(\n\\hat{\\mathbf{U}} = \\mathbf{U}  \\texttt{sqrt}(\\mathbf{D})\n,\n\\hat{\\mathbf{V}} = \\mathbf{V}  \\texttt{sqrt}(\\mathbf{D})\n,\n\\mathbf{D}=\\texttt{diag}(d_1,...d_K,)\n\\\\)\n<br><br>\nWe can use other algorithms to minimize the same objective.",
+      "code" : "### Singular Value Decomposition (SVD)\n<br>\nGiven \\\\(\\mathbf{Y} \\in\\Re^{N\\times M} \\\\) there exists \n\n<br>\n$$\n\\mathbf{Y} = \\mathbf{U}\\mathbf{D}\\mathbf{V}\n$$\n<br>\nwhere \\\\(\\mathbf{U}\\in\\Re^{N\\times N},\\mathbf{V}\\in\\Re^{M\\times M}\\\\) are orthogonal<br/>\nand \\\\(\\mathbf{D} \\in\\Re^{N\\times M} \\ge 0\\\\) is diagonal\n\n<br/>\n\nIf we truncate \\\\(\\mathbf{D}\\\\) to its \\\\(L\\\\) largest values \n\nthen \\\\( \\hat{\\mathbf{Y}} = \\mathbf{U}\\mathbf{D_{trunc}}\\mathbf{V}\\\\)\n\nis the minimizer of \\\\(\\||\\mathbf{Y} - \\hat{\\mathbf{Y}}\\||_F^2\\\\)\n\n<br/>\n\n<div style=\"text-align:right;\">\n<i>Eckart-Young theorem</i>\n</div>",
       "extraFields" : { }
     }
   }, {
