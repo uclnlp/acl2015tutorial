@@ -48,103 +48,22 @@
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "import uk.ac.ucl.cs.mr.acltutorial._\nimport MatrixRenderer._\n\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=8,numRows=6)\n\n//val m1 = Matrix(Seq(Cell(0,0,\"label\"),Cell(0,1,\"features\"),Cell(1,0,1),Cell(1,1,\"f1,f3,f4,f6\"),Cell(2,0,1),Cell(2,1,\"f3,f6\"),Cell(3,0,0),Cell(3,1,\"f1,f2,f5\"),Cell(4,0,0),Cell(4,1,\"f1,f2\")),Seq(),Seq(), Seq(1))\n\n//val m2 = Matrix(Seq(Cell(0,0,\"label\"),Cell(0,1,\"features\"),Cell(1,0,1),Cell(1,1,\"f1,f3,f4,f6\"),Cell(2,0,1),Cell(2,1,\"f3,f6\"),Cell(3,0,0),Cell(3,1,\"f1,f2,f5\"),Cell(4,0,0),Cell(4,1,\"f1,f2\"),Cell(5,0,\"?\"),Cell(5,1,\"f1,f3,f4\"),Cell(6,0,\"?\"),Cell(6,1,\"f2\")),Seq(),Seq(), Seq(1,5))\n\n\nval m2 = Matrix(Seq(Cell(0,0,1),Cell(0,1,1),Cell(0,2,0),Cell(0,3,1),Cell(0,4,1),Cell(0,5,0),Cell(0,6,1),\nCell(1,0,1),Cell(1,1,0),Cell(1,2,0),Cell(1,3,1),Cell(1,4,0),Cell(1,5,0),Cell(1,6,1),\nCell(2,0,0),Cell(2,1,1),Cell(2,2,1),Cell(2,3,0),Cell(2,4,0),Cell(2,5,1),Cell(2,6,0),\nCell(3,0,0),Cell(3,1,1),Cell(3,2,1),Cell(3,3,0),Cell(3,4,0),Cell(3,5,0),Cell(3,6,0),\nCell(4,0,\"???\"),Cell(4,1,1),Cell(4,2,0),Cell(4,3,1),Cell(4,4,1),Cell(4,5,0),Cell(4,6,0),\nCell(5,0,\"???\"),Cell(5,1,0),Cell(5,2,1),Cell(5,3,0),Cell(5,4,0),Cell(5,5,0),Cell(5,6,0)\n),\nSeq(RowLabel(0,\"TRAIN\"),RowLabel(4,\"TEST\")),Seq(ColLabel(0,\"label\"),ColLabel(1,\"feat1\"),ColLabel(2,\"feat2\"),ColLabel(3,\"feat3\"),ColLabel(4,\"feat4\"),ColLabel(5,\"feat5\"),ColLabel(6,\"feat6\")), Seq(0,4), Seq(0,1))\n\nval matrices = Seq(m2)\n\n\nMatrixRenderer.render(matrices,layout)",
+      "code" : "import uk.ac.ucl.cs.mr.acltutorial._\nimport MatrixRenderer._\n\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=9,numRows=8)\n\n//val m1 = Matrix(Seq(Cell(0,0,\"label\"),Cell(0,1,\"features\"),Cell(1,0,1),Cell(1,1,\"f1,f3,f4,f6\"),Cell(2,0,1),Cell(2,1,\"f3,f6\"),Cell(3,0,0),Cell(3,1,\"f1,f2,f5\"),Cell(4,0,0),Cell(4,1,\"f1,f2\")),Seq(),Seq(), Seq(1))\n\n//val m2 = Matrix(Seq(Cell(0,0,\"label\"),Cell(0,1,\"features\"),Cell(1,0,1),Cell(1,1,\"f1,f3,f4,f6\"),Cell(2,0,1),Cell(2,1,\"f3,f6\"),Cell(3,0,0),Cell(3,1,\"f1,f2,f5\"),Cell(4,0,0),Cell(4,1,\"f1,f2\"),Cell(5,0,\"?\"),Cell(5,1,\"f1,f3,f4\"),Cell(6,0,\"?\"),Cell(6,1,\"f2\")),Seq(),Seq(), Seq(1,5))\n\n\nval m2 = Matrix(Seq(Cell(0,1,1),Cell(0,2,1),Cell(0,3,0),Cell(0,4,1),Cell(0,5,1),Cell(0,6,0),Cell(0,7,1),\nCell(1,1,1),Cell(1,2,0),Cell(1,3,0),Cell(1,4,1),Cell(1,5,0),Cell(1,6,0),Cell(1,7,1),\nCell(2,1,0),Cell(2,2,1),Cell(2,3,1),Cell(2,4,0),Cell(2,5,0),Cell(2,6,1),Cell(2,7,0),\nCell(3,1,0),Cell(3,2,1),Cell(3,3,1),Cell(3,4,0),Cell(3,5,0),Cell(3,6,0),Cell(3,7,0),\nCell(4,1,\"???\"),Cell(4,2,1),Cell(4,3,0),Cell(4,4,1),Cell(4,5,1),Cell(4,6,0),Cell(4,7,0),\nCell(5,1,\"???\"),Cell(5,2,0),Cell(5,3,1),Cell(5,4,0),Cell(5,5,0),Cell(5,6,0),Cell(5,7,0)\n),\nSeq(RowLabel(0,\"TRAIN\"),RowLabel(4,\"TEST\")),Seq(ColLabel(1,\"label\"),ColLabel(2,\"feat1\"),ColLabel(3,\"feat2\"),ColLabel(4,\"feat3\"),ColLabel(5,\"feat4\"),ColLabel(6,\"feat5\"),ColLabel(7,\"feat6\")), Seq(0,4), Seq(0,2))\n\nval m3 = Matrix(Seq(Cell(0,1,1),Cell(0,2,1),Cell(0,3,0),Cell(0,4,1),Cell(0,5,1),Cell(0,6,0),Cell(0,7,1),\nCell(1,1,1),Cell(1,2,0),Cell(1,3,0),Cell(1,4,1),Cell(1,5,0),Cell(1,6,0),Cell(1,7,1),\nCell(2,1,0),Cell(2,2,1),Cell(2,3,1),Cell(2,4,0),Cell(2,5,0),Cell(2,6,1),Cell(2,7,0),\nCell(3,1,0),Cell(3,2,1),Cell(3,3,1),Cell(3,4,0),Cell(3,5,0),Cell(3,6,0),Cell(3,7,0),\nCell(4,1,\"???\"),Cell(4,2,1),Cell(4,3,0),Cell(4,4,1),Cell(4,5,1),Cell(4,6,0),Cell(4,7,0),\nCell(5,1,\"???\"),Cell(5,2,0),Cell(5,3,1),Cell(5,4,0),Cell(5,5,0),Cell(5,6,0),Cell(5,7,0),\nCell(6,2,1),Cell(6,3,0),Cell(6,4,0),Cell(6,5,1),Cell(6,6,0),Cell(6,7,0),\nCell(7,2,0),Cell(7,3,1),Cell(7,4,0),Cell(7,5,0),Cell(7,6,1),Cell(7,7,0)\n),\nSeq(RowLabel(0,\"TRAIN\"),RowLabel(4,\"TEST\"),RowLabel(6,\"UNLAB\")),Seq(ColLabel(1,\"label\"),ColLabel(2,\"feat1\"),ColLabel(3,\"feat2\"),ColLabel(4,\"feat3\"),ColLabel(5,\"feat4\"),ColLabel(6,\"feat5\"),ColLabel(7,\"feat6\")), Seq(0,4,6), Seq(0,2)\n)\n\nval m4 = Matrix(Seq(Cell(0,1,1),Cell(0,0,1),Cell(0,2,1),Cell(0,3,0),Cell(0,4,1),Cell(0,5,1),Cell(0,6,0),Cell(0,7,1),\nCell(1,1,1),Cell(1,0,0),Cell(1,2,0),Cell(1,3,0),Cell(1,4,1),Cell(1,5,0),Cell(1,6,0),Cell(1,7,1),\nCell(2,1,0),Cell(2,0,1),Cell(2,2,1),Cell(2,3,1),Cell(2,4,0),Cell(2,5,0),Cell(2,6,1),Cell(2,7,0),\nCell(3,1,0),Cell(3,0,0),Cell(3,2,1),Cell(3,3,1),Cell(3,4,0),Cell(3,5,0),Cell(3,6,0),Cell(3,7,0),\nCell(4,1,\"???\"),Cell(4,0,\"???\"),Cell(4,2,1),Cell(4,3,0),Cell(4,4,1),Cell(4,5,1),Cell(4,6,0),Cell(4,7,0),\nCell(5,1,\"???\"),Cell(5,0,\"???\"),Cell(5,2,0),Cell(5,3,1),Cell(5,4,0),Cell(5,5,0),Cell(5,6,0),Cell(5,7,0),\nCell(6,2,1),Cell(6,3,0),Cell(6,4,0),Cell(6,5,1),Cell(6,6,0),Cell(6,7,0),\nCell(7,2,0),Cell(7,3,1),Cell(7,4,0),Cell(7,5,0),Cell(7,6,1),Cell(7,7,0)\n),\nSeq(RowLabel(0,\"TRAIN\"),RowLabel(4,\"TEST\"),RowLabel(6,\"UNLAB\")),Seq(ColLabel(0,\"task1\"),ColLabel(1,\"task2\"),ColLabel(2,\"feat1\"),ColLabel(3,\"feat2\"),ColLabel(4,\"feat3\"),ColLabel(5,\"feat4\"),ColLabel(6,\"feat5\"),ColLabel(7,\"feat6\")), Seq(0,4,6), Seq(0,2))\n\nval m5 = Matrix(Seq(Cell(0,1,1),Cell(0,0,1),Cell(0,2,1),Cell(0,3,0),Cell(0,4,1),Cell(0,6,0),\nCell(1,1,1),Cell(1,0,0),Cell(1,4,1),Cell(1,5,0),Cell(1,6,0),Cell(1,7,1),\nCell(2,1,0),Cell(2,0,1),Cell(2,3,1),Cell(2,4,0),Cell(2,6,1),Cell(2,7,0),\nCell(3,1,0),Cell(3,0,0),Cell(3,2,1),Cell(3,5,0),Cell(3,6,0),Cell(3,7,0),\nCell(4,1,\"???\"),Cell(4,0,\"???\"),Cell(4,2,1),Cell(4,3,0),Cell(4,5,1),Cell(4,6,0),Cell(4,7,0),\nCell(5,1,\"???\"),Cell(5,0,\"???\"),Cell(5,2,0),Cell(5,3,1),Cell(5,5,0),\nCell(6,2,1),Cell(6,3,0),Cell(6,5,1),Cell(6,6,0),\nCell(7,2,0),Cell(7,3,1),Cell(7,4,0),Cell(7,5,0)\n),\nSeq(RowLabel(0,\"TRAIN\"),RowLabel(4,\"TEST\"),RowLabel(6,\"UNLAB\")),Seq(ColLabel(0,\"task1\"),ColLabel(1,\"task2\"),ColLabel(2,\"feat1\"),ColLabel(3,\"feat2\"),ColLabel(4,\"feat3\"),ColLabel(5,\"feat4\"),ColLabel(6,\"feat5\"),ColLabel(7,\"feat6\")), Seq(0,4,6), Seq(0,2))\n\n\nval matrices = Seq(m2,m3,m4,m5)\n\n\nMatrixRenderer.render(matrices,layout)",
       "extraFields" : {
         "showEditor" : "false",
         "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\n\\nval layout = Layout(colHeaderSize=60, ch=45, cw=150, rowHeaderSize=100, numCols=2,numRows=7)\\n\\nval m1 = Matrix(Seq(Cell(0,0,\\\"label\\\"),Cell(0,1,\\\"features\\\"),Cell(1,0,1),Cell(1,1,\\\"f1, f3, f4, f6\\\"),Cell(2,0,1),Cell(2,1,\\\"f3, f6\\\"),Cell(3,0,0),Cell(3,1,\\\"f1, f2, f5\\\"),Cell(4,0,0),Cell(4,1,\\\"f1, f2\\\")),Seq(RowLabel(1, \\\"TRAIN\\\")),Seq(), Seq(1,5), Seq(0,1))\\n\\nval m2 = Matrix(Seq(Cell(0,0,\\\"label\\\"),Cell(0,1,\\\"features\\\"),Cell(1,0,1),Cell(1,1,\\\"f1, f3, f4, f6\\\"),Cell(2,0,1),Cell(2,1,\\\"f3, f6\\\"),Cell(3,0,0),Cell(3,1,\\\"f1, f2, f5\\\"),Cell(4,0,0),Cell(4,1,\\\"f1, f2\\\"),Cell(5,0,\\\"???\\\"),Cell(5,1,\\\"f1, f3, f4\\\"),Cell(6,0,\\\"???\\\"),Cell(6,1,\\\"f2\\\")),Seq(RowLabel(1, \\\"TRAIN\\\"),RowLabel(5, \\\"TEST\\\")),Seq(), Seq(1,5), Seq(0,1))\\n\\n\\n//val m2 = Matrix(Seq(Cell(1,0,1.0),Cell(1,1,\\\"Blah\\\")),Seq(RowLabel(1,\\\"row1\\\"),RowLabel(0,\\\"row2\\\")),Seq(ColLabel(1,\\\"col2\\\")), Seq(1))\\n\\nval matrices = Seq(m1,m2)\\n\\n\\nMatrixRenderer.render(matrices,layout)\"]"
       }
     }
   }, {
-    "id" : 21,
+    "id" : 6,
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "<div style=\"position:relative; width:600px; height:100px; margin:auto; display:block\">\n<div class=\"fragment0 current-visible\" style=\"position:absolute; top:0;left:0px;\">Binary classification</div><div class=\"fragment1 current-visible\" style=\"position:absolute; top:0;left:0px;\">Semi-supervised</div>\n</div>",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 6,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "semi",
+      "code" : "<div style=\"position:relative; width:600px; height:100px; margin:auto; display:block\">\n<div class=\"fragment0 current-visible\" style=\"position:absolute; top:0;left:0px;\">Binary classification</div><div class=\"fragment1 current-visible\" style=\"position:absolute; top:0;left:0px;\">Semi-supervised</div><div class=\"fragment2 current-visible\" style=\"position:absolute; top:0;left:0px;\">Multi-task</div><div class=\"fragment3 current-visible\" style=\"position:absolute; top:0;left:0px;\">Missing data</div>\n</div>",
       "extraFields" : { }
     }
   }, {
     "id" : 7,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### Semi-Supervised Classification\n",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 8,
-    "compiler" : "scala",
-    "input" : {
-      "sessionId" : null,
-      "code" : "import uk.ac.ucl.cs.mr.acltutorial._\nimport MatrixRenderer._\n\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=70, numCols=8,numRows=8)\n\nval m2 = Matrix(Seq(Cell(0,0,1),Cell(0,1,1),Cell(0,2,0),Cell(0,3,1),Cell(0,4,1),Cell(0,5,0),Cell(0,6,1),\nCell(1,0,1),Cell(1,1,0),Cell(1,2,0),Cell(1,3,1),Cell(1,4,0),Cell(1,5,0),Cell(1,6,1),\nCell(2,0,0),Cell(2,1,1),Cell(2,2,1),Cell(2,3,0),Cell(2,4,0),Cell(2,5,1),Cell(2,6,0),\nCell(3,0,0),Cell(3,1,1),Cell(3,2,1),Cell(3,3,0),Cell(3,4,0),Cell(3,5,0),Cell(3,6,0),\nCell(4,0,\"?\"),Cell(4,1,1),Cell(4,2,0),Cell(4,3,1),Cell(4,4,1),Cell(4,5,0),Cell(4,6,0),\nCell(5,0,\"?\"),Cell(5,1,0),Cell(5,2,1),Cell(5,3,0),Cell(5,4,0),Cell(5,5,0),Cell(5,6,0),\nCell(6,0,\"-\"),Cell(6,1,1),Cell(6,2,0),Cell(6,3,0),Cell(6,4,1),Cell(6,5,0),Cell(6,6,0),\nCell(7,0,\"-\"),Cell(7,1,0),Cell(7,2,1),Cell(7,3,0),Cell(7,4,0),Cell(7,5,1),Cell(7,6,0)\n),\nSeq(RowLabel(0,\"train1\"),RowLabel(1,\"train2\"),RowLabel(2,\"train3\"),RowLabel(3,\"train4\"),RowLabel(4,\"test1\"),RowLabel(5,\"test2\"),RowLabel(6,\"unlab1\"),RowLabel(7,\"unlab2\")),Seq(ColLabel(0,\"label\"),ColLabel(1,\"feat1\"),ColLabel(2,\"feat2\"),ColLabel(3,\"feat4\"),ColLabel(4,\"feat4\"),ColLabel(5,\"feat5\"),ColLabel(6,\"feat6\")), Seq(0,4,6))\n\nval matrices = Seq(m2)\n\n\nMatrixRenderer.render(matrices,layout)",
-      "extraFields" : {
-        "showEditor" : "false",
-        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\n\\nval layout = Layout(colHeaderSize=60, ch=45, cw=150, rowHeaderSize=100, numCols=2,numRows=7)\\n\\nval m1 = Matrix(Seq(Cell(0,0,\\\"label\\\"),Cell(0,1,\\\"features\\\"),Cell(1,0,1),Cell(1,1,\\\"f1, f3, f4, f6\\\"),Cell(2,0,1),Cell(2,1,\\\"f3, f6\\\"),Cell(3,0,0),Cell(3,1,\\\"f1, f2, f5\\\"),Cell(4,0,0),Cell(4,1,\\\"f1, f2\\\")),Seq(RowLabel(1, \\\"TRAIN\\\")),Seq(), Seq(1,5), Seq(0,1))\\n\\nval m2 = Matrix(Seq(Cell(0,0,\\\"label\\\"),Cell(0,1,\\\"features\\\"),Cell(1,0,1),Cell(1,1,\\\"f1, f3, f4, f6\\\"),Cell(2,0,1),Cell(2,1,\\\"f3, f6\\\"),Cell(3,0,0),Cell(3,1,\\\"f1, f2, f5\\\"),Cell(4,0,0),Cell(4,1,\\\"f1, f2\\\"),Cell(5,0,\\\"???\\\"),Cell(5,1,\\\"f1, f3, f4\\\"),Cell(6,0,\\\"???\\\"),Cell(6,1,\\\"f2\\\")),Seq(RowLabel(1, \\\"TRAIN\\\"),RowLabel(5, \\\"TEST\\\")),Seq(), Seq(1,5), Seq(0,1))\\n\\n\\n//val m2 = Matrix(Seq(Cell(1,0,1.0),Cell(1,1,\\\"Blah\\\")),Seq(RowLabel(1,\\\"row1\\\"),RowLabel(0,\\\"row2\\\")),Seq(ColLabel(1,\\\"col2\\\")), Seq(1))\\n\\nval matrices = Seq(m1,m2)\\n\\n\\nMatrixRenderer.render(matrices,layout)\",\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\n\\nval layout = Layout(colHeaderSize=110, ch=45, cw=80, rowHeaderSize=70, numCols=8,numRows=6)\\n\\n//val m1 = Matrix(Seq(Cell(0,0,\\\"label\\\"),Cell(0,1,\\\"features\\\"),Cell(1,0,1),Cell(1,1,\\\"f1,f3,f4,f6\\\"),Cell(2,0,1),Cell(2,1,\\\"f3,f6\\\"),Cell(3,0,0),Cell(3,1,\\\"f1,f2,f5\\\"),Cell(4,0,0),Cell(4,1,\\\"f1,f2\\\")),Seq(),Seq(), Seq(1))\\n\\n//val m2 = Matrix(Seq(Cell(0,0,\\\"label\\\"),Cell(0,1,\\\"features\\\"),Cell(1,0,1),Cell(1,1,\\\"f1,f3,f4,f6\\\"),Cell(2,0,1),Cell(2,1,\\\"f3,f6\\\"),Cell(3,0,0),Cell(3,1,\\\"f1,f2,f5\\\"),Cell(4,0,0),Cell(4,1,\\\"f1,f2\\\"),Cell(5,0,\\\"?\\\"),Cell(5,1,\\\"f1,f3,f4\\\"),Cell(6,0,\\\"?\\\"),Cell(6,1,\\\"f2\\\")),Seq(),Seq(), Seq(1,5))\\n\\n\\nval m2 = Matrix(Seq(Cell(0,0,1),Cell(0,1,1),Cell(0,2,0),Cell(0,3,1),Cell(0,4,1),Cell(0,5,0),Cell(0,6,1),\\nCell(1,0,1),Cell(1,1,0),Cell(1,2,0),Cell(1,3,1),Cell(1,4,0),Cell(1,5,0),Cell(1,6,1),\\nCell(2,0,0),Cell(2,1,1),Cell(2,2,1),Cell(2,3,0),Cell(2,4,0),Cell(2,5,1),Cell(2,6,0),\\nCell(3,0,0),Cell(3,1,1),Cell(3,2,1),Cell(3,3,0),Cell(3,4,0),Cell(3,5,0),Cell(3,6,0),\\nCell(4,0,\\\"???\\\"),Cell(4,1,1),Cell(4,2,0),Cell(4,3,1),Cell(4,4,1),Cell(4,5,0),Cell(4,6,0),\\nCell(5,0,\\\"???\\\"),Cell(5,1,0),Cell(5,2,1),Cell(5,3,0),Cell(5,4,0),Cell(5,5,0),Cell(5,6,0)\\n),\\nSeq(RowLabel(0,\\\"TRAIN\\\"),RowLabel(4,\\\"TEST\\\")),Seq(ColLabel(0,\\\"label\\\"),ColLabel(1,\\\"feat1\\\"),ColLabel(2,\\\"feat2\\\"),ColLabel(3,\\\"feat3\\\"),ColLabel(4,\\\"feat4\\\"),ColLabel(5,\\\"feat5\\\"),ColLabel(6,\\\"feat6\\\")), Seq(0,4), Seq(0,1))\\n\\nval matrices = Seq(m2)\\n\\n\\nMatrixRenderer.render(matrices,layout)\"]"
-      }
-    }
-  }, {
-    "id" : 9,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "multi",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 10,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "\n### Multi-Label Classification",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 11,
-    "compiler" : "scala",
-    "input" : {
-      "sessionId" : null,
-      "code" : "import uk.ac.ucl.cs.mr.acltutorial._\nimport MatrixRenderer._\n\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=70, numCols=9,numRows=8)\n\nval m2 = Matrix(Seq(Cell(0,0,1),Cell(0,1,1),Cell(0,2,1),Cell(0,3,0),Cell(0,4,1),Cell(0,5,1),Cell(0,6,0),Cell(0,7,1),\nCell(1,0,1),Cell(1,1,0),Cell(1,2,0),Cell(1,3,0),Cell(1,4,1),Cell(1,5,0),Cell(1,6,0),Cell(1,7,1),\nCell(2,0,0),Cell(2,1,1),Cell(2,2,1),Cell(2,3,1),Cell(2,4,0),Cell(2,5,0),Cell(2,6,1),Cell(2,7,0),\nCell(3,0,0),Cell(3,1,0),Cell(3,2,1),Cell(3,3,1),Cell(3,4,0),Cell(3,5,0),Cell(3,6,0),Cell(3,7,0),\nCell(4,0,\"?\"),Cell(4,1,\"?\"),Cell(4,2,1),Cell(4,3,0),Cell(4,4,1),Cell(4,5,1),Cell(4,6,0),Cell(4,7,0),\nCell(5,0,\"?\"),Cell(5,1,\"?\"),Cell(5,2,0),Cell(5,3,1),Cell(5,4,0),Cell(5,5,0),Cell(5,6,0),Cell(5,7,0),\nCell(6,0,\"-\"),Cell(6,1,\"-\"),Cell(6,2,1),Cell(6,3,0),Cell(6,4,0),Cell(6,5,1),Cell(6,6,0),Cell(6,7,0),\nCell(7,0,\"-\"),Cell(7,1,\"-\"),Cell(7,2,0),Cell(7,3,1),Cell(7,4,0),Cell(7,5,0),Cell(7,6,1),Cell(7,7,0)\n),\nSeq(RowLabel(0,\"train1\"),RowLabel(1,\"train2\"),RowLabel(2,\"train3\"),RowLabel(3,\"train4\"),RowLabel(4,\"test1\"),RowLabel(5,\"test2\"),RowLabel(6,\"unlab1\"),RowLabel(7,\"unlab2\")),Seq(ColLabel(0,\"task1\"),ColLabel(1,\"task2\"),ColLabel(2,\"feat1\"),ColLabel(3,\"feat2\"),ColLabel(4,\"feat4\"),ColLabel(5,\"feat4\"),ColLabel(6,\"feat5\"),ColLabel(7,\"feat6\")), Seq(0,4,6))\n\nval matrices = Seq(m2)\n\n\nMatrixRenderer.render(matrices,layout)",
-      "extraFields" : {
-        "showEditor" : "false",
-        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\n\\nval layout = Layout(colHeaderSize=60, ch=45, cw=150, rowHeaderSize=100, numCols=2,numRows=7)\\n\\nval m1 = Matrix(Seq(Cell(0,0,\\\"label\\\"),Cell(0,1,\\\"features\\\"),Cell(1,0,1),Cell(1,1,\\\"f1, f3, f4, f6\\\"),Cell(2,0,1),Cell(2,1,\\\"f3, f6\\\"),Cell(3,0,0),Cell(3,1,\\\"f1, f2, f5\\\"),Cell(4,0,0),Cell(4,1,\\\"f1, f2\\\")),Seq(RowLabel(1, \\\"TRAIN\\\")),Seq(), Seq(1,5), Seq(0,1))\\n\\nval m2 = Matrix(Seq(Cell(0,0,\\\"label\\\"),Cell(0,1,\\\"features\\\"),Cell(1,0,1),Cell(1,1,\\\"f1, f3, f4, f6\\\"),Cell(2,0,1),Cell(2,1,\\\"f3, f6\\\"),Cell(3,0,0),Cell(3,1,\\\"f1, f2, f5\\\"),Cell(4,0,0),Cell(4,1,\\\"f1, f2\\\"),Cell(5,0,\\\"???\\\"),Cell(5,1,\\\"f1, f3, f4\\\"),Cell(6,0,\\\"???\\\"),Cell(6,1,\\\"f2\\\")),Seq(RowLabel(1, \\\"TRAIN\\\"),RowLabel(5, \\\"TEST\\\")),Seq(), Seq(1,5), Seq(0,1))\\n\\n\\n//val m2 = Matrix(Seq(Cell(1,0,1.0),Cell(1,1,\\\"Blah\\\")),Seq(RowLabel(1,\\\"row1\\\"),RowLabel(0,\\\"row2\\\")),Seq(ColLabel(1,\\\"col2\\\")), Seq(1))\\n\\nval matrices = Seq(m1,m2)\\n\\n\\nMatrixRenderer.render(matrices,layout)\",\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\n\\nval layout = Layout(colHeaderSize=110, ch=45, cw=80, rowHeaderSize=70, numCols=8,numRows=6)\\n\\n//val m1 = Matrix(Seq(Cell(0,0,\\\"label\\\"),Cell(0,1,\\\"features\\\"),Cell(1,0,1),Cell(1,1,\\\"f1,f3,f4,f6\\\"),Cell(2,0,1),Cell(2,1,\\\"f3,f6\\\"),Cell(3,0,0),Cell(3,1,\\\"f1,f2,f5\\\"),Cell(4,0,0),Cell(4,1,\\\"f1,f2\\\")),Seq(),Seq(), Seq(1))\\n\\n//val m2 = Matrix(Seq(Cell(0,0,\\\"label\\\"),Cell(0,1,\\\"features\\\"),Cell(1,0,1),Cell(1,1,\\\"f1,f3,f4,f6\\\"),Cell(2,0,1),Cell(2,1,\\\"f3,f6\\\"),Cell(3,0,0),Cell(3,1,\\\"f1,f2,f5\\\"),Cell(4,0,0),Cell(4,1,\\\"f1,f2\\\"),Cell(5,0,\\\"?\\\"),Cell(5,1,\\\"f1,f3,f4\\\"),Cell(6,0,\\\"?\\\"),Cell(6,1,\\\"f2\\\")),Seq(),Seq(), Seq(1,5))\\n\\n\\nval m2 = Matrix(Seq(Cell(0,0,1),Cell(0,1,1),Cell(0,2,0),Cell(0,3,1),Cell(0,4,1),Cell(0,5,0),Cell(0,6,1),\\nCell(1,0,1),Cell(1,1,0),Cell(1,2,0),Cell(1,3,1),Cell(1,4,0),Cell(1,5,0),Cell(1,6,1),\\nCell(2,0,0),Cell(2,1,1),Cell(2,2,1),Cell(2,3,0),Cell(2,4,0),Cell(2,5,1),Cell(2,6,0),\\nCell(3,0,0),Cell(3,1,1),Cell(3,2,1),Cell(3,3,0),Cell(3,4,0),Cell(3,5,0),Cell(3,6,0),\\nCell(4,0,\\\"???\\\"),Cell(4,1,1),Cell(4,2,0),Cell(4,3,1),Cell(4,4,1),Cell(4,5,0),Cell(4,6,0),\\nCell(5,0,\\\"???\\\"),Cell(5,1,0),Cell(5,2,1),Cell(5,3,0),Cell(5,4,0),Cell(5,5,0),Cell(5,6,0)\\n),\\nSeq(RowLabel(0,\\\"TRAIN\\\"),RowLabel(4,\\\"TEST\\\")),Seq(ColLabel(0,\\\"label\\\"),ColLabel(1,\\\"feat1\\\"),ColLabel(2,\\\"feat2\\\"),ColLabel(3,\\\"feat3\\\"),ColLabel(4,\\\"feat4\\\"),ColLabel(5,\\\"feat5\\\"),ColLabel(6,\\\"feat6\\\")), Seq(0,4), Seq(0,1))\\n\\nval matrices = Seq(m2)\\n\\n\\nMatrixRenderer.render(matrices,layout)\",\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\n\\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=70, numCols=8,numRows=8)\\n\\nval m2 = Matrix(Seq(Cell(0,0,1),Cell(0,1,1),Cell(0,2,0),Cell(0,3,1),Cell(0,4,1),Cell(0,5,0),Cell(0,6,1),\\nCell(1,0,1),Cell(1,1,0),Cell(1,2,0),Cell(1,3,1),Cell(1,4,0),Cell(1,5,0),Cell(1,6,1),\\nCell(2,0,0),Cell(2,1,1),Cell(2,2,1),Cell(2,3,0),Cell(2,4,0),Cell(2,5,1),Cell(2,6,0),\\nCell(3,0,0),Cell(3,1,1),Cell(3,2,1),Cell(3,3,0),Cell(3,4,0),Cell(3,5,0),Cell(3,6,0),\\nCell(4,0,\\\"?\\\"),Cell(4,1,1),Cell(4,2,0),Cell(4,3,1),Cell(4,4,1),Cell(4,5,0),Cell(4,6,0),\\nCell(5,0,\\\"?\\\"),Cell(5,1,0),Cell(5,2,1),Cell(5,3,0),Cell(5,4,0),Cell(5,5,0),Cell(5,6,0),\\nCell(6,0,\\\"-\\\"),Cell(6,1,1),Cell(6,2,0),Cell(6,3,0),Cell(6,4,1),Cell(6,5,0),Cell(6,6,0),\\nCell(7,0,\\\"-\\\"),Cell(7,1,0),Cell(7,2,1),Cell(7,3,0),Cell(7,4,0),Cell(7,5,1),Cell(7,6,0)\\n),\\nSeq(RowLabel(0,\\\"train1\\\"),RowLabel(1,\\\"train2\\\"),RowLabel(2,\\\"train3\\\"),RowLabel(3,\\\"train4\\\"),RowLabel(4,\\\"test1\\\"),RowLabel(5,\\\"test2\\\"),RowLabel(6,\\\"unlab1\\\"),RowLabel(7,\\\"unlab2\\\")),Seq(ColLabel(0,\\\"label\\\"),ColLabel(1,\\\"feat1\\\"),ColLabel(2,\\\"feat2\\\"),ColLabel(3,\\\"feat4\\\"),ColLabel(4,\\\"feat4\\\"),ColLabel(5,\\\"feat5\\\"),ColLabel(6,\\\"feat6\\\")), Seq(0,4,6))\\n\\nval matrices = Seq(m2)\\n\\n\\nMatrixRenderer.render(matrices,layout)\"]"
-      }
-    }
-  }, {
-    "id" : 12,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "missing",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 13,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### Missing Features",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 14,
-    "compiler" : "scala",
-    "input" : {
-      "sessionId" : null,
-      "code" : "import uk.ac.ucl.cs.mr.acltutorial._\nimport MatrixRenderer._\n\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=70, numCols=9,numRows=8)\n\nval m2 = Matrix(Seq(Cell(0,0,1),Cell(0,1,1),Cell(0,2,1),Cell(0,3,0),Cell(0,4,1),Cell(0,5,\"-\"),Cell(0,6,0),Cell(0,7,1),\nCell(1,0,1),Cell(1,1,0),Cell(1,2,\"-\"),Cell(1,3,\"-\"),Cell(1,4,1),Cell(1,5,0),Cell(1,6,0),Cell(1,7,1),\nCell(2,0,0),Cell(2,1,1),Cell(2,2,1),Cell(2,3,1),Cell(2,4,0),Cell(2,5,\"-\"),Cell(2,6,1),Cell(2,7,0),\nCell(3,0,0),Cell(3,1,0),Cell(3,2,1),Cell(3,3,\"-\"),Cell(3,4,\"-\"),Cell(3,5,0),Cell(3,6,0),Cell(3,7,0),\nCell(4,0,\"?\"),Cell(4,1,\"?\"),Cell(4,2,1),Cell(4,3,0),Cell(4,4,\"-\"),Cell(4,5,1),Cell(4,6,0),Cell(4,7,0),\nCell(5,0,\"?\"),Cell(5,1,\"?\"),Cell(5,2,0),Cell(5,3,1),Cell(5,4,\"-\"),Cell(5,5,0),Cell(5,6,\"-\"),Cell(5,7,0),\nCell(6,0,\"-\"),Cell(6,1,\"-\"),Cell(6,2,1),Cell(6,3,0),Cell(6,4,\"-\"),Cell(6,5,1),Cell(6,6,0),Cell(6,7,\"-\"),\nCell(7,0,\"-\"),Cell(7,1,\"-\"),Cell(7,2,0),Cell(7,3,1),Cell(7,4,0),Cell(7,5,0),Cell(7,6,\"-\"),Cell(7,7,\"-\")\n),\nSeq(RowLabel(0,\"train1\"),RowLabel(1,\"train2\"),RowLabel(2,\"train3\"),RowLabel(3,\"train4\"),RowLabel(4,\"test1\"),RowLabel(5,\"test2\"),RowLabel(6,\"unlab1\"),RowLabel(7,\"unlab2\")),Seq(ColLabel(0,\"task1\"),ColLabel(1,\"task2\"),ColLabel(2,\"feat1\"),ColLabel(3,\"feat2\"),ColLabel(4,\"feat4\"),ColLabel(5,\"feat4\"),ColLabel(6,\"feat5\"),ColLabel(7,\"feat6\")), Seq(0,4,6))\n\nval matrices = Seq(m2)\n\n\nMatrixRenderer.render(matrices,layout)",
-      "extraFields" : {
-        "showEditor" : "false",
-        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\n\\nval layout = Layout(colHeaderSize=60, ch=45, cw=150, rowHeaderSize=100, numCols=2,numRows=7)\\n\\nval m1 = Matrix(Seq(Cell(0,0,\\\"label\\\"),Cell(0,1,\\\"features\\\"),Cell(1,0,1),Cell(1,1,\\\"f1, f3, f4, f6\\\"),Cell(2,0,1),Cell(2,1,\\\"f3, f6\\\"),Cell(3,0,0),Cell(3,1,\\\"f1, f2, f5\\\"),Cell(4,0,0),Cell(4,1,\\\"f1, f2\\\")),Seq(RowLabel(1, \\\"TRAIN\\\")),Seq(), Seq(1,5), Seq(0,1))\\n\\nval m2 = Matrix(Seq(Cell(0,0,\\\"label\\\"),Cell(0,1,\\\"features\\\"),Cell(1,0,1),Cell(1,1,\\\"f1, f3, f4, f6\\\"),Cell(2,0,1),Cell(2,1,\\\"f3, f6\\\"),Cell(3,0,0),Cell(3,1,\\\"f1, f2, f5\\\"),Cell(4,0,0),Cell(4,1,\\\"f1, f2\\\"),Cell(5,0,\\\"???\\\"),Cell(5,1,\\\"f1, f3, f4\\\"),Cell(6,0,\\\"???\\\"),Cell(6,1,\\\"f2\\\")),Seq(RowLabel(1, \\\"TRAIN\\\"),RowLabel(5, \\\"TEST\\\")),Seq(), Seq(1,5), Seq(0,1))\\n\\n\\n//val m2 = Matrix(Seq(Cell(1,0,1.0),Cell(1,1,\\\"Blah\\\")),Seq(RowLabel(1,\\\"row1\\\"),RowLabel(0,\\\"row2\\\")),Seq(ColLabel(1,\\\"col2\\\")), Seq(1))\\n\\nval matrices = Seq(m1,m2)\\n\\n\\nMatrixRenderer.render(matrices,layout)\",\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\n\\nval layout = Layout(colHeaderSize=110, ch=45, cw=80, rowHeaderSize=70, numCols=8,numRows=6)\\n\\n//val m1 = Matrix(Seq(Cell(0,0,\\\"label\\\"),Cell(0,1,\\\"features\\\"),Cell(1,0,1),Cell(1,1,\\\"f1,f3,f4,f6\\\"),Cell(2,0,1),Cell(2,1,\\\"f3,f6\\\"),Cell(3,0,0),Cell(3,1,\\\"f1,f2,f5\\\"),Cell(4,0,0),Cell(4,1,\\\"f1,f2\\\")),Seq(),Seq(), Seq(1))\\n\\n//val m2 = Matrix(Seq(Cell(0,0,\\\"label\\\"),Cell(0,1,\\\"features\\\"),Cell(1,0,1),Cell(1,1,\\\"f1,f3,f4,f6\\\"),Cell(2,0,1),Cell(2,1,\\\"f3,f6\\\"),Cell(3,0,0),Cell(3,1,\\\"f1,f2,f5\\\"),Cell(4,0,0),Cell(4,1,\\\"f1,f2\\\"),Cell(5,0,\\\"?\\\"),Cell(5,1,\\\"f1,f3,f4\\\"),Cell(6,0,\\\"?\\\"),Cell(6,1,\\\"f2\\\")),Seq(),Seq(), Seq(1,5))\\n\\n\\nval m2 = Matrix(Seq(Cell(0,0,1),Cell(0,1,1),Cell(0,2,0),Cell(0,3,1),Cell(0,4,1),Cell(0,5,0),Cell(0,6,1),\\nCell(1,0,1),Cell(1,1,0),Cell(1,2,0),Cell(1,3,1),Cell(1,4,0),Cell(1,5,0),Cell(1,6,1),\\nCell(2,0,0),Cell(2,1,1),Cell(2,2,1),Cell(2,3,0),Cell(2,4,0),Cell(2,5,1),Cell(2,6,0),\\nCell(3,0,0),Cell(3,1,1),Cell(3,2,1),Cell(3,3,0),Cell(3,4,0),Cell(3,5,0),Cell(3,6,0),\\nCell(4,0,\\\"???\\\"),Cell(4,1,1),Cell(4,2,0),Cell(4,3,1),Cell(4,4,1),Cell(4,5,0),Cell(4,6,0),\\nCell(5,0,\\\"???\\\"),Cell(5,1,0),Cell(5,2,1),Cell(5,3,0),Cell(5,4,0),Cell(5,5,0),Cell(5,6,0)\\n),\\nSeq(RowLabel(0,\\\"TRAIN\\\"),RowLabel(4,\\\"TEST\\\")),Seq(ColLabel(0,\\\"label\\\"),ColLabel(1,\\\"feat1\\\"),ColLabel(2,\\\"feat2\\\"),ColLabel(3,\\\"feat3\\\"),ColLabel(4,\\\"feat4\\\"),ColLabel(5,\\\"feat5\\\"),ColLabel(6,\\\"feat6\\\")), Seq(0,4), Seq(0,1))\\n\\nval matrices = Seq(m2)\\n\\n\\nMatrixRenderer.render(matrices,layout)\",\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\n\\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=70, numCols=8,numRows=8)\\n\\nval m2 = Matrix(Seq(Cell(0,0,1),Cell(0,1,1),Cell(0,2,0),Cell(0,3,1),Cell(0,4,1),Cell(0,5,0),Cell(0,6,1),\\nCell(1,0,1),Cell(1,1,0),Cell(1,2,0),Cell(1,3,1),Cell(1,4,0),Cell(1,5,0),Cell(1,6,1),\\nCell(2,0,0),Cell(2,1,1),Cell(2,2,1),Cell(2,3,0),Cell(2,4,0),Cell(2,5,1),Cell(2,6,0),\\nCell(3,0,0),Cell(3,1,1),Cell(3,2,1),Cell(3,3,0),Cell(3,4,0),Cell(3,5,0),Cell(3,6,0),\\nCell(4,0,\\\"?\\\"),Cell(4,1,1),Cell(4,2,0),Cell(4,3,1),Cell(4,4,1),Cell(4,5,0),Cell(4,6,0),\\nCell(5,0,\\\"?\\\"),Cell(5,1,0),Cell(5,2,1),Cell(5,3,0),Cell(5,4,0),Cell(5,5,0),Cell(5,6,0),\\nCell(6,0,\\\"-\\\"),Cell(6,1,1),Cell(6,2,0),Cell(6,3,0),Cell(6,4,1),Cell(6,5,0),Cell(6,6,0),\\nCell(7,0,\\\"-\\\"),Cell(7,1,0),Cell(7,2,1),Cell(7,3,0),Cell(7,4,0),Cell(7,5,1),Cell(7,6,0)\\n),\\nSeq(RowLabel(0,\\\"train1\\\"),RowLabel(1,\\\"train2\\\"),RowLabel(2,\\\"train3\\\"),RowLabel(3,\\\"train4\\\"),RowLabel(4,\\\"test1\\\"),RowLabel(5,\\\"test2\\\"),RowLabel(6,\\\"unlab1\\\"),RowLabel(7,\\\"unlab2\\\")),Seq(ColLabel(0,\\\"label\\\"),ColLabel(1,\\\"feat1\\\"),ColLabel(2,\\\"feat2\\\"),ColLabel(3,\\\"feat4\\\"),ColLabel(4,\\\"feat4\\\"),ColLabel(5,\\\"feat5\\\"),ColLabel(6,\\\"feat6\\\")), Seq(0,4,6))\\n\\nval matrices = Seq(m2)\\n\\n\\nMatrixRenderer.render(matrices,layout)\",\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\n\\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=70, numCols=9,numRows=8)\\n\\nval m2 = Matrix(Seq(Cell(0,0,1),Cell(0,1,1),Cell(0,2,1),Cell(0,3,0),Cell(0,4,1),Cell(0,5,1),Cell(0,6,0),Cell(0,7,1),\\nCell(1,0,1),Cell(1,1,0),Cell(1,2,0),Cell(1,3,0),Cell(1,4,1),Cell(1,5,0),Cell(1,6,0),Cell(1,7,1),\\nCell(2,0,0),Cell(2,1,1),Cell(2,2,1),Cell(2,3,1),Cell(2,4,0),Cell(2,5,0),Cell(2,6,1),Cell(2,7,0),\\nCell(3,0,0),Cell(3,1,0),Cell(3,2,1),Cell(3,3,1),Cell(3,4,0),Cell(3,5,0),Cell(3,6,0),Cell(3,7,0),\\nCell(4,0,\\\"?\\\"),Cell(4,1,\\\"?\\\"),Cell(4,2,1),Cell(4,3,0),Cell(4,4,1),Cell(4,5,1),Cell(4,6,0),Cell(4,7,0),\\nCell(5,0,\\\"?\\\"),Cell(5,1,\\\"?\\\"),Cell(5,2,0),Cell(5,3,1),Cell(5,4,0),Cell(5,5,0),Cell(5,6,0),Cell(5,7,0),\\nCell(6,0,\\\"-\\\"),Cell(6,1,\\\"-\\\"),Cell(6,2,1),Cell(6,3,0),Cell(6,4,0),Cell(6,5,1),Cell(6,6,0),Cell(6,7,0),\\nCell(7,0,\\\"-\\\"),Cell(7,1,\\\"-\\\"),Cell(7,2,0),Cell(7,3,1),Cell(7,4,0),Cell(7,5,0),Cell(7,6,1),Cell(7,7,0)\\n),\\nSeq(RowLabel(0,\\\"train1\\\"),RowLabel(1,\\\"train2\\\"),RowLabel(2,\\\"train3\\\"),RowLabel(3,\\\"train4\\\"),RowLabel(4,\\\"test1\\\"),RowLabel(5,\\\"test2\\\"),RowLabel(6,\\\"unlab1\\\"),RowLabel(7,\\\"unlab2\\\")),Seq(ColLabel(0,\\\"task1\\\"),ColLabel(1,\\\"task2\\\"),ColLabel(2,\\\"feat1\\\"),ColLabel(3,\\\"feat2\\\"),ColLabel(4,\\\"feat4\\\"),ColLabel(5,\\\"feat4\\\"),ColLabel(6,\\\"feat5\\\"),ColLabel(7,\\\"feat6\\\")), Seq(0,4,6))\\n\\nval matrices = Seq(m2)\\n\\n\\nMatrixRenderer.render(matrices,layout)\"]"
-      }
-    }
-  }, {
-    "id" : 15,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -152,17 +71,17 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 16,
+    "id" : 8,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Notation\n\n- Scalars: lower-case letters \\\\(v,m\\\\)\n- Vectors: boldface lower-case letters \\\\(\\mathbf{v}\\\\)\n- Matrices: boldface capital letters \\\\(\\mathbf{M}\\\\)\n \n- \\\\(i\\\\)th element of a vector \\\\(\\mathbf{v}\\\\): \\\\(v_i\\\\)\n- \\\\((i,j)\\\\)-element of a matrix \\\\(\\mathbf{M}\\\\): \\\\(m_{ij}\\\\)\n- \\\\(i\\\\)th row of a matrix \\\\(\\mathbf{M}\\\\): \\\\(\\mathbf{m}_{i:}\\\\)\n- \\\\(j\\\\)th column of a matrix \\\\(\\mathbf{M}\\\\): \\\\(\\mathbf{m}_{:j}\\\\)",
+      "code" : "### Notation\n\n- Scalars: lower-case letters \\\\(v,m\\\\)\n- Vectors: boldface lower-case letters \\\\(\\mathbf{v}\\\\)\n$$ \\begin{pmatrix} v_{1} & v_{2} & \\cdots & v_{n} \\end{pmatrix}$$\n- Matrices: boldface capital letters \\\\(\\mathbf{M}\\\\)\n$$ \\begin{pmatrix} m_{1,1} & m_{1,2} & \\cdots & m_{1,J} \\\\\\\nm_{2,1} & m_{2,2} & \\cdots & m_{2,J} \\\\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\\\nm_{I,1} & m_{I,2} & \\cdots & m_{I,J} \\end{pmatrix} $$\n- \\\\(i\\\\)th row of \\\\(\\mathbf{M}\\\\): \\\\\\(\\mathbf{m}_{i:}\\\\)\n- \\\\(j\\\\)th column of \\\\(\\mathbf{M}\\\\):\\\\(\\mathbf{m}_{:j}\\\\)",
       "extraFields" : {
         "hide_output" : "false"
       }
     }
   }, {
-    "id" : 17,
+    "id" : 9,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -170,15 +89,47 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 18,
+    "id" : 10,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Operations\n- the **inner product** is \\\\(\\langle \\mathbf{u},\\mathbf{v} \\rangle := \\sum_{\\ell=1}^L u_{\\ell} v_\\ell\\\\)\nwhere \\\\(\\mathbf{u}\\in\\Re^L\\\\) and \\\\(\\mathbf{v}\\in\\Re^L\\\\)\n\n- the **outer product**  \\\\( \\mathbf{u} \\otimes \\mathbf{v} \\\\) between vectors \\\\(\\mathbf{u}\\in\\Re^N\\\\) and \\\\(\\mathbf{v}\\in\\Re^M\\\\) is the \\\\(N\\times M\\\\) matrix with elements \\\\(u_nv_m\\\\), \\\\( n=\\{1,\\cdots,N\\} \\\\) and \\\\(m= \\{1,\\cdots,M\\} \\\\)\n\n- the **outer product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{M \\times L} \\\\), \\\\( \\mathbf{U} \\otimes \\mathbf{V} := \\sum_{\\ell=1}^L \\mathbf{U}_{:\\ell} \\otimes \\mathbf{V}_{:\\ell} \\\\)\n\n- the element-wise **Hadamard product** for matrices \\\\(\\mathbf{U},\\mathbf{V} \\in\\Re^{N\\times L} \\\\) is the \\\\(N\\times L\\\\) matrix \\\\(\\mathbf{U}\\circ \\mathbf{V}\\\\) with elements \\\\((\\mathbf{U}\\circ \\mathbf{V})_{n,l}:=u_{n,l}v_{n,l}\\\\)\n\n",
+      "code" : "### Vector Operations\n<br/>\n- the **inner product** between vectors \\\\(\\mathbf{u}\\in\\Re^L\\\\) and \\\\(\\mathbf{v}\\in\\Re^L\\\\)\n$$\\langle \\mathbf{u},\\mathbf{v} \\rangle := \\sum_{\\ell=1}^L u_{\\ell} v_\\ell$$\n<br/>\n- the **outer product** between vectors \\\\(\\mathbf{u}\\in\\Re^N\\\\) and \\\\(\\mathbf{v}\\in\\Re^M\\\\)\n\n$$\\mathbf{u} \\otimes \\mathbf{v} := \\begin{pmatrix} u_{1} v_{1} & u_{1} v_{2} & \\cdots & u_{1} v_{M}  \\\\\\ u_{2} v_{1} & u_{2} v_{2} & \\cdots & u_{2} v_{M} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ u_{N} v_{1} & u_{N} v_{2} & \\cdots & u_{N} v_{M} \\end{pmatrix}\n$$",
       "extraFields" : { }
     }
   }, {
-    "id" : 19,
+    "id" : 11,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "algebra2",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 12,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Matrix Operations\n\n- the **inner product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{L \\times M} \\\\)\n\n$$\\mathbf{U} \\mathbf{V}:= \\begin{pmatrix} \\sum_{\\ell}u_{1,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{1,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{1,\\ell} v_{\\ell,M}  \\\\\\ \\sum_{\\ell}u_{2,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{2,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{2,\\ell} v_{\\ell,M} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ \\sum_{\\ell}u_{N,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{N,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{N,\\ell} v_{\\ell,M} \\end{pmatrix}$$\n\n- the **outer product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{M \\times L} \\\\)\n\n$$\\mathbf{U} \\otimes \\mathbf{V} := \\sum_{\\ell=1}^L \\mathbf{u}_{:\\ell} \\otimes \\mathbf{v}_{:\\ell} $$",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 13,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "algebra3",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 14,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Matrix Operations\n\n- the element-wise **Hadamard product** for \\\\(\\mathbf{U},\\mathbf{V} \\in\\Re^{N\\times L} \\\\) \n\n$$\\mathbf{U} \\circ \\mathbf{V} := \\begin{pmatrix} u_{1,1} v_{1,1} & u_{1,2} v_{1,2} & \\cdots & u_{1,L} v_{1,L}  \\\\\\ u_{2,1} v_{2,1} & u_{2,2} v_{2,2} & \\cdots & u_{2,L} v_{2,L} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ u_{N,1} v_{N,1} & u_{N,2} v_{N,2} & \\cdots & u_{N,L} v_{N,L} \\end{pmatrix}\n$$\n\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 15,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -186,11 +137,11 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 20,
+    "id" : 16,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Norms\n<br>\n\n**magnitude** of a matrix:\n<br>\n\n- the element-wise matrix **\\\\(p\\\\)-norm** is $$||\\mathbf{U}||_p := \\left(\\sum_{m=1}^M\\sum_{n=1}^N |u_{n,m}|^p \\right)^{1/p} $$\n\n- the **Frobenius norm** is \\\\(||\\mathbf{U}||_F := ||\\mathbf{U}||_2\\\\)",
+      "code" : "### \\\\(p\\\\)-norms\n\n$$||\\mathbf{U}||_p := \\left(\\sum_{m=1}^M\\sum_{n=1}^N |u_{n,m}|^p \\right)^{1/p} $$\n\n\n<img src=\"../../assets/figures/norms.png\" height=\"300\">\n\n\\\\(\\mathbf{U}\\in\\Re^{2\\times 1}, ||\\mathbf{U}||_1 = ||\\mathbf{U}||_2 = ||\\mathbf{U}||_\\infty = 1\\\\)\n\n\n\n**Frobenius norm**: \\\\(||\\mathbf{U}||_F := ||\\mathbf{U}||_2\\\\)",
       "extraFields" : { }
     }
   } ],
