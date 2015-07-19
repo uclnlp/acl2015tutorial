@@ -93,7 +93,39 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Tensor Operations\n- Mode-\\\\(N\\\\) **tensor-vector product** \\\\(\\mathcal{T} \\times_N \\mathbf{v}\\\\)\n    - Dot product of each mode-\\\\(N\\\\) fiber in \\\\(\\mathcal{T}\\\\) with \\\\(\\mathbf{v}\\\\)\n- Mode-\\\\(N\\\\) **tensor-matrix product** \\\\(\\mathcal{T} \\times_N \\mathbf{M}\\\\)\n    - Matrix-vector product of each mode-\\\\(N\\\\) fiber in \\\\(\\mathcal{T}\\\\) with \\\\(\\mathbf{M}\\\\)\n- Mode-\\\\(N\\\\) **matricization** \\\\(\\mathbf{T}_{(N)}\\\\)\n    - Arrange all mode-\\\\(N\\\\) fibers as columns\n",
+      "code" : "### Tensor Operations\n- Mode-\\\\(N\\\\) **tensor-vector product** \\\\(\\mathcal{T} \\times_N \\mathbf{v}\\\\)\n    - Dot product of each mode-\\\\(N\\\\) fiber in \\\\(\\mathcal{T}\\\\) with \\\\(\\mathbf{v}\\\\)\n\n<img src=\"../../assets/figures/tf-vec.png\" width=\"100%\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 38,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "algebra2",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 40,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Tensor Operations\n- Mode-\\\\(N\\\\) **tensor-matrix product** \\\\(\\mathcal{T} \\times_N \\mathbf{M}\\\\)\n    - Matrix-vector product of each mode-\\\\(N\\\\) fiber in \\\\(\\mathcal{T}\\\\) with \\\\(\\mathbf{M}\\\\)\n\n<img src=\"../../assets/figures/tf-mat.png\" width=\"100%\">\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 39,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "algebra3",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 41,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Tensor Operations\n- Mode-\\\\(N\\\\) **matricization** \\\\(\\mathbf{T}_{(N)}\\\\)\n    - Arrange all mode-\\\\(N\\\\) fibers as columns\n\n<img src=\"../../assets/figures/tf-matz.png\" width=\"100%\">    \n",
       "extraFields" : { }
     }
   }, {
@@ -285,7 +317,23 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Relationship to Neural Networks\n\n- **TODO**",
+      "code" : "### Relationship to Neural Networks\nMatrix Factorization: \\\\(\\mathbf{T} \\approx \\sigma(\\mathbf{W}^t_p\\mathbf{W}_r)\\\\)\n\n<img src=\"../../assets/figures/mf-neural.png\" height=\"500\">\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 36,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "nn2",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 37,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Relationship to Neural Networks\nRESCAL: \\\\(\\mathcal{T} \\approx \\mathcal{R} \\times_1 \\mathbf{A} \\times_2 \\mathbf{A}\\\\)\n\n<img src=\"../../assets/figures/rescal-neural.png\" height=\"500\">\n",
       "extraFields" : { }
     }
   } ],
