@@ -75,7 +75,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Notation\n\n- Scalars: lower-case letters \\\\(v,m\\\\)\n- Vectors: boldface lower-case letters \\\\(\\mathbf{v}\\\\)\n$$ \\begin{pmatrix} v_{1} & v_{2} & \\cdots & v_{n} \\end{pmatrix}$$\n- Matrices: boldface capital letters \\\\(\\mathbf{M}\\\\)\n$$ \\begin{pmatrix} m_{1,1} & m_{1,2} & \\cdots & m_{1,J} \\\\\\\nm_{2,1} & m_{2,2} & \\cdots & m_{2,J} \\\\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\\\nm_{I,1} & m_{I,2} & \\cdots & m_{I,J} \\end{pmatrix} $$\n- \\\\(i\\\\)th row of \\\\(\\mathbf{M}\\\\): \\\\\\(\\mathbf{m}_{i:}\\\\)\n- \\\\(j\\\\)th column of \\\\(\\mathbf{M}\\\\):\\\\(\\mathbf{m}_{:j}\\\\)",
+      "code" : "### Notation\n\n- Scalars: lower-case letters \\\\(v,m\\\\)\n- Vectors: boldface lower-case letters \\\\(\\mathbf{v}\\\\)\n$$ \\begin{pmatrix} v_{1} & v_{2} & \\cdots & v_{n} \\end{pmatrix}$$<br>\n- Matrices: boldface capital letters \\\\(\\mathbf{M}\\\\)\n$$ \\begin{pmatrix} m_{1,1} & m_{1,2} & \\cdots & m_{1,J} \\\\\\\nm_{2,1} & m_{2,2} & \\cdots & m_{2,J} \\\\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\\\nm_{I,1} & m_{I,2} & \\cdots & m_{I,J} \\end{pmatrix} $$<br>\n- \\\\(i\\\\)th row of \\\\(\\mathbf{M}\\\\): \\\\\\(\\mathbf{m}_{i:}\\\\)\n- \\\\(j\\\\)th column of \\\\(\\mathbf{M}\\\\):\\\\(\\mathbf{m}_{:j}\\\\)",
       "extraFields" : {
         "hide_output" : "false"
       }
@@ -142,6 +142,22 @@
     "input" : {
       "sessionId" : null,
       "code" : "### \\\\(p\\\\)-norms\n\n$$||\\mathbf{U}||_p := \\left(\\sum_{m=1}^M\\sum_{n=1}^N |u_{n,m}|^p \\right)^{1/p} $$\n\n\n<img src=\"../../assets/figures/norms.png\" height=\"300\">\n\n\\\\(\\mathbf{U}\\in\\Re^{2\\times 1}, ||\\mathbf{U}||_1 = ||\\mathbf{U}||_2 = ||\\mathbf{U}||_\\infty = 1\\\\)\n\n\n\n**Frobenius norm**: \\\\(||\\mathbf{U}||_F := ||\\mathbf{U}||_2\\\\)",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 17,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "rank",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 18,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Matrix rank\n\nThe maximum number of linearly independent columns/rows \n\n<br>\n\nFor matrix \\\\(\\mathbf{U}\\in\\Re^{N\\times M} \\\\):\n\n- \\\\(rank(\\mathbf{U}) = 0 \\\\) if \\\\(N=M=0\\\\)\n- \\\\(max(rank(\\mathbf{U})) = min(N,M)\\\\)\n\n<br>\n\n$$\nrank(\n\\begin{pmatrix}\n1 & 2 & 3 \\\\\\\n2 & 3 & 4 \\\\\\\n3 & 4 & 7 \\\\\\\n4 & 5 & 9 \\\\\\\n\\end{pmatrix})=??\n$$\n",
       "extraFields" : { }
     }
   } ],

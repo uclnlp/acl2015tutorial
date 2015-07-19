@@ -62,7 +62,9 @@
     "input" : {
       "sessionId" : null,
       "code" : "Part1",
-      "extraFields" : { }
+      "extraFields" : {
+        "reveal_params" : "text-align: left"
+      }
     }
   }, {
     "id" : 8,
