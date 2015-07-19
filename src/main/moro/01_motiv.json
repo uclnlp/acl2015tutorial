@@ -93,7 +93,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Vector Operations\n<br/>\n- the **inner product** between vectors \\\\(\\mathbf{u}\\in\\Re^L\\\\) and \\\\(\\mathbf{v}\\in\\Re^L\\\\)\n$$\\langle \\mathbf{u},\\mathbf{v} \\rangle := \\sum_{\\ell=1}^L u_{\\ell} v_\\ell$$\n<br/>\n- the **outer product** between vectors \\\\(\\mathbf{u}\\in\\Re^N\\\\) and \\\\(\\mathbf{v}\\in\\Re^M\\\\)\n\n$$\\mathbf{u} \\otimes \\mathbf{v} := \\begin{pmatrix} u_{1} v_{1} & u_{1} v_{2} & \\cdots & u_{1} v_{M}  \\\\\\ u_{2} v_{1} & u_{2} v_{2} & \\cdots & u_{2} v_{M} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ u_{N} v_{1} & u_{N} v_{2} & \\cdots & u_{N} v_{M} \\end{pmatrix}\n$$",
+      "code" : "### Vector Operations\n<br/>\n\n- the **inner product** between vectors \\\\(\\mathbf{u}\\in\\Re^L\\\\) and \\\\(\\mathbf{v}\\in\\Re^L\\\\)\n$$\\langle \\mathbf{u},\\mathbf{v} \\rangle := \\sum_{\\ell=1}^L u_{\\ell} v_\\ell$$\n<br/>\n- the **outer product** between vectors \\\\(\\mathbf{u}\\in\\Re^N\\\\) and \\\\(\\mathbf{v}\\in\\Re^M\\\\)\n\n$$\\mathbf{u} \\otimes \\mathbf{v} := \\begin{pmatrix} u_{1} v_{1} & u_{1} v_{2} & \\cdots & u_{1} v_{M}  \\\\\\ u_{2} v_{1} & u_{2} v_{2} & \\cdots & u_{2} v_{M} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ u_{N} v_{1} & u_{N} v_{2} & \\cdots & u_{N} v_{M} \\end{pmatrix}\n$$",
       "extraFields" : { }
     }
   }, {
