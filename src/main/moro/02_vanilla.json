@@ -77,8 +77,18 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Singular Value Decomposition (SVD)\n<br>\nGiven \\\\(\\mathbf{Y} \\in\\Re^{N\\times M} \\\\) there exists \n\n<br>\n$$\n\\mathbf{Y} = \\mathbf{U}\\mathbf{D}\\mathbf{V}\n$$\n<br>\nwhere \\\\(\\mathbf{U}\\in\\Re^{N\\times N},\\mathbf{V}\\in\\Re^{M\\times M}\\\\) are orthogonal<br/>\nand \\\\(\\mathbf{D} \\in\\Re^{N\\times M} \\ge 0\\\\) is diagonal\n\n<br/>\n\nIf we truncate \\\\(\\mathbf{D}\\\\) to its \\\\(L\\\\) largest values \n\nthen \\\\( \\hat{\\mathbf{Y}} = \\mathbf{U}\\mathbf{D_{trunc}}\\mathbf{V}\\\\)\n\nis the minimizer of \\\\(\\||\\mathbf{Y} - \\hat{\\mathbf{Y}}\\||_F^2\\\\)\n\n<br/>\n\n<div style=\"text-align:right;\">\n<i>Eckart-Young theorem</i>\n</div>",
+      "code" : "### Singular Value Decomposition (SVD)\n<br>\nGiven \\\\(\\mathbf{Y} \\in\\Re^{N\\times M} \\\\) there exists \n\n<br>\n$$\n\\mathbf{Y} = \\mathbf{U}\\mathbf{D}\\mathbf{V}\n$$\n<br>\nwhere \\\\(\\mathbf{U}\\in\\Re^{N\\times N},\\mathbf{V}\\in\\Re^{M\\times M}\\\\) are orthogonal<br/>\nand \\\\(\\mathbf{D} \\in\\Re^{N\\times M} \\ge 0\\\\) is diagonal\n\n<br/>\n\n",
       "extraFields" : { }
+    }
+  }, {
+    "id" : 18,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "If we truncate \\\\(\\mathbf{D}\\\\) to its \\\\(L\\\\) largest values \n\nthen \\\\( \\hat{\\mathbf{Y}} = \\mathbf{U}\\mathbf{D_{trunc}}\\mathbf{V}\\\\)\n\nis the minimizer of \\\\(\\||\\mathbf{Y} - \\hat{\\mathbf{Y}}\\||_F^2\\\\)\n\n<br/>\n\n<div style=\"text-align:right;\">\n<i>Eckart-Young theorem</i>\n</div>",
+      "extraFields" : {
+        "fragment" : "true"
+      }
     }
   }, {
     "id" : 6,
@@ -93,8 +103,18 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### MF with Stochastic Gradient Descent\n<br>\nObjective:\n\\\\(\n\\gamma(U,V) := \\sum_{(i,j)\\in\\Omega} (y_{ij} - \\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle)^2 \n\\\\)\n\nwhere \\\\(\\Omega=\\lbrace 1,\\cdots,N\\rbrace \\otimes \\lbrace1,\\cdots,M\\rbrace \\\\) \n\n<br>\n**Algorithm**:\n\n1. Pick \\\\( (i,j)\\in\\Omega \\\\) uniformly at random\n\n2. Gradient steps\n\n\\\\(\\mathbf{u}_i \\leftarrow \\mathbf{u}_i - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{v}_j  \\\\)\n\n\\\\(\\mathbf{v}_j \\leftarrow \\mathbf{v}_j - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{u}_i \\\\)\n\nwhere \\\\(\\eta\\\\) is the gradient step size (can be adaptive)",
+      "code" : "### MF with Stochastic Gradient Descent\n<br>\nObjective:\n\\\\(\n\\gamma(U,V) := \\sum_{(i,j)\\in\\Omega} (y_{ij} - \\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle)^2 \n\\\\)\n\nwhere \\\\(\\Omega=\\lbrace 1,\\cdots,N\\rbrace \\otimes \\lbrace1,\\cdots,M\\rbrace \\\\)\n\n\\\\((i,j)\\notin \\Omega\\\\): **missing values**\n\n",
       "extraFields" : { }
+    }
+  }, {
+    "id" : 20,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<br>\n**Algorithm**:\n\n1. Pick \\\\( (i,j)\\in\\Omega \\\\) uniformly at random\n\n2. Gradient steps\n\n\\\\(\\mathbf{u}_i \\leftarrow \\mathbf{u}_i - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{v}_j  \\\\)\n\n\\\\(\\mathbf{v}_j \\leftarrow \\mathbf{v}_j - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{u}_i \\\\)\n\nwhere \\\\(\\eta\\\\) is the gradient step size (can be adaptive)",
+      "extraFields" : {
+        "fragment" : "true"
+      }
     }
   }, {
     "id" : 8,
