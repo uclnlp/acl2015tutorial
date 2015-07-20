@@ -69,7 +69,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "generalization",
+      "code" : "CMFformula",
       "extraFields" : { }
     }
   }, {
@@ -77,7 +77,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Generalization to Arbitrary Databases\n\n<br />\n<img src=\"../../assets/figures/06/cmf_databases.png\" width=\"95%\">",
+      "code" : "### Collective Matrix Factorization\n\nWe have \\\\(T\\\\) types of entity with embeddings \\\\(\\mathbf{U} = (\\mathbf{U}^{(1)}, \\cdots, \\mathbf{U}^{(T)})\\\\) and we observe relations between all possible entity types \\\\(\\mathbf{Y} = (\\mathbf{Y}^{(1,1)}, \\mathbf{Y}^{(1,2)}, \\cdots, \\mathbf{Y}^{(T,T)}) \\\\)\n\n\nGeneral Loss functions \\\\(\\ell_{tt'}\\\\):\n\n\\\\(\\mathcal{L}(\\mathbf{U}) = \\sum_{t=1}^T \\sum_{t < t'< T} \\ell_{tt'}(\\mathbf{U}^{(t)}\\mathbf{U}^{(t')T}; \\mathbf{Y}^{(t,t')}||) \\\\)\n\nFor quadratic loss:\n\n\\\\(\\mathcal{L}(\\mathbf{U}) = \\sum_{t=1}^T \\sum_{t < t'< T} \\frac{1}{\\sigma_{tt'}^2} ||\\mathbf{U}^{(t)}\\mathbf{U}^{(t')T} - \\mathbf{Y}^{(t,t')}||_F^2 \\\\)\n",
       "extraFields" : { }
     }
   }, {
@@ -85,7 +85,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "example_denoising_faces",
+      "code" : "generalization",
       "extraFields" : { }
     }
   }, {
@@ -93,7 +93,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Example: Augmented Multi-View\n*Objective*: Predict one view given the other\n\nPixel similarity should help. We create a binary matrix linking pixels.\n\n- Relation 1: pixel intensity value in the first image (real)\n- Relation 2: pixel intensity value in the second image (real)\n- Relation 3: Relative similarity between pixels (binary)\n\n<br />\n<img src=\"../../assets/figures/06/faces.png\" width=\"45%\">\n<img src=\"../../assets/figures/06/faces_expt.png\" width=\"45%\">\n\n\n",
+      "code" : "### Generalization to Arbitrary Databases\n\n<br />\n<img src=\"../../assets/figures/06/cmf_databases.png\" width=\"95%\">",
       "extraFields" : { }
     }
   }, {
@@ -101,7 +101,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "BayesianCMF",
+      "code" : "example_denoising_faces",
       "extraFields" : { }
     }
   }, {
@@ -109,15 +109,15 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Bayesian Modelling\nCMF and other factorization methods have many regularization parameters.\n\nTuning is an important part of the job.\n\nCan we do some automatic tuning?\n\nBayesian methodology provides a principle way of doing it.\n\nTwo steps:\n    \n- Choice of a prior \\\\(P(\\mathbf{U},\\mathbf{V})\\\\)\n- Find (approximate!) the posterior \\\\(P(\\mathbf{Y}|\\mathbf{U},\\mathbf{V})\\\\)\n\nTwo types of algorithms\n\n- Sampling (MCMC: Gibbs sampling, Hamiltonian MC)\n- Deterministic Approximation: Variational Inference (Variational Bayes, EP)",
+      "code" : "### Example: Augmented Multi-View\n*Objective*: Predict one view given the other\n\nPixel similarity should help. We create a binary matrix linking pixels.\n\n- Relation 1: pixel intensity value in the first image (real)\n- Relation 2: pixel intensity value in the second image (real)\n- Relation 3: Relative similarity between pixels (binary)\n\n<br />\n<img src=\"../../assets/figures/06/faces.png\" width=\"45%\">\n<img src=\"../../assets/figures/06/faces_expt.png\" width=\"45%\">\n\n\n",
       "extraFields" : { }
     }
   }, {
     "id" : 14,
-    "compiler" : "markdown",
+    "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "BayesianMatrixFactorization",
+      "code" : "BayesianCMF",
       "extraFields" : { }
     }
   }, {
@@ -125,31 +125,15 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Bayesian Matrix Factorization\n\nIndependent Gaussian Priors: \\\\(P(\\mathbf{U},\\mathbf{V}) \\propto e^{-\\lambda (||\\mathbf{U}||_F^2 + ||\\mathbf{V}||_F^2)} \\\\)\n\nHomoscedastic Gaussian likelihood: \\\\(P(\\mathbf{Y}|\\mathbf{U},\\mathbf{V}) \\propto e^{-\\frac{1}{\\sigma^2} (||\\mathbf{U}\\mathbf{V}^T - \\mathbf{Y}||_F^2)} \\\\)\n\n",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 26,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "algobmf",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 25,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### Algorithms for Bayesian Matrix Factorization\n\n*Block Gibbs sampling* \n\n- Sample \\\\(\\mathbf{u_i}|\\mathbf{V}, \\mathbf{Y}_{i:}\\\\) for \\\\(i=1,\\cdots,N\\\\)\n- Sample \\\\(\\mathbf{v_j}|\\mathbf{U}, \\mathbf{Y}_{:j}\\\\) for \\\\(j=1,\\cdots,M\\\\)\n\n*Variational Bayes* : Fully factorized approximation: \\\\( Q(\\mathbf{U},\\mathbf{V}) = \\prod_{i=1}^N Q(\\mathbf{u_i}) \\prod_{j=1}^M Q(\\mathbf{v_j}) \\\\)\n\n- Compute  \\\\(Q(\\mathbf{u}_i)\\\\) based on \\\\(\\mathbf{V}\\\\) and \\\\(\\mathbf{Y}_{i:}\\\\)\n- Compute  \\\\(Q(\\mathbf{v}_j)\\\\) based on \\\\(\\mathbf{U}\\\\) and \\\\(\\mathbf{Y}_{:j}\\\\)",
+      "code" : "### Bayesian Modelling\nCMF: many regularization parameters.\n\nTuning is painful\n\nBayesian learning: principled automatic tuning\n\n1. Choice of a prior \\\\(P(\\mathbf{U},\\mathbf{V})\\\\)\n2. Find (approximate!) the posterior \\\\(P(\\mathbf{Y}|\\mathbf{U},\\mathbf{V})\\\\)\n\nAlgorithms:\n- Sampling\n    - Gibbs sampling: Salakhutdinov et al., 2008\n    - HMC: Mohamed et al., 2009\n- Variational Inference\n    - Variational Bayes: Raiko et al., 2008          \n    - Expectation Propagation: Stern et al., 2009",
       "extraFields" : { }
     }
   }, {
     "id" : 16,
-    "compiler" : "section",
+    "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "BaysesianCMFdetails",
+      "code" : "BayesianMatrixFactorization",
       "extraFields" : { }
     }
   }, {
@@ -157,11 +141,43 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Bayesian Collective Matrix Factorization\n\nWe have \\\\(T\\\\) types of entity with embeddings \\\\(\\mathbf{U} = (\\mathbf{U}^{(1)}, \\cdots, \\mathbf{U}^{(T)})\\\\) and we observe relations between all possible entity types \\\\(\\mathbf{Y} = (\\mathbf{Y}^{(1,1)}, \\mathbf{Y}^{(1,2)}, \\cdots, \\mathbf{Y}^{(T,T)}) \\\\)\n\nIndependent Gaussian Priors: \\\\(P(\\mathbf{U}) \\propto e^{-\\sum_{t=1}^T \\lambda_t (||\\mathbf{U}^{(t)}||_F^2} \\\\)\n\nPer-relation Homoscedastic Gaussian likelihood: \\\\(P(\\mathbf{Y}|\\mathbf{U}) \\propto \\prod_{t=1}^T \\prod_{t < t'< T} e^{-\\frac{1}{\\sigma_{tt'}^2} (||\\mathbf{U}^{(t)}\\mathbf{V}^{(t')T} - \\mathbf{Y}^{(t,t')}||_F^2)} \\\\)\n\n",
+      "code" : "### Bayesian Matrix Factorization\n\nIndependent Gaussian Priors: \\\\(P(\\mathbf{U},\\mathbf{V}) \\propto e^{-\\lambda (||\\mathbf{U}||_F^2 + ||\\mathbf{V}||_F^2)} \\\\)\n\nHomoscedastic Gaussian likelihood: \\\\(P(\\mathbf{Y}|\\mathbf{U},\\mathbf{V}) \\propto e^{-\\frac{1}{\\sigma^2} (||\\mathbf{U}\\mathbf{V}^T - \\mathbf{Y}||_F^2)} \\\\)\n\n",
       "extraFields" : { }
     }
   }, {
-    "id" : 24,
+    "id" : 18,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "algobmf",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 19,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Algorithms for Bayesian Matrix Factorization\n\n*Block Gibbs sampling* \n\n- Sample \\\\(\\mathbf{u_i}|\\mathbf{V}, \\mathbf{Y}_{i:}\\\\) for \\\\(i=1,\\cdots,N\\\\)\n- Sample \\\\(\\mathbf{v_j}|\\mathbf{U}, \\mathbf{Y}_{:j}\\\\) for \\\\(j=1,\\cdots,M\\\\)\n\n*Variational Bayes* : Fully factorized approximation: \\\\( Q(\\mathbf{U},\\mathbf{V}) = \\prod_{i=1}^N Q(\\mathbf{u_i}) \\prod_{j=1}^M Q(\\mathbf{v_j}) \\\\)\n\n- Compute  \\\\(Q(\\mathbf{u}_i)\\\\) based on \\\\(\\mathbf{V}\\\\) and \\\\(\\mathbf{Y}_{i:}\\\\)\n- Compute  \\\\(Q(\\mathbf{v}_j)\\\\) based on \\\\(\\mathbf{U}\\\\) and \\\\(\\mathbf{Y}_{:j}\\\\)",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 20,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "BaysesianCMFdetails",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 21,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Bayesian Collective Matrix Factorization\n\nWe have \\\\(T\\\\) types of entity with embeddings \\\\(\\mathbf{U} = (\\mathbf{U}^{(1)}, \\cdots, \\mathbf{U}^{(T)})\\\\) and we observe relations between all possible entity types \\\\(\\mathbf{Y} = (\\mathbf{Y}^{(1,1)}, \\mathbf{Y}^{(1,2)}, \\cdots, \\mathbf{Y}^{(T,T)}) \\\\)\n\nIndependent Gaussian Priors: \\\\(P(\\mathbf{U}) \\propto e^{-\\sum_{t=1}^T \\lambda_t (||\\mathbf{U}^{(t)}||_F^2} \\\\)\n\nPer-relation Homoscedastic Gaussian likelihood: \\\\(P(\\mathbf{Y}|\\mathbf{U}) \\propto \\prod_{t=1}^T \\prod_{t < t'< T} e^{-\\frac{1}{\\sigma_{tt'}^2} (||\\mathbf{U}^{(t)}\\mathbf{U}^{(t')T} - \\mathbf{Y}^{(t,t')}||_F^2)} \\\\)\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 22,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -177,7 +193,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 22,
+    "id" : 24,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -185,7 +201,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 19,
+    "id" : 25,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -193,7 +209,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 20,
+    "id" : 26,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -201,7 +217,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 21,
+    "id" : 27,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,

@@ -99,7 +99,23 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 13,
+    "id" : 15,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "l",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 14,
+    "compiler" : "html",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<div style=\"text-align:left;\">\nSalakhutdinov, Ruslan, and Andriy Mnih. \"Bayesian probabilistic matrix factorization using Markov chain Monte Carlo.\" Proceedings of the 25th international conference on Machine learning. ACM, 2008.\n<br><br>\nMohamed, Shakir, Zoubin Ghahramani, and Katherine A. Heller. \"Bayesian exponential family PCA.\" Advances in Neural Information Processing Systems. 2009.\n<br><br>\nStern, David H., Ralf Herbrich, and Thore Graepel. \"Matchbox: large scale online bayesian recommendations.\" Proceedings of the 18th international conference on World wide web. ACM, 2009.\n<br><br>\nRaiko, Tapani, Alexander Ilin, and Juha Karhunen. \"Principal component analysis for sparse high-dimensional data.\" Neural Information Processing. Springer Berlin Heidelberg, 2008.\n</div>",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 12,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -107,7 +123,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 12,
+    "id" : 13,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
