@@ -45,7 +45,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Why Low-Rank\n<br>\nBecause we want a model on matrices with:\n<br>\n\n1. Invariance by permutation of rows and columns\n> Solution depends only on the eigenvalues\n\n2. A measure to control complexity\n> A \\\\(p\\\\)-norm with \\\\(p \\ge 0\\\\) on the spectrum \n\n3. Fast to compute and memory efficient\n> \\\\(p\\le 1\\\\) (sparsity-inducing)",
+      "code" : "### Why Low-Rank\n<br>\nBecause we want a model on matrices with:\n<br>\n\n1. Invariance by permutation of rows and columns\n> Solution depends only on the eigenvalues\n\n2. A measure to control complexity\n> A \\\\(p\\\\)-norm with \\\\(p \\ge 0\\\\) \n\n3. Fast to compute and memory efficient\n> \\\\(p\\le 1\\\\) (sparsity-inducing)",
       "extraFields" : { }
     }
   }, {
