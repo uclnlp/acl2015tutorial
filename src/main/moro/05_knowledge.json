@@ -105,11 +105,11 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 13,
+    "id" : 72,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### First-order Logic Prior Knowledge\n\n- **Representation Learning**: hard to fix mistakes\n$$\n\\neg \\text{person}(x) \\Rightarrow \\neg \\text{place of birth}(x,y)\n$$\n- **Distant Supervision**: fails for no or little alignment\n$$\n\\text{#1-is-a-student-in-#2-'s-lab}(x,y) \\Rightarrow \\text{supervisedBy}(x,y)$$\n- **Pros**: Formulae are easy to modify and improve\n- **Cons**: Brittle, no generalization and inference can become intractable\n- *Markov Logic Networks*: easy to modify, generalize well, but inference often intractable in practice",
+      "code" : "<h3>First-order Logic Prior Knowledge</h3>\n<ul>\n<li class=\"fragment\" data-fragment-index=\"1\"><b>Representation Learning</b>: hard to fix mistakes\n$$\n\\neg \\text{person}(x) \\Rightarrow \\neg \\text{place of birth}(x,y)\n$$\n<li class=\"fragment\" data-fragment-index=\"2\"><b>Distant Supervision</b>: fails for no or little alignment\n$$\n\\text{#1-is-a-student-in-#2-'s-lab}(x,y) \\Rightarrow \\text{supervisedBy}(x,y)$$\n<li class=\"fragment\" data-fragment-index=\"3\"><b>Pros</b>: Formulae are easy to modify and improve\n<li class=\"fragment\" data-fragment-index=\"4\"><b>Cons</b>: Brittle, no generalization and inference can become intractable\n<li class=\"fragment\" data-fragment-index=\"5\"><i>Markov Logic Networks</i>: easy to modify, generalize well, but inference often intractable in practice\n</ul>",
       "extraFields" : { }
     }
   }, {
@@ -361,11 +361,11 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 45,
-    "compiler" : "markdown",
+    "id" : 74,
+    "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "## Matrix Factorization is “Injecting” Atomic Formulae\n\n- Training facts are ground atoms: $$\\mathcal{F} = r_s(e_i, e_j)$$\n- Let [•] denote mapping from symbolic formulae to expectations\n$$[r_s(e_i, e_j)] := \\sigma(\\mathbf{v}_{s} \\cdot \\mathbf{v}_{ij})$$\n- Training objective:\n    \\\\(\\max_{\\{\\mathbf{v}_s\\}, \\{\\mathbf{v}_{ij}\\}} \\sum_{\\mathcal{F} \\in \\mathfrak{F}} \\log([\\mathcal{F}])\\\\)\n\n- Can we do this for **any** propositional formulae? \n  $$[\\mathcal{F}] = [r_1(e_i\\,e_j) \\wedge \\neg r_2(e_i\\,e_j) \\Rightarrow r_3(e_i\\,e_j)]$$\n",
+      "code" : "<h3>Matrix Factorization is “Injecting” Atomic Formulae</h3>\n<ul>\n<li class=\"fragment\" data-fragment-index=\"1\">Training facts are ground atoms: $$\\mathcal{F} = r_s(e_i, e_j)$$\n</li>\n<li class=\"fragment\" data-fragment-index=\"2\">Let [•] denote mapping from symbolic formulae to expectations\n$$[r_s(e_i, e_j)] := \\sigma(\\mathbf{v}_{s} \\cdot \\mathbf{v}_{ij})$$</li>\n<li class=\"fragment\" data-fragment-index=\"3\">Training objective:\n    $$\\max_{\\{\\mathbf{v}_s\\}, \\{\\mathbf{v}_{ij}\\}} \\sum_{\\mathcal{F} \\in \\mathfrak{F}} \\log([\\mathcal{F}])$$</li>\n<li class=\"fragment\" data-fragment-index=\"4\">Can we do this for <i>any</i> propositional formulae? \n  $$[\\mathcal{F}] = [r_1(e_i\\,e_j) \\wedge \\neg r_2(e_i\\,e_j) \\Rightarrow r_3(e_i\\,e_j)]$$</li>    \n</ul>",
       "extraFields" : { }
     }
   }, {
@@ -377,11 +377,11 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 47,
-    "compiler" : "markdown",
+    "id" : 75,
+    "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "## Differentiable Logic Formulae\n$$\n[\\mathcal{F}] = \\begin{cases}\n   \\sigma(\\mathbf{v}_s \\cdot \\mathbf{v}_{ij}) & \\text{ if } \\mathcal{F} = r_s(e_i, e_j), \\text{ i.e., facts}\\newline\n   1 - [\\mathcal{A}] & \\text{ if } \\mathcal{F} = \\neg\\mathcal{A}\\newline\n  [\\mathcal{A}] * [\\mathcal{B}] &\\text{ if } \\mathcal{F} = \\mathcal{A} \\wedge \\mathcal{B}\n\\end{cases}\n$$\n\n- From negation and conjunction we can build any propositional formula\n    - Disjunction:\n        \\\\([\\mathcal{A} \\vee \\mathcal{B}] = 1 - (1 - [\\mathcal{A}])*(1 - [\\mathcal{B}])\\\\)\n    - Implication:\n        \\\\([\\mathcal{A} \\Rightarrow \\mathcal{B}] = [\\mathcal{A}]([\\mathcal{B}] - 1) + 1\\\\)\n- Jointly maximize the log-likelihood of atomic and propositional formulae \n \n     \\\\(\\max_{\\{\\mathbf{v}_s\\}, \\{\\mathbf{v}_{ij}\\}} \\sum_{\\mathcal{F} \\in \\mathfrak{F}} \\log([\\mathcal{F}])\\\\)",
+      "code" : "<h3>Differentiable Logic Formulae</h3>\n\n$$\n[\\mathcal{F}] = \\begin{cases}\n   \\sigma(\\mathbf{v}_s \\cdot \\mathbf{v}_{ij}) & \\text{ if } \\mathcal{F} = r_s(e_i, e_j), \\text{ i.e., facts}\\newline\n   1 - [\\mathcal{A}] & \\text{ if } \\mathcal{F} = \\neg\\mathcal{A}\\newline\n  [\\mathcal{A}] * [\\mathcal{B}] &\\text{ if } \\mathcal{F} = \\mathcal{A} \\wedge \\mathcal{B}\n\\end{cases}\n$$\n\n<ul>\n<li class=\"fragment\" data-fragment-index=\"1\">\nFrom negation and conjunction we can build any propositional formula\n    <ul><li>Disjunction: $$[\\mathcal{A} \\vee \\mathcal{B}] = 1 - (1 - [\\mathcal{A}])*(1 - [\\mathcal{B}])$$\n    </li>\n    <li>Implication:$$[\\mathcal{A} \\Rightarrow \\mathcal{B}] = [\\mathcal{A}]([\\mathcal{B}] - 1) + 1$$\n    </li>\n    </ul>    \n</li>\n<li class=\"fragment\" data-fragment-index=\"2\">\n    Jointly maximize the log-likelihood of atomic and propositional formulae \n \n    $$\\max_{\\{\\mathbf{v}_s\\}, \\{\\mathbf{v}_{ij}\\}} \\sum_{\\mathcal{F} \\in \\mathfrak{F}} \\log([\\mathcal{F}])$$\n</li>\n</ul>",
       "extraFields" : { }
     }
   }, {
@@ -409,11 +409,11 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 51,
-    "compiler" : "markdown",
+    "id" : 76,
+    "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "## Grounding\n\n- \\\\(\\forall x,y: r_s(x,y) \\Rightarrow r_t(x,y)\\\\)\n- Grounding based on all observed facts for premise \\\\(r_s(e_i,e_j)\\\\) and consequent \\\\(r_t(e_i,e_j)\\\\)\n- Sample unobserved facts \\\\(r_s(e_i', e_j')\\\\) and \\\\(r_t(e_i', e_j')\\\\)\n- Add propositional formulae to the matrix factorization training objective\n    - \\\\([r_s(e_i,e_j) \\Rightarrow r_t(e_i,e_j)]\\\\)\n    - \\\\([r_s(e_i',e_j') \\Rightarrow r_t(e_i',e_j')]\\\\)\n",
+      "code" : "<h3>Grounding</h3>\n$$\\forall x,y: r_s(x,y) \\Rightarrow r_t(x,y)$$\n<ul>\n<li class=\"fragment\" data-fragment-index=\"1\">Grounding based on all observed facts for premise \\((r_s(e_i,e_j)\\) and consequent \\(r_t(e_i,e_j)\\)\n</li>\n<li class=\"fragment\" data-fragment-index=\"2\">\nSample unobserved facts \\(r_s(e_i', e_j')\\) and \\(r_t(e_i', e_j')\\)\n</li>\n<li class=\"fragment\" data-fragment-index=\"3\">Add propositional formulae to the matrix factorization training objective\n<ul>\n    <li>\\([r_s(e_i,e_j) \\Rightarrow r_t(e_i,e_j)]\\)</li>\n    <li>\\([r_s(e_i',e_j') \\Rightarrow r_t(e_i',e_j')]\\)</li>\n</ul>   \n</li>\n</ul>",
       "extraFields" : { }
     }
   }, {
@@ -425,11 +425,11 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 53,
+    "id" : 77,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "## Expriments\n- Relation extraction corpus (Riedel et al., 2013)\n    - ~4k textual patterns from New York Times corpus and 151 Freebase relations, ~42k entity-pairs, ~100k training facts \n    - Metric: mean average precision ( **MAP** ) on manually annotated predictions for Freebase relations\n- **Zero-shot Relation Learning**: \n    - All Freebase training facts are removed\n    - No alignment between Freebase relations and textual patterns\n- **Relations with Few Distant Labels**:\n    - Varying degree of alignment between relations and textual patterns\n",
+      "code" : "<h3>Experiments</h3>\n<ul>\n<li class=\"fragment\" data-fragment-index=\"1\">Relation extraction corpus (Riedel et al., 2013)\n<ul>\n<li>~4k textual patterns from New York Times corpus and 151 Freebase relations, ~42k entity-pairs, ~100k training facts </li>\n<li>Metric: mean average precision (<b>MAP</b>) on manually annotated predictions for Freebase relations</li>\n</ul>\n</li>\n<li class=\"fragment\" data-fragment-index=\"2\"><b>Zero-shot Relation Learning</b>: \n<ul>\n<li>All Freebase training facts are removed</li>\n<li>No alignment between Freebase relations and textual patterns</li>\n</ul>\n</li>\n<li class=\"fragment\" data-fragment-index=\"3\"><b>Relations with Few Distant Labels</b>:\n<ul>\n<li>Varying degree of alignment between relations and textual patterns</li>\n</ul>\n</li>\n</ul>",
       "extraFields" : { }
     }
   }, {
