@@ -103,7 +103,17 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<br>\n$$\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T} = (\\mathbf{U}\\mathbf{A}^{-1}\\mathbf{A})(\\mathbf{V}\\mathbf{B}^{-1}\\mathbf{B})^T = (\\mathbf{U}\\mathbf{A}^{-1})(\\mathbf{A}\\mathbf{B})(\\mathbf{V}\\mathbf{B}^{-1})^T $$\n\nwhere \\\\(\\mathbf{A}=diag(\\sum_n v_{n,1},\\dots,\\sum_n v_{n,L})\\\\) <br> and \\\\(\\mathbf{B} = diag(\\sum_m u_{1,l}, \\dots, \\sum_m u_{m,L}) \\\\)\n\n<br>\n\n> pLSA uses EM for parameter estimation and can converge to different local optima of the same objective as NMF-KL.\n<br>\n\n<div style=\"text-align:right;\">\n<i>Gaussier and Goutte (2005)</i>\n</div>",
+      "code" : "<br>\n$$\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T} = (\\mathbf{U}\\mathbf{A}^{-1}\\mathbf{A})(\\mathbf{V}\\mathbf{B}^{-1}\\mathbf{B})^T = (\\mathbf{U}\\mathbf{A}^{-1})(\\mathbf{A}\\mathbf{B})(\\mathbf{V}\\mathbf{B}^{-1})^T $$\n\nwhere \\\\(\\mathbf{A}=diag(\\sum_n v_{n,1},\\dots,\\sum_n v_{n,L})\\\\) <br> and \\\\(\\mathbf{B} = diag(\\sum_m u_{1,l}, \\dots, \\sum_m u_{m,L}) \\\\)\n\n",
+      "extraFields" : {
+        "fragment" : "true"
+      }
+    }
+  }, {
+    "id" : 15,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<br>\n\n> pLSA uses EM for parameter estimation and can converge to different local optima of the same objective as NMF-KL.\n<br>\n\n<div style=\"text-align:right;\">\n<i>Gaussier and Goutte (2005)</i>\n</div>",
       "extraFields" : {
         "fragment" : "true"
       }
