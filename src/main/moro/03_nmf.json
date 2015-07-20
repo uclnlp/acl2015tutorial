@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Non-negativity\n<br>\n\n- Intepretability\n\n    - zero has special meaning\n\n- Modelling assumptions\n\n    - negative objects in images?\n    \n    - negative topics in documents?\n",
+      "code" : "### Non-negativity\n<br>\n\nLow-rank factors are commonly interpreted as:\n\n- document-topic, topic-term loadings\n\n- face-feature, feature-basis image\n\n- ...\n\n> MF is commomly used to find how each instance is composed of its parts; <br/> Subtraction is often counter-intuitive",
       "extraFields" : { }
     }
   }, {
@@ -29,7 +29,15 @@
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "<h3>Definition</h3>\n\n<br>\n<div style=\"text-align:center;\">\nGiven \\(\\mathbf{Y} \\in\\Re^{N\\times M}  \\geq 0 \\) <br>\n<br>\nfind \\(\\mathbf{U} \\in\\Re^{N\\times L}  \\geq 0\\) and \\(\\mathbf{V} \\in\\Re^{M\\times L} \\geq 0 \\) <br>\n<br>\nso that \\(\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T}\\)\n</div>\n\n",
+      "code" : "<h3>Definition</h3>\n\n<br>\n<div style=\"text-align:center;\">\nGiven \\(\\mathbf{Y} \\in\\Re^{N\\times M}\\) <font color=\"blue\">\\(\\geq 0 \\)</font> <br>\n<br>\nfind \\(\\mathbf{U} \\in\\Re^{N\\times L}\\) <font color=\"blue\">\\(\\geq 0\\)</font> &nbsp; and &nbsp; \\(\\mathbf{V} \\in\\Re^{M\\times L}\\) <font color=\"blue\"> \\(\\geq 0\\)</font> <br>\n<br>\nso that \\(\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T}\\)\n</div>\n<br/>",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 13,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "> NMF is an additive mixture (admixture) model",
       "extraFields" : { }
     }
   }, {
@@ -45,8 +53,18 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Algorithm (Lee and Seung, 2001)\n<br>\nMultiplicative update rules to minimize \\\\(||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}|| _2\\\\):\n<br>\n\n\\\\(u_{n,l} = u_{n,l} \\frac{(\\mathbf{Y}\\mathbf{V})_{n,l}}{(\\mathbf{Y}\\mathbf{Y}^{T}\\mathbf{U})_{n,l}} \\\\)\n\n\\\\(v_{m,l} = v_{m,l} \\frac{(\\mathbf{Y}^T\\mathbf{U})_{m,l}}{(\\mathbf{Y}^{T}\\mathbf{Y}\\mathbf{V})_{m,l}} \\\\)\n<br>\n\nRelated to the additive SGD updates\n\n\n\n",
+      "code" : "### Basic NMF algorithm\n\nMultiplicative update rules to minimize \\\\(||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}||^2 _2\\\\):\n\n$$u_{n,l} = u_{n,l} \\frac{(\\mathbf{Y}\\mathbf{V})_{n,l}}{(\\mathbf{Y}\\mathbf{Y}^{T}\\mathbf{U})_{n,l}} $$\n\n$$v_{m,l} = v_{m,l} \\frac{(\\mathbf{Y}^T\\mathbf{U})_{m,l}}{(\\mathbf{Y}^{T}\\mathbf{Y}\\mathbf{V})_{m,l}} $$\n\n",
       "extraFields" : { }
+    }
+  }, {
+    "id" : 12,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<br/>\nRelated to the additive SGD updates:\n\n$$u_{n,l} = u_{n,l} + \\eta ((\\mathbf{Y}\\mathbf{V})_{n,l} - (\\mathbf{Y}\\mathbf{Y}^{T}\\mathbf{U})_{n,l}) $$\n\n$$v_{m,l} = v_{m,l} + \\eta  ((\\mathbf{Y}^T\\mathbf{U})_{m,l}-(\\mathbf{Y}^{T}\\mathbf{Y}\\mathbf{V})_{m,l}) $$\n\n\n<div style=\"text-align:right;\">\n<i>Lee and Seung (2001)</i>\n</div>",
+      "extraFields" : {
+        "fragment" : "true"
+      }
     }
   }, {
     "id" : 6,
@@ -61,7 +79,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### NMF with KL divergence\n<br>\n\nAssume that \\\\(\\mathbf{Y}\\\\) represents a probability distribution \\\\((\\sum_{n,m} y_{n,m} = 1)\\\\)\n<br>\n\nMinimize the Kullback-Leibler divergence:\n\n\\\\( KL_{div}(\\mathbf{Y}||\\mathbf{U}\\mathbf{V}^{T}) = \\sum_{n,m}(y_{n,m}\\log\\frac{y_{n,m}}{(\\mathbf{U}\\mathbf{V}^{T})_{n,m}} )  \\\\)\n<br>\n\n- results in similar multiplicative updates\n- ensures that \\\\(\\mathbf{U}\\\\) and \\\\(\\mathbf{V}\\\\) also represent probability distributions\n\n",
+      "code" : "### NMF with KL divergence\n<br>\n\nAssume that \\\\(\\mathbf{Y}\\\\) represents a probability distribution \n$$\\sum_{n,m} y_{n,m} = 1$$\n<br>\nMinimize the Kullback-Leibler divergence:\n\n$$ KL_{div}(\\mathbf{Y}||\\mathbf{U}\\mathbf{V}^{T}) = \\sum_{n,m}(y_{n,m}\\log\\frac{y_{n,m}}{(\\mathbf{U}\\mathbf{V}^{T})_{n,m}} )  $$\n\n- results in similar multiplicative updates\n- ensures that \\\\(\\mathbf{U}\\\\) and \\\\(\\mathbf{V}\\\\) also represent probability distributions\n\n",
       "extraFields" : { }
     }
   }, {
@@ -77,8 +95,18 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Probabilistic Latent Semantic Analysis/Indexing\n<br>\n\nKL-NMF optimizes the same objective as pLSA/I (Gaussier and Goutte, 2005):\n<br>\n\n\\\\(y_{n,m} = P(n,m) = \\sum_l P(l) P(m|l) P(n|l) = u^\\prime_{n,l} v^{\\prime}_{l,m} \\\\)\n\nwhere \\\\(n\\\\) is a document, \\\\(m\\\\) a word and \\\\(l\\\\) a component.\n\n<br>\n\n \\\\( \\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T} = (\\mathbf{U}\\mathbf{A}^{-1}\\mathbf{A})(\\mathbf{V}\\mathbf{B}^{-1}\\mathbf{B})^T = (\\mathbf{U}\\mathbf{A}^{-1})(\\mathbf{A}\\mathbf{B})(\\mathbf{V}\\mathbf{B}^{-1})^T\\\\)\n\nwhere \\\\(\\mathbf{A}\\\\) and \\\\(\\mathbf{B} \\in\\Re^{L\\times L} \\\\) are diagonal matrices with \\\\(a_{l,l} = \\sum_n v_{n,l}\\\\) and \\\\(b_{l,l} = \\sum_m u_{m,l}\\\\)\n<br>\n\npLSA uses Expectation-Maximization for parameter estimation and can converge to different local optima.\n",
+      "code" : "### Probabilistic Latent Semantic Analysis/Indexing\n\n$$ y_{n,m} = P(n,m) = \\sum_{l} P(l) P(m|l) P(n|l) = u^\\prime_{n,l} v^{\\prime}_{l,m} $$\nwhere \\\\(n\\\\) is a document, \\\\(m\\\\) a word and \\\\(l\\\\) a component.",
       "extraFields" : { }
+    }
+  }, {
+    "id" : 14,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<br>\n$$\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T} = (\\mathbf{U}\\mathbf{A}^{-1}\\mathbf{A})(\\mathbf{V}\\mathbf{B}^{-1}\\mathbf{B})^T = (\\mathbf{U}\\mathbf{A}^{-1})(\\mathbf{A}\\mathbf{B})(\\mathbf{V}\\mathbf{B}^{-1})^T $$\n\nwhere \\\\(\\mathbf{A}=diag(\\sum_n v_{n,1},\\dots,\\sum_n v_{n,L})\\\\) <br> and \\\\(\\mathbf{B} = diag(\\sum_m u_{1,l}, \\dots, \\sum_m u_{m,L}) \\\\)\n\n<br>\n\n> pLSA uses EM for parameter estimation and can converge to different local optima of the same objective as NMF-KL.\n<br>\n\n<div style=\"text-align:right;\">\n<i>Gaussier and Goutte (2005)</i>\n</div>",
+      "extraFields" : {
+        "fragment" : "true"
+      }
     }
   }, {
     "id" : 10,
