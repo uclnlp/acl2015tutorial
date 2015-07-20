@@ -93,7 +93,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Common Examples:\n\n<br />\n<img src=\"../../assets/figures/08/s8s2.png\" height=\"500\">",
+      "code" : "### Examples of Matrix/Tensor Factorization\n\n<br />\n<img src=\"../../assets/figures/08/s8s2.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -205,7 +205,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "#### Step 2: Formulate Model Parameters Tensor\n\n - A tensor \\\\(R^{n \\times n \\times d}\\\\), describes the concatenation of all three feature vectors, so replace \\\\(\\Theta\\\\) with tensor \\\\(A\\\\):\n\n $$ S(x,y;\\Theta) = <\\phi_{head} \\otimes \\phi_child> $$ \n\n - Can be huge!  A better option?  Low rank approximation.  Calculate A as: \n\n $$ A = \\sum_i U_i \\otimes V_i \\otimes W_i $$ \n\n Where:\n\n -- r is the rank\n\n -- \\\\(U, V \\in R^{r \\times n}\\\\) replace \\\\(\\phi_{head}\\\\), \\\\(\\phi_{child}\\\\) \n\n -- \\\\(W \\in R^{r\\times d} \\\\) \n\n -- \\\\(U,V,\\\\) and \\\\(W\\\\) are dense low-dimensional representations \\\\(\\in R^r\\\\) ",
+      "code" : "#### Step 2: Formulate Model Parameters Tensor\n\n - A tensor \\\\(R^{n \\times n \\times d}\\\\), describes the concatenation of all three feature vectors, so replace \\\\(\\Theta\\\\) with tensor \\\\(A\\\\):\n\n $$ S(x,y;\\Theta) = <\\phi_{head} \\otimes \\phi_{child}> $$ \n\n - Can be huge!  A better option?  Low rank approximation.  Calculate A as: \n\n $$ A = \\sum_i U_i \\otimes V_i \\otimes W_i $$ \n\n Where:\n\n -- r is the rank\n\n -- \\\\(U, V \\in R^{r \\times n}\\\\) replace \\\\(\\phi_{head}\\\\), \\\\(\\phi_{child}\\\\) \n\n -- \\\\(W \\in R^{r\\times d} \\\\) \n\n -- \\\\(U,V,\\\\) and \\\\(W\\\\) are dense low-dimensional representations \\\\(\\in R^r\\\\) ",
       "extraFields" : { }
     }
   }, {
