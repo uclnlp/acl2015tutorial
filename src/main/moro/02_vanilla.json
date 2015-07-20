@@ -17,7 +17,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 12,
+    "id" : 2,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -25,7 +25,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 13,
+    "id" : 3,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -33,7 +33,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 2,
+    "id" : 4,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -41,15 +41,15 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 3,
+    "id" : 5,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Why Low-Rank\n<br>\nWe want: A probabilistic model on matrices with:\n<br>\n<br>\n\n1. Invariance by permutation of rows and columns\n    \n    --> The model depends only on the eigenvalues\n\n2. A complexity measure\n\n    --> A norm or pseudo-norm (\\\\(e.g. L_\\alpha, \\alpha\\ge 0\\\\) ) on the spectrum \n\n3. Fast to compute and memory efficient\n\n    --> \\\\(\\alpha\\le 1\\\\) (Sparsity-inducing)",
+      "code" : "### Why Low-Rank\n<br>\nBecause we want a model on matrices with:\n<br>\n\n1. Invariance by permutation of rows and columns\n> Solution depends only on the eigenvalues\n\n2. A measure to control complexity\n> A \\\\(p\\\\)-norm with \\\\(p \\ge 0\\\\) \n\n3. Fast to compute and memory efficient\n> \\\\(p\\le 1\\\\) (sparsity-inducing)",
       "extraFields" : { }
     }
   }, {
-    "id" : 4,
+    "id" : 6,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -57,7 +57,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 17,
+    "id" : 7,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -65,7 +65,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 16,
+    "id" : 8,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -73,7 +73,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 5,
+    "id" : 9,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -81,7 +81,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 18,
+    "id" : 10,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -91,7 +91,7 @@
       }
     }
   }, {
-    "id" : 6,
+    "id" : 11,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -99,7 +99,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 7,
+    "id" : 12,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -107,7 +107,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 20,
+    "id" : 13,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -117,7 +117,7 @@
       }
     }
   }, {
-    "id" : 8,
+    "id" : 14,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -125,27 +125,53 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 9,
+    "id" : 15,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Alternating Least Squares\n<br>\nObjective:\n\\\\(\n\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2 \n\\\\)\n\n<br>\n**block-coordinate descent**:\n\n\\\\(\n\\arg\\min_{\\mathbf{u}_i} \\gamma(U,V) = \\arg\\min_{u_i} \\||\\mathbf{Y}_{i:} - \\mathbf{u}_i\\mathbf{V}^{T}\\||_F^2 \n\\\\)\n\n\\\\(\n\\arg\\min_{\\mathbf{v}_j} \\gamma(U,V) = \\arg\\min_{v_j} \\||\\mathbf{Y}_{:j} - \\mathbf{U}\\mathbf{v_j}^{T}\\||_F^2 \n\\\\)\n\n<br>\nLeast square problems! ==> Unique solutions:\n\n\\\\(\n\\mathbf{u}_i \\leftarrow (\\mathbf{V}^T\\mathbf{V})^{-1} \\mathbf{V}^T \\mathbf{Y}_{i:} \n\\\\)\n\n\n\\\\(\n\\mathbf{v}_j \\leftarrow (\\mathbf{U}^T\\mathbf{U})^{-1} \\mathbf{U}^T \\mathbf{Y}_{:j} \n\\\\)\n<br>\nEach step can be parallelized efficiently",
+      "code" : "### Alternating Least Squares\n<br>\nObjective:\n\\\\(\n\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2 \n\\\\)\n\n<br>\n**block-coordinate descent**:\n\n\\\\(\n\\arg\\min_{\\mathbf{u}_i} \\gamma(U,V) = \\arg\\min_{u_i} \\||\\mathbf{Y}_{i:} - \\mathbf{u}_i\\mathbf{V}^{T}\\||_F^2 \n\\\\)\n\n\\\\(\n\\arg\\min_{\\mathbf{v}_j} \\gamma(U,V) = \\arg\\min_{v_j} \\||\\mathbf{Y}_{:j} - \\mathbf{U}\\mathbf{v_j}^{T}\\||_F^2 \n\\\\)\n\n",
       "extraFields" : { }
     }
   }, {
-    "id" : 10,
+    "id" : 16,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<br>\nLeast square problems! ==> Unique solutions:\n\n\\\\(\n\\mathbf{u}_i \\leftarrow (\\mathbf{V}^T\\mathbf{V})^{-1} \\mathbf{V}^T \\mathbf{Y}_{i:} \n\\\\)\n\n\n\\\\(\n\\mathbf{v}_j \\leftarrow (\\mathbf{U}^T\\mathbf{U})^{-1} \\mathbf{U}^T \\mathbf{Y}_{:j} \n\\\\)\n<br>\nEach step can be parallelized efficiently",
+      "extraFields" : {
+        "fragment" : "true"
+      }
+    }
+  }, {
+    "id" : 17,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "rlsa",
+      "code" : "reg",
       "extraFields" : { }
     }
   }, {
-    "id" : 11,
+    "id" : 18,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Regularized Latent Semantic Indexing\n<br>\nObjective:\n\\\\(\n\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2 + \\lambda_1||\\mathbf{U}||_F^2 + \\lambda_2||\\mathbf{V}||_1\n\\\\)\n\nL2 for compact document-topic matrix \\\\(\\mathbf{U}\\\\) \n\nL1 for sparse term-topic matrix \\\\(\\mathbf{V}\\\\)\n\n<br>\n**block-coordinate descent**:\n\n\\\\(\n\\arg\\min_{\\mathbf{u}_i} \\gamma(U,V) = \\arg\\min_{u_i} \\||\\mathbf{Y}_{i:} - \\mathbf{u}_i\\mathbf{V}^{T}\\||_F^2\n+ \\lambda_1||\\mathbf{u_i}||_F^2\n\\\\)\n\n\\\\(\n\\arg\\min_{\\mathbf{v}_j} \\gamma(U,V) = \\arg\\min_{v_j} \\||\\mathbf{Y}_{:j} - \\mathbf{U}\\mathbf{v_j}^{T}\\||_F^2 \n+ \\lambda_2||\\mathbf{v_j}||_1\n\\\\)\n\n<br>\n\n\\\\(\n\\mathbf{u}_i \\leftarrow (\\mathbf{V}^T\\mathbf{V} + \\lambda_1\\mathbf{I})^{-1} \\mathbf{V}^T \\mathbf{Y}_{i:} \n\\\\) (ridge regression)\n\n\\\\(\\mathbf{v}_j\\\\) not differentiable, but can apply co-ordinate descent\n",
+      "code" : "### Regularization\n<br>\nObjective:\n<br/>\n\n$$\n\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2 + \\lambda_1Reg1(\\mathbf{U}) + \\lambda_2Reg2(\\mathbf{V})\n$$\n<br>\nCommon choices for \\\\(Reg1\\\\) and \\\\(Reg2\\\\):\n\n- sparsity-inducing 1-norm: \\\\(||\\mathbf{v_j}||_1\\\\)\n- overfitting-avoiding squared 2-norm: \\\\(||\\mathbf{u}_i||_F^2\\\\)\n\n<br/>\n> 1-norm not continuously differentiable<br/>\nOptimization harder but still possible",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 19,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "rlsi",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 20,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Regularized Latent Semantic Indexing\n<br/>\n\ndocument-term matrix \\\\(\\mathbf{Y}\\approx \\mathbf{U}\\mathbf{V}^T\\\\)\n<br/>\ndocument-topic matrix \\\\(\\mathbf{U}\\\\), term-topic matrix \\\\(\\mathbf{V}\\\\)\n<br/>\n<br/>\n\n<div style=\"text-align:center;\">\n<table>\n\n  <tr>\n    <th>\\(\\mathbf{U}\\)</th>\n    <th>\\(\\mathbf{V}\\)</th>\n    <th>Readability</th>\n    <th>Compactness</th>\n    <th>Retrieval</th>\n  </tr>\n  <tr>\n    <td>1-norm &nbsp;</td>\n    <td>2-norm &nbsp;</td>\n    <td>✓</td>\n    <td>✓</td>\n    <td>✓</td>\n  </tr>\n  <tr>\n    <td>2-norm</td>\n    <td>1-norm</td>\n    <td>&#10003;</td>\n    <td>&#x2717;</td>\n    <td>&#x2717;</td>\n  </tr>\n  <tr>\n    <td>1-norm</td>\n    <td>1-norm</td>\n    <td>&#10003;</td>\n    <td>&#10003;</td>\n    <td>&#x2717;</td>\n  </tr>\n  <tr>\n    <td>2-norm</td>\n    <td>2-norm</td>\n    <td>&#x2717;</td>\n    <td>&#x2717;</td>\n    <td>&#x2717;</td>\n  </tr>\n</table>\n</div>\n\n<br/>\n<div style=\"text-align:right;\">\n<i>Wang et al. (2011)</i>\n</div>",
       "extraFields" : { }
     }
   } ],
