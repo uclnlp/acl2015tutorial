@@ -1,0 +1,51 @@
+{
+  "name" : "interactive",
+  "cells" : [ {
+    "id" : 0,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "Interactive",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 1,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\nimport ml.wolfe.{Mat, Vect}\nval layout = Layout(cw = 100, ch = 50)\n\n1",
+      "extraFields" : {
+        "aggregatedCells" : "[]"
+      }
+    }
+  }, {
+    "id" : 2,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "val n = 5\nval m = 5 \nval M = new DenseTensor2(n, m)\nval rand = new scala.util.Random(0)\n\n  //this should be the data\nfor (i <- 0 until m; j <- 0 until m) {\n  M(i, j) = rand.nextGaussian()\n}\nval (_A, _V) = optimizeL2(M, 2, 10)\n_V",
+      "extraFields" : {
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 100, ch = 50)\\n\\n1\"]"
+      }
+    }
+  }, {
+    "id" : 3,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "Rendered",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 4,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "2\n//render(format(matrix(M)) :: Nil,layout)",
+      "extraFields" : {
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 100, ch = 50)\\n\\n1\",\"val n = 5\\nval m = 5 \\nval M = new DenseTensor2(n, m)\\nval rand = new scala.util.Random(0)\\n\\n  //this should be the data\\nfor (i <- 0 until m; j <- 0 until m) {\\n  M(i, j) = rand.nextGaussian()\\n}\\nval (_A, _V) = optimizeL2(M, 2, 10)\\n_A\"]"
+      }
+    }
+  } ],
+  "config" : { }
+}
