@@ -81,7 +81,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Structured Prediction\n\nGoal: Predict \\\\(y^* = \\arg\\max_{y\\in T(x)} S(x,y;\\Theta)\\\\)\n\n- y is a structured output\n\n- \\\\(S(x,y;\\Theta)\\\\) is a score function\n\n- \\\\(T(x)\\\\) is all possible structures\n\nIn many cases, \\\\(\\Theta\\\\) includes matrices or tensors",
+      "code" : "### Structured Prediction\n\nGoal: Predict \\\\(y^* = \\arg\\max_{y\\in T(x)} S(x,y;\\Theta)\\\\)\n\n- y is a structured output\n\n- \\\\(S(x,y;\\Theta)\\\\) is a score function\n\n- \\\\(T(x)\\\\) is all possible structures\n\nIn NLP \\\\(\\Theta\\\\) is often a vector, but it can be a matrix or tensor",
       "extraFields" : { }
     }
   }, {
@@ -177,7 +177,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Difficulties of Manual Feature Selection\n Few Templates:\n\n - Poor Performance\n\n Many Templates:\n\n - High Performance, Many Parameters\n\n - Interactions between features can be hard to know\n\n Alternatives? Automatic Feature Selection:\n\n - Effective, but ''messy'' (Zhao, 2009)\n\n - Expensive\n\n **Solution**: Learn templates from data using matrix factorization",
+      "code" : "### Difficulties Selection\nFew Templates:\n\n- Poor Performance\n \nMany Templates:\n\n- High Performance, Many Parameters\n\n- Interactions between features can be hard to know\n\nAlternatives? Automatic Feature Selection:\n\n- Effective, but ''messy'' (Zhao, 2009)\n\n- Expensive\n\n**Solution**: Learn templates from data using matrix factorization",
       "extraFields" : { }
     }
   }, {
@@ -257,7 +257,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Performance\n\n<br />\n<img src=\"../../assets/figures/08/parse_results.png\" height=\"400\">\n\n - Rank 50 tensors\n\n - Results averaged over 14 languages (CoNLL data)",
+      "code" : "### Performance\n\n<br />\n<img src=\"../../assets/figures/08/parse_results.png\" height=\"300\">\n\n - Great Parser #1: Turbo Parser (Martins, 2013)\n \n - Great Parser #2: Minimum Spanning Tree (McDonald, 2005)\n\n - Rank 50 tensors\n\n - Results averaged over 14 languages (CoNLL data)",
       "extraFields" : { }
     }
   }, {
@@ -273,7 +273,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Conclusion \n\n* **Discriminative** models often have matrix and tensor parameters\n* **Low-rank** asumption enables **parameter sharing**\n    * **Multi-task** learning: corresponds to label-embedding\n    * **Vanilla matrix factorization** can be expressed as a \\\\(N\\times M\\\\)-dimensional **logistic regression with rank constraint**\n    * **structured prediction** with low rank parameters has a lot of potential\n\n",
+      "code" : "### Conclusion \n\n* **Discriminative** models can be parameterized with matrices or tensors\n* **Low-rank** asumption enables **parameter sharing**\n    * **Multi-task** learning: corresponds to label-embedding\n    * **Vanilla matrix factorization** can be expressed as a \\\\(N\\times M\\\\)-dimensional **logistic regression with rank constraint**\n    * **structured prediction** with low rank parameters has a lot of potential\n\n",
       "extraFields" : { }
     }
   } ],
