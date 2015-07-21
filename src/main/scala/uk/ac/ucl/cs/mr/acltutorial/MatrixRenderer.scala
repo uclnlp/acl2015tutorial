@@ -132,7 +132,7 @@ object MatrixRenderer {
       }
 
       val cssClass = if (mIndex > 0) s"""fragment ${if (mIndex < matrices.length - 1) "current-visible" else ""}"""
-      else "fragment fade-out"
+      else if (matrices.length > 1) "fragment fade-out" else ""
       val result =
         <g class={cssClass} data-fragment-index={(if (mIndex == 0) fragmentStart else mIndex + fragmentStart - 1).toString}>
           <g>
