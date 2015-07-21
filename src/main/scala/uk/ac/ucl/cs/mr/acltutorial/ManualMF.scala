@@ -95,6 +95,15 @@ object ManualMF {
     })
   }
 
+  def parseMatrix(string:String) = {
+    val rows = string.split("\n").map(_.trim.split("\\s"))
+    val n = rows.length
+    val m = rows.head.length
+    val mat = new DenseTensor2(n,m)
+    for (i <- 0 until n; j <- 0 until m) mat(i,j) = rows(i)(j).toDouble
+    mat
+  }
+
 
   def embeddings(A: Seq[Vect], V: Seq[Vect], withBoxes: Boolean = false): Matrix = {
     val rows = A.length
@@ -105,17 +114,23 @@ object ManualMF {
   }
 
   def main(args: Array[String]) {
-    val n = 5
-    val m = 5
-    val M = new DenseTensor2(n, m)
-    val rand = new scala.util.Random(0)
+//    val n = 5
+//    val m = 5
+//    val M = new DenseTensor2(n, m)
+//    val rand = new scala.util.Random(0)
+//
+//    //this should be the data
+//    for (i <- 0 until m; j <- 0 until m) {
+//      M(i, j) = rand.nextGaussian()
+//    }
+//    val (_A, _V) = optimizeL2(M, 2, 10)
 
-    //this should be the data
-    for (i <- 0 until m; j <- 0 until m) {
-      M(i, j) = rand.nextGaussian()
-    }
-    val (_A, _V) = optimizeL2(M, 2, 10)
-
+    val M = parseMatrix(
+      """1 2 0 0 0
+       0 0 1 0 0
+       0 0 0 1 1
+       0 0 1 1 1
+       1 2 1 1 1""")
 
   }
 
