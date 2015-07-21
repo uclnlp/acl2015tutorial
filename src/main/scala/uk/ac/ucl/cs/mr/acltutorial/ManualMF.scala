@@ -25,9 +25,9 @@ object ManualMF {
     (A, V)
   }
 
-  def header(rows:Seq[String], cols:Seq[String]) = Matrix(
-    rowLabels = rows.zipWithIndex map {case (r,i) => RowLabel(i,r)},
-    colLabels = cols.zipWithIndex map {case (r,i) => ColLabel(i,r)}
+  def header(rows: Seq[String], cols: Seq[String]) = Matrix(
+    rowLabels = rows.zipWithIndex map { case (r, i) => RowLabel(i, r) },
+    colLabels = cols.zipWithIndex map { case (r, i) => ColLabel(i, r) }
   )
 
   def optimizeL2(M: Mat, K: Int, iterations: Int): (Seq[Vect], Seq[Vect]) = {
@@ -71,9 +71,9 @@ object ManualMF {
   }
 
   def delta(m1: Mat, m2: Mat) = {
-    val result = new DenseTensor2(m1.dim1,m1.dim2)
+    val result = new DenseTensor2(m1.dim1, m1.dim2)
     for (i <- 0 until m1.dim1; j <- 0 until m1.dim2)
-      result(i,j) = m1(i,j) - m2(i,j)
+      result(i, j) = m1(i, j) - m2(i, j)
     result
   }
 
@@ -82,7 +82,7 @@ object ManualMF {
   }
 
   def numbers(m: Matrix) = {
-    m.copy(m.cells collect { case cell@Cell(_, _, d: Double, _, _) => cell.copy(value = f"$d%2.2f") })
+    m.copy(m.cells collect { case cell@Cell(_, _, d: Double, _, _, _,_) => cell.copy(value = f"$d%2.2f") })
   }
 
   def opacity(m: Matrix, min: Double = -1, max: Double = 1, color: (Int, Int, Int) = (0, 0, 0)) = {
@@ -90,21 +90,21 @@ object ManualMF {
       val capped = Math.min(Math.max(min, value), max)
       (capped - min) / (max - min)
     }
-    m.copy(m.cells collect { case cell@Cell(_, _, d: Double, _, _) =>
+    m.copy(m.cells collect { case cell@Cell(_, _, d: Double, _, _, _,_) =>
       cell.copy(value = "", color = color, opacity = valueToOpacity(d))
     })
   }
 
-  def parseMatrix(string:String) = {
+  def parseMatrix(string: String) = {
     val rows = string.split("\n").map(_.trim.split("\\s"))
     val n = rows.length
     val m = rows.head.length
-    val mat = new DenseTensor2(n,m)
-    for (i <- 0 until n; j <- 0 until m) mat(i,j) = rows(i)(j).toDouble
+    val mat = new DenseTensor2(n, m)
+    for (i <- 0 until n; j <- 0 until m) mat(i, j) = rows(i)(j).toDouble
     mat
   }
 
-  def l2Loss(guess:Mat, gold:Mat) = {
+  def l2Loss(guess: Mat, gold: Mat) = {
     guess.l2Similarity(gold)
   }
 
@@ -113,20 +113,20 @@ object ManualMF {
     val cols = V.length
     val plusRowEmbeddings = A.indices.map(i => rowEmbedding(i, cols, A(i).toSeq, withBoxes)).foldLeft(Matrix())(_ + _)
     val plusColEmbeddings = V.indices.map(j => colEmbedding(j, rows, V(j).toSeq, withBoxes)).foldLeft(plusRowEmbeddings)(_ + _)
-    plusColEmbeddings.copy(hRulers = Seq(rows),vRulers = Seq(cols))
+    plusColEmbeddings.copy(hRulers = Seq(rows), vRulers = Seq(cols))
   }
 
   def main(args: Array[String]) {
-//    val n = 5
-//    val m = 5
-//    val M = new DenseTensor2(n, m)
-//    val rand = new scala.util.Random(0)
-//
-//    //this should be the data
-//    for (i <- 0 until m; j <- 0 until m) {
-//      M(i, j) = rand.nextGaussian()
-//    }
-//    val (_A, _V) = optimizeL2(M, 2, 10)
+    //    val n = 5
+    //    val m = 5
+    //    val M = new DenseTensor2(n, m)
+    //    val rand = new scala.util.Random(0)
+    //
+    //    //this should be the data
+    //    for (i <- 0 until m; j <- 0 until m) {
+    //      M(i, j) = rand.nextGaussian()
+    //    }
+    //    val (_A, _V) = optimizeL2(M, 2, 10)
 
     val M = parseMatrix(
       """1 2 0 0 0

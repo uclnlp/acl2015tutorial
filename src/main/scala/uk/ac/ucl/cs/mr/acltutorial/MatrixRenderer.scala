@@ -11,7 +11,8 @@ import scala.xml.PrettyPrinter
  */
 object MatrixRenderer {
 
-  case class Cell(row: Int, col: Int, value: Any, opacity: Double = 0.0, color: (Int, Int, Int) = (0, 0, 0)) {
+  case class Cell(row: Int, col: Int, value: Any, opacity: Double = 0.0, color: (Int, Int, Int) = (0, 0, 0),
+                  textClass:String = "", rectClass:String = "") {
     override def toString = s"""{"row":$row, "col": $col, "value": ${
       value match {
         case s: String => "\"" + s + "\""
@@ -41,6 +42,11 @@ object MatrixRenderer {
 
     def +(that: Matrix) = Matrix(cells ++ that.cells, rowLabels ++ that.rowLabels,
       colLabels ++ that.colLabels, hRulers ++ that.hRulers, vRulers ++ that.vRulers, boxes ++ that.boxes)
+
+    def addTextClass(filter:((Int,Int)) => Boolean, cssClass:String) =
+      copy(cells = cells.map(c => if (filter(c.row,c.col)) c.copy(textClass = c.textClass + " " + cssClass) else c))
+    def addRectClass(filter:((Int,Int)) => Boolean, cssClass:String) =
+      copy(cells = cells.map(c => if (filter(c.row,c.col)) c.copy(rectClass = c.rectClass + " " + cssClass) else c))
   }
 
   def colEmbedding(col: Int, rowOffset: Int, values: Seq[Any], withBox:Boolean = true) = {
@@ -83,12 +89,12 @@ object MatrixRenderer {
         val xBox = d.col * cw + rowHeaderSize
         val yBox = (d.row - 1) * ch + colHeaderSize
         val (r,g,b) = d.color
-        <g>
-          <text x={x.toString} y={y.toString} class="cell">
+        <g class="cell">
+          <text x={x.toString} y={y.toString} class={d.textClass}>
             {d.value.toString}
           </text>
           <rect x={xBox.toString} y={yBox.toString} width={cw.toString} height={ch.toString}
-                style={s"fill:rgba($r,$g,$b,${d.opacity})"} />
+                style={s"fill:rgba($r,$g,$b,${d.opacity})"} class={d.rectClass} />
         </g>
       }
       val rows = for (r <- m.rowLabels) yield {

@@ -50,7 +50,7 @@ object BinaryMF {
   val rowEmbeddings = for (r <- 0 until numPairs) yield Range(0, 2).map(_ => myRandom.nextGaussian())
 
   def samplePositiveCell(data: Seq[Cell]): Cell = {
-    val positive = data.collect { case c@Cell(_, _, 1.0,_,_) => c }
+    val positive = data.collect { case c@Cell(_, _, 1.0,_,_,_,_) => c }
     positive(myRandom.nextInt(positive.length))
   }
 
@@ -60,7 +60,7 @@ object BinaryMF {
       val m1 = matrix.copy(cells = Seq(pos1)) +
         rowEmbedding(pos1.row, relations.length, rowEmbeddings(pos1.row).map(formatNumber)) +
         colEmbedding(pos1.col, numPairs, colEmbeddings(pos1.col).map(formatNumber))
-      val negInCol = matrix.cells.collect { case c@Cell(_, pos1.col, 0.0,_,_) => c }
+      val negInCol = matrix.cells.collect { case c@Cell(_, pos1.col, 0.0,_,_,_,_) => c }
       val neg1 = negInCol(myRandom.nextInt(negInCol.size))
       val m2 = matrix.copy(cells = Seq(neg1)) +
         rowEmbedding(neg1.row, relations.length, rowEmbeddings(neg1.row).map(formatNumber)) +
