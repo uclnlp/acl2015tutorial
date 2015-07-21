@@ -53,7 +53,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Motivation\n<br>\n**Matrix/tensor factorization**\n\n<br>\n\n- encompasses a variety of learning problems \n\n- well-studied in ML/stats literature\n\n- state-of-the-art performance in many tasks\n",
+      "code" : "### Motivation\n<br>\n**Matrix and tensor factorization**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n<br>\n\n- encompass a variety of learning problems \n\n- well-studied in ML/stats literature\n\n- state-of-the-art performance in many tasks\n",
       "extraFields" : { }
     }
   }, {
