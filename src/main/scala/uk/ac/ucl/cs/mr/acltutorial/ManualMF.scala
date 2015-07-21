@@ -104,6 +104,10 @@ object ManualMF {
     mat
   }
 
+  def sigm(mat:Mat) = {
+    mat.map(_)
+  }
+
   def l2Loss(guess: Mat, gold: Mat) = {
     guess.l2Similarity(gold)
   }
