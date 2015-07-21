@@ -16,7 +16,6 @@
       "code" : "import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\nimport ml.wolfe.{Mat, Vect}\nval layout = Layout(cw = 80, ch = 50)\n\n1",
       "extraFields" : {
         "hide_output" : "true",
-        "showEditor" : "false",
         "aggregatedCells" : "[]"
       }
     }
@@ -44,7 +43,7 @@
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "render(Seq(format(matrix(M))),layout) ",
+      "code" : "render(Seq(opacity(matrix(M))),layout) ",
       "extraFields" : {
         "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 80, ch = 50)\\n\\n1\",\"val n = 5\\nval m = 5 \\nval M = new DenseTensor2(n, m)\\nval rand = new scala.util.Random(0)\\n\\n  //this should be the data\\nfor (i <- 0 until m; j <- 0 until m) {\\n  M(i, j) = rand.nextGaussian()\\n}\"]"
       }
@@ -62,10 +61,10 @@
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "def optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1): (Seq[Vect], Seq[Vect]) = {\n  val AV = initialAV(K, M.dim1, M.dim2)\n  val A = AV._1; val V = AV._2\n  def update(i: Int, j: Int) = {\n    val a = A(i).copy\n    val v = V(j).copy\n    val y = a dot v\n    A(i) += v * alpha * (M(i, j) - y)\n    V(j) += a * alpha * (M(i, j) - y)\n  }\n  for (i <- Range(0,iters).toList) {\n    update(rand.nextInt(M.dim1), \n           rand.nextInt(M.dim2))\n  }\n  (A, V)\n}",
+      "code" : "def optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\n  val rand = new scala.util.Random(0)\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\n  val A = AV._1; val V = AV._2\n  def update(i: Int, j: Int) = {\n    val a = A(i).copy\n    val v = V(j).copy\n    val y = a dot v\n    A(i) += v * alpha * (M(i, j) - y)\n    V(j) += a * alpha * (M(i, j) - y)\n  }\n  for (i <- Range(0,iters).toList) {\n    update(rand.nextInt(M.dim1), \n           rand.nextInt(M.dim2))\n  }\n  (A, V)\n}",
       "extraFields" : {
         "hide_output" : "true",
-        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 80, ch = 50)\\n\\n1\",\"val n = 5\\nval m = 5 \\nval M = new DenseTensor2(n, m)\\nval rand = new scala.util.Random(0)\\n\\n  //this should be the data\\nfor (i <- 0 until m; j <- 0 until m) {\\n  M(i, j) = rand.nextGaussian()\\n}\",\"render(Seq(format(matrix(M))),layout) \"]"
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 80, ch = 50)\\n\\n1\",\"val n = 5\\nval m = 5 \\nval M = new DenseTensor2(n, m)\\nval rand = new scala.util.Random(0)\\n\\n  //this should be the data\\nfor (i <- 0 until m; j <- 0 until m) {\\n  M(i, j) = rand.nextGaussian()\\n}\",\"render(Seq(opacity(matrix(M))),layout) \"]"
       }
     }
   }, {
@@ -81,9 +80,27 @@
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "val (_A,_V) = optimizeL2(M, 2, 10, 0.1)\nrender(Seq(format(matrix(M)),format(matrix(dots(_A,_V)))),layout)",
+      "code" : "val (_A,_V) = optimizeL2(M, 2, 10, 0.1)\nval m1 = opacity(matrix(M))\nval m2 = opacity(matrix(dots(_A,_V)) + embeddings(_A,_V))\nrender(Seq(m1,m2),layout)",
       "extraFields" : {
-        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 80, ch = 50)\\n\\n1\",\"val n = 5\\nval m = 5 \\nval M = new DenseTensor2(n, m)\\nval rand = new scala.util.Random(0)\\n\\n  //this should be the data\\nfor (i <- 0 until m; j <- 0 until m) {\\n  M(i, j) = rand.nextGaussian()\\n}\",\"render(Seq(format(matrix(M))),layout) \",\"def optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1): (Seq[Vect], Seq[Vect]) = {\\n  val AV = initialAV(K, M.dim1, M.dim2)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val y = a dot v\\n    val error = M(i, j) - y\\n    A(i) += v * alpha * (M(i, j) - y)\\n    V(j) += a * alpha * (M(i, j) - y)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\"]"
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 80, ch = 50)\\n\\n1\",\"val n = 5\\nval m = 5 \\nval M = new DenseTensor2(n, m)\\nval rand = new scala.util.Random(0)\\n\\n  //this should be the data\\nfor (i <- 0 until m; j <- 0 until m) {\\n  M(i, j) = rand.nextGaussian()\\n}\",\"render(Seq(opacity(matrix(M))),layout) \",\"def optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val y = a dot v\\n    A(i) += v * alpha * (M(i, j) - y)\\n    V(j) += a * alpha * (M(i, j) - y)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), \\n           rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\"]"
+      }
+    }
+  }, {
+    "id" : 9,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "SGDIterations",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 10,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "val models = for (i <- 0 until 30) yield optimizeL2(M, 2, i, 0.1)\nval matrices = for (m <- models) yield  \n  opacity(matrix(dots(m._1,m._2)) + embeddings(m._1,m._2))\nrender(matrices,layout)  ",
+      "extraFields" : {
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 80, ch = 50)\\n\\n1\",\"val n = 5\\nval m = 5 \\nval M = new DenseTensor2(n, m)\\nval rand = new scala.util.Random(0)\\n\\n  //this should be the data\\nfor (i <- 0 until m; j <- 0 until m) {\\n  M(i, j) = rand.nextGaussian()\\n}\",\"render(Seq(opacity(matrix(M))),layout) \",\"def optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val y = a dot v\\n    A(i) += v * alpha * (M(i, j) - y)\\n    V(j) += a * alpha * (M(i, j) - y)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), \\n           rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\",\"val (_A,_V) = optimizeL2(M, 2, 10, 0.1)\\nval m1 = opacity(matrix(M))\\nval m2 = opacity(matrix(dots(_A,_V)) + embeddings(_A,_V))\\nrender(Seq(m1,m2),layout)\"]"
       }
     }
   } ],

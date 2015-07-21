@@ -11,16 +11,16 @@ import uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer.{Cell, Matrix}
 object ManualMF {
 
 
-  def initialAV(K: Int, n:Int, m:Int) = {
+  def initialAV(K: Int, n: Int, m: Int, scale: Double = 0.1) = {
     val rand = new scala.util.Random(0)
     val A = for (i <- 0 until n) yield new DenseTensor1(K)
     val V = for (j <- 0 until m) yield new DenseTensor1(K)
-    for (i <- 0 until n; k <- 0 until K) {
-      A(i)(k) = rand.nextGaussian()
+    for (i <- (0 until n).toList; k <- (0 until K).toList) {
+      A(i)(k) = scale * rand.nextGaussian()
     }
 
-    for (j <- 0 until m; k <- 0 until K) {
-      V(j)(k) = rand.nextGaussian()
+    for (j <- (0 until m).toList; k <- (0 until K).toList) {
+      V(j)(k) = scale * rand.nextGaussian()
     }
     (A, V)
   }
@@ -56,28 +56,46 @@ object ManualMF {
   import MatrixRenderer._
 
   def dotProductMatrix(A: Seq[Vect], V: Seq[Vect]) = {
-    matrix(dots(A,V))
+    matrix(dots(A, V))
   }
 
   def dots(A: Seq[Vect], V: Seq[Vect]) = {
     val M = new DenseTensor2(A.length, V.length)
-    for (i <- 0 until M.dim1; j <- 0 until M.dim2) M(i,j) = A(i) dot V(j)
+    for (i <- (0 until M.dim1).toList; j <- (0 until M.dim2).toList) M(i, j) = A(i) dot V(j)
     M
   }
 
-  def matrix(M:Mat) = {
-    Matrix(for (i <- 0 until M.dim1; j <- 0 until M.dim2) yield Cell(i,j,M(i,j)))
+  def delta(m1: Mat, m2: Mat) = {
+    val result = new DenseTensor2(m1.dim1,m1.dim2)
+    for (i <- 0 until m1.dim1; j <- 0 until m1.dim2)
+      result(i,j) = m1(i,j) - m2(i,j)
+    result
   }
 
-  def format(m:Matrix) = {
-    m.copy(m.cells collect {case Cell(r,c,d:Double) => Cell(r,c, f"$d%2.2f")})
+  def matrix(M: Mat) = {
+    Matrix(for (i <- (0 until M.dim1).toList; j <- (0 until M.dim2).toList) yield Cell(i, j, M(i, j)))
   }
 
-  def embeddings(A: Seq[Vect], V: Seq[Vect]): Matrix = {
+  def numbers(m: Matrix) = {
+    m.copy(m.cells collect { case cell@Cell(_, _, d: Double, _, _) => cell.copy(value = f"$d%2.2f") })
+  }
+
+  def opacity(m: Matrix, min: Double = -1, max: Double = 1, color: (Int, Int, Int) = (0, 0, 0)) = {
+    def valueToOpacity(value: Double) = {
+      val capped = Math.min(Math.max(min, value), max)
+      (capped - min) / (max - min)
+    }
+    m.copy(m.cells collect { case cell@Cell(_, _, d: Double, _, _) =>
+      cell.copy(value = "", color = color, opacity = valueToOpacity(d))
+    })
+  }
+
+
+  def embeddings(A: Seq[Vect], V: Seq[Vect], withBoxes: Boolean = false): Matrix = {
     val rows = A.length
     val cols = V.length
-    val plusRowEmbeddings = A.indices.map(i => rowEmbedding(i, cols, A(i).toSeq)).foldLeft(Matrix())(_ + _)
-    val plusColEmbeddings = V.indices.map(j => colEmbedding(j, rows, V(j).toSeq)).foldLeft(plusRowEmbeddings)(_ + _)
+    val plusRowEmbeddings = A.indices.map(i => rowEmbedding(i, cols, A(i).toSeq, withBoxes)).foldLeft(Matrix())(_ + _)
+    val plusColEmbeddings = V.indices.map(j => colEmbedding(j, rows, V(j).toSeq, withBoxes)).foldLeft(plusRowEmbeddings)(_ + _)
     plusColEmbeddings
   }
 
