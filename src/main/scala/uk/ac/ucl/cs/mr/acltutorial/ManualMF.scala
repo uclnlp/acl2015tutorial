@@ -110,7 +110,7 @@ object ManualMF {
     val cols = V.length
     val plusRowEmbeddings = A.indices.map(i => rowEmbedding(i, cols, A(i).toSeq, withBoxes)).foldLeft(Matrix())(_ + _)
     val plusColEmbeddings = V.indices.map(j => colEmbedding(j, rows, V(j).toSeq, withBoxes)).foldLeft(plusRowEmbeddings)(_ + _)
-    plusColEmbeddings
+    plusColEmbeddings.copy(hRulers = Seq(rows),vRulers = Seq(cols))
   }
 
   def main(args: Array[String]) {
