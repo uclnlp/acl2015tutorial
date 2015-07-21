@@ -1,5 +1,85 @@
 {
   "name" : "Summary",
-  "cells" : [ ],
+  "cells" : [ {
+    "id" : 0,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "blah1",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 1,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Before the break",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 2,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "blah2",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 3,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### After the break",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 4,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "takehome",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 5,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Take-home messages",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 6,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "toolkits",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 7,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Toolkits\n\n- MyMediaLite (Ganter & Rendle): [http://mymedialite.net/news/index.html]()\n\n- scikit-tensor (Nickel): [http://github.com/mnick/scikit-tensor]()\n\n- NMF-MATLAB (Yi & Ngom): [https://sites.google.com/site/nmftool/]()\n\n- Theano (Bengio et al.): [http://deeplearning.net/software/theano/]()\n\n- Wolfe (Riedel et al.): [http://www.wolfe.ml]()\n    - used in this presentation via Moro by Sameer Singh\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 8,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "end",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 9,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\n\n<img src=\"../../assets/figures/readTheMatrix.png\" height=\"700\">",
+      "extraFields" : { }
+    }
+  } ],
   "config" : { }
 }
