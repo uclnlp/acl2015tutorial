@@ -37,11 +37,11 @@ object Renderer {
   }
 
   def points(data:(Seq[Vect],Seq[String])*) = {
-    val vectors = for (((vectors,names),i) <- data.zipWithIndex; (v,n) <- vectors zip names) yield (i,n,v.normalized.toSeq)
+    val vectors = for (((vectors,names),i) <- data.zipWithIndex; (v,n) <- vectors zip names) yield (i,n,v.toSeq)
     println("POINTS Output")
     println(vectors.length)
     println(vectors.mkString("\n"))
-    D3jsConverter.convert(Vectors(vectors))
+    D3jsConverter.convert(Vectors(vectors).norm)
   }
 
 
