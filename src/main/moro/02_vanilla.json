@@ -29,8 +29,39 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Why Low-Rank\n<br/>\n\n- low-rank assumption usually does not hold \n- reconstruction unlikely to be perfect\n<br/>\n<br/>\n\nBut:\n<br/>\n\n> original matrix exhibits **noise** and **redundancy**,<br/> low-rank reconstruction addresses these issues\n",
+      "code" : "### Why Low-Rank\n<br/>\n\n- low-rank assumption usually does not hold \n- reconstruction unlikely to be perfect\n<br/>\n<br/>\n\nBut:\n<br/>\n\n> original matrix exhibits **redundancy** and **noise**,<br/> low-rank reconstruction exploits the former and removes the latter\n",
       "extraFields" : { }
+    }
+  }, {
+    "id" : 21,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "Demo",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 22,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\nimport ml.wolfe.{Mat, Vect}\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)\n\ndef optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\n  val rand = new scala.util.Random(0)\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\n  val A = AV._1; val V = AV._2\n  def update(i: Int, j: Int) = {\n    val a = A(i).copy\n    val v = V(j).copy\n    val y = a dot v\n    A(i) += v * alpha * (M(i, j) - y)\n    V(j) += a * alpha * (M(i, j) - y)\n  }\n  for (i <- Range(0,iters).toList) {\n    update(rand.nextInt(M.dim1), \n           rand.nextInt(M.dim2))\n  }\n  (A, V)\n}",
+      "extraFields" : {
+        "hide_output" : "true",
+        "showEditor" : "false",
+        "aggregatedCells" : "[]"
+      }
+    }
+  }, {
+    "id" : 23,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "val Y = parseMatrix(\n    \"\"\"1 2 0 0 0\n       0 0 1 0 0\n       0 0 0 1 1 \n       0 0 1 1 1\n       1 2 1 1 0\"\"\")\n       \nval rowNames = Seq(\"D1\",\"D2\",\"D3\",\"D4\",\"D5\")\nval colNames = Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")\nval names = header(rowNames,colNames)\n       \nval m0 = numbers(matrix(Y)) + names\nval m1 = opacity(matrix(Y), 0,2) + names\nval m2 = Matrix(Seq(Cell(2,2,\"Y\")), hRulers = Seq(5), vRulers = Seq(5))\nval m3 = Matrix(Seq(Cell(6,2,\"U\"),Cell(2,6,\"V\"), Cell(2,2,\"Y\")), hRulers = Seq(5), vRulers = Seq(5))\nval (u,v) = optimizeL2(Y,2,1000)\nval m4 = numbers(embeddings(u,v))\nval Yhat = dots(u,v)\nval m5 = numbers(matrix(Yhat)) + numbers(embeddings(u,v)) + names\nval m6 = opacity(matrix(Yhat),0,2) + numbers(embeddings(u,v)) + names\n\nrender(Seq(m0,m1,m2,m3,m4,m5,m6,m1),layout) ",
+      "extraFields" : {
+        "showEditor" : "false",
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)\\n\\ndef optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\\n  val rand = new scala.util.Random(0)\\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val y = a dot v\\n    A(i) += v * alpha * (M(i, j) - y)\\n    V(j) += a * alpha * (M(i, j) - y)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), \\n           rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\"]"
+      }
     }
   }, {
     "id" : 4,
@@ -61,7 +92,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Four ways to Factorize",
+      "code" : "### Three ways to Factorize",
       "extraFields" : { }
     }
   }, {
@@ -129,7 +160,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Alternating Least Squares\n<br>\nObjective:\n\\\\(\n\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2 \n\\\\)\n\n<br>\n**block-coordinate descent**:\n\n\\\\(\n\\arg\\min_{\\mathbf{u}_i} \\gamma(U,V) = \\arg\\min_{u_i} \\||\\mathbf{Y}_{i:} - \\mathbf{u}_i\\mathbf{V}^{T}\\||_F^2 \n\\\\)\n\n\\\\(\n\\arg\\min_{\\mathbf{v}_j} \\gamma(U,V) = \\arg\\min_{v_j} \\||\\mathbf{Y}_{:j} - \\mathbf{U}\\mathbf{v_j}^{T}\\||_F^2 \n\\\\)\n\n",
+      "code" : "### Alternating Least Squares\n<br>\nObjective:\n\\\\(\n\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2 \n\\\\)\n\n<br>\n**block-coordinate descent**:\n\n\\\\(\n\\arg\\min_{\\mathbf{u}_{i:}} \\gamma(U,V) = \\arg\\min_{\\mathbf{u}_{i:}} \\||\\mathbf{y}_{i:} - \\mathbf{V}\\mathbf{u}_{i:}\\||_F^2 \n\\\\)\n\n\\\\(\n\\arg\\min_{\\mathbf{v}_{j:}} \\gamma(U,V) = \\arg\\min_{\\mathbf{v}_{j:}} \\||\\mathbf{y}_{:j} - \\mathbf{U}\\mathbf{v}_{j:}\\||_F^2 \n\\\\)\n\n",
       "extraFields" : { }
     }
   }, {
@@ -137,7 +168,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<br>\nLeast square problems! ==> Unique solutions:\n\n\\\\(\n\\mathbf{u}_i \\leftarrow (\\mathbf{V}^T\\mathbf{V})^{-1} \\mathbf{V}^T \\mathbf{Y}_{i:} \n\\\\)\n\n\n\\\\(\n\\mathbf{v}_j \\leftarrow (\\mathbf{U}^T\\mathbf{U})^{-1} \\mathbf{U}^T \\mathbf{Y}_{:j} \n\\\\)\n<br>\nEach step can be parallelized efficiently",
+      "code" : "<br>\nLeast square problems \\\\(\\rightarrow\\\\) Unique solutions:\n\n\\\\(\n\\mathbf{u}_i \\leftarrow (\\mathbf{V}^T\\mathbf{V})^{-1} \\mathbf{V}^T \\mathbf{y}_{i:} \n\\\\)\n\n\n\\\\(\n\\mathbf{v}_j \\leftarrow (\\mathbf{U}^T\\mathbf{U})^{-1} \\mathbf{U}^T \\mathbf{y}_{:j} \n\\\\)\n<br>\nEach step can be parallelized efficiently",
       "extraFields" : {
         "fragment" : "true"
       }
