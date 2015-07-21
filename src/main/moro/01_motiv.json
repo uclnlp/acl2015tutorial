@@ -189,15 +189,25 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix rank\n\nThe maximum number of linearly independent columns/rows \n\n<br>\n\nFor matrix \\\\(\\mathbf{U}\\in\\Re^{N\\times M} \\\\):\n\n- \\\\(rank(\\mathbf{U}) = 0 \\\\) iff \\\\(N=M=0\\\\)\n- \\\\(max(rank(\\mathbf{U})) = min(N,M)\\\\)\n\n<br>\n\n$$\nrank\n\\begin{pmatrix}\n1 & 2 & 3 \\\\\\\n2 & 3 & 5 \\\\\\\n3 & 4 & 7 \\\\\\\n4 & 5 & 9 \\\\\\\n\\end{pmatrix}=??\n$$\n",
+      "code" : "### Matrix rank\n\n<br>\nThe maximum number of linearly independent columns/rows\n\n<br>\n\nFor matrix \\\\(\\mathbf{U}\\in\\Re^{N\\times M} \\\\):\n\n- \\\\(rank(\\mathbf{U}) = 0 \\\\) iff \\\\(N=M=0\\\\)\n- \\\\(max(rank(\\mathbf{U})) = min(N,M)\\\\)\n\n",
       "extraFields" : { }
+    }
+  }, {
+    "id" : 24,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<br>\n\n$$\nrank\n\\begin{pmatrix}\n1 & 2 & 3 \\\\\\\n2 & 3 & 5 \\\\\\\n3 & 4 & 7 \\\\\\\n4 & 5 & 9 \\\\\\\n\\end{pmatrix}=??\n$$\n",
+      "extraFields" : {
+        "fragment" : "true"
+      }
     }
   }, {
     "id" : 23,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<div style=\"text-align:right;\">\n<i>hint:</i> \\(u_1 + u_2 = u_3 \\)\n</div>",
+      "code" : "<div style=\"text-align:right;\">\n<i>hint:</i> \\(\\mathbf{u}_{:1} + \\mathbf{u}_{:2} = \\mathbf{u}_{:3} \\)\n</div>",
       "extraFields" : {
         "fragment" : "true"
       }
