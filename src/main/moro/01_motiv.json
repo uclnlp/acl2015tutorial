@@ -207,7 +207,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<div style=\"text-align:right;\">\n<i>hint:</i> \\(u_1 + u_2 = u_3 \\)\n</div>",
+      "code" : "<div style=\"text-align:right;\">\n<i>hint:</i> \\(\\mathbf{u}_{:1} + \\mathbf{u}_{:2} = \\mathbf{u}_{:3} \\)\n</div>",
       "extraFields" : {
         "fragment" : "true"
       }
