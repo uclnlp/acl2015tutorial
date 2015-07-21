@@ -13,7 +13,7 @@
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\nimport ml.wolfe.{Mat, Vect}\nval layout = Layout(cw = 80, ch = 50)",
+      "code" : "import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\nimport ml.wolfe.{Mat, Vect}\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)",
       "extraFields" : {
         "hide_output" : "true",
         "showEditor" : "false",
@@ -25,7 +25,7 @@
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "val n = 5\nval m = 5 \nval M = new DenseTensor2(n, m)\nval rand = new scala.util.Random(0)\n\n  //this should be the data\nfor (i <- 0 until m; j <- 0 until m) {\n  M(i, j) = rand.nextGaussian()\n}",
+      "code" : "val n = 5\nval m = 5 \nval M = new DenseTensor2(n, m)\nval rand = new scala.util.Random(0)\n\n  //this should be the data\nfor (i <- 0 until m; j <- 0 until m) {\n  M(i, j) = rand.nextGaussian()\n}\nval names = header(\n    Seq(\"D1\",\"D2\",\"D3\",\"D4\",\"D5\"), \n    Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")) ",
       "extraFields" : {
         "hide_output" : "true",
         "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 80, ch = 50)\"]"
@@ -44,9 +44,9 @@
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "render(Seq(opacity(matrix(M))),layout) ",
+      "code" : "render(Seq(opacity(matrix(M) + names)),layout)",
       "extraFields" : {
-        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 80, ch = 50)\",\"val n = 5\\nval m = 5 \\nval M = new DenseTensor2(n, m)\\nval rand = new scala.util.Random(0)\\n\\n  //this should be the data\\nfor (i <- 0 until m; j <- 0 until m) {\\n  M(i, j) = rand.nextGaussian()\\n}\"]"
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)\",\"val n = 5\\nval m = 5 \\nval M = new DenseTensor2(n, m)\\nval rand = new scala.util.Random(0)\\n\\n  //this should be the data\\nfor (i <- 0 until m; j <- 0 until m) {\\n  M(i, j) = rand.nextGaussian()\\n}\\nval names = header(\\n    Seq(\\\"D1\\\",\\\"D2\\\",\\\"D3\\\",\\\"D4\\\",\\\"D5\\\"), \\n    Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\")) \"]"
       }
     }
   }, {

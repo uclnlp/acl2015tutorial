@@ -71,7 +71,7 @@ object MatrixRenderer {
     val numRows = if (layout.numRows == -1) matrices.flatMap(_.cells).map(_.row).max + 1 else layout.numRows
     val printer = new PrettyPrinter(0, 2)
     val boxPadding = 5
-    val width = numCols * cw + rowHeaderSize
+    val width = numCols * cw + rowHeaderSize + colHeaderSize / 2
     val height = (numRows - 1) * ch + colHeaderSize
     val textOffsetY = ch / 2
 

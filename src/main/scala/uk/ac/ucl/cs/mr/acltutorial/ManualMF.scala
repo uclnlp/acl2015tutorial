@@ -3,7 +3,7 @@ package uk.ac.ucl.cs.mr.acltutorial
 import cc.factorie.la.{DenseTensor2, DenseTensor1}
 import ml.wolfe.{Mat, Vect}
 import ml.wolfe.term.{IntTerm, domain}
-import uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer.{Cell, Matrix}
+import uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer.{ColLabel, RowLabel, Cell, Matrix}
 
 /**
  * @author riedelcastro
@@ -24,6 +24,11 @@ object ManualMF {
     }
     (A, V)
   }
+
+  def header(rows:Seq[String], cols:Seq[String]) = Matrix(
+    rowLabels = rows.zipWithIndex map {case (r,i) => RowLabel(i,r)},
+    colLabels = cols.zipWithIndex map {case (r,i) => ColLabel(i,r)}
+  )
 
   def optimizeL2(M: Mat, K: Int, iterations: Int): (Seq[Vect], Seq[Vect]) = {
     val rand = new scala.util.Random(0)
