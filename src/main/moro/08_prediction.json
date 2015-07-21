@@ -173,7 +173,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Difficulties Selection\nFew Templates:\n\n- Poor Performance\n \nMany Templates:\n\n- High Performance, Many Parameters\n\n- Interactions between features can be hard to know\n\nAlternatives? Automatic Feature Selection:\n\n- Effective, but ''messy'' (Zhao, 2009)\n\n- Expensive\n\n**Solution**: Learn templates from data using matrix factorization",
+      "code" : "### Difficulties Selection\n####Few Templates:\n\n- Poor Performance\nMany Templates:\n\n- High Performance, Many Parameters\n- Interactions between features can be hard to know\n\n####Alternatives? Automatic Feature Selection:\n\n- Effective, but ''messy'' (Zhao, 2009)\n- Expensive\n**Solution**: Learn templates from data using matrix factorization",
       "extraFields" : { }
     }
   }, {
@@ -189,7 +189,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "#### Step 1: Formulate Feature Vector as Rank 1 Tensor\n\n Feature vectors for each type of information: \n\n - \\\\(\\phi_{head}\\\\), vector \\\\(\\in R^n\\\\) for head token\n\n - \\\\(\\phi_{child}\\\\), vector \\\\(\\in R^n\\\\)for child token\n\n - \\\\(\\phi_{arc}\\\\), vector \\\\(\\in R^d\\\\) for arc information",
+      "code" : "### Step 1: Formulate Feature Vector as Rank 1 Tensor\n\nFeature vectors for each type of information: \n\n - \\\\(\\phi_{head}\\\\), vector \\\\(\\in R^n\\\\) for head token\n - \\\\(\\phi_{child}\\\\), vector \\\\(\\in R^n\\\\)for child token\n - \\\\(\\phi_{arc}\\\\), vector \\\\(\\in R^d\\\\) for arc information\n\nReplace with tensors U, V, and W:\n\n - \\\\(U, V \\in R^{r \\times n}\\\\) replace \\\\(\\phi_{head}\\\\), \\\\(\\phi_{child}\\\\)\n - \\\\(W \\in R^{r\\times d} \\\\) replaces \\\\(\\phi_{arc}\\\\)\n\n",
       "extraFields" : { }
     }
   }, {
@@ -205,7 +205,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "#### Step 2: Formulate Model Parameters Tensor\n\n - A tensor \\\\(R^{n \\times n \\times d}\\\\), describes the concatenation of all three feature vectors, so replace \\\\(\\Theta\\\\) with tensor \\\\(A\\\\):\n\n $$ S(x,y;\\Theta) = <\\phi_{head} \\otimes \\phi_{child}> $$ \n\n Can be huge!  A better option?  Low rank approximation.  Calculate A as: \n\n $$ A = \\sum_i U_i \\otimes V_i \\otimes W_i $$ \n\n Where:\n\n - r is the rank\n\n - \\\\(U, V \\in R^{r \\times n}\\\\) replace \\\\(\\phi_{head}\\\\), \\\\(\\phi_{child}\\\\) \n\n - \\\\(W \\in R^{r\\times d} \\\\) \n\n - \\\\(U,V,\\\\) and \\\\(W\\\\) are dense low-dimensional representations \\\\(\\in R^r\\\\) ",
+      "code" : "### Step 2: Formulate Model Parameters Tensor\n\nA tensor \\\\(R^{n \\times n \\times d}\\\\), describes the concatenation of all three feature vectors, so replace \\\\(\\Theta\\\\) with tensor \\\\(A\\\\):\n\n $$ S(x,y;\\Theta) = S(x,y;A) = <\\phi_{head} \\otimes \\phi_{child}> $$ \n\n Can be huge!  A better option?  Low rank approximation.  Calculate A as: \n\n $$ A = \\sum_i U_i \\otimes V_i \\otimes W_i $$ \n\nwhere \\\\(U,V,\\\\) and \\\\(W\\\\) are dense low-dimensional representations \\\\(\\in R^r\\\\) ",
       "extraFields" : { }
     }
   }, {
@@ -221,12 +221,12 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Learning\n\n Training Objective: \n\n $$ C \\sum_i \\eta_i + ||U||_F^2 + ||V||_F^2 + ||W||_F^2 + ||\\Theta||_F^2 $$ \n\nNon-convex optimization \n\nCan optimize with variant of Passive Aggressive (Crammer, 2006) \n",
+      "code" : "### Learning\n\n Training Objective: \n\n $$ C \\sum_i \\eta_i + ||U||_F^2 + ||V||_F^2 + ||W||_F^2 + ||A||_F^2 $$ \n\nNon-convex optimization \n\nCan optimize with variant of Passive Aggressive (Crammer, 2006) \n",
       "extraFields" : { }
     }
   }, {
     "id" : 28,
-    "compiler" : "markdown",
+    "compiler" : "section",
     "input" : {
       "sessionId" : null,
       "code" : "tobjectives2",
@@ -237,7 +237,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Learning\n\nOnline method tailored for tensors (Lei, 2014)\n\nIterate over data and for each instance, update \\\\(\\Theta\\\\) and choose one of the feature tensors as follows: \n\n - \\\\( \\Theta^{(t + 1)} = \\Theta^t + \\Delta \\Theta \\\\) \n\n - \\\\( U^{(t+1)} = U^t + \\Delta U \\\\) \n\n With sub-problem (solvable with closed-form solution): \n\n $$ \\min_{\\Delta \\Theta, \\Delta U} \\frac{1}{2} ||\\Delta \\Theta ||_F^2 + \\frac{1}{2} ||\\Delta \\Theta ||_F^2 + C \\eta_i $$ ",
+      "code" : "### Learning\n\nOnline method tailored for tensors (Lei, 2014)\n\nIterate over data and for each instance, update \\\\(A\\\\) and choose one of the feature tensors as follows: \n\n - \\\\( A^{(t + 1)} = A^t + \\Delta A \\\\) \n\n - \\\\( U^{(t+1)} = U^t + \\Delta U \\\\) \n\n With sub-problem (solvable with closed-form solution): \n\n $$ \\min_{\\Delta A, \\Delta U} \\frac{1}{2} ||\\Delta A ||_F^2 + \\frac{1}{2} ||\\Delta U ||_F^2 + C \\eta_i $$ ",
       "extraFields" : { }
     }
   }, {
@@ -253,7 +253,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Performance - Parsing\n\n<br />\n<img src=\"../../assets/figures/08/parser-results.png\" height=\"400\">\n\n - RBG + MF model trained with rank \\\\(r = 50\\\\) tensors\n\n - Results averaged over 14 languages (CoNLL data)",
+      "code" : "### Performance - Parsing\n\n<br />\n<img src=\"../../assets/figures/08/parser-results.png\" height=\"400\">\n\n- RBG + MF model trained with rank \\\\(r = 50\\\\) tensors\n\n- Results averaged over 14 languages (CoNLL data)",
       "extraFields" : { }
     }
   }, {
@@ -285,7 +285,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Conclusion \n\n* **Discriminative** models can be parameterized with matrices or tensors\n* **Low-rank** asumption enables **parameter sharing**\n    * **Multi-task** learning: corresponds to label-embedding\n    * **Vanilla matrix factorization** can be expressed as a \\\\(N\\times M\\\\)-dimensional **logistic regression with rank constraint**\n    * **structured prediction** with low rank parameters has a lot of potential\n\n",
+      "code" : "### Conclusion \n\n* **Discriminative** models can be parameterized with matrices or tensors\n* **Low-rank** asumption enables **parameter sharing**\n    * **Multi-task** learning: corresponds to label-embedding\n    * **Vanilla matrix factorization** can be expressed as a \\\\(N\\times M\\\\)-dimensional **logistic regression with rank constraint**\n    * **structured prediction** with low rank parameters can improve performance over heavily engineered state-of-the-art systems\n\n",
       "extraFields" : { }
     }
   } ],
