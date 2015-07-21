@@ -6,9 +6,7 @@
     "input" : {
       "sessionId" : null,
       "code" : "IntroToDiscriminativeFactorialModels",
-      "extraFields" : {
-        "reveal_params" : "data-background: #00ffff"
-      }
+      "extraFields" : { }
     }
   }, {
     "id" : 1,
@@ -16,9 +14,7 @@
     "input" : {
       "sessionId" : null,
       "code" : "### Discriminative Factorials Models\n\nFactorization is an efficient way of reducing the effective number of parameters in discriminative/predictive models\n\nWe introduce:\n\n* Multi-Task/Multi-Label Learning with Matrix Factorization\n* Factorization Machines\n* Structured Prediction with Factorized Parameters",
-      "extraFields" : {
-        "reveal_params" : "data-background: #00ffff"
-      }
+      "extraFields" : { }
     }
   }, {
     "id" : 2,
@@ -49,7 +45,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Factorization as a Constrained Linear Regression\nMatrix \\\\( \\mathbf{Y}\\in\\Re^{n \\times d} \\\\). For any \\\\(K\\\\):\n\n\\\\( \\mathbb{E}[y_{ij}=1|i,j] = \\langle \\mathbf{U}_{i:}, \\mathbf{V}_{j:}\\rangle \\\\) where \\\\(\\mathbf{U}\\in\\Re^{N\\times K}\\\\) and \\\\(\\mathbf{V}\\in\\Re^{M\\times K}\\\\)\n\nEquivalently, we consider the prediction of the matrix values \\\\(y_{ij}\\\\) given the row and column indices:\n\n\\\\( P(y_{t}=1|x_t = (i,j) ) = \\sigma(\\langle\\mathbf{\\Theta}, \\mathbf{e}_i \\otimes \\mathbf{e}_j\\rangle) \\\\) \n\nwhere \\\\( \\mathbf{\\Theta} = \\mathbf{U} \\mathbf{V}^T \\\\)\n\nSo we can view Matrix Factorization as a Rank-Constrained Linear Regression\n\n==> called **factorization machine** [Rendle 2010]",
+      "code" : "### Matrix Factorization as a Constrained Linear Regression\nMatrix \\\\( \\mathbf{Y}\\in\\Re^{n \\times d} \\\\). For any \\\\(K\\\\):\n\n\\\\( \\mathbb{E}[y_{ij}=1|i,j] = \\langle \\mathbf{U}_{i:}, \\mathbf{V}_{j:}\\rangle \\\\) where \\\\(\\mathbf{U}\\in\\Re^{N\\times K}\\\\) and \\\\(\\mathbf{V}\\in\\Re^{M\\times K}\\\\)\n\nEquivalently, we consider the prediction of the matrix values \\\\(y_{ij}\\\\) given the row and column indices:\n\n\\\\( P(y_{t}=1|x_t = (i,j) ) = \\sigma(\\langle\\mathbf{\\Theta}, \\mathbf{e}_i \\otimes \\mathbf{e}_j\\rangle) \\\\) \n\nwhere \\\\( \\mathbf{\\Theta} = \\mathbf{U} \\mathbf{V}^T \\\\)\n\nSo we can view Matrix Factorization as a Rank-Constrained Linear Regression\n\n\\\\( \\rightarrow \\\\) called **factorization machine** [Rendle 2010]",
       "extraFields" : { }
     }
   }, {
@@ -257,7 +253,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Performance\n\n<br />\n<img src=\"../../assets/figures/08/parse_results.png\" height=\"300\">\n\n - Great Parser #1: Turbo Parser (Martins, 2013)\n \n - Great Parser #2: Minimum Spanning Tree (McDonald, 2005)\n\n - Rank 50 tensors\n\n - Results averaged over 14 languages (CoNLL data)",
+      "code" : "### Performance - Parsing\n\n<br />\n<img src=\"../../assets/figures/08/parser-results.png\" height=\"400\">\n\n - RBG + MF model trained with rank \\\\(r = 50\\\\) tensors\n\n - Results averaged over 14 languages (CoNLL data)",
       "extraFields" : { }
     }
   }, {
@@ -265,11 +261,27 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "conclusion",
+      "code" : "srlresults",
       "extraFields" : { }
     }
   }, {
     "id" : 33,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Performance - SRL\n\n<br />\n<img src=\"../../assets/figures/08/srl-results.png\" height=\"400\">\n\n - Baselines have many features and automatic feature selection\n\n - Outperform previous best system across many languages",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 34,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "conclusion",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 35,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
