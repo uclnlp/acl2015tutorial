@@ -25,7 +25,7 @@
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "val n = 5\nval m = 5 \nval M2 = new DenseTensor2(n, m)\nval rand = new scala.util.Random(0)\nval names = header(\n    Seq(\"D1\",\"D2\",\"D3\",\"D4\",\"D5\"), \n    Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")) \n    //this should be the data\nval M = parseMatrix(\n    \"\"\"1 2 0 0 0\n       0 0 1 0 0\n       0 0 0 1 1 \n       0 0 1 1 1\n       1 2 1 1 1\"\"\")\nfor (i <- 0 until m; j <- 0 until m) {\n  M2(i, j) = rand.nextGaussian()\n}\n",
+      "code" : "val n = 5\nval m = 5 \nval M2 = new DenseTensor2(n, m)\nval rand = new scala.util.Random(0)\nval names = header(\n    Seq(\"D1\",\"D2\",\"D3\",\"D4\",\"D5\"), \n    Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")) \n    //this should be the data\nval M = parseMatrix(\n    \"\"\"1 2 0 0 0\n       0 0 1 0 0\n       0 0 0 1 1 \n       0 0 1 1 1\n       1 2 1 1 0\"\"\")\nfor (i <- 0 until m; j <- 0 until m) {\n  M2(i, j) = rand.nextGaussian()\n}\n",
       "extraFields" : {
         "hide_output" : "true",
         "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)\"]"
