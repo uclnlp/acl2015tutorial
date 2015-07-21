@@ -1,6 +1,8 @@
 package uk.ac.ucl.cs.mr.acltutorial
 
-import org.sameersingh.htmlgen.{RawHTML, HTML}
+import ml.wolfe.Vect
+import org.sameersingh.htmlgen.Custom.Vectors
+import org.sameersingh.htmlgen.{D3jsConverter, RawHTML, HTML}
 
 import scala.xml.{Unparsed, XML, PrettyPrinter}
 
@@ -31,9 +33,16 @@ object Renderer {
       <div>
         {for (html <- htmls) yield  <div style="float:left;">{Unparsed(html.source)}</div>}
       </div>
-    println("FLOATLEFT Output")
-    println(printer.format(html))
     RawHTML(printer.format(html))
   }
+
+  def points(data:(Seq[Vect],Seq[String])*) = {
+    val vectors = for (((vectors,names),i) <- data.zipWithIndex; (v,n) <- vectors zip names) yield (i,n,v.toSeq)
+    println("POINTS Output")
+    println(vectors.length)
+    println(vectors.mkString("\n"))
+    D3jsConverter.convert(Vectors(vectors))
+  }
+
 
 }
