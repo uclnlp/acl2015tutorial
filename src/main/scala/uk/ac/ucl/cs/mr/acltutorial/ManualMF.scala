@@ -104,6 +104,9 @@ object ManualMF {
     mat
   }
 
+  def l2Loss(guess:Mat, gold:Mat) = {
+    guess.l2Similarity(gold)
+  }
 
   def embeddings(A: Seq[Vect], V: Seq[Vect], withBoxes: Boolean = false): Matrix = {
     val rows = A.length
