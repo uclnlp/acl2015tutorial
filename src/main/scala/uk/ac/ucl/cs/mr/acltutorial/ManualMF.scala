@@ -10,17 +10,8 @@ import uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer.{Cell, Matrix}
  */
 object ManualMF {
 
-  val n = 5
-  val m = 5
-  val M = new DenseTensor2(n, m)
-  val rand = new scala.util.Random(0)
 
-  //this should be the data
-  for (i <- 0 until m; j <- 0 until m) {
-    M(i, j) = rand.nextGaussian()
-  }
-
-  def initialAV(K: Int) = {
+  def initialAV(K: Int, n:Int, m:Int) = {
     val rand = new scala.util.Random(0)
     val A = for (i <- 0 until n) yield new DenseTensor1(K)
     val V = for (j <- 0 until m) yield new DenseTensor1(K)
@@ -35,11 +26,13 @@ object ManualMF {
   }
 
   def optimizeL2(M: Mat, K: Int, iterations: Int): (Seq[Vect], Seq[Vect]) = {
+    val rand = new scala.util.Random(0)
+
     val n = M.dim1
     val m = M.dim2
 
     val alpha = 0.1
-    val AV = initialAV(K)
+    val AV = initialAV(K, n, m)
     val A = AV._1
     val V = AV._2
 
@@ -51,7 +44,7 @@ object ManualMF {
       V(j) += a * alpha * (M(i, j) - y)
     }
 
-    for (_ <- 0 until iterations) {
+    for (_ <- (0 until iterations).toList) {
       val i = rand.nextInt(n)
       val j = rand.nextInt(m)
       update(i, j)
@@ -59,7 +52,6 @@ object ManualMF {
     (A, V)
   }
 
-  val (_A, _V) = optimizeL2(M, 2, 10)
 
   import MatrixRenderer._
 
@@ -87,6 +79,21 @@ object ManualMF {
     val plusRowEmbeddings = A.indices.map(i => rowEmbedding(i, cols, A(i).toSeq)).foldLeft(Matrix())(_ + _)
     val plusColEmbeddings = V.indices.map(j => colEmbedding(j, rows, V(j).toSeq)).foldLeft(plusRowEmbeddings)(_ + _)
     plusColEmbeddings
+  }
+
+  def main(args: Array[String]) {
+    val n = 5
+    val m = 5
+    val M = new DenseTensor2(n, m)
+    val rand = new scala.util.Random(0)
+
+    //this should be the data
+    for (i <- 0 until m; j <- 0 until m) {
+      M(i, j) = rand.nextGaussian()
+    }
+    val (_A, _V) = optimizeL2(M, 2, 10)
+
+
   }
 
 }
