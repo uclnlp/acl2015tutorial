@@ -59,7 +59,7 @@
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "<div style=\"position:relative; width:600px; height:100px; margin:auto; display:block\">\n<div class=\"fragment0 current-visible\" style=\"position:absolute; top:0;left:0px;\">Binary classification</div><div class=\"fragment1 current-visible\" style=\"position:absolute; top:0;left:0px;\">Semi-supervised</div><div class=\"fragment2 current-visible\" style=\"position:absolute; top:0;left:0px;\">Multi-task</div><div class=\"fragment3 current-visible\" style=\"position:absolute; top:0;left:0px;\">Missing data</div>\n</div>",
+      "code" : "<div style=\"position:relative; width:600px; height:100px; margin:auto; display:block\">\n<div class=\"fragment0 fade-out\" style=\"position:absolute; top:0;left:0px;\">Binary classification</div><div class=\"fragment0 current-visible\" style=\"position:absolute; top:0;left:0px;\">Semi-supervised (transductive) learning</div><div class=\"fragment1 current-visible\" style=\"position:absolute; top:0;left:0px;\">Multi-task learning</div><div class=\"fragment2 current-visible\" style=\"position:absolute; top:0;left:0px;\">Missing data</div>\n</div>",
       "extraFields" : { }
     }
   }, {
@@ -93,7 +93,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Vector Operations\n<br/>\n\n- the **inner product** between vectors \\\\(\\mathbf{u}\\in\\Re^L\\\\) and \\\\(\\mathbf{v}\\in\\Re^L\\\\)\n$$\\langle \\mathbf{u},\\mathbf{v} \\rangle := \\sum_{\\ell=1}^L u_{\\ell} v_\\ell$$\n<br/>\n- the **outer product** between vectors \\\\(\\mathbf{u}\\in\\Re^N\\\\) and \\\\(\\mathbf{v}\\in\\Re^M\\\\)\n\n$$\\mathbf{u} \\otimes \\mathbf{v} := \\begin{pmatrix} u_{1} v_{1} & u_{1} v_{2} & \\cdots & u_{1} v_{M}  \\\\\\ u_{2} v_{1} & u_{2} v_{2} & \\cdots & u_{2} v_{M} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ u_{N} v_{1} & u_{N} v_{2} & \\cdots & u_{N} v_{M} \\end{pmatrix}\n$$",
+      "code" : "### Vector Operations\n<br/>\n\n- the **inner/dot product** between vectors \\\\(\\mathbf{u}\\in\\Re^L\\\\) and \\\\(\\mathbf{v}\\in\\Re^L\\\\)\n$$\\langle \\mathbf{u},\\mathbf{v} \\rangle := \\sum_{\\ell=1}^L u_{\\ell} v_\\ell$$\n\n- the **outer product** between vectors \\\\(\\mathbf{u}\\in\\Re^N\\\\) and \\\\(\\mathbf{v}\\in\\Re^M\\\\)<br/>\n\n$$\\mathbf{u} \\otimes \\mathbf{v} = \\begin{pmatrix} u_{1} \\\\\\ u_{2} \\\\\\ \\vdots \\\\\\ u_{N}\\end{pmatrix} \\otimes \\begin{pmatrix} v_{1} \\\\\\ v_{2} \\\\\\ \\vdots \\\\\\ v_{M}\\end{pmatrix}  := \\begin{pmatrix} u_{1} v_{1} & u_{1} v_{2} & \\cdots & u_{1} v_{M}  \\\\\\ u_{2} v_{1} & u_{2} v_{2} & \\cdots & u_{2} v_{M} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ u_{N} v_{1} & u_{N} v_{2} & \\cdots & u_{N} v_{M} \\end{pmatrix}_{N\\times M}\n$$",
       "extraFields" : { }
     }
   }, {
@@ -109,7 +109,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Operations\n\n- the **inner product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{L \\times M} \\\\)\n\n$$\\mathbf{U} \\mathbf{V}:= \\begin{pmatrix} \\sum_{\\ell}u_{1,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{1,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{1,\\ell} v_{\\ell,M}  \\\\\\ \\sum_{\\ell}u_{2,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{2,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{2,\\ell} v_{\\ell,M} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ \\sum_{\\ell}u_{N,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{N,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{N,\\ell} v_{\\ell,M} \\end{pmatrix}$$\n\n- the **outer product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{M \\times L} \\\\)\n\n$$\\mathbf{U} \\otimes \\mathbf{V} := \\sum_{\\ell=1}^L \\mathbf{u}_{:\\ell} \\otimes \\mathbf{v}_{:\\ell} $$",
+      "code" : "### Matrix Operations\n<br/>\n\n- the **inner product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{L \\times M} \\\\)\n\n<br/>\n\n$$\\mathbf{U} \\mathbf{V}:= \\begin{pmatrix} \\sum_{\\ell}u_{1,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{1,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{1,\\ell} v_{\\ell,M}  \\\\\\ \\sum_{\\ell}u_{2,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{2,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{2,\\ell} v_{\\ell,M} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ \\sum_{\\ell}u_{N,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{N,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{N,\\ell} v_{\\ell,M} \\end{pmatrix}_{N,M}$$\n\n",
       "extraFields" : { }
     }
   }, {
@@ -125,7 +125,23 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Operations\n\n- the element-wise **Hadamard product** for \\\\(\\mathbf{U},\\mathbf{V} \\in\\Re^{N\\times L} \\\\) \n\n$$\\mathbf{U} \\circ \\mathbf{V} := \\begin{pmatrix} u_{1,1} v_{1,1} & u_{1,2} v_{1,2} & \\cdots & u_{1,L} v_{1,L}  \\\\\\ u_{2,1} v_{2,1} & u_{2,2} v_{2,2} & \\cdots & u_{2,L} v_{2,L} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ u_{N,1} v_{N,1} & u_{N,2} v_{N,2} & \\cdots & u_{N,L} v_{N,L} \\end{pmatrix}\n$$\n\n",
+      "code" : "### Matrix Operations\n\n<br/>\n\n- the **outer product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{M \\times L} \\\\)\n\n<br/>\n\n$$\\mathbf{U} \\otimes \\mathbf{V} := \\sum_{\\ell=1}^L \\mathbf{u}_{:\\ell} \\otimes \\mathbf{v}_{:\\ell}\\\\\\\n= \\mathbf{u}_{:1} \\otimes \\mathbf{v}_{:1} + \\mathbf{u}_{:2} \\otimes \\mathbf{v}_{:2} + \\cdots \\mathbf{u}_{:L} \\otimes \\mathbf{v}_{:L}\n$$\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 19,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "algebra4",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 20,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Matrix Operations\n\n<br/>\n\n- the element-wise **Hadamard product** for \\\\(\\mathbf{U},\\mathbf{V} \\in\\Re^{N\\times L} \\\\)\n\n<br/>\n\n$$\\mathbf{U} \\circ \\mathbf{V} := \\begin{pmatrix} u_{1,1} v_{1,1} & u_{1,2} v_{1,2} & \\cdots & u_{1,L} v_{1,L}  \\\\\\ u_{2,1} v_{2,1} & u_{2,2} v_{2,2} & \\cdots & u_{2,L} v_{2,L} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ u_{N,1} v_{N,1} & u_{N,2} v_{N,2} & \\cdots & u_{N,L} v_{N,L} \\end{pmatrix}_{N,L}\n$$\n",
       "extraFields" : { }
     }
   }, {
@@ -141,7 +157,23 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### \\\\(p\\\\)-norms\n\n$$||\\mathbf{U}||_p := \\left(\\sum_{m=1}^M\\sum_{n=1}^N |u_{n,m}|^p \\right)^{1/p} $$\n\n**Frobenius norm** \\\\(||\\mathbf{U}||_F := ||\\mathbf{U}||_2\\\\)\n\n<img src=\"../../assets/figures/norms.png\" height=\"250\">\n\n$$\\mathbf{U}\\in\\Re^{2\\times 1}, ||\\mathbf{U}||_1 = ||\\mathbf{U}||_2 = ||\\mathbf{U}||_\\infty = 1$$\n\n<div style=\"text-align:center;\">\n<font size=\"3\">*\"<a href=\"https://commons.wikimedia.org/wiki/File:Vector_norms2.svg#/media/File:Vector_norms2.svg\">Vector norms2</a>\" by <a href=\"//en.wikipedia.org/wiki/User:Jakob.scholbach\" class=\"extiw\" title=\"wikipedia:User:Jakob.scholbach\">Jakob.scholbach</a> at <a href=\"//en.wikipedia.org/wiki/\" class=\"extiw\" title=\"wikipedia:\">English Wikipedia</a>. Licensed under <a href=\"http://creativecommons.org/licenses/by-sa/3.0\" title=\"Creative Commons Attribution-Share Alike 3.0\">CC BY-SA 3.0</a> via <a href=\"https://commons.wikimedia.org/wiki/\">Wikimedia Commons</a>.*</font>\n</div>\n\n\n\n",
+      "code" : "### Norms\n<br/>\n\n- loss functions (how far we are from our objective)\n\n- regularizers (how large we allow our parameters to grow)\n\n<br/>\n\n**element-wise** \\\\(p\\\\)-norms:\n\n$$||\\mathbf{U}||_p := \\left(\\sum_{m=1}^M\\sum_{n=1}^N |u_{n,m}|^p \\right)^{1/p} $$\n\n<br/>\n\n**Frobenius norm** \\\\(||\\mathbf{U}||_F := ||\\mathbf{U}||_2\\\\)",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 21,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "norms2",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 22,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Norm example\n\n<img src=\"../../assets/figures/norms.png\" height=\"250\">\n\n$$\\mathbf{U}\\in\\Re^{2\\times 1}, ||\\mathbf{U}||_1 = ||\\mathbf{U}||_2 = ||\\mathbf{U}||_\\infty = 1$$\n\n<div style=\"text-align:center;\">\n<font size=\"3\">*\"<a href=\"https://commons.wikimedia.org/wiki/File:Vector_norms2.svg#/media/File:Vector_norms2.svg\">Vector norms2</a>\" by <a href=\"//en.wikipedia.org/wiki/User:Jakob.scholbach\" class=\"extiw\" title=\"wikipedia:User:Jakob.scholbach\">Jakob.scholbach</a> at <a href=\"//en.wikipedia.org/wiki/\" class=\"extiw\" title=\"wikipedia:\">English Wikipedia</a>. Licensed under <a href=\"http://creativecommons.org/licenses/by-sa/3.0\" title=\"Creative Commons Attribution-Share Alike 3.0\">CC BY-SA 3.0</a> via <a href=\"https://commons.wikimedia.org/wiki/\">Wikimedia Commons</a>.*</font>\n</div>",
       "extraFields" : { }
     }
   }, {
@@ -157,8 +189,18 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix rank\n\nThe maximum number of linearly independent columns/rows \n\n<br>\n\nFor matrix \\\\(\\mathbf{U}\\in\\Re^{N\\times M} \\\\):\n\n- \\\\(rank(\\mathbf{U}) = 0 \\\\) if \\\\(N=M=0\\\\)\n- \\\\(max(rank(\\mathbf{U})) = min(N,M)\\\\)\n\n<br>\n\n$$\nrank(\n\\begin{pmatrix}\n1 & 2 & 3 \\\\\\\n2 & 3 & 4 \\\\\\\n3 & 4 & 7 \\\\\\\n4 & 5 & 9 \\\\\\\n\\end{pmatrix})=??\n$$\n",
+      "code" : "### Matrix rank\n\nThe maximum number of linearly independent columns/rows \n\n<br>\n\nFor matrix \\\\(\\mathbf{U}\\in\\Re^{N\\times M} \\\\):\n\n- \\\\(rank(\\mathbf{U}) = 0 \\\\) iff \\\\(N=M=0\\\\)\n- \\\\(max(rank(\\mathbf{U})) = min(N,M)\\\\)\n\n<br>\n\n$$\nrank\n\\begin{pmatrix}\n1 & 2 & 3 \\\\\\\n2 & 3 & 5 \\\\\\\n3 & 4 & 7 \\\\\\\n4 & 5 & 9 \\\\\\\n\\end{pmatrix}=??\n$$\n",
       "extraFields" : { }
+    }
+  }, {
+    "id" : 23,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<div style=\"text-align:right;\">\n<i>hint:</i> \\(u_1 + u_2 = u_3 \\)\n</div>",
+      "extraFields" : {
+        "fragment" : "true"
+      }
     }
   } ],
   "config" : { }

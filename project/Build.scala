@@ -54,6 +54,7 @@ object Build extends Build {
   lazy val wolfeNLP = ProjectRef(file("./wolfe"), "wolfe-nlp")
   lazy val wolfeCore = ProjectRef(file("./wolfe"), "wolfe-core")
   lazy val wolfeUI = ProjectRef(file("./wolfe"), "wolfe-ui")
+  lazy val wolfeExamples= ProjectRef(file("./wolfe"), "wolfe-examples")
 
   lazy val acltutorial = Project(
     id = "acltutorial",
@@ -62,6 +63,8 @@ object Build extends Build {
   ) dependsOn(
     wolfeNLP % "test->test;compile->compile",
     wolfeUI % "test->test;compile->compile",
-    wolfeCore % "test->test;compile->compile"    
-  )
+    wolfeCore % "test->test;compile->compile",
+    wolfeExamples % "test->test;compile->compile"
+
+    )
 }

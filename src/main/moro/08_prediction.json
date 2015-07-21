@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Discriminative Factorial Models\n\nFactorization is an efficient way of reducing the effective number of parameters in discriminative/predictive models\n\nWe introduce:\n\n* Multi-Task/Multi-Label Learning with Matrix Factorization\n* Factorization Machines\n* Structured Prediction with Factorized Parameters",
+      "code" : "### Discriminative Factorials Models\n\nFactorization is an efficient way of reducing the effective number of parameters in discriminative/predictive models\n\nWe introduce:\n\n* Multi-Task/Multi-Label Learning with Matrix Factorization\n* Factorization Machines\n* Structured Prediction with Factorized Parameters",
       "extraFields" : { }
     }
   }, {
@@ -45,7 +45,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Factorization as a Constrained Linear Regression\nMatrix \\\\( \\mathbf{Y}\\in\\Re^{n \\times d} \\\\). For any \\\\(K\\\\):\n\n\\\\( \\mathbb{E}[y_{ij}=1|i,j] = \\langle \\mathbf{U}_{i:}, \\mathbf{V}_{j:}\\rangle \\\\) where \\\\(\\mathbf{U}\\in\\Re^{N\\times K}\\\\) and \\\\(\\mathbf{V}\\in\\Re^{M\\times K}\\\\)\n\nEquivalently, we consider the prediction of the matrix values \\\\(y_{ij}\\\\) given the row and column indices:\n\n\\\\( P(y_{t}=1|x_t = (i,j) ) = \\sigma(\\langle\\mathbf{\\Theta}, \\mathbf{e}_i \\otimes \\mathbf{e}_j\\rangle) \\\\) \n\nwhere \\\\( \\mathbf{\\Theta} = \\mathbf{U} \\mathbf{V}^T \\\\)\n\nSo we can view Matrix Factorization as a Rank-Constrained Linear Regression\n\n==> called **factorization machine** [Rendle 2010]",
+      "code" : "### Matrix Factorization as a Constrained Linear Regression\nMatrix \\\\( \\mathbf{Y}\\in\\Re^{n \\times d} \\\\). For any \\\\(K\\\\):\n\n\\\\( \\mathbb{E}[y_{ij}=1|i,j] = \\langle \\mathbf{U}_{i:}, \\mathbf{V}_{j:}\\rangle \\\\) where \\\\(\\mathbf{U}\\in\\Re^{N\\times K}\\\\) and \\\\(\\mathbf{V}\\in\\Re^{M\\times K}\\\\)\n\nEquivalently, we consider the prediction of the matrix values \\\\(y_{ij}\\\\) given the row and column indices:\n\n\\\\( P(y_{t}=1|x_t = (i,j) ) = \\sigma(\\langle\\mathbf{\\Theta}, \\mathbf{e}_i \\otimes \\mathbf{e}_j\\rangle) \\\\) \n\nwhere \\\\( \\mathbf{\\Theta} = \\mathbf{U} \\mathbf{V}^T \\\\)\n\nSo we can view Matrix Factorization as a Rank-Constrained Linear Regression\n\n\\\\( \\rightarrow \\\\) called **factorization machine** [Rendle 2010]",
       "extraFields" : { }
     }
   }, {
@@ -77,7 +77,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Structured Prediction\n\nGoal: Predict \\\\(y^* = \\arg\\max_{y\\in T(x)} S(x,y;\\Theta)\\\\)\n\n- y is a structured output\n\n- \\\\(S(x,y;\\Theta)\\\\) is a score function\n\n- \\\\(T(x)\\\\) is all possible structures\n\nIn many cases, \\\\(\\Theta\\\\) includes matrices or tensors",
+      "code" : "### Structured Prediction\n\nGoal: Predict \\\\(y^* = \\arg\\max_{y\\in T(x)} S(x,y;\\Theta)\\\\)\n\n- y is a structured output\n\n- \\\\(S(x,y;\\Theta)\\\\) is a score function\n\n- \\\\(T(x)\\\\) is all possible structures\n\nIn NLP \\\\(\\Theta\\\\) is often a vector, but it can be a matrix or tensor",
       "extraFields" : { }
     }
   }, {
@@ -93,7 +93,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Common Examples:\n\n<br />\n<img src=\"../../assets/figures/08/s8s2.png\" height=\"500\">",
+      "code" : "### Examples of Matrix/Tensor Factorization\n\n<br />\n<img src=\"../../assets/figures/08/s8s2.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -173,7 +173,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Difficulties of Manual Feature Selection\n - Few Templates:\n\n -- Poor Performance\n\n - Many Templates:\n\n -- High Performance, Many Parameters\n\n -- Interactions between features can be hard to know\n\n -One option: Automatic Feature Selection:\n\n --Effective, but ''messy'' (Zhao, 2009)\n\n --Expensive\n\n - Solution: Learn templates from data using matrix factorization",
+      "code" : "### Difficulties Selection\nFew Templates:\n\n- Poor Performance\n \nMany Templates:\n\n- High Performance, Many Parameters\n\n- Interactions between features can be hard to know\n\nAlternatives? Automatic Feature Selection:\n\n- Effective, but ''messy'' (Zhao, 2009)\n\n- Expensive\n\n**Solution**: Learn templates from data using matrix factorization",
       "extraFields" : { }
     }
   }, {
@@ -189,7 +189,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "#### Step 1: Formulate Feature Vector as Rank 1 Tensor\n\n - Feature vectors for each type of information: \n\n -- \\\\(\\phi_{head}\\\\), vector \\\\(\\in R^n\\\\) for head token\n\n -- \\\\(\\phi_{child}\\\\), vector \\\\(\\in R^n\\\\)for child token\n\n -- \\\\(\\phi_{arc}\\\\), vector \\\\(\\in R^d\\\\) for arc information",
+      "code" : "#### Step 1: Formulate Feature Vector as Rank 1 Tensor\n\n Feature vectors for each type of information: \n\n - \\\\(\\phi_{head}\\\\), vector \\\\(\\in R^n\\\\) for head token\n\n - \\\\(\\phi_{child}\\\\), vector \\\\(\\in R^n\\\\)for child token\n\n - \\\\(\\phi_{arc}\\\\), vector \\\\(\\in R^d\\\\) for arc information",
       "extraFields" : { }
     }
   }, {
@@ -205,7 +205,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "#### Step 2: Formulate Model Parameters Tensor\n\n - A tensor \\\\(R^{n \\times n \\times d}\\\\), describes the concatenation of all three feature vectors, so replace \\\\(\\Theta\\\\) with tensor \\\\(A\\\\):\n\n $$ S(x,y;\\Theta) = <\\phi_{head} \\otimes \\phi_child> $$ \n\n - Can be huge!  A better option?  Low rank approximation.  Calculate A as: \n\n $$ A = \\sum_i U_i \\otimes V_i \\otimes W_i $$ \n\n Where:\n\n -- r is the rank\n\n -- \\\\(U, V \\in R^{r \\times n}\\\\) replace \\\\(\\phi_{head}\\\\), \\\\(\\phi_{child}\\\\) \n\n -- \\\\(W \\in R^{r\\times d} \\\\) \n\n -- \\\\(U,V,\\\\) and \\\\(W\\\\) are dense low-dimensional representations \\\\(\\in R^r\\\\) ",
+      "code" : "#### Step 2: Formulate Model Parameters Tensor\n\n - A tensor \\\\(R^{n \\times n \\times d}\\\\), describes the concatenation of all three feature vectors, so replace \\\\(\\Theta\\\\) with tensor \\\\(A\\\\):\n\n $$ S(x,y;\\Theta) = <\\phi_{head} \\otimes \\phi_{child}> $$ \n\n Can be huge!  A better option?  Low rank approximation.  Calculate A as: \n\n $$ A = \\sum_i U_i \\otimes V_i \\otimes W_i $$ \n\n Where:\n\n - r is the rank\n\n - \\\\(U, V \\in R^{r \\times n}\\\\) replace \\\\(\\phi_{head}\\\\), \\\\(\\phi_{child}\\\\) \n\n - \\\\(W \\in R^{r\\times d} \\\\) \n\n - \\\\(U,V,\\\\) and \\\\(W\\\\) are dense low-dimensional representations \\\\(\\in R^r\\\\) ",
       "extraFields" : { }
     }
   }, {
@@ -213,7 +213,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "tobjectives",
+      "code" : "tobjectives1",
       "extraFields" : { }
     }
   }, {
@@ -221,15 +221,15 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Learning\n\n - Training Objective: \n\n $$ C \\sum_i \\eta_i + ||U||_F^2 + ||V||_F^2 + ||W||_F^2 + ||\\Theta||_F^2 $$ \n\n Solve non-convex optimization (PA, Crammer, 2006): \n\n For each instance, update \\\\(\\Theta\\\\) and one of the feature tensors as follows: \n\n - \\\\( \\Theta^{(t + 1)} = \\Theta^t + \\Delta \\Theta \\\\) \n\n \\\\( U^{(t+1)} = U^t + \\Delta U \\\\) \n\n Use closed form solution: \n\n $$ \\min_{\\Delta \\Theta, \\Delta U} \\frac{1}{2} ||\\Delta \\Theta ||_F^2 + \\frac{1}{2} ||\\Delta \\Theta ||_F^2 + C \\eta_i $$ ",
+      "code" : "### Learning\n\n Training Objective: \n\n $$ C \\sum_i \\eta_i + ||U||_F^2 + ||V||_F^2 + ||W||_F^2 + ||\\Theta||_F^2 $$ \n\nNon-convex optimization \n\nCan optimize with variant of Passive Aggressive (Crammer, 2006) \n",
       "extraFields" : { }
     }
   }, {
     "id" : 28,
-    "compiler" : "section",
+    "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "parseresults",
+      "code" : "tobjectives2",
       "extraFields" : { }
     }
   }, {
@@ -237,7 +237,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Performance\n\n<br />\n<img src=\"../../assets/figures/08/parse_results.png\" height=\"400\">\n\n - Rank 50 tensors\n\n - Results averaged over 14 languages (CoNLL data)",
+      "code" : "### Learning\n\nOnline method tailored for tensors (Lei, 2014)\n\nIterate over data and for each instance, update \\\\(\\Theta\\\\) and choose one of the feature tensors as follows: \n\n - \\\\( \\Theta^{(t + 1)} = \\Theta^t + \\Delta \\Theta \\\\) \n\n - \\\\( U^{(t+1)} = U^t + \\Delta U \\\\) \n\n With sub-problem (solvable with closed-form solution): \n\n $$ \\min_{\\Delta \\Theta, \\Delta U} \\frac{1}{2} ||\\Delta \\Theta ||_F^2 + \\frac{1}{2} ||\\Delta \\Theta ||_F^2 + C \\eta_i $$ ",
       "extraFields" : { }
     }
   }, {
@@ -245,7 +245,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "conclusion",
+      "code" : "parseresults",
       "extraFields" : { }
     }
   }, {
@@ -253,7 +253,39 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Conclusion \n\n* **Discriminative** models often have matrix and tensor parameters\n* **Low-rank** asumption enables **parameter sharing**\n    * **Multi-task** learning: corresponds to label-embedding\n    * **Vanilla matrix factorization** can be expressed as a \\\\(N\\times M\\\\)-dimensional **logistic regression with rank constraint**\n    * **structured prediction** with low rank parameters has a lot of potential\n\n",
+      "code" : "### Performance - Parsing\n\n<br />\n<img src=\"../../assets/figures/08/parser-results.png\" height=\"400\">\n\n - RBG + MF model trained with rank \\\\(r = 50\\\\) tensors\n\n - Results averaged over 14 languages (CoNLL data)",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 32,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "srlresults",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 33,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Performance - SRL\n\n<br />\n<img src=\"../../assets/figures/08/srl-results.png\" height=\"400\">\n\n - Baselines have many features and automatic feature selection\n\n - Outperform previous best system across many languages",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 34,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "conclusion",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 35,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Conclusion \n\n* **Discriminative** models can be parameterized with matrices or tensors\n* **Low-rank** asumption enables **parameter sharing**\n    * **Multi-task** learning: corresponds to label-embedding\n    * **Vanilla matrix factorization** can be expressed as a \\\\(N\\times M\\\\)-dimensional **logistic regression with rank constraint**\n    * **structured prediction** with low rank parameters has a lot of potential\n\n",
       "extraFields" : { }
     }
   } ],

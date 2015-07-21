@@ -9,7 +9,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 12,
+    "id" : 1,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -77,7 +77,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Spectral Learning in NLP\n\nA promising application of convex factorization: **polynomial-time** learning of \n\n* HMMs\n* WFSAs\n* Grammars\n\n*Idea*: factorization of redundant moment matrices. \n\n**Example** \n    \n> **Empirical Hankel matrix of a string** \n\n> Matrix of counts of all possible prefixes and suffixes \n\n<img src=\"../../assets/figures/09/make_hankel.png\" width=\"500\">\n",
+      "code" : "### Spectral Learning in NLP\n\nA promising application of convex factorization: **polynomial-time** learning of \n\n* HMMs\n* WFSAs\n* Grammars\n* Even NMF!\n\n*Idea*: factorization of redundant moment matrices. \n\n**Example: Empirical Hankel matrix of a string** \n\nMatrix of counts of all possible prefixes and suffixes \n\n<img src=\"../../assets/figures/09/make_hankel.png\" width=\"500\">\n",
       "extraFields" : { }
     }
   }, {
