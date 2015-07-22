@@ -17,7 +17,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 17,
+    "id" : 2,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -27,7 +27,7 @@
       }
     }
   }, {
-    "id" : 2,
+    "id" : 3,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -35,7 +35,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 3,
+    "id" : 4,
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
@@ -43,7 +43,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 4,
+    "id" : 5,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -51,7 +51,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 5,
+    "id" : 6,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -59,7 +59,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 6,
+    "id" : 7,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -67,7 +67,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 7,
+    "id" : 8,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -77,7 +77,7 @@
       }
     }
   }, {
-    "id" : 8,
+    "id" : 9,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -85,7 +85,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 9,
+    "id" : 10,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -93,7 +93,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 10,
+    "id" : 11,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -101,35 +101,51 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 11,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### Probabilistic Latent Semantic Analysis/Indexing\n\n$$ y_{n,m} = P(n,m) = \\sum_{l} P(l) P(m|l) P(n|l) = u^\\prime_{n,l} v^{\\prime}_{l,m} $$\nwhere \\\\(n\\\\) is a document, \\\\(m\\\\) a word and \\\\(l\\\\) a component.",
-      "extraFields" : { }
-    }
-  }, {
     "id" : 12,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<br>\n$$\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T} = (\\mathbf{U}\\mathbf{A}^{-1}\\mathbf{A})(\\mathbf{V}\\mathbf{B}^{-1}\\mathbf{B})^T = (\\mathbf{U}\\mathbf{A}^{-1})(\\mathbf{A}\\mathbf{B})(\\mathbf{V}\\mathbf{B}^{-1})^T $$\n\nwhere \\\\(\\mathbf{A}=diag(\\sum_n v_{n,1},\\dots,\\sum_n v_{n,L})\\\\) <br> and \\\\(\\mathbf{B} = diag(\\sum_m u_{1,l}, \\dots, \\sum_m u_{m,L}) \\\\)\n\n",
-      "extraFields" : {
-        "fragment" : "true"
-      }
+      "code" : "### Probabilistic Latent Semantic Analysis\n\n<br>\n\n$$ y_{n,m} = P(n,m) \\\\\\\n= \\sum_{l} P(l) P(m|l) P(n|l)\n$$\n\nwhere \\\\(n\\\\) is a document, \\\\(m\\\\) a word and \\\\(l\\\\) a component.\n<br/>",
+      "extraFields" : { }
     }
   }, {
-    "id" : 13,
+    "id" : 20,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<br>\n\n> pLSA uses EM for parameter estimation and can converge to different local optima of the same objective as NMF-KL.\n<br>\n\n<div style=\"text-align:right;\">\n<i>Gaussier and Goutte (2005)</i>\n</div>",
+      "code" : "\n$$ \\dots  = u^\\prime_{n,l} v^{\\prime}_{l,m} $$\n\nwhere \\\\(u^\\prime_{n,l} = P(l) P(n|l) \\\\) and \\\\(v^{\\prime}_{l,m} = P(m|l) \\\\)\n",
       "extraFields" : {
         "fragment" : "true"
       }
     }
   }, {
-    "id" : 14,
+    "id" : 18,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "topic2",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 19,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Probabilistic Latent Semantic Analysis\n\n<br>\n\n$$\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T} = (\\mathbf{U}\\mathbf{A}^{-1}\\mathbf{A})(\\mathbf{V}\\mathbf{B}^{-1}\\mathbf{B})^T\\\\\\ = (\\mathbf{U}\\mathbf{A}^{-1})(\\mathbf{A}\\mathbf{B})(\\mathbf{V}\\mathbf{B}^{-1})^T $$\n<br/>\nwhere \\\\(\\mathbf{A}=diag(\\sum_n v_{n,1},\\dots,\\sum_n v_{n,L})\\\\) <br> and \\\\(\\mathbf{B} = diag(\\sum_m u_{1,l}, \\dots, \\sum_m u_{m,L}) \\\\)",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 17,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<br/>\n\n> pLSA uses EM for parameter estimation and can converge to different local optima of the same objective as NMF-KL.\n<br>\n<div style=\"text-align:right;\">\n<i>Gaussier and Goutte (2005)</i>\n</div>",
+      "extraFields" : {
+        "fragment" : "true"
+      }
+    }
+  }, {
+    "id" : 15,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -139,7 +155,7 @@
       }
     }
   }, {
-    "id" : 15,
+    "id" : 16,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
