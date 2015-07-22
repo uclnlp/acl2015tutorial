@@ -221,7 +221,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Conclusion to Collective Matrix Factorization\n\n* Collective Matrix Factorization and Tensor Factorization: \n    * Learn more by fusing multiple databases\n    * flexible and generic model for relational data\n    * Bayesian learning : automatic tuning of parameters and complexity\n\n\n* Collective Matrix Factorization vs. Tensor Factorization: \n    * CMF is easier because it deals only with matrices\n    * CMF = typed data. Tensor = multi-relational   \n    * Augmented multi-view: common setup\n\n",
+      "code" : "### Conclusion to Collective Matrix Factorization\n\n#### Collective Matrix Factorization and Tensor Factorization: \n  * Learn §more by fusing multiple databases\n  * flexible and generic model for relational data\n  * Bayesian learning : automatic tuning of parameters and complexity\n\n#### Collective Matrix Factorization vs. Tensor Factorization: \n  * CMF is easier because it deals only with matrices\n  * CMF = typed data. Tensor = multi-relational   \n  * Augmented multi-view: common setup\n\n",
       "extraFields" : { }
     }
   } ],
