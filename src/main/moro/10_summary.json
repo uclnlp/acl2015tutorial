@@ -5,7 +5,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "blah1",
+      "code" : "bef",
       "extraFields" : { }
     }
   }, {
@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Before the break",
+      "code" : "### Before the break\n\n1. Matrices/Tensor = natural concepts for relations\n2. Low-Rank = natural regularization\n3. Non-negativity => Clustering\n4. Binary loss: much better than squared loss\n ",
       "extraFields" : { }
     }
   }, {
@@ -21,7 +21,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "blah2",
+      "code" : "aft",
       "extraFields" : { }
     }
   }, {
@@ -29,7 +29,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### After the break",
+      "code" : "### After the break\n\n5. Prior knowledge included using *logic*-based loss models\n6. Multi-relational learning\n    - Tensors: *many* different possible factorizations\n    - Collective Matrix Factorization for *typed* data\n8. Discriminative factoriation\n    - Reduced rank regression/Multi-task learning\n    - Factorization machines\n    - Structured prediction\n9. Convexification\n    - The *trace norm* is a real breakthrough\n    - Theoretical guarantees, new algorithms, structured regularization",
       "extraFields" : { }
     }
   }, {
@@ -45,7 +45,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Take-home messages",
+      "code" : "### Take-home messages\n\nNLP is about learning relations. Low-rank factorization simply * works*\n\n- in *theory*: well understood model with nearly **linear-time** complexity\n- in *practice*: many **large scale** examples\n\nThe real reason why it works: \n\nReplaces **combinatorics** by **linear algebra**\n\n\n",
       "extraFields" : { }
     }
   }, {
@@ -61,7 +61,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Toolkits\n\n- MyMediaLite (Ganter & Rendle): [http://mymedialite.net/news/index.html]()\n\n- scikit-tensor (Nickel): [http://github.com/mnick/scikit-tensor]()\n\n- NMF-MATLAB (Yi & Ngom): [https://sites.google.com/site/nmftool/]()\n\n- Theano (Bengio et al.): [http://deeplearning.net/software/theano/]()\n\n- Wolfe (Riedel et al.): [http://www.wolfe.ml]()\n    - used in this presentation via Moro by Sameer Singh\n",
+      "code" : "### Toolkits\n\n- R Package for Collective Matrix Factorization (Klami)\n[https://cran.r-project.org/web/packages/CMF]()\n\n- MyMediaLite (Ganter & Rendle): [http://mymedialite.net/news/index.html]()\n\n- scikit-tensor (Nickel): [http://github.com/mnick/scikit-tensor]()\n\n- NMF-MATLAB (Yi & Ngom): [https://sites.google.com/site/nmftool/]()\n\n- Theano (Bengio et al.): [http://deeplearning.net/software/theano/]()\n\n- Wolfe (Riedel et al.): [http://www.wolfe.ml]()\n    - used in this presentation via Moro by Sameer Singh\n",
       "extraFields" : { }
     }
   }, {
