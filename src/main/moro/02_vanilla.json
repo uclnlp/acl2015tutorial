@@ -13,7 +13,7 @@
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "<h3>Matrix Completion via Low-Rank Factorization</h3>\n<br>\n<div style=\"text-align:center;\">\nGiven \\(\\mathbf{Y} \\in\\Re^{N\\times M} \\) <br>\n<br>\nfind \\(\\mathbf{U} \\in\\Re^{N\\times L}\\) and \\(\\mathbf{V} \\in\\Re^{M\\times L} \\) <br>\n<br>\nso that \\(\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T}\\)<br>\n<br>\n<b>low rank</b> assumption: \\( rank(\\mathbf{Y})=L\\lt\\lt M,N \\)\n</div>",
+      "code" : "<h3>Matrix Completion via Low-Rank Factorization</h3>\n\n<div style=\"text-align:center;\">\n<img src=\"../../assets/figures/vanillaMF.png\" height=\"300\">\n<br>\nGiven \\(\\mathbf{Y} \\in\\Re^{N\\times M} \\) \n<br>\n\nfind \\(\\mathbf{U} \\in\\Re^{N\\times L}\\) and \\(\\mathbf{V} \\in\\Re^{M\\times L} \\) <br>\nso that \\(\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T}\\)<br>\n<br>\n<b>low rank</b> assumption: \\( rank(\\mathbf{Y})=L\\lt\\lt M,N \\)\n</div>\n",
       "extraFields" : { }
     }
   }, {
