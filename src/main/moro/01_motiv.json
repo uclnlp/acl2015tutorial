@@ -40,7 +40,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix formulation",
+      "code" : "### Matrix Completion",
       "extraFields" : { }
     }
   }, {
