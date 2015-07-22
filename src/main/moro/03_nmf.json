@@ -47,7 +47,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "> NMF is an additive mixture (admixture) model",
+      "code" : "\n> NMF is additive mixture/(soft) clustering ",
       "extraFields" : { }
     }
   }, {
