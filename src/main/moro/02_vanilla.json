@@ -116,7 +116,15 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Singular Value Decomposition (SVD)\n<br>\nGiven \\\\(\\mathbf{Y} \\in\\Re^{N\\times M} \\\\) there exists \n\n<br>\n$$\n\\mathbf{Y} = \\mathbf{U}\\mathbf{D}\\mathbf{V}\n$$\n<br>\nwhere \\\\(\\mathbf{U}\\in\\Re^{N\\times N},\\mathbf{V}\\in\\Re^{M\\times M}\\\\) are orthogonal<br/>\nand \\\\(\\mathbf{D} \\in\\Re^{N\\times M} \\ge 0\\\\) is diagonal\n\n<br/>\n\n",
+      "code" : "### Singular Value Decomposition (SVD)\n<br>\nGiven \\\\(\\mathbf{Y} \\in\\Re^{N\\times M} \\\\) there exists \n\n<br>\n$$\n\\mathbf{Y} = \\mathbf{U}\\mathbf{D}\\mathbf{V}\n$$\n<br>\nwhere \\\\(\\mathbf{U}\\in\\Re^{N\\times N},\\mathbf{V}\\in\\Re^{M\\times M}\\\\) are orthogonal<br/>\nand \\\\(\\mathbf{D} \\in\\Re^{N\\times M} \\ge 0\\\\) is diagonal\n<br/>\n\n<img src=\"../../assets/figures/SVD.png\" height=\"300\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 25,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "truncsvd",
       "extraFields" : { }
     }
   }, {
@@ -124,10 +132,8 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "If we truncate \\\\(\\mathbf{D}\\\\) to its \\\\(L\\\\) largest values \n\nthen \\\\( \\hat{\\mathbf{Y}} = \\mathbf{U}\\mathbf{D_{trunc}}\\mathbf{V}\\\\)\n\nis the minimizer of \\\\(\\||\\mathbf{Y} - \\hat{\\mathbf{Y}}\\||_F^2\\\\)\n\n<br/>\n\n<div style=\"text-align:right;\">\n<i>Eckart-Young theorem</i>\n</div>",
-      "extraFields" : {
-        "fragment" : "true"
-      }
+      "code" : "### Truncated SVD\n\nIf we truncate \\\\(\\mathbf{D}\\\\) to its \\\\(L\\\\) largest values \n\n<img src=\"../../assets/figures/SVDtrunc.png\" height=\"300\">\n\nthen \\\\( \\hat{\\mathbf{Y}} = \\mathbf{U}\\mathbf{D_{trunc}}\\mathbf{V}\\\\)\n\nis the minimizer of \\\\(\\||\\mathbf{Y} - \\hat{\\mathbf{Y}}\\||_F^2\\\\)\n\n<br/>\n\n<div style=\"text-align:right;\">\n<i>Eckart-Young theorem</i>\n</div>",
+      "extraFields" : { }
     }
   }, {
     "id" : 15,
