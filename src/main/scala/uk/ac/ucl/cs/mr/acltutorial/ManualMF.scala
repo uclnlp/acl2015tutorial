@@ -105,7 +105,10 @@ object ManualMF {
   }
 
   def sigm(mat:Mat) = {
-    mat.map(_)
+    val result = new DenseTensor2(mat.dim1,mat.dim2)
+    for (i <- 0 until mat.dim1; j <- 0 until mat.dim2)
+      result(i,j) = ml.wolfe.util.Math.sigmoid(mat(i,j))
+    result
   }
 
   def l2Loss(guess: Mat, gold: Mat) = {
