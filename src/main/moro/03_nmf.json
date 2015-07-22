@@ -155,12 +155,38 @@
       }
     }
   }, {
+    "id" : 22,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Latent Dirichlet Allocation\n\n<img src=\"../../assets/figures/IntroToLDA.png\" height=\"350\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 21,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "ldamore",
+      "extraFields" : { }
+    }
+  }, {
     "id" : 16,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Latent Dirichlet Allocation\n\n- For each topic \\\\(l\\\\)\n    - draw multinomial params over words \\\\(\\mathbf{v}_{:l}\\in\\Re^M\\\\) from \\\\(Dir(\\beta)\\\\)\n- For each document \\\\(n\\\\)\n    - draw multinomial params over topics \\\\(\\mathbf{u}_{n:}\\in\\Re^L\\\\) from \\\\(Dir(\\alpha)\\\\)\n    - for each word \\\\(i\\\\)\n        - sample a topic assignment \\\\(z_i \\\\) from \\\\(\\mathbf{u}_{n:}\\\\)\n        - sample a word \\\\(w_i \\\\) from \\\\(\\mathbf{v}_{:z_i}\\\\)\n<br>\n\nGiven the row-normalized document-term matrix \\\\(\\mathbf{Y}\\\\), find the factors \\\\(\\mathbf{U}\\\\) and \\\\(\\mathbf{V}\\\\) that reconstruct it. (Arora et al, 2012)\n\nCompared to standard NMF the challenge is that the samples forming the rows are very few and thus very noisy estimates.\n",
+      "code" : "### Generative story\n<br>\n\n- For each topic \\\\(l\\\\)\n    - draw multinomial over words \\\\(\\mathbf{v}_{:l}\\in\\Re^M\\\\) from \\\\(Dir(\\beta)\\\\)\n- For each document \\\\(n\\\\)\n    - draw multinomial over topics \\\\(\\mathbf{u}_{n:}\\in\\Re^L\\\\) from \\\\(Dir(\\alpha)\\\\)\n    - for each word \\\\(i\\\\)\n        - sample a topic assignment \\\\(z_i \\\\) from \\\\(\\mathbf{u}_{n:}\\\\)\n        - sample a word \\\\(w_i \\\\) from \\\\(\\mathbf{v}_{:z_i}\\\\)\n<br>\n<br>",
       "extraFields" : { }
+    }
+  }, {
+    "id" : 23,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "> Given the row-normalized document-term matrix \\\\(\\mathbf{Y}\\\\), find the factors \\\\(\\mathbf{U}\\\\) and \\\\(\\mathbf{V}\\\\) that reconstruct it.\n\n<div style=\"text-align:right;\">\n<i>(Arora et al (2012)</i>\n</div>",
+      "extraFields" : {
+        "fragment" : "true"
+      }
     }
   } ],
   "config" : { }
