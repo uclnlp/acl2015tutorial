@@ -109,7 +109,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 20,
+    "id" : 13,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -119,7 +119,7 @@
       }
     }
   }, {
-    "id" : 18,
+    "id" : 14,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -127,7 +127,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 19,
+    "id" : 15,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -135,7 +135,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 17,
+    "id" : 16,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -145,7 +145,7 @@
       }
     }
   }, {
-    "id" : 15,
+    "id" : 17,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -155,7 +155,7 @@
       }
     }
   }, {
-    "id" : 22,
+    "id" : 18,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -163,7 +163,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 21,
+    "id" : 19,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -171,7 +171,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 16,
+    "id" : 20,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -179,7 +179,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 23,
+    "id" : 21,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -189,7 +189,7 @@
       }
     }
   }, {
-    "id" : 24,
+    "id" : 22,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -197,11 +197,11 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 25,
+    "id" : 23,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "###Summary\n\nTODO",
+      "code" : "###Summary\n\n<br>\n\n- Saw the matrix\n\n- Refresher on matrix rank and norms\n\n- Standard approaches to MF\n\n- Non-negative MF and connections to pLSA and LDA\n",
       "extraFields" : { }
     }
   } ],
