@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Non-negativity\n\nLow-rank factors are commonly interpreted as:\n\n- topics\n\n- image features \n\n<img src=\"../../assets/figures/Faces.png\" height=\"250\">\n\n",
+      "code" : "### Non-negativity\n\nLow-rank factors are commonly interpreted as:\n\n- topics\n- image features \n\n<img src=\"../../assets/figures/Faces.png\" height=\"250\">",
       "extraFields" : { }
     }
   }, {
@@ -21,7 +21,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "> MF is commomly used to find how <br/> each instance is composed of its parts; <br/> Subtraction is often counter-intuitive\n",
+      "code" : "> MF is commomly used to find how <br/> each instance is composed of its parts; <br/> Subtraction is often counter-intuitive\n\n<div style=\"text-align:right;\"><font size=\"3\">\n<i>http://nimfa.biolab.si/nimfa.examples.orl_images.html</i></font>\n</div>",
       "extraFields" : {
         "fragment" : "true"
       }
