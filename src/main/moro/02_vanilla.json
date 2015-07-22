@@ -142,7 +142,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### MF with Stochastic Gradient Descent\n<br>\nObjective:\n\\\\(\n\\gamma(U,V) := \\sum_{(i,j)\\in\\Omega} (y_{ij} - \\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle)^2 \n\\\\)\n\nwhere \\\\(\\Omega=\\lbrace 1,\\cdots,N\\rbrace \\otimes \\lbrace1,\\cdots,M\\rbrace \\\\)\n\n\\\\((i,j)\\notin \\Omega\\\\): **missing values**\n\n",
+      "code" : "### MF with Stochastic Gradient Descent\n<br>\nObjective:\n\\\\(\n\\gamma(U,V) := \\sum_{(i,j)\\in\\Omega} (y_{ij} - \\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle)^2 \n\\\\)\n\n\\\\((i,j)\\notin \\Omega\\\\): **missing values**\n\n",
       "extraFields" : { }
     }
   }, {
