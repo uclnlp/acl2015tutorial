@@ -104,6 +104,14 @@ object ManualMF {
     mat
   }
 
+  def parseRenderMatrix(string: String) = {
+    val rows = string.split("\n").map(_.trim.split("\\s"))
+    val n = rows.length
+    val m = rows.head.length
+    val cells = for (i <- 0 until n; j <- 0 until m; if rows(i)(j) != "_" ) yield Cell(i,j,rows(i)(j))
+    Matrix(cells)
+  }
+
   def sigm(mat:Mat) = {
     val result = new DenseTensor2(mat.dim1,mat.dim2)
     for (i <- 0 until mat.dim1; j <- 0 until mat.dim2)

@@ -170,10 +170,10 @@
     }
   }, {
     "id" : 22,
-    "compiler" : "markdown",
+    "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "### Norm example\n\n<img src=\"../../assets/figures/norms.png\" height=\"250\">\n\n$$\\mathbf{U}\\in\\Re^{2\\times 1}, ||\\mathbf{U}||_1 = ||\\mathbf{U}||_2 = ||\\mathbf{U}||_\\infty = 1$$\n\n<div style=\"text-align:center;\">\n<font size=\"3\">*\"<a href=\"https://commons.wikimedia.org/wiki/File:Vector_norms2.svg#/media/File:Vector_norms2.svg\">Vector norms2</a>\" by <a href=\"//en.wikipedia.org/wiki/User:Jakob.scholbach\" class=\"extiw\" title=\"wikipedia:User:Jakob.scholbach\">Jakob.scholbach</a> at <a href=\"//en.wikipedia.org/wiki/\" class=\"extiw\" title=\"wikipedia:\">English Wikipedia</a>. Licensed under <a href=\"http://creativecommons.org/licenses/by-sa/3.0\" title=\"Creative Commons Attribution-Share Alike 3.0\">CC BY-SA 3.0</a> via <a href=\"https://commons.wikimedia.org/wiki/\">Wikimedia Commons</a>.*</font>\n</div>",
+      "code" : "<h3>Norm example</h3>\n\n<div style=\"position:relative;\">\n\n<div class=\"fragment0 fade-out\">\n<img src=\"../../assets/figures/norm1of4.png\" height=\"500\">\n</div>\n\n<div class=\"fragment0 current-visible\" style=\"position:absolute; top:0; left:0; width:100%; height=100%;\">\n<img src=\"../../assets/figures/norm2of4.png\" height=\"500\">\n</div>\n\n<div class=\"fragment1 current-visible\" style=\"position:absolute; top:0; left:0; width:100%; height=100%;\">\n<img src=\"../../assets/figures/norm3of4.png\" height=\"500\">\n</div>\n\n<div class=\"fragment2 current-visible\" style=\"position:absolute; top:0; left:0; width:100%; height=100%;\">\n<img src=\"../../assets/figures/norm4of4.png\" height=\"500\">\n</div>\n\n    \n</div>",
       "extraFields" : { }
     }
   }, {

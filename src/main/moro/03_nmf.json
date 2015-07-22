@@ -13,11 +13,21 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Non-negativity\n<br>\n\nLow-rank factors are commonly interpreted as:\n\n- document-topic, topic-term loadings\n\n- face-feature, feature-basis image\n\n- ...\n\n> MF is commomly used to find how each instance is composed of its parts; <br/> Subtraction is often counter-intuitive",
+      "code" : "### Non-negativity\n\nLow-rank factors are commonly interpreted as:\n\n- topics\n- image features \n\n<img src=\"../../assets/figures/Faces.png\" height=\"250\">",
       "extraFields" : { }
     }
   }, {
     "id" : 2,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "> MF is commomly used to find how <br/> each instance is composed of its parts; <br/> Subtraction is often counter-intuitive\n\n<div style=\"text-align:right;\"><font size=\"3\">\n<i>http://nimfa.biolab.si/nimfa.examples.orl_images.html</i></font>\n</div>",
+      "extraFields" : {
+        "fragment" : "true"
+      }
+    }
+  }, {
+    "id" : 3,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -25,7 +35,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 3,
+    "id" : 4,
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
@@ -33,7 +43,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 4,
+    "id" : 5,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -41,7 +51,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 5,
+    "id" : 6,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -49,25 +59,25 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 6,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### Basic NMF algorithm\n\nMultiplicative update rules to minimize \\\\(||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}||^2 _2\\\\):\n\n$$u_{n,l} = u_{n,l} \\frac{(\\mathbf{Y}\\mathbf{V})_{n,l}}{(\\mathbf{Y}\\mathbf{Y}^{T}\\mathbf{U})_{n,l}} $$\n\n$$v_{m,l} = v_{m,l} \\frac{(\\mathbf{Y}^T\\mathbf{U})_{m,l}}{(\\mathbf{Y}^{T}\\mathbf{Y}\\mathbf{V})_{m,l}} $$\n\n",
-      "extraFields" : { }
-    }
-  }, {
     "id" : 7,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<br/>\nRelated to the additive SGD updates:\n\n$$u_{n,l} = u_{n,l} + \\eta ((\\mathbf{Y}\\mathbf{V})_{n,l} - (\\mathbf{Y}\\mathbf{Y}^{T}\\mathbf{U})_{n,l}) $$\n\n$$v_{m,l} = v_{m,l} + \\eta  ((\\mathbf{Y}^T\\mathbf{U})_{m,l}-(\\mathbf{Y}^{T}\\mathbf{Y}\\mathbf{V})_{m,l}) $$\n\n\n<div style=\"text-align:right;\">\n<i>Lee and Seung (2001)</i>\n</div>",
+      "code" : "### Basic NMF algorithm\n\nMultiplicative update rules to minimize \\\\(||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}||^2 _2\\\\):\n\n$$u_{n,l} = u_{n,l} \\frac{(\\mathbf{Y}\\mathbf{V})_{n,l}}{(\\mathbf{Y}\\mathbf{Y}^{T}\\mathbf{U})_{n,l}} $$\n\n$$v_{m,l} = v_{m,l} \\frac{(\\mathbf{Y}^T\\mathbf{U})_{m,l}}{(\\mathbf{Y}^{T}\\mathbf{Y}\\mathbf{V})_{m,l}} $$\n\n<div style=\"text-align:right;\">\n<i>Lee and Seung (2001)</i>\n</div>",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 8,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<br/>\n\n> Recent work have switched to constrained Alternating Least Squares optimization\n\n\n<div style=\"text-align:right;\">\n<i>Kim and Park (2008)</i>\n</div>\n",
       "extraFields" : {
         "fragment" : "true"
       }
     }
   }, {
-    "id" : 8,
+    "id" : 9,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -75,7 +85,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 9,
+    "id" : 10,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -83,7 +93,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 10,
+    "id" : 11,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -91,35 +101,51 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 11,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### Probabilistic Latent Semantic Analysis/Indexing\n\n$$ y_{n,m} = P(n,m) = \\sum_{l} P(l) P(m|l) P(n|l) = u^\\prime_{n,l} v^{\\prime}_{l,m} $$\nwhere \\\\(n\\\\) is a document, \\\\(m\\\\) a word and \\\\(l\\\\) a component.",
-      "extraFields" : { }
-    }
-  }, {
     "id" : 12,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<br>\n$$\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T} = (\\mathbf{U}\\mathbf{A}^{-1}\\mathbf{A})(\\mathbf{V}\\mathbf{B}^{-1}\\mathbf{B})^T = (\\mathbf{U}\\mathbf{A}^{-1})(\\mathbf{A}\\mathbf{B})(\\mathbf{V}\\mathbf{B}^{-1})^T $$\n\nwhere \\\\(\\mathbf{A}=diag(\\sum_n v_{n,1},\\dots,\\sum_n v_{n,L})\\\\) <br> and \\\\(\\mathbf{B} = diag(\\sum_m u_{1,l}, \\dots, \\sum_m u_{m,L}) \\\\)\n\n",
-      "extraFields" : {
-        "fragment" : "true"
-      }
+      "code" : "### Probabilistic Latent Semantic Analysis\n\n<br>\n\n$$ y_{n,m} = P(n,m) \\\\\\\n= \\sum_{l} P(l) P(m|l) P(n|l)\n$$\n\nwhere \\\\(n\\\\) is a document, \\\\(m\\\\) a word and \\\\(l\\\\) a component.\n<br/>",
+      "extraFields" : { }
     }
   }, {
-    "id" : 13,
+    "id" : 20,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<br>\n\n> pLSA uses EM for parameter estimation and can converge to different local optima of the same objective as NMF-KL.\n<br>\n\n<div style=\"text-align:right;\">\n<i>Gaussier and Goutte (2005)</i>\n</div>",
+      "code" : "\n$$ \\dots  = u^\\prime_{n,l} v^{\\prime}_{l,m} $$\n\nwhere \\\\(u^\\prime_{n,l} = P(l) P(n|l) \\\\) and \\\\(v^{\\prime}_{l,m} = P(m|l) \\\\)\n",
       "extraFields" : {
         "fragment" : "true"
       }
     }
   }, {
-    "id" : 14,
+    "id" : 18,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "topic2",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 19,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Probabilistic Latent Semantic Analysis\n\n<br>\n\n$$\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T} = (\\mathbf{U}\\mathbf{A}^{-1}\\mathbf{A})(\\mathbf{V}\\mathbf{B}^{-1}\\mathbf{B})^T\\\\\\ = (\\mathbf{U}\\mathbf{A}^{-1})(\\mathbf{A}\\mathbf{B})(\\mathbf{V}\\mathbf{B}^{-1})^T $$\n<br/>\nwhere \\\\(\\mathbf{A}=diag(\\sum_n v_{n,1},\\dots,\\sum_n v_{n,L})\\\\) <br> and \\\\(\\mathbf{B} = diag(\\sum_m u_{1,l}, \\dots, \\sum_m u_{m,L}) \\\\)",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 17,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<br/>\n\n> pLSA uses EM for parameter estimation and can converge to different local optima of the same objective as NMF-KL.\n<br>\n<div style=\"text-align:right;\">\n<i>Gaussier and Goutte (2005)</i>\n</div>",
+      "extraFields" : {
+        "fragment" : "true"
+      }
+    }
+  }, {
+    "id" : 15,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -129,12 +155,38 @@
       }
     }
   }, {
-    "id" : 15,
+    "id" : 22,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Latent Dirichlet Allocation\n\n- For each topic \\\\(l\\\\)\n    - draw multinomial params over words \\\\(\\mathbf{v}_{:l}\\in\\Re^M\\\\) from \\\\(Dir(\\beta)\\\\)\n- For each document \\\\(n\\\\)\n    - draw multinomial params over topics \\\\(\\mathbf{u}_{n:}\\in\\Re^L\\\\) from \\\\(Dir(\\alpha)\\\\)\n    - for each word \\\\(i\\\\)\n        - sample a topic assignment \\\\(z_i \\\\) from \\\\(\\mathbf{u}_{n:}\\\\)\n        - sample a word \\\\(w_i \\\\) from \\\\(\\mathbf{v}_{:z_i}\\\\)\n<br>\n\nGiven the row-normalized document-term matrix \\\\(\\mathbf{Y}\\\\), find the factors \\\\(\\mathbf{U}\\\\) and \\\\(\\mathbf{V}\\\\) that reconstruct it. (Arora et al, 2012)\n\nCompared to standard NMF the challenge is that the samples forming the rows are very few and thus very noisy estimates.\n",
+      "code" : "### Latent Dirichlet Allocation\n\n<img src=\"../../assets/figures/IntroToLDA.png\" height=\"350\">",
       "extraFields" : { }
+    }
+  }, {
+    "id" : 21,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "ldamore",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 16,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Generative story\n<br>\n\n- For each topic \\\\(l\\\\)\n    - draw multinomial over words \\\\(\\mathbf{v}_{:l}\\in\\Re^M\\\\) from \\\\(Dir(\\beta)\\\\)\n- For each document \\\\(n\\\\)\n    - draw multinomial over topics \\\\(\\mathbf{u}_{n:}\\in\\Re^L\\\\) from \\\\(Dir(\\alpha)\\\\)\n    - for each word \\\\(i\\\\)\n        - sample a topic assignment \\\\(z_i \\\\) from \\\\(\\mathbf{u}_{n:}\\\\)\n        - sample a word \\\\(w_i \\\\) from \\\\(\\mathbf{v}_{:z_i}\\\\)\n<br>\n<br>",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 23,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "> Given the row-normalized document-term matrix \\\\(\\mathbf{Y}\\\\), find the factors \\\\(\\mathbf{U}\\\\) and \\\\(\\mathbf{V}\\\\) that reconstruct it.\n\n<div style=\"text-align:right;\">\n<i>Arora et al (2012)</i>\n</div>",
+      "extraFields" : {
+        "fragment" : "true"
+      }
     }
   } ],
   "config" : { }
