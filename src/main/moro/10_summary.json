@@ -45,7 +45,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Take-home messages\n\nNLP is about learning relations. Low-rank factorization simply * works*\n\n- in *theory*: well understood model with nearly **linear-time** complexity\n- in *practice*: many **large scale** examples\n\nThe real reason why it works: \n\nReplaces **combinatorics** by **linear algebra**\n\n\n",
+      "code" : "### Take-home messages\n\nNLP is about learning relations. Low-rank factorization simply *works*\n\n- in *theory*: well understood model with nearly **linear-time** complexity\n- in *practice*: many **large scale** examples\n\nThe real reason why it works: \n\nReplaces **combinatorics** by **linear algebra**\n\n\n",
       "extraFields" : { }
     }
   }, {
