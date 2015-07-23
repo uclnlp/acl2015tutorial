@@ -167,7 +167,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Norms\n\n- loss functions (how far we are from our objective)\n\n- regularizers (how large we allow our parameters to grow)\n\n**element-wise** \\\\(p\\\\)-norms:\n\n$$||\\mathbf{U}||_p := \\left(\\sum_{m=1}^M\\sum_{n=1}^N |u_{n,m}|^p \\right)^{1/p} $$\n\n**Frobenius norm** \\\\(||\\mathbf{U}||_F := ||\\mathbf{U}||_2\\\\)",
+      "code" : "### Norms\n\nCommonly used to define:\n\n- loss functions (how far we are from our objective)\n\n- regularizers (how large we allow our parameters to grow)\n\n**element-wise** \\\\(p\\\\)-norms:\n\n$$||\\mathbf{U}||_p := \\left(\\sum_{m=1}^M\\sum_{n=1}^N |u_{n,m}|^p \\right)^{1/p} $$\n\n**Frobenius norm** \\\\(||\\mathbf{U}||_F := ||\\mathbf{U}||_2\\\\)",
       "extraFields" : { }
     }
   }, {
@@ -183,7 +183,7 @@
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "<h3>Norm example</h3>\n\n<div style=\"position:relative;\">\n\n<div class=\"fragment0 fade-out\">\n<img src=\"../../assets/figures/norm1of4.png\" height=\"500\">\n</div>\n\n<div class=\"fragment0 current-visible\" style=\"position:absolute; top:0; left:0; width:100%; height=100%;\">\n<img src=\"../../assets/figures/norm2of4.png\" height=\"500\">\n</div>\n\n<div class=\"fragment1 current-visible\" style=\"position:absolute; top:0; left:0; width:100%; height=100%;\">\n<img src=\"../../assets/figures/norm3of4.png\" height=\"500\">\n</div>\n\n<div class=\"fragment2 current-visible\" style=\"position:absolute; top:0; left:0; width:100%; height=100%;\">\n<img src=\"../../assets/figures/norm4of4.png\" height=\"500\">\n</div>\n\n    \n</div>",
+      "code" : "<h3>Norm example</h3>\n\n\\(\\mathbf{U} = \\begin{pmatrix} u_1 & u_2 \\end{pmatrix}\\)<div style=\"position:relative;\">\n<div class=\"fragment1 fade-out\" style=\"position:relative; top:0; left:0;\">\n<img src=\"../../assets/figures/norm1of4.png\" height=\"500\">\n</div>\n<div class=\"fragment1 current-visible\" style=\"position:absolute; top:0; left:0; width:100%; height=100%;\">\n<img src=\"../../assets/figures/norm2of4.png\" height=\"500\">\n</div>\n<div class=\"fragment2 current-visible\" style=\"position:absolute; top:0; left:0; width:100%; height=100%;\">\n<img src=\"../../assets/figures/norm3of4.png\" height=\"500\">\n</div>\n</div>",
       "extraFields" : { }
     }
   }, {
@@ -207,7 +207,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "$$\nrank\n\\begin{pmatrix}\n1 & 2 & 3 \\\\\\\n2 & 3 & 5 \\\\\\\n3 & 4 & 7 \\\\\\\n4 & 5 & 9 \\\\\\\n\\end{pmatrix}=??\n$$",
+      "code" : "\n$$\nrank\n\\begin{pmatrix}\n1 & 2 & 3 \\\\\\\n2 & 3 & 5 \\\\\\\n3 & 4 & 7 \\\\\\\n4 & 5 & 9 \\\\\\\n\\end{pmatrix}=??\n$$",
       "extraFields" : {
         "fragment" : "true"
       }
