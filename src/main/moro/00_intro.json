@@ -13,15 +13,53 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "intro",
-      "extraFields" : { }
+      "code" : "mfw1",
+      "extraFields" : { 
+        "reveal_params" : "data-background=\"../../assets/figures/00/mfw1.png\""
+      }
     }
   }, {
     "id" : 2,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<img src=\"../../assets/figures/01/s1f1.png\" height=\"500\">",
+      "code" : "#### Matrix Factorization",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 111,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "mfw2",
+      "extraFields" : { 
+        "reveal_params" : "data-background=\"../../assets/figures/00/mfw2.png\""
+      }
+    }
+  }, {
+    "id" : 112,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Matrix Factorization",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 113,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "mfw3",
+      "extraFields" : { 
+        "reveal_params" : "data-background=\"../../assets/figures/00/mfw3.png\""
+      }
+    }
+  }, {
+    "id" : 114,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Matrix Factorization",
       "extraFields" : { }
     }
   }, {
