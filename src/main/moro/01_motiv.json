@@ -75,9 +75,19 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Notation\n\n- Scalars: lower-case letters \\\\(v,m\\\\)\n- Vectors: boldface lower-case letters \\\\(\\mathbf{v}\\\\)\n$$ \\begin{pmatrix} v_{1} & v_{2} & \\cdots & v_{n} \\end{pmatrix}$$<br>\n- Matrices: boldface capital letters \\\\(\\mathbf{M}\\\\)\n$$ \\begin{pmatrix} m_{1,1} & m_{1,2} & \\cdots & m_{1,J} \\\\\\\nm_{2,1} & m_{2,2} & \\cdots & m_{2,J} \\\\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\\\nm_{I,1} & m_{I,2} & \\cdots & m_{I,J} \\end{pmatrix} $$<br>\n- \\\\(i\\\\)th row of \\\\(\\mathbf{M}\\\\): \\\\\\(\\mathbf{m}_{i:}\\\\)\n- \\\\(j\\\\)th column of \\\\(\\mathbf{M}\\\\):\\\\(\\mathbf{m}_{:j}\\\\)",
+      "code" : "### Notation\n\n- Scalars: lower-case letters \\\\(v,m\\\\)\n\n- Vectors: boldface lower-case letters \\\\(\\mathbf{v}\\\\)\n$$ \\begin{pmatrix} v_{1} & v_{2} & \\cdots & v_{n} \\end{pmatrix}$$\n\n",
       "extraFields" : {
         "hide_output" : "false"
+      }
+    }
+  }, {
+    "id" : 25,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "- Matrices: boldface capital letters \\\\(\\mathbf{M}\\\\)\n$$ \\begin{pmatrix} m_{1,1} & m_{1,2} & \\cdots & m_{1,J} \\\\\\\nm_{2,1} & m_{2,2} & \\cdots & m_{2,J} \\\\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\\\nm_{I,1} & m_{I,2} & \\cdots & m_{I,J} \\end{pmatrix} $$\n\n- \\\\(i\\\\)th row of \\\\(\\mathbf{M}\\\\): \\\\\\(\\mathbf{m}_{i:}\\\\)\n- \\\\(j\\\\)th column of \\\\(\\mathbf{M}\\\\):\\\\(\\mathbf{m}_{:j}\\\\)",
+      "extraFields" : {
+        "fragment" : "true"
       }
     }
   }, {
@@ -93,7 +103,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Vector Operations\n<br/>\n\n- the **inner/dot product** between vectors \\\\(\\mathbf{u}\\in\\Re^L\\\\) and \\\\(\\mathbf{v}\\in\\Re^L\\\\)\n$$\\langle \\mathbf{u},\\mathbf{v} \\rangle := \\sum_{\\ell=1}^L u_{\\ell} v_\\ell$$\n\n- the **outer product** between vectors \\\\(\\mathbf{u}\\in\\Re^N\\\\) and \\\\(\\mathbf{v}\\in\\Re^M\\\\)<br/>\n\n$$\\mathbf{u} \\otimes \\mathbf{v} = \\begin{pmatrix} u_{1} \\\\\\ u_{2} \\\\\\ \\vdots \\\\\\ u_{N}\\end{pmatrix} \\otimes \\begin{pmatrix} v_{1} \\\\\\ v_{2} \\\\\\ \\vdots \\\\\\ v_{M}\\end{pmatrix}  := \\begin{pmatrix} u_{1} v_{1} & u_{1} v_{2} & \\cdots & u_{1} v_{M}  \\\\\\ u_{2} v_{1} & u_{2} v_{2} & \\cdots & u_{2} v_{M} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ u_{N} v_{1} & u_{N} v_{2} & \\cdots & u_{N} v_{M} \\end{pmatrix}_{N\\times M}\n$$",
+      "code" : "### Vector Operations\n\n- the **inner/dot product** between vectors \\\\(\\mathbf{u}\\in\\Re^L\\\\) and \\\\(\\mathbf{v}\\in\\Re^L\\\\)\n$$\\langle \\mathbf{u},\\mathbf{v} \\rangle := \\sum_{\\ell=1}^L u_{\\ell} v_\\ell$$\n\n- the **outer product** between vectors \\\\(\\mathbf{u}\\in\\Re^N\\\\) and \\\\(\\mathbf{v}\\in\\Re^M\\\\)\n\n$$\\mathbf{u} \\otimes \\mathbf{v} = \\begin{pmatrix} u_{1} \\\\\\ u_{2} \\\\\\ \\vdots \\\\\\ u_{N}\\end{pmatrix} \\otimes \\begin{pmatrix} v_{1} \\\\\\ v_{2} \\\\\\ \\vdots \\\\\\ v_{M}\\end{pmatrix}  := \\begin{pmatrix} u_{1} v_{1} & u_{1} v_{2} & \\cdots & u_{1} v_{M}  \\\\\\ u_{2} v_{1} & u_{2} v_{2} & \\cdots & u_{2} v_{M} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ u_{N} v_{1} & u_{N} v_{2} & \\cdots & u_{N} v_{M} \\end{pmatrix}_{N\\times M}\n$$",
       "extraFields" : { }
     }
   }, {
@@ -109,7 +119,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Operations\n<br/>\n\n- the **inner product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{L \\times M} \\\\)\n\n<br/>\n\n$$\\mathbf{U} \\mathbf{V}:= \\begin{pmatrix} \\sum_{\\ell}u_{1,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{1,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{1,\\ell} v_{\\ell,M}  \\\\\\ \\sum_{\\ell}u_{2,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{2,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{2,\\ell} v_{\\ell,M} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ \\sum_{\\ell}u_{N,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{N,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{N,\\ell} v_{\\ell,M} \\end{pmatrix}_{N,M}$$\n\n",
+      "code" : "### Matrix Operations\n\n- the **inner product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{L \\times M} \\\\)\n\n$$\\mathbf{U} \\mathbf{V}:= \\begin{pmatrix} \\sum_{\\ell}u_{1,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{1,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{1,\\ell} v_{\\ell,M}  \\\\\\ \\sum_{\\ell}u_{2,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{2,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{2,\\ell} v_{\\ell,M} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ \\sum_{\\ell}u_{N,\\ell} v_{\\ell,1} & \\sum_{\\ell}u_{N,\\ell} v_{\\ell,2} & \\cdots & \\sum_{\\ell}u_{N,\\ell} v_{\\ell,M} \\end{pmatrix}_{N,M}$$\n\n",
       "extraFields" : { }
     }
   }, {
@@ -125,23 +135,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Operations\n\n<br/>\n\n- the **outer product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{M \\times L} \\\\)\n\n<br/>\n\n$$\\mathbf{U} \\otimes \\mathbf{V} := \\sum_{\\ell=1}^L \\mathbf{u}_{:\\ell} \\otimes \\mathbf{v}_{:\\ell}\\\\\\\n= \\mathbf{u}_{:1} \\otimes \\mathbf{v}_{:1} + \\mathbf{u}_{:2} \\otimes \\mathbf{v}_{:2} + \\cdots \\mathbf{u}_{:L} \\otimes \\mathbf{v}_{:L}\n$$\n",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 19,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "algebra4",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 20,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### Matrix Operations\n\n<br/>\n\n- the element-wise **Hadamard product** for \\\\(\\mathbf{U},\\mathbf{V} \\in\\Re^{N\\times L} \\\\)\n\n<br/>\n\n$$\\mathbf{U} \\circ \\mathbf{V} := \\begin{pmatrix} u_{1,1} v_{1,1} & u_{1,2} v_{1,2} & \\cdots & u_{1,L} v_{1,L}  \\\\\\ u_{2,1} v_{2,1} & u_{2,2} v_{2,2} & \\cdots & u_{2,L} v_{2,L} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ u_{N,1} v_{N,1} & u_{N,2} v_{N,2} & \\cdots & u_{N,L} v_{N,L} \\end{pmatrix}_{N,L}\n$$\n",
+      "code" : "### Matrix Operations\n\n- the **outer product** for matrices \\\\(\\mathbf{U} \\in\\Re^{N\\times L} \\\\) and \\\\(\\mathbf{V} \\in \\Re^{M \\times L} \\\\)\n\n$$\\mathbf{U} \\otimes \\mathbf{V} := \\sum_{\\ell=1}^L \\mathbf{u}_{:\\ell} \\otimes \\mathbf{v}_{:\\ell}\\\\\\\n= \\mathbf{u}_{:1} \\otimes \\mathbf{v}_{:1} + \\mathbf{u}_{:2} \\otimes \\mathbf{v}_{:2} + \\cdots \\mathbf{u}_{:L} \\otimes \\mathbf{v}_{:L}\n$$\n",
       "extraFields" : { }
     }
   }, {
@@ -149,7 +143,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "norms",
+      "code" : "algebra4",
       "extraFields" : { }
     }
   }, {
@@ -157,23 +151,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Norms\n<br/>\n\n- loss functions (how far we are from our objective)\n\n- regularizers (how large we allow our parameters to grow)\n\n<br/>\n\n**element-wise** \\\\(p\\\\)-norms:\n\n$$||\\mathbf{U}||_p := \\left(\\sum_{m=1}^M\\sum_{n=1}^N |u_{n,m}|^p \\right)^{1/p} $$\n\n<br/>\n\n**Frobenius norm** \\\\(||\\mathbf{U}||_F := ||\\mathbf{U}||_2\\\\)",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 21,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "norms2",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 22,
-    "compiler" : "html",
-    "input" : {
-      "sessionId" : null,
-      "code" : "<h3>Norm example</h3>\n\n<div style=\"position:relative;\">\n\n<div class=\"fragment0 fade-out\">\n<img src=\"../../assets/figures/norm1of4.png\" height=\"500\">\n</div>\n\n<div class=\"fragment0 current-visible\" style=\"position:absolute; top:0; left:0; width:100%; height=100%;\">\n<img src=\"../../assets/figures/norm2of4.png\" height=\"500\">\n</div>\n\n<div class=\"fragment1 current-visible\" style=\"position:absolute; top:0; left:0; width:100%; height=100%;\">\n<img src=\"../../assets/figures/norm3of4.png\" height=\"500\">\n</div>\n\n<div class=\"fragment2 current-visible\" style=\"position:absolute; top:0; left:0; width:100%; height=100%;\">\n<img src=\"../../assets/figures/norm4of4.png\" height=\"500\">\n</div>\n\n    \n</div>",
+      "code" : "### Matrix Operations\n\n- the element-wise **Hadamard product** for \\\\(\\mathbf{U},\\mathbf{V} \\in\\Re^{N\\times L} \\\\)\n\n$$\\mathbf{U} \\circ \\mathbf{V} := \\begin{pmatrix} u_{1,1} v_{1,1} & u_{1,2} v_{1,2} & \\cdots & u_{1,L} v_{1,L}  \\\\\\ u_{2,1} v_{2,1} & u_{2,2} v_{2,2} & \\cdots & u_{2,L} v_{2,L} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ u_{N,1} v_{N,1} & u_{N,2} v_{N,2} & \\cdots & u_{N,L} v_{N,L} \\end{pmatrix}_{N,L}\n$$\n",
       "extraFields" : { }
     }
   }, {
@@ -181,7 +159,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "rank",
+      "code" : "norms",
       "extraFields" : { }
     }
   }, {
@@ -189,21 +167,53 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix rank\n\n<br>\nThe maximum number of linearly independent columns/rows\n\n<br>\n\nFor matrix \\\\(\\mathbf{U}\\in\\Re^{N\\times M} \\\\):\n\n- \\\\(rank(\\mathbf{U}) = 0 \\\\) iff \\\\(N=M=0\\\\)\n- \\\\(max(rank(\\mathbf{U})) = min(N,M)\\\\)\n\n",
+      "code" : "### Norms\n\nCommonly used to define:\n\n- loss functions (how far we are from our objective)\n\n- regularizers (how large we allow our parameters to grow)\n\n**element-wise** \\\\(p\\\\)-norms:\n\n$$||\\mathbf{U}||_p := \\left(\\sum_{m=1}^M\\sum_{n=1}^N |u_{n,m}|^p \\right)^{1/p} $$\n\n**Frobenius norm** \\\\(||\\mathbf{U}||_F := ||\\mathbf{U}||_2\\\\)",
       "extraFields" : { }
     }
   }, {
-    "id" : 24,
+    "id" : 19,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "norms2",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 20,
+    "compiler" : "html",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<h3>Norm example</h3>\n\n\\(\\mathbf{U} = \\begin{pmatrix} u_1 & u_2 \\end{pmatrix}\\)<div style=\"position:relative;\">\n<div class=\"fragment1 fade-out\" style=\"position:relative; top:0; left:0;\">\n<img src=\"../../assets/figures/norm1of4.png\" height=\"500\">\n</div>\n<div class=\"fragment1 current-visible\" style=\"position:absolute; top:0; left:0; width:100%; height=100%;\">\n<img src=\"../../assets/figures/norm2of4.png\" height=\"500\">\n</div>\n<div class=\"fragment2 current-visible\" style=\"position:absolute; top:0; left:0; width:100%; height=100%;\">\n<img src=\"../../assets/figures/norm3of4.png\" height=\"500\">\n</div>\n</div>",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 21,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "rank",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 22,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<br>\n\n$$\nrank\n\\begin{pmatrix}\n1 & 2 & 3 \\\\\\\n2 & 3 & 5 \\\\\\\n3 & 4 & 7 \\\\\\\n4 & 5 & 9 \\\\\\\n\\end{pmatrix}=??\n$$\n",
+      "code" : "### Matrix rank\n\nThe maximum number of linearly independent columns/rows\n\nFor matrix \\\\(\\mathbf{U}\\in\\Re^{N\\times M} \\\\):\n\n- \\\\(rank(\\mathbf{U}) = 0 \\\\) iff \\\\(N=M=0\\\\)\n- \\\\(max(rank(\\mathbf{U})) = min(N,M)\\\\)\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 26,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\n$$\nrank\n\\begin{pmatrix}\n1 & 2 & 3 \\\\\\\n2 & 3 & 5 \\\\\\\n3 & 4 & 7 \\\\\\\n4 & 5 & 9 \\\\\\\n\\end{pmatrix}=??\n$$",
       "extraFields" : {
         "fragment" : "true"
       }
     }
   }, {
-    "id" : 23,
+    "id" : 24,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
