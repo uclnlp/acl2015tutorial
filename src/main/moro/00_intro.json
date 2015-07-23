@@ -25,89 +25,21 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 210,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "mfw1",
-      "extraFields" : { 
-        "reveal_params" : "data-background=\"../../assets/figures/00/mfw1.png\""
-      }
-    }
-  }, {
-    "id" : 211,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 111,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "mfw2",
-      "extraFields" : { 
-        "reveal_params" : "data-background=\"../../assets/figures/00/mfw2.png\""
-      }
-    }
-  }, {
-    "id" : 112,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 113,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "mfw3",
-      "extraFields" : { 
-        "reveal_params" : "data-background=\"../../assets/figures/00/mfw3.png\""
-      }
-    }
-  }, {
-    "id" : 114,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 300,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "mf4nlp",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 400,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### Natural Language Processing Goals\n\n**To find structure in unstructured text**\n\n- Linguistic structure: syntax, semantic roles\n\n- Application structure: relation extraction, knowledgebase completion\n\n**To find patterns in language**\n\n- clustering: LSA, Latent Dirichlet Allocation\n\n- Distributional semantics: word2vec\n\n**Reasoning with language**: Inference with first-order logic",
-      "extraFields" : { }
-    }
-  }, {
     "id" : 3,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "intro2",
-      "extraFields" : { }
+      "code" : "mfw1",
+      "extraFields" : {
+        "reveal_params" : "data-background=\"../../assets/figures/00/mfw1.png\""
+      }
     }
   }, {
     "id" : 4,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<img src=\"../../assets/figures/00/s1f2.png\" height=\"500\">",
+      "code" : "",
       "extraFields" : { }
     }
   }, {
@@ -115,11 +47,79 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
+      "code" : "mfw2",
+      "extraFields" : {
+        "reveal_params" : "data-background=\"../../assets/figures/00/mfw2.png\""
+      }
+    }
+  }, {
+    "id" : 6,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 7,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "mfw3",
+      "extraFields" : {
+        "reveal_params" : "data-background=\"../../assets/figures/00/mfw3.png\""
+      }
+    }
+  }, {
+    "id" : 8,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 9,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "mf4nlp",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 10,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Natural Language Processing Goals\n\n**To find structure in unstructured text**\n\n- Linguistic structure: syntax, semantic roles\n\n- Application structure: relation extraction, knowledgebase completion\n\n**To find patterns in language**\n\n- clustering: LSA, Latent Dirichlet Allocation\n\n- Distributional semantics: word2vec\n\n**Reasoning with language**: Inference with first-order logic",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 11,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "intro2",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 12,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<img src=\"../../assets/figures/00/s1f2.png\" height=\"500\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 13,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
       "code" : "Blah",
       "extraFields" : { }
     }
   }, {
-    "id" : 6,
+    "id" : 14,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -127,7 +127,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 7,
+    "id" : 15,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -137,7 +137,7 @@
       }
     }
   }, {
-    "id" : 8,
+    "id" : 16,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -145,7 +145,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 9,
+    "id" : 17,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -155,7 +155,7 @@
       }
     }
   }, {
-    "id" : 10,
+    "id" : 18,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -163,7 +163,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 11,
+    "id" : 19,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -171,7 +171,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 12,
+    "id" : 20,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
