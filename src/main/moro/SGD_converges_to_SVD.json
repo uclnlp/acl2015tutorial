@@ -1,0 +1,80 @@
+{
+  "name" : "SGD converges to SVD",
+  "cells" : [ {
+    "id" : 0,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "Interactive",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 1,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\nimport ml.wolfe.{Mat, Vect}\nimport org.sameersingh.scalaplot._\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)\n\ndef plot(x:Seq[Double],y:Seq[Double]):XYChart = {\n     xyChart(new XYData(new MemXYSeries(x,y)))\n}\ndef plot(x1:Seq[Double],y1:Seq[Double],s1:String,x2:Seq[Double],y2:Seq[Double],s2:String):XYChart = {\n     var c = xyChart(new XYData(new MemXYSeries(x1,y1,s1),new MemXYSeries(x2,y2,s2)))\n     c.showLegend = true\n     c\n}\n\nplot(Seq(1.0,2.0,2.5),Seq(2.0,1.0,2.1),\"a\",Seq(1.0,2.0,2.5),Seq(2.2,1.1,2.0),\"b\")\n\n",
+      "extraFields" : {
+        "aggregatedCells" : "[]"
+      }
+    }
+  }, {
+    "id" : 2,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "val n = 5\nval m = 5 \nval M2 = new DenseTensor2(n, m)\nval rand = new scala.util.Random(0)\nval rowNames = Seq(\"D1\",\"D2\",\"D3\",\"D4\",\"D5\")\nval colNames = Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")\nval names = header(rowNames,colNames)\nval M = parseMatrix(\n    \"\"\"1 2 0 0 0\n       0 0 1 0 0\n       0 0 0 1 1 \n       0 0 1 1 1\n       1 2 1 1 0\"\"\")\nfor (i <- 0 until m; j <- 0 until m) {\n  M2(i, j) = rand.nextGaussian()\n}",
+      "extraFields" : {
+        "hide_output" : "true",
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport org.sameersingh.scalaplot._\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)\\n\\ndef plot(x:Seq[Double],y:Seq[Double]):XYChart = {\\n     xyChart(new XYData(new MemXYSeries(x,y)))\\n}\\ndef plot(x1:Seq[Double],y1:Seq[Double],s1:String,x2:Seq[Double],y2:Seq[Double],s2:String):XYChart = {\\n     var c = xyChart(new XYData(new MemXYSeries(x1,y1,s1),new MemXYSeries(x2,y2,s2)))\\n     c.showLegend = true\\n     c.size = Some(2.0 -> 3.0)\\n     c\\n}\\n\\nplot(Seq(1.0,2.0,2.5),Seq(2.0,1.0,2.1),\\\"a\\\",Seq(1.0,2.0,2.5),Seq(2.2,1.1,2.0),\\\"b\\\")\\n\\n\"]"
+      }
+    }
+  }, {
+    "id" : 3,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "SGD",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 4,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "def optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\n  val rand = new scala.util.Random(0)\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\n  val A = AV._1; val V = AV._2\n  def update(i: Int, j: Int) = {\n    val a = A(i).copy\n    val v = V(j).copy\n    val y = a dot v\n    A(i) += v * alpha * (M(i, j) - y)\n    V(j) += a * alpha * (M(i, j) - y)\n  }\n  for (i <- Range(0,iters).toList) {\n    update(rand.nextInt(M.dim1), \n           rand.nextInt(M.dim2))\n  }\n  (A, V)\n}",
+      "extraFields" : {
+        "hide_output" : "true",
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport org.sameersingh.scalaplot._\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)\\n\\ndef plot(x:Seq[Double],y:Seq[Double]):XYChart = {\\n     xyChart(new XYData(new MemXYSeries(x,y)))\\n}\\ndef plot(x1:Seq[Double],y1:Seq[Double],s1:String,x2:Seq[Double],y2:Seq[Double],s2:String):XYChart = {\\n     var c = xyChart(new XYData(new MemXYSeries(x1,y1,s1),new MemXYSeries(x2,y2,s2)))\\n     c.showLegend = true\\n     c.size = Some(2.0 -> 3.0)\\n     c\\n}\\n\\nplot(Seq(1.0,2.0,2.5),Seq(2.0,1.0,2.1),\\\"a\\\",Seq(1.0,2.0,2.5),Seq(2.2,1.1,2.0),\\\"b\\\")\\n\\n\",\"val n = 5\\nval m = 5 \\nval M2 = new DenseTensor2(n, m)\\nval rand = new scala.util.Random(0)\\nval rowNames = Seq(\\\"D1\\\",\\\"D2\\\",\\\"D3\\\",\\\"D4\\\",\\\"D5\\\")\\nval colNames = Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\")\\nval names = header(rowNames,colNames)\\nval M = parseMatrix(\\n    \\\"\\\"\\\"1 2 0 0 0\\n       0 0 1 0 0\\n       0 0 0 1 1 \\n       0 0 1 1 1\\n       1 2 1 1 0\\\"\\\"\\\")\\nfor (i <- 0 until m; j <- 0 until m) {\\n  M2(i, j) = rand.nextGaussian()\\n}\"]"
+      }
+    }
+  }, {
+    "id" : 5,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "aaa",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 6,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : " Convergence of L2-loss SGD to SVD",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 7,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "import org.sameersingh.scalaplot._\n\n//val plots = for (K <- 2 until 3) yield {\nval K = 2 //rank \nval models = for (i <- 0 until 10) yield optimizeL2(M, K, i * 100, 0.1)\nval (u,s,v) = breezeSVD(M)\nval (ea,ev) = toEmbeddings(u,s,v,K)\nval x = Range(0,10).map(_.toDouble)\nval y = Range(0,10).map(i => l2Loss(M,dots(models(i)._1,models(i)._2)))\nval ySVD = l2Loss(M,dots(ea,ev))\n\np = plot(x,y,\"L2-loss SGD\",Seq(0.0,10.0),Seq(ySVD,ySVD),\"SVD\")\n\n",
+      "extraFields" : {
+        "showEditor" : "false",
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport org.sameersingh.scalaplot._\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)\\n\\ndef plot(x:Seq[Double],y:Seq[Double]):XYChart = {\\n     xyChart(new XYData(new MemXYSeries(x,y)))\\n}\\ndef plot(x1:Seq[Double],y1:Seq[Double],s1:String,x2:Seq[Double],y2:Seq[Double],s2:String):XYChart = {\\n     var c = xyChart(new XYData(new MemXYSeries(x1,y1,s1),new MemXYSeries(x2,y2,s2)))\\n     c.showLegend = true\\n     c\\n}\\n\\nplot(Seq(1.0,2.0,2.5),Seq(2.0,1.0,2.1),\\\"a\\\",Seq(1.0,2.0,2.5),Seq(2.2,1.1,2.0),\\\"b\\\")\\n\\n\",\"val n = 5\\nval m = 5 \\nval M2 = new DenseTensor2(n, m)\\nval rand = new scala.util.Random(0)\\nval rowNames = Seq(\\\"D1\\\",\\\"D2\\\",\\\"D3\\\",\\\"D4\\\",\\\"D5\\\")\\nval colNames = Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\")\\nval names = header(rowNames,colNames)\\nval M = parseMatrix(\\n    \\\"\\\"\\\"1 2 0 0 0\\n       0 0 1 0 0\\n       0 0 0 1 1 \\n       0 0 1 1 1\\n       1 2 1 1 0\\\"\\\"\\\")\\nfor (i <- 0 until m; j <- 0 until m) {\\n  M2(i, j) = rand.nextGaussian()\\n}\",\"def optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\\n  val rand = new scala.util.Random(0)\\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val y = a dot v\\n    A(i) += v * alpha * (M(i, j) - y)\\n    V(j) += a * alpha * (M(i, j) - y)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), \\n           rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\"]"
+      }
+    }
+  } ],
+  "config" : { }
+}
