@@ -25,67 +25,40 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 3,
+    "id" : 7,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Modeling Two Relations\nAssume we have 2 relations:\n\n1. Document - Word matrix \\\\( Y^{(1)} \\in ( \\Re \\cup \\lbrace ? \\rbrace )^{n\\times F} \\\\)\n2. Document - Label matrix  \\\\( Y^{(2)} \\in \\lbrace 0,1,? \\rbrace ^{n\\times K} \\\\)\n\nRepresenting is a a 2-slices tensor is overly complicated and not needed.\nA simple and effective way to represent it is by concatenating the two matrices into a big \\\\( n\\times (F+K) \\\\) matrix:\n\n\\\\( Y := [ Y^{(1)} \\ Y^{(2)}]  \\\\)\n\nWe can estimate a probabilitic model on \\\\(Y\\\\) by factorizing it.\n\nJust use the binary matrix factorization technique we saw before. This is a new method for supervised classification!\n\n - Handles missing data in the input\n - Can work with partially labelled documents\n - Takes advantage of unlabelled data\n",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 4,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "Motivating_cont",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 5,
-    "compiler" : "html",
-    "input" : {
-      "sessionId" : null,
-      "code" : "<h3>Motivating Example</h3>\n<ul>\n<li>Document - Word matrix \\(Y^{(1)} \\in ( \\Re \\cup \\lbrace ? \\rbrace )^{N\\times F}\\)\n</li>\n<li>Document - Label matrix  \\(Y^{(2)} \\in \\lbrace 0,1,? \\rbrace ^{N\\times K}\\)\n</li>\n<li>\nWord - Label matrix \\( Y^{(3)} \\in \\lbrace 0, 1 ,? \\rbrace ^{K\\times F} \\)\n</li>\n</ul>\n\nNaive concatenation:\n\n$$\nY := \n\\left[\\begin{array}{cc} \nY^{(3)} & [?]_{K\\times K} \n\\\\\nY^{(1)} & Y^{(2)} \n\\end{array}\\right] \n$$\n\nWe can estimate a probabilitic model on \\(Y\\) by factorizing it. This additional relation enables feature labelling and increase prediction capabilities when similar rare words share similar labels",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 6,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "correctcmf",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 7,
-    "compiler" : "html",
-    "input" : {
-      "sessionId" : null,
-      "code" : "<h3>Symmetric Block Matrix</h3>\n<ul>\n<li>Document - Word matrix \\(Y^{(1)} \\in ( \\Re \\cup \\lbrace ? \\rbrace )^{N\\times F}\\)\n</li>\n<li>Document - Label matrix  \\(Y^{(2)} \\in \\lbrace 0,1,? \\rbrace ^{N\\times K}\\)\n</li>\n<li>\nWord - Label matrix \\( Y^{(3)} \\in \\lbrace 0, 1 ,? \\rbrace ^{F\\times K} \\)\n</li>\n</ul>\n\nA \\((n + F + K) \\times (n + F + K) \\) symmetric block-matrix:\n\n$$\nY := \n\\left[\\begin{array}{ccc} \n[?]_{F\\times F} & Y^{(3)T} &Y^{(1)T}\n\\\\\nY^{(3)} & [?]_{K\\times K} & Y^{(2)T}\n\\\\\nY^{(1)} & Y^{(2)} & [?]_{N\\times N}\n\\end{array}\\right] \n$$\n\nLet factorize it!",
+      "code" : "### Modeling Two Relations\n\n\n\n",
       "extraFields" : { }
     }
   }, {
     "id" : 8,
-    "compiler" : "section",
+    "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "CMFformula",
-      "extraFields" : { }
+      "code" : "\n\nval n = 5\nval m = 5 \nval rand = new scala.util.Random(0)\nval rowNames = Seq(\"D1\",\"D2\",\"D3\",\"D4\",\"D5\")\nval colNames = Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")\nval names = header(rowNames,colNames)\n//val M = parseMatrix(\n//    \"\"\"1 2 0 0 0\n//       0 0 1 0 0\n//       0 0 0 1 1 \n//       0 0 1 1 1\n//       1 2 1 1 0\"\"\")\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=8, numRows=5)\n\nval m1 = Matrix(Seq(\n    Cell(0,0,   1),\n    Cell(0,1,   2),\n    Cell(1,2,   1),\n    Cell(2,3,   1),\n    Cell(2,4,   1),\n    Cell(3,2,   1),\n    Cell(3,3,   1),\n    Cell(3,4,   1),\n    Cell(4,0,   1),\n    Cell(4,1,   2),\n    Cell(4,2,   1),\n    Cell(4,3,   1)\n),\nSeq(\n    RowLabel(2,\"Doc\")\n    ),\nSeq(\n    ColLabel(2,\"Word\")\n    ), \nSeq(0,5), Seq(0,5))\n\nval m2 = Matrix(Seq(\n    Cell(0,0,   1),\n    Cell(0,1,   2),\n    Cell(1,2,   1),\n    Cell(2,3,   1),\n    Cell(2,4,   1),\n    Cell(3,2,   1),\n    Cell(3,3,   1),\n    Cell(3,4,   1),\n    Cell(4,0,   1),\n    Cell(4,1,   2),\n    Cell(4,2,   1),\n    Cell(4,3,   1),\n    Cell(0,5,   1),\n    Cell(1,6,   1),\n    Cell(1,7,   1),\n    Cell(2,6,   1),\n    Cell(2,7,   1),\n    Cell(3,6,   1),\n    Cell(3,7,   1),\n    Cell(4,5,   1),\n    Cell(4,6,   1),\n    Cell(4,7,   1)\n),\nSeq(\n    RowLabel(2,\"Doc\")\n    ),\nSeq(\n    ColLabel(2,\"Word\"),\n    ColLabel(6,\"Label\")\n    ), \nSeq(0,5), Seq(0,5,8))\n\n//m5.size = Some(2.0 -> 3.0)\nval matrices = Seq(m1,m2)\nMatrixRenderer.render(matrices,layout)\n\n",
+      "extraFields" : {
+        "showEditor" : "false",
+        "aggregatedCells" : "[\"\\nimport uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport ml.wolfe.util.Math._\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)\\n\",\"\\nimport uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=9,numRows=8)\\n\\nval m5 = Matrix(Seq(\\n    Cell(0,1,   1),\\n    Cell(0,0,   1),\\n    Cell(0,2,   1),\\n    Cell(0,3,   0),\\n    Cell(0,4,   1),\\n    Cell(0,6,0),\\n    Cell(1,1,1),\\n    Cell(1,0,0),\\n    Cell(1,4,1),\\n    Cell(1,5,0),\\n    Cell(1,6,0),\\n    Cell(1,7,1),\\n    Cell(2,1,0),\\n    Cell(2,0,1),\\n    Cell(2,3,1),\\n    Cell(2,4,0),\\n    Cell(2,6,1),\\n    Cell(2,7,0),\\n    Cell(3,1,0),\\n    Cell(3,0,0),\\n    Cell(3,2,1),\\n    Cell(3,5,0),\\n    Cell(3,6,0),\\n    Cell(3,7,0),\\n    Cell(4,1,\\\"???\\\"),\\n    Cell(4,0,\\\"???\\\"),\\n    Cell(4,2,1),\\n    Cell(4,3,0),\\n    Cell(4,5,1),\\n    Cell(4,6,0),\\n    Cell(4,7,0),\\n    Cell(5,1,\\\"???\\\"),\\n    Cell(5,0,\\\"???\\\"),\\n    Cell(5,2,0),\\n    Cell(5,3,1),\\n    Cell(5,5,0),\\n    Cell(6,2,1),\\n    Cell(6,3,0),\\n    Cell(6,5,1),\\n    Cell(6,6,0),\\n    Cell(7,2,0),\\n    Cell(7,3,1),\\n    Cell(7,4,0),\\n    Cell(7,5,0)\\n),\\nSeq(\\n    RowLabel(0,\\\"TRAIN\\\"),\\n    RowLabel(4,\\\"TEST\\\"),\\n    RowLabel(6,\\\"UNLAB\\\")),\\n    Seq(ColLabel(0,\\\"task1\\\"),\\n    ColLabel(1,\\\"task2\\\"),\\n    ColLabel(2,\\\"feat1\\\"),\\n    ColLabel(3,\\\"feat2\\\"),\\n    ColLabel(4,\\\"feat3\\\"),\\n    ColLabel(5,\\\"feat4\\\"),\\n    ColLabel(6,\\\"feat5\\\"),\\n    ColLabel(7,\\\"feat6\\\")), \\nSeq(0,4,6), Seq(0,2))\\n\\n//m5.size = Some(2.0 -> 3.0)\\nval matrices = Seq(m5)\\nMatrixRenderer.render(matrices,layout)\\n\"]"
+      }
     }
   }, {
     "id" : 9,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Collective Matrix Factorization\n\nWe have \\\\(T\\\\) types of entity with embeddings \\\\(\\mathbf{U} = (\\mathbf{U}^{(1)}, \\cdots, \\mathbf{U}^{(T)})\\\\) and we observe relations between all possible entity types \\\\(\\mathbf{Y} = (\\mathbf{Y}^{(1,1)}, \\mathbf{Y}^{(1,2)}, \\cdots, \\mathbf{Y}^{(T,T)}) \\\\)\n\n\nGeneral Loss functions \\\\(\\ell_{tt'}\\\\):\n\n\\\\(\\mathcal{L}(\\mathbf{U}) = \\sum_{t=1}^T \\sum_{t < t'< T} \\ell_{tt'}(\\mathbf{U}^{(t)}\\mathbf{U}^{(t')T}; \\mathbf{Y}^{(t,t')}||) \\\\)\n\nFor quadratic loss:\n\n\\\\(\\mathcal{L}(\\mathbf{U}) = \\sum_{t=1}^T \\sum_{t < t'< T} \\frac{1}{\\sigma_{tt'}^2} ||\\mathbf{U}^{(t)}\\mathbf{U}^{(t')T} - \\mathbf{Y}^{(t,t')}||_F^2 \\\\)\n",
-      "extraFields" : { }
+      "code" : "1. Document - Word matrix \\\\( Y^{(1)} \\in ( \\Re \\cup \\lbrace ? \\rbrace )^{n\\times F} \\\\)\n2. Document - Label matrix  \\\\( Y^{(2)} \\in \\lbrace 0,1,? \\rbrace ^{n\\times K} \\\\)\n\nRepresenting is a a 2-slices tensor is overly complicated and not needed.\nA simple and effective way to represent it is by concatenating the two matrices into a big \\\\( n\\times (F+K) \\\\) matrix:\n\n\\\\( Y := [ Y^{(1)} \\ Y^{(2)}]  \\\\)\n\nWe can estimate a probabilitic model on \\\\(Y\\\\) by factorizing it.\n\nJust use the binary matrix factorization technique we saw before. This is a new method for supervised classification!\n\n - Handles missing data in the input\n - Can work with partially labelled documents\n - Takes advantage of unlabelled data\n",
+      "extraFields" : {
+        "hide_output" : "true"
+      }
     }
   }, {
     "id" : 10,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "generalization",
+      "code" : "adfs",
       "extraFields" : { }
     }
   }, {
@@ -93,71 +66,77 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Generalization to Arbitrary Databases\n\n<br />\n<img src=\"../../assets/figures/06/cmf_databases.png\" width=\"95%\">",
+      "code" : "### Third Relation: Feature Labelling",
       "extraFields" : { }
     }
   }, {
     "id" : 12,
-    "compiler" : "section",
+    "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "example_denoising_faces",
-      "extraFields" : { }
+      "code" : "\n\n\nval n = 5\nval m = 5 \nval rand = new scala.util.Random(0)\nval rowNames = Seq(\"D1\",\"D2\",\"D3\",\"D4\",\"D5\",\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")\nval colNames = Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\",\"greece\",\"politics\",\"economy\")\nval names = header(rowNames,colNames)\n//val M = parseMatrix(\n//    \"\"\"1 2 0 0 0\n//       0 0 1 0 0\n//       0 0 0 1 1 \n//       0 0 1 1 1\n//       1 2 1 1 0\"\"\")\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=8, numRows=10)\n\nval m1 = Matrix(Seq(\n    Cell(0,0,   1),\n    Cell(0,1,   2),\n    Cell(1,2,   1),\n    Cell(2,3,   1),\n    Cell(2,4,   1),\n    Cell(3,2,   1),\n    Cell(3,3,   1),\n    Cell(3,4,   1),\n    Cell(4,0,   1),\n    Cell(4,1,   2),\n    Cell(4,2,   1),\n    Cell(4,3,   1),\n    Cell(0,5,   1),\n    Cell(1,6,   1),\n    Cell(1,7,   1),\n    Cell(2,6,   1),\n    Cell(2,7,   1),\n    Cell(3,6,   1),\n    Cell(3,7,   1),\n    Cell(4,5,   1),\n    Cell(4,6,   1),\n    Cell(4,7,   1),\n    Cell(5,5,   1),\n    Cell(5,6,   1),\n    Cell(6,7,   1),\n    Cell(7,5,   1),\n    Cell(8,6,   1),\n    Cell(9,7,   1)\n),\nSeq(\n    RowLabel(2,\"Doc\"),\n    RowLabel(7,\"Word\")\n    ),\nSeq(\n    ColLabel(2,\"Word\"),\n    ColLabel(6,\"Label\")\n    ), \nSeq(0,5,10), Seq(0,5,8))\n\n//m5.size = Some(2.0 -> 3.0)\nval matrices = Seq(m1)\nMatrixRenderer.render(matrices,layout)\n",
+      "extraFields" : {
+        "showEditor" : "false",
+        "aggregatedCells" : "[\"\\nimport uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport ml.wolfe.util.Math._\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)\\n\",\"\\nimport uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=9,numRows=8)\\n\\nval m5 = Matrix(Seq(\\n    Cell(0,1,   1),\\n    Cell(0,0,   1),\\n    Cell(0,2,   1),\\n    Cell(0,3,   0),\\n    Cell(0,4,   1),\\n    Cell(0,6,0),\\n    Cell(1,1,1),\\n    Cell(1,0,0),\\n    Cell(1,4,1),\\n    Cell(1,5,0),\\n    Cell(1,6,0),\\n    Cell(1,7,1),\\n    Cell(2,1,0),\\n    Cell(2,0,1),\\n    Cell(2,3,1),\\n    Cell(2,4,0),\\n    Cell(2,6,1),\\n    Cell(2,7,0),\\n    Cell(3,1,0),\\n    Cell(3,0,0),\\n    Cell(3,2,1),\\n    Cell(3,5,0),\\n    Cell(3,6,0),\\n    Cell(3,7,0),\\n    Cell(4,1,\\\"???\\\"),\\n    Cell(4,0,\\\"???\\\"),\\n    Cell(4,2,1),\\n    Cell(4,3,0),\\n    Cell(4,5,1),\\n    Cell(4,6,0),\\n    Cell(4,7,0),\\n    Cell(5,1,\\\"???\\\"),\\n    Cell(5,0,\\\"???\\\"),\\n    Cell(5,2,0),\\n    Cell(5,3,1),\\n    Cell(5,5,0),\\n    Cell(6,2,1),\\n    Cell(6,3,0),\\n    Cell(6,5,1),\\n    Cell(6,6,0),\\n    Cell(7,2,0),\\n    Cell(7,3,1),\\n    Cell(7,4,0),\\n    Cell(7,5,0)\\n),\\nSeq(\\n    RowLabel(0,\\\"TRAIN\\\"),\\n    RowLabel(4,\\\"TEST\\\"),\\n    RowLabel(6,\\\"UNLAB\\\")),\\n    Seq(ColLabel(0,\\\"task1\\\"),\\n    ColLabel(1,\\\"task2\\\"),\\n    ColLabel(2,\\\"feat1\\\"),\\n    ColLabel(3,\\\"feat2\\\"),\\n    ColLabel(4,\\\"feat3\\\"),\\n    ColLabel(5,\\\"feat4\\\"),\\n    ColLabel(6,\\\"feat5\\\"),\\n    ColLabel(7,\\\"feat6\\\")), \\nSeq(0,4,6), Seq(0,2))\\n\\n//m5.size = Some(2.0 -> 3.0)\\nval matrices = Seq(m5)\\nMatrixRenderer.render(matrices,layout)\\n\",\"\\n\\nval n = 5\\nval m = 5 \\nval rand = new scala.util.Random(0)\\nval rowNames = Seq(\\\"D1\\\",\\\"D2\\\",\\\"D3\\\",\\\"D4\\\",\\\"D5\\\")\\nval colNames = Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\")\\nval names = header(rowNames,colNames)\\n//val M = parseMatrix(\\n//    \\\"\\\"\\\"1 2 0 0 0\\n//       0 0 1 0 0\\n//       0 0 0 1 1 \\n//       0 0 1 1 1\\n//       1 2 1 1 0\\\"\\\"\\\")\\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=8, numRows=5)\\n\\nval m1 = Matrix(Seq(\\n    Cell(0,0,   1),\\n    Cell(0,1,   2),\\n    Cell(1,2,   1),\\n    Cell(2,3,   1),\\n    Cell(2,4,   1),\\n    Cell(3,2,   1),\\n    Cell(3,3,   1),\\n    Cell(3,4,   1),\\n    Cell(4,0,   1),\\n    Cell(4,1,   2),\\n    Cell(4,2,   1),\\n    Cell(4,3,   1)\\n),\\nSeq(\\n    RowLabel(2,\\\"Doc\\\")\\n    ),\\nSeq(\\n    ColLabel(2,\\\"Word\\\")\\n    ), \\nSeq(0,5), Seq(0,5))\\n\\nval m2 = Matrix(Seq(\\n    Cell(0,0,   1),\\n    Cell(0,1,   2),\\n    Cell(1,2,   1),\\n    Cell(2,3,   1),\\n    Cell(2,4,   1),\\n    Cell(3,2,   1),\\n    Cell(3,3,   1),\\n    Cell(3,4,   1),\\n    Cell(4,0,   1),\\n    Cell(4,1,   2),\\n    Cell(4,2,   1),\\n    Cell(4,3,   1),\\n    Cell(0,5,   1),\\n    Cell(1,6,   1),\\n    Cell(1,7,   1),\\n    Cell(2,6,   1),\\n    Cell(2,7,   1),\\n    Cell(3,6,   1),\\n    Cell(3,7,   1),\\n    Cell(4,5,   1),\\n    Cell(4,6,   1),\\n    Cell(4,7,   1)\\n),\\nSeq(\\n    RowLabel(2,\\\"Doc\\\")\\n    ),\\nSeq(\\n    ColLabel(2,\\\"Word\\\"),\\n    ColLabel(6,\\\"Label\\\")\\n    ), \\nSeq(0,5), Seq(0,5,8))\\n\\n//m5.size = Some(2.0 -> 3.0)\\nval matrices = Seq(m1,m2)\\nMatrixRenderer.render(matrices,layout)\\n\\n\"]"
+      }
     }
   }, {
     "id" : 13,
-    "compiler" : "markdown",
+    "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "### Example: Augmented Multi-View\n*Objective*: Predict one view given the other\n\nPixel similarity should help. We create a binary matrix linking pixels.\n\n- Relation 1: pixel intensity value in the first image (real)\n- Relation 2: pixel intensity value in the second image (real)\n- Relation 3: Relative similarity between pixels (binary)\n\n<br />\n<img src=\"../../assets/figures/06/faces.png\" width=\"45%\">\n<img src=\"../../assets/figures/06/faces_expt.png\" width=\"45%\">\n\n\n",
+      "code" : "jkl",
       "extraFields" : { }
     }
   }, {
     "id" : 14,
-    "compiler" : "section",
+    "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "BayesianCMF",
+      "code" : "### Modeling Two Relations\nAssume we have 2 relations:\n\n1. Document - Word matrix \\\\( Y^{(1)} \\in ( \\Re \\cup \\lbrace ? \\rbrace )^{n\\times F} \\\\)\n2. Document - Label matrix  \\\\( Y^{(2)} \\in \\lbrace 0,1,? \\rbrace ^{n\\times K} \\\\)\n\nRepresenting is a a 2-slices tensor is overly complicated and not needed.\nA simple and effective way to represent it is by concatenating the two matrices into a big \\\\( n\\times (F+K) \\\\) matrix:\n\n\\\\( Y := [ Y^{(1)} \\ Y^{(2)}]  \\\\)\n\nWe can estimate a probabilitic model on \\\\(Y\\\\) by factorizing it.\n\nJust use the binary matrix factorization technique we saw before. This is a new method for supervised classification!\n\n - Handles missing data in the input\n - Can work with partially labelled documents\n - Takes advantage of unlabelled data\n",
       "extraFields" : { }
     }
   }, {
     "id" : 15,
-    "compiler" : "markdown",
+    "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "### Bayesian Modelling\nCMF: many regularization parameters.\n\nTuning is painful\n\nBayesian learning: principled automatic tuning\n\n1. Choice of a prior \\\\(P(\\mathbf{U},\\mathbf{V})\\\\)\n2. Find (approximate!) the posterior \\\\(P(\\mathbf{Y}|\\mathbf{U},\\mathbf{V})\\\\)\n\nAlgorithms:\n- Sampling\n    - Gibbs sampling: Salakhutdinov et al., 2008\n    - HMC: Mohamed et al., 2009\n- Variational Inference\n    - Variational Bayes: Raiko et al., 2008          \n    - Expectation Propagation: Stern et al., 2009",
-      "extraFields" : { }
+      "code" : "val n = 5\nval m = 5 \nval rand = new scala.util.Random(0)\nval rowNames = Seq(\"D1\",\"D2\",\"D3\",\"D4\",\"D5\",\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")\nval colNames = Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\",\"greece\",\"politics\",\"economy\")\nval names = header(rowNames,colNames)\n//val M = parseMatrix(\n//    \"\"\"1 2 0 0 0\n//       0 0 1 0 0\n//       0 0 0 1 1 \n//       0 0 1 1 1\n//       1 2 1 1 0\"\"\")\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=8, numRows=10)\n\nval m1 = Matrix(Seq(\n    Cell(0,0,   1),\n    Cell(0,1,   2),\n    Cell(1,2,   1),\n    Cell(2,3,   1),\n    Cell(2,4,   1),\n    Cell(3,2,   1),\n    Cell(3,3,   1),\n    Cell(3,4,   1),\n    Cell(4,0,   1),\n    Cell(4,1,   2),\n    Cell(4,2,   1),\n    Cell(4,3,   1),\n    Cell(0,5,   1),\n    Cell(1,6,   1),\n    Cell(1,7,   1),\n    Cell(2,6,   1),\n    Cell(2,7,   1),\n    Cell(3,6,   1),\n    Cell(3,7,   1),\n    Cell(4,5,   1),\n    Cell(4,6,   1),\n    Cell(4,7,   1),\n    Cell(5,5,   1),\n    Cell(5,6,   1),\n    Cell(6,7,   1),\n    Cell(7,5,   1),\n    Cell(8,6,   1),\n    Cell(9,7,   1)\n),\nSeq(\n    RowLabel(2,\"Doc\"),\n    RowLabel(7,\"Word\")\n    ),\nSeq(\n    ColLabel(2,\"Word\"),\n    ColLabel(6,\"Label\")\n    ), \nSeq(0,5,10), Seq(0,5,8))\n\n//m5.size = Some(2.0 -> 3.0)\nval matrices = Seq(m1)\nMatrixRenderer.render(matrices,layout)",
+      "extraFields" : {
+        "showEditor" : "false",
+        "aggregatedCells" : "[\"\\nimport uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport ml.wolfe.util.Math._\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)\\n\",\"\\nimport uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=9,numRows=8)\\n\\nval m5 = Matrix(Seq(\\n    Cell(0,1,   1),\\n    Cell(0,0,   1),\\n    Cell(0,2,   1),\\n    Cell(0,3,   0),\\n    Cell(0,4,   1),\\n    Cell(0,6,0),\\n    Cell(1,1,1),\\n    Cell(1,0,0),\\n    Cell(1,4,1),\\n    Cell(1,5,0),\\n    Cell(1,6,0),\\n    Cell(1,7,1),\\n    Cell(2,1,0),\\n    Cell(2,0,1),\\n    Cell(2,3,1),\\n    Cell(2,4,0),\\n    Cell(2,6,1),\\n    Cell(2,7,0),\\n    Cell(3,1,0),\\n    Cell(3,0,0),\\n    Cell(3,2,1),\\n    Cell(3,5,0),\\n    Cell(3,6,0),\\n    Cell(3,7,0),\\n    Cell(4,1,\\\"???\\\"),\\n    Cell(4,0,\\\"???\\\"),\\n    Cell(4,2,1),\\n    Cell(4,3,0),\\n    Cell(4,5,1),\\n    Cell(4,6,0),\\n    Cell(4,7,0),\\n    Cell(5,1,\\\"???\\\"),\\n    Cell(5,0,\\\"???\\\"),\\n    Cell(5,2,0),\\n    Cell(5,3,1),\\n    Cell(5,5,0),\\n    Cell(6,2,1),\\n    Cell(6,3,0),\\n    Cell(6,5,1),\\n    Cell(6,6,0),\\n    Cell(7,2,0),\\n    Cell(7,3,1),\\n    Cell(7,4,0),\\n    Cell(7,5,0)\\n),\\nSeq(\\n    RowLabel(0,\\\"TRAIN\\\"),\\n    RowLabel(4,\\\"TEST\\\"),\\n    RowLabel(6,\\\"UNLAB\\\")),\\n    Seq(ColLabel(0,\\\"task1\\\"),\\n    ColLabel(1,\\\"task2\\\"),\\n    ColLabel(2,\\\"feat1\\\"),\\n    ColLabel(3,\\\"feat2\\\"),\\n    ColLabel(4,\\\"feat3\\\"),\\n    ColLabel(5,\\\"feat4\\\"),\\n    ColLabel(6,\\\"feat5\\\"),\\n    ColLabel(7,\\\"feat6\\\")), \\nSeq(0,4,6), Seq(0,2))\\n\\n//m5.size = Some(2.0 -> 3.0)\\nval matrices = Seq(m5)\\nMatrixRenderer.render(matrices,layout)\\n\",\"\\n\\nval n = 5\\nval m = 5 \\nval rand = new scala.util.Random(0)\\nval rowNames = Seq(\\\"D1\\\",\\\"D2\\\",\\\"D3\\\",\\\"D4\\\",\\\"D5\\\")\\nval colNames = Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\")\\nval names = header(rowNames,colNames)\\n//val M = parseMatrix(\\n//    \\\"\\\"\\\"1 2 0 0 0\\n//       0 0 1 0 0\\n//       0 0 0 1 1 \\n//       0 0 1 1 1\\n//       1 2 1 1 0\\\"\\\"\\\")\\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=8, numRows=5)\\n\\nval m1 = Matrix(Seq(\\n    Cell(0,0,   1),\\n    Cell(0,1,   2),\\n    Cell(1,2,   1),\\n    Cell(2,3,   1),\\n    Cell(2,4,   1),\\n    Cell(3,2,   1),\\n    Cell(3,3,   1),\\n    Cell(3,4,   1),\\n    Cell(4,0,   1),\\n    Cell(4,1,   2),\\n    Cell(4,2,   1),\\n    Cell(4,3,   1)\\n),\\nSeq(\\n    RowLabel(2,\\\"Doc\\\")\\n    ),\\nSeq(\\n    ColLabel(2,\\\"Word\\\")\\n    ), \\nSeq(0,5), Seq(0,5))\\n\\nval m2 = Matrix(Seq(\\n    Cell(0,0,   1),\\n    Cell(0,1,   2),\\n    Cell(1,2,   1),\\n    Cell(2,3,   1),\\n    Cell(2,4,   1),\\n    Cell(3,2,   1),\\n    Cell(3,3,   1),\\n    Cell(3,4,   1),\\n    Cell(4,0,   1),\\n    Cell(4,1,   2),\\n    Cell(4,2,   1),\\n    Cell(4,3,   1),\\n    Cell(0,5,   1),\\n    Cell(1,6,   1),\\n    Cell(1,7,   1),\\n    Cell(2,6,   1),\\n    Cell(2,7,   1),\\n    Cell(3,6,   1),\\n    Cell(3,7,   1),\\n    Cell(4,5,   1),\\n    Cell(4,6,   1),\\n    Cell(4,7,   1)\\n),\\nSeq(\\n    RowLabel(2,\\\"Doc\\\")\\n    ),\\nSeq(\\n    ColLabel(2,\\\"Word\\\"),\\n    ColLabel(6,\\\"Label\\\")\\n    ), \\nSeq(0,5), Seq(0,5,8))\\n\\n//m5.size = Some(2.0 -> 3.0)\\nval matrices = Seq(m1,m2)\\nMatrixRenderer.render(matrices,layout)\\n\\n\",\"\\n\\n\\nval n = 5\\nval m = 5 \\nval rand = new scala.util.Random(0)\\nval rowNames = Seq(\\\"D1\\\",\\\"D2\\\",\\\"D3\\\",\\\"D4\\\",\\\"D5\\\",\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\")\\nval colNames = Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\",\\\"greece\\\",\\\"politics\\\",\\\"economy\\\")\\nval names = header(rowNames,colNames)\\n//val M = parseMatrix(\\n//    \\\"\\\"\\\"1 2 0 0 0\\n//       0 0 1 0 0\\n//       0 0 0 1 1 \\n//       0 0 1 1 1\\n//       1 2 1 1 0\\\"\\\"\\\")\\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=8, numRows=10)\\n\\nval m1 = Matrix(Seq(\\n    Cell(0,0,   1),\\n    Cell(0,1,   2),\\n    Cell(1,2,   1),\\n    Cell(2,3,   1),\\n    Cell(2,4,   1),\\n    Cell(3,2,   1),\\n    Cell(3,3,   1),\\n    Cell(3,4,   1),\\n    Cell(4,0,   1),\\n    Cell(4,1,   2),\\n    Cell(4,2,   1),\\n    Cell(4,3,   1),\\n    Cell(0,5,   1),\\n    Cell(1,6,   1),\\n    Cell(1,7,   1),\\n    Cell(2,6,   1),\\n    Cell(2,7,   1),\\n    Cell(3,6,   1),\\n    Cell(3,7,   1),\\n    Cell(4,5,   1),\\n    Cell(4,6,   1),\\n    Cell(4,7,   1),\\n    Cell(5,5,   1),\\n    Cell(5,6,   1),\\n    Cell(6,7,   1),\\n    Cell(7,5,   1),\\n    Cell(8,6,   1),\\n    Cell(9,7,   1)\\n),\\nSeq(\\n    RowLabel(2,\\\"Doc\\\"),\\n    RowLabel(7,\\\"Word\\\")\\n    ),\\nSeq(\\n    ColLabel(2,\\\"Word\\\"),\\n    ColLabel(6,\\\"Label\\\")\\n    ), \\nSeq(0,5,10), Seq(0,5,8))\\n\\n//m5.size = Some(2.0 -> 3.0)\\nval matrices = Seq(m1)\\nMatrixRenderer.render(matrices,layout)\\n\"]"
+      }
     }
   }, {
     "id" : 16,
-    "compiler" : "markdown",
+    "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "BayesianMatrixFactorization",
+      "code" : "Motivating_cont",
       "extraFields" : { }
     }
   }, {
     "id" : 17,
-    "compiler" : "markdown",
+    "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "### Bayesian Matrix Factorization\n\nIndependent Gaussian Priors: \\\\(P(\\mathbf{U},\\mathbf{V}) \\propto e^{-\\lambda (||\\mathbf{U}||_F^2 + ||\\mathbf{V}||_F^2)} \\\\)\n\nHomoscedastic Gaussian likelihood: \\\\(P(\\mathbf{Y}|\\mathbf{U},\\mathbf{V}) \\propto e^{-\\frac{1}{\\sigma^2} (||\\mathbf{U}\\mathbf{V}^T - \\mathbf{Y}||_F^2)} \\\\)\n\n",
+      "code" : "<h3>Motivating Example</h3>\n<ul>\n<li>Document - Word matrix \\(Y^{(1)} \\in ( \\Re \\cup \\lbrace ? \\rbrace )^{N\\times F}\\)\n</li>\n<li>Document - Label matrix  \\(Y^{(2)} \\in \\lbrace 0,1,? \\rbrace ^{N\\times K}\\)\n</li>\n<li>\nWord - Label matrix \\( Y^{(3)} \\in \\lbrace 0, 1 ,? \\rbrace ^{K\\times F} \\)\n</li>\n</ul>\n\nNaive concatenation:\n\n$$\nY := \n\\left[\\begin{array}{cc} \nY^{(3)} & [?]_{K\\times K} \n\\\\\nY^{(1)} & Y^{(2)} \n\\end{array}\\right] \n$$\n\nWe can estimate a probabilitic model on \\(Y\\) by factorizing it. This additional relation enables feature labelling and increase prediction capabilities when similar rare words share similar labels",
       "extraFields" : { }
     }
   }, {
     "id" : 18,
-    "compiler" : "markdown",
+    "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "algobmf",
+      "code" : "correctcmf",
       "extraFields" : { }
     }
   }, {
     "id" : 19,
-    "compiler" : "markdown",
+    "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "### Algorithms for Bayesian Matrix Factorization\n\n*Block Gibbs sampling* \n\n- Sample \\\\(\\mathbf{u_i}|\\mathbf{V}, \\mathbf{Y}_{i:}\\\\) for \\\\(i=1,\\cdots,N\\\\)\n- Sample \\\\(\\mathbf{v_j}|\\mathbf{U}, \\mathbf{Y}_{:j}\\\\) for \\\\(j=1,\\cdots,M\\\\)\n\n*Variational Bayes* : Fully factorized approximation: \\\\( Q(\\mathbf{U},\\mathbf{V}) = \\prod_{i=1}^N Q(\\mathbf{u_i}) \\prod_{j=1}^M Q(\\mathbf{v_j}) \\\\)\n\n- Compute  \\\\(Q(\\mathbf{u}_i)\\\\) based on \\\\(\\mathbf{V}\\\\) and \\\\(\\mathbf{Y}_{i:}\\\\)\n- Compute  \\\\(Q(\\mathbf{v}_j)\\\\) based on \\\\(\\mathbf{U}\\\\) and \\\\(\\mathbf{Y}_{:j}\\\\)",
+      "code" : "<h3>Symmetric Block Matrix</h3>\n<ul>\n<li>Document - Word matrix \\(Y^{(1)} \\in ( \\Re \\cup \\lbrace ? \\rbrace )^{N\\times F}\\)\n</li>\n<li>Document - Label matrix  \\(Y^{(2)} \\in \\lbrace 0,1,? \\rbrace ^{N\\times K}\\)\n</li>\n<li>\nWord - Label matrix \\( Y^{(3)} \\in \\lbrace 0, 1 ,? \\rbrace ^{F\\times K} \\)\n</li>\n</ul>\n\nA \\((n + F + K) \\times (n + F + K) \\) symmetric block-matrix:\n\n$$\nY := \n\\left[\\begin{array}{ccc} \n[?]_{F\\times F} & Y^{(3)T} &Y^{(1)T}\n\\\\\nY^{(3)} & [?]_{K\\times K} & Y^{(2)T}\n\\\\\nY^{(1)} & Y^{(2)} & [?]_{N\\times N}\n\\end{array}\\right] \n$$\n\nLet factorize it!",
       "extraFields" : { }
     }
   }, {
@@ -165,7 +144,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "BaysesianCMFdetails",
+      "code" : "CMFformula",
       "extraFields" : { }
     }
   }, {
@@ -173,7 +152,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Bayesian Collective Matrix Factorization\n\nWe have \\\\(T\\\\) types of entity with embeddings \\\\(\\mathbf{U} = (\\mathbf{U}^{(1)}, \\cdots, \\mathbf{U}^{(T)})\\\\) and we observe relations between all possible entity types \\\\(\\mathbf{Y} = (\\mathbf{Y}^{(1,1)}, \\mathbf{Y}^{(1,2)}, \\cdots, \\mathbf{Y}^{(T,T)}) \\\\)\n\nIndependent Gaussian Priors: \\\\(P(\\mathbf{U}) \\propto e^{-\\sum_{t=1}^T \\lambda_t (||\\mathbf{U}^{(t)}||_F^2} \\\\)\n\nPer-relation Homoscedastic Gaussian likelihood: \\\\(P(\\mathbf{Y}|\\mathbf{U}) \\propto \\prod_{t=1}^T \\prod_{t < t'< T} e^{-\\frac{1}{\\sigma_{tt'}^2} (||\\mathbf{U}^{(t)}\\mathbf{U}^{(t')T} - \\mathbf{Y}^{(t,t')}||_F^2)} \\\\)\n",
+      "code" : "### Collective Matrix Factorization\n\nWe have \\\\(T\\\\) types of entity with embeddings \\\\(\\mathbf{U} = (\\mathbf{U}^{(1)}, \\cdots, \\mathbf{U}^{(T)})\\\\) and we observe relations between all possible entity types \\\\(\\mathbf{Y} = (\\mathbf{Y}^{(1,1)}, \\mathbf{Y}^{(1,2)}, \\cdots, \\mathbf{Y}^{(T,T)}) \\\\)\n\n\nGeneral Loss functions \\\\(\\ell_{tt'}\\\\):\n\n\\\\(\\mathcal{L}(\\mathbf{U}) = \\sum_{t=1}^T \\sum_{t < t'< T} \\ell_{tt'}(\\mathbf{U}^{(t)}\\mathbf{U}^{(t')T}; \\mathbf{Y}^{(t,t')}||) \\\\)\n\nFor quadratic loss:\n\n\\\\(\\mathcal{L}(\\mathbf{U}) = \\sum_{t=1}^T \\sum_{t < t'< T} \\frac{1}{\\sigma_{tt'}^2} ||\\mathbf{U}^{(t)}\\mathbf{U}^{(t')T} - \\mathbf{Y}^{(t,t')}||_F^2 \\\\)\n",
       "extraFields" : { }
     }
   }, {
@@ -181,7 +160,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "bcmf",
+      "code" : "generalization",
       "extraFields" : { }
     }
   }, {
@@ -189,7 +168,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Algorithms for Bayesian CMF\n\n*Block Gibbs sampling*\n\n- For each type \\\\(t=1,\\cdots,T\\\\)\n    - Sample \\\\(\\mathbf{u^{(t)}_i}|\\mathbf{U^{(-t)}}, \\mathbf{Y}\\\\) for \\\\(i=1,\\cdots,N_t\\\\)\n\n*Variational Bayes* : Fully factorized approximation: \\\\( Q(\\mathbf{U}) = \\prod_{t=1}^T \\prod_{i=1}^{N_t} Q(\\mathbf{u}_i^{(t)})  \\\\)\n\n- Compute  \\\\(Q(\\mathbf{u}_i^{(t)})\\\\) based on \\\\(\\mathbf{U}^{(-t)}\\\\) and \\\\(\\mathbf{Y}\\\\)\n-\n\nNow we can maximize the likelihood with respect to \\\\(\\sigma_{tt'}\\\\) and \\\\(\\lambda_t\\\\) with \\\\(t,t'\\\\) \n",
+      "code" : "### Generalization to Arbitrary Databases\n\n<br />\n<img src=\"../../assets/figures/06/cmf_databases.png\" width=\"95%\">",
       "extraFields" : { }
     }
   }, {
@@ -197,7 +176,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "genes",
+      "code" : "example_denoising_faces",
       "extraFields" : { }
     }
   }, {
@@ -205,7 +184,23 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Gene Expression Data Experiment\n\n40 patients with breast cancer\n\n* *Views*: 2 measurements of 4287 genes.\n\n* *Task*: predicting random missing entries\n\n<br />\n<img src=\"../../assets/figures/06/gene_expression.png\" width=\"500\">\n\n\n\n\n",
+      "code" : "### Example: Augmented Multi-View\n*Objective*: Predict one view given the other\n\nPixel similarity should help. We create a binary matrix linking pixels.\n\n- Relation 1: pixel intensity value in the first image (real)\n- Relation 2: pixel intensity value in the second image (real)\n- Relation 3: Relative similarity between pixels (binary)\n\n<br />\n<img src=\"../../assets/figures/06/faces.png\" width=\"45%\">\n<img src=\"../../assets/figures/06/faces_expt.png\" width=\"45%\">\n\n\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 40,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "flikr",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 41,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Example: Social Media Data (Flickr)\n\n<br />\n<img src=\"../../assets/figures/07/flickr.png\" width=\"90%\">\n",
       "extraFields" : { }
     }
   }, {
@@ -213,11 +208,107 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "conclusion",
+      "code" : "BayesianCMF",
       "extraFields" : { }
     }
   }, {
     "id" : 27,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Bayesian Modelling\nCMF: many regularization parameters.\n\nTuning is painful\n\nBayesian learning: principled automatic tuning\n\n1. Choice of a prior \\\\(P(\\mathbf{U},\\mathbf{V})\\\\)\n2. Find (approximate!) the posterior \\\\(P(\\mathbf{Y}|\\mathbf{U},\\mathbf{V})\\\\)\n\nAlgorithms:\n- Sampling\n    - Gibbs sampling: Salakhutdinov et al., 2008\n    - HMC: Mohamed et al., 2009\n- Variational Inference\n    - Variational Bayes: Raiko et al., 2008          \n    - Expectation Propagation: Stern et al., 2009",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 28,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "BayesianMatrixFactorization",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 29,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Bayesian Matrix Factorization\n\nIndependent Gaussian Priors: \\\\(P(\\mathbf{U},\\mathbf{V}) \\propto e^{-\\lambda (||\\mathbf{U}||_F^2 + ||\\mathbf{V}||_F^2)} \\\\)\n\nHomoscedastic Gaussian likelihood: \\\\(P(\\mathbf{Y}|\\mathbf{U},\\mathbf{V}) \\propto e^{-\\frac{1}{\\sigma^2} (||\\mathbf{U}\\mathbf{V}^T - \\mathbf{Y}||_F^2)} \\\\)\n\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 30,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "algobmf",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 31,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Algorithms for Bayesian Matrix Factorization\n\n*Block Gibbs sampling* \n\n- Sample \\\\(\\mathbf{u_i}|\\mathbf{V}, \\mathbf{Y}_{i:}\\\\) for \\\\(i=1,\\cdots,N\\\\)\n- Sample \\\\(\\mathbf{v_j}|\\mathbf{U}, \\mathbf{Y}_{:j}\\\\) for \\\\(j=1,\\cdots,M\\\\)\n\n*Variational Bayes* : Fully factorized approximation: \\\\( Q(\\mathbf{U},\\mathbf{V}) = \\prod_{i=1}^N Q(\\mathbf{u_i}) \\prod_{j=1}^M Q(\\mathbf{v_j}) \\\\)\n\n- Compute  \\\\(Q(\\mathbf{u}_i)\\\\) based on \\\\(\\mathbf{V}\\\\) and \\\\(\\mathbf{Y}_{i:}\\\\)\n- Compute  \\\\(Q(\\mathbf{v}_j)\\\\) based on \\\\(\\mathbf{U}\\\\) and \\\\(\\mathbf{Y}_{:j}\\\\)",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 32,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "BaysesianCMFdetails",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 33,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Bayesian Collective Matrix Factorization\n\nWe have \\\\(T\\\\) types of entity with embeddings \\\\(\\mathbf{U} = (\\mathbf{U}^{(1)}, \\cdots, \\mathbf{U}^{(T)})\\\\) and we observe relations between all possible entity types \\\\(\\mathbf{Y} = (\\mathbf{Y}^{(1,1)}, \\mathbf{Y}^{(1,2)}, \\cdots, \\mathbf{Y}^{(T,T)}) \\\\)\n\nIndependent Gaussian Priors: \\\\(P(\\mathbf{U}) \\propto e^{-\\sum_{t=1}^T \\lambda_t (||\\mathbf{U}^{(t)}||_F^2} \\\\)\n\nPer-relation Homoscedastic Gaussian likelihood: \\\\(P(\\mathbf{Y}|\\mathbf{U}) \\propto \\prod_{t=1}^T \\prod_{t < t'< T} e^{-\\frac{1}{\\sigma_{tt'}^2} (||\\mathbf{U}^{(t)}\\mathbf{U}^{(t')T} - \\mathbf{Y}^{(t,t')}||_F^2)} \\\\)\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 34,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "bcmf",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 35,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Algorithms for Bayesian CMF\n\n*Block Gibbs sampling*\n\n- For each type \\\\(t=1,\\cdots,T\\\\)\n    - Sample \\\\(\\mathbf{u^{(t)}_i}|\\mathbf{U^{(-t)}}, \\mathbf{Y}\\\\) for \\\\(i=1,\\cdots,N_t\\\\)\n\n*Variational Bayes* : Fully factorized approximation: \\\\( Q(\\mathbf{U}) = \\prod_{t=1}^T \\prod_{i=1}^{N_t} Q(\\mathbf{u}_i^{(t)})  \\\\)\n\n- Compute  \\\\(Q(\\mathbf{u}_i^{(t)})\\\\) based on \\\\(\\mathbf{U}^{(-t)}\\\\) and \\\\(\\mathbf{Y}\\\\)\n-\n\nNow we can maximize the likelihood with respect to \\\\(\\sigma_{tt'}\\\\) and \\\\(\\lambda_t\\\\) with \\\\(t,t'\\\\) \n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 36,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "genes",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 37,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Gene Expression Data Experiment\n\n40 patients with breast cancer\n\n* *Views*: 2 measurements of 4287 genes.\n\n* *Task*: predicting random missing entries\n\n<br />\n<img src=\"../../assets/figures/06/gene_expression.png\" width=\"500\">\n\n\n\n\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 38,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "conclusion",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 39,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
