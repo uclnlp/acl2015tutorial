@@ -140,18 +140,18 @@ object ManualMF {
     plusColEmbeddings.copy(hRulers = Seq(rows), vRulers = Seq(cols))
   }
 
-  def breezeSVD(mat: Mat):(Mat,Vect,Mat) = {
+  def breezeSVD(mat: Mat): (Mat, Vect, Mat) = {
     val asBreeze = toBreezeMat(mat)
     val (u, s, v) = svd(asBreeze)
     (toFactorieMat(u), new DenseTensor1(s.toArray), toFactorieMat(v))
   }
 
-  def toEmbeddings(u:Mat, s:Vect, v:Mat, k:Int):(Seq[Vect],Seq[Vect]) = {
+  def toEmbeddings(u: Mat, s: Vect, v: Mat, k: Int): (Seq[Vect], Seq[Vect]) = {
     val _a = for (i <- 0 until u.dim1) yield new DenseTensor1(k)
     val _v = for (i <- 0 until v.dim1) yield new DenseTensor1(k)
-    for (i <- _a.indices; l <- 0 until k) _a(i)(l) = u(i,l) * math.sqrt(s(l))
-    for (j <- _v.indices; l <- 0 until k) _v(j)(l) = v(l,j) * math.sqrt(s(l))
-    (_a,_v)
+    for (i <- _a.indices; l <- 0 until k) _a(i)(l) = u(i, l) * math.sqrt(s(l))
+    for (j <- _v.indices; l <- 0 until k) _v(j)(l) = v(l, j) * math.sqrt(s(l))
+    (_a, _v)
   }
 
   def toBreezeMat(mat: Mat) = {
@@ -164,6 +164,34 @@ object ManualMF {
     result
   }
 
+  def nmf(mat: Mat, k: Int, iterations: Int) = {
+    val Y = toBreezeMat(mat)
+    val YY = Y * Y.t
+    val W = DenseMatrix.ones[Double](Y.rows, k)
+    val H = DenseMatrix.ones[Double](k, Y.cols)
+
+    for (_ <- 0 until iterations) {
+      for (l <- 0 until k) {
+        for (j <- 0 until Y.cols) {
+          //get expected counts of "word" j in "topic" l, using observed doc-word matrix
+          val observed = W(::, l) dot Y(::, j)
+          //get expected counts of "word" j in "topic" l, using reconstructed doc-word matrix
+          val reconstructed = W(::, l) dot (W * H(::, j)) //second term reconstructs word column using "word embeddings"
+          H(l, j) = H(l, j) * observed / reconstructed
+        }
+        for (i <- 0 until Y.rows) {
+          //get expected counts of "topic" l in "doc" i , using observed doc-word matrix
+          val observed = H(l, ::).t dot Y(i, ::).t //dot Y(i, ::)
+          //get expected counts of "word" j in "topic" l, using reconstructed doc-word matrix
+          val reconstructed = H(l, ::).t dot (W(i, ::) * H).t
+          W(i, l) = W(i, l) * observed / reconstructed
+        }
+      }
+    }
+    val a = for (i <- 0 until Y.rows) yield new DenseTensor1(W(i, ::).inner.toArray)
+    val v = for (j <- 0 until Y.cols) yield new DenseTensor1(H(::, j).toArray)
+    (a,v)
+  }
 
   def main(args: Array[String]) {
     //    val n = 5
@@ -188,8 +216,15 @@ object ManualMF {
     val (u, s, v) = breezeSVD(M)
     println(s)
 
-    val (_a,_v) = toEmbeddings(u,s,v,4)
-    println(dots(_a,_v))
+    val (_a, _v) = toEmbeddings(u, s, v, 4)
+    println(dots(_a, _v))
+
+    val (nmf_a, nmf_v) = nmf(M,3,10)
+    println(dots(nmf_a, nmf_v))
+
+    println(nmf_a)
+    println(nmf_v)
+
 
     //
     //    println(m)
