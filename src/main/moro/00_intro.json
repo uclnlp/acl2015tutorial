@@ -13,17 +13,33 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "mfw1",
-      "extraFields" : { 
-        "reveal_params" : "data-background=\"../../assets/figures/00/mfw1.png\""
-      }
+      "code" : "mfintro1",
+      "extraFields" : { }
     }
   }, {
     "id" : 2,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "#### Matrix Factorization",
+      "code" : "###Matrix Factorization in a Nutshell\n\n<img src=\"../../assets/figures/00/mf_intro.png\" height=\"400\">",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 210,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "mfw1",
+      "extraFields" : { 
+        "reveal_params" : "data-background=\"../../assets/figures/00/mfw1.png\""
+      }
+    }
+  }, {
+    "id" : 211,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "",
       "extraFields" : { }
     }
   }, {
@@ -41,7 +57,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Factorization",
+      "code" : "",
       "extraFields" : { }
     }
   }, {
@@ -59,7 +75,23 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix Factorization",
+      "code" : "",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 300,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "mf4nlp",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 400,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Natural Language Processing Goals\n\n**To find structure in unstructured text**\n\n- Linguistic structure: syntax, semantic roles\n\n- Application structure: relation extraction, knowledgebase completion\n\n**To find patterns in language**\n\n- clustering: LSA, Latent Dirichlet Allocation\n\n- Distributional semantics: word2vec\n\n**Reasoning with language**: Inference with first-order logic",
       "extraFields" : { }
     }
   }, {
@@ -75,7 +107,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<img src=\"../../assets/figures/01/s1f2.png\" height=\"500\">",
+      "code" : "<img src=\"../../assets/figures/00/s1f2.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
