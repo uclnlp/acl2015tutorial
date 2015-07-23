@@ -58,19 +58,13 @@
     }
   }, {
     "id" : 6,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : " Convergence of L2-loss SGD to SVD",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 7,
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "\nval K = 2 //rank \nval x = Range(0,10).map(_.toDouble)\nval models = for (i <- x.map(_.toInt)) yield optimizeL2(M, K, i * 100, 0.1)\nval ySGD = models.map(m => l2Loss(M,dots(m._1,m._2)))\nval (u,s,v) = breezeSVD(M)\nval (ea,ev) = toEmbeddings(u,s,v,K)\nval ySVD = l2Loss(M,dots(ea,ev))\nplot(x,ySGD,\"L2-loss SGD\",Seq(0.0,10.0),Seq(ySVD,ySVD),\"SVD\")\n",
-      "extraFields" : { }
+      "code" : "val K = 2 //rank \nval x = Range(0,10).map(_.toDouble)\nval models = for (i <- x.map(_.toInt)) yield optimizeL2(M, K, i * 100, 0.1)\nval ySGD = models.map(m => l2Loss(M,dots(m._1,m._2)))\nval (u,s,v) = breezeSVD(M)\nval (ea,ev) = toEmbeddings(u,s,v,K)\nval ySVD = l2Loss(M,dots(ea,ev))\nval c = plot(x,ySGD,\"L2-loss SGD\",Seq(0.0,10.0),Seq(ySVD,ySVD),\"SVD\")\nc.size = (500.0 -> 200.0)\nc//ml.wolfe.ui.D3Plotter.lineplot(c)",
+      "extraFields" : {
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport org.sameersingh.scalaplot._\\n\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)\\n\\ndef plot(x:Seq[Double],y:Seq[Double]):XYChart = {\\n     xyChart(new XYData(new MemXYSeries(x,y)))\\n}\\ndef plot(x1:Seq[Double],y1:Seq[Double],s1:String,x2:Seq[Double],y2:Seq[Double],s2:String):XYChart = {\\n     var c = xyChart(new XYData(new MemXYSeries(x1,y1,s1),new MemXYSeries(x2,y2,s2)))\\n     c.showLegend = true\\n     c\\n}\\n\\nplot(Seq(1.0,2.0,2.5),Seq(2.0,1.0,2.1),\\\"a\\\",Seq(1.0,2.0,2.5),Seq(2.2,1.1,2.0),\\\"b\\\")\\n\\n\",\"val n = 5\\nval m = 5 \\nval M2 = new DenseTensor2(n, m)\\nval rand = new scala.util.Random(0)\\nval rowNames = Seq(\\\"D1\\\",\\\"D2\\\",\\\"D3\\\",\\\"D4\\\",\\\"D5\\\")\\nval colNames = Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\")\\nval names = header(rowNames,colNames)\\nval M = parseMatrix(\\n    \\\"\\\"\\\"1 2 0 0 0\\n       0 0 1 0 0\\n       0 0 0 1 1 \\n       0 0 1 1 1\\n       1 2 1 1 0\\\"\\\"\\\")\\nfor (i <- 0 until m; j <- 0 until m) {\\n  M2(i, j) = rand.nextGaussian()\\n}\",\"def optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\\n  val rand = new scala.util.Random(0)\\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val y = a dot v\\n    A(i) += v * alpha * (M(i, j) - y)\\n    V(j) += a * alpha * (M(i, j) - y)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), \\n           rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\"]"
+      }
     }
   } ],
   "config" : { }
