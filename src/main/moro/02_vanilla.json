@@ -142,7 +142,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Truncated SVD\n\nIf we truncate \\\\(\\mathbf{D}\\\\) to its \\\\(L\\\\) largest values \n\n<img src=\"../../assets/figures/SVDtrunc.png\" height=\"300\">\n\nthen \\\\( \\hat{\\mathbf{Y}} = \\mathbf{U}\\mathbf{D_{trunc}}\\mathbf{V}\\\\)\n\nis the minimizer of \\\\(\\||\\mathbf{Y} - \\hat{\\mathbf{Y}}\\||_F^2\\\\)\n\n<div style=\"text-align:right;\">\n<i>Eckart-Young theorem</i>\n</div>",
+      "code" : "### Truncated SVD\n\nIf we truncate \\\\(\\mathbf{D}\\\\) to its \\\\(L\\\\) largest values \n\n<img src=\"../../assets/figures/SVDtrunc.png\" height=\"300\">\n\nthen \\\\( \\hat{\\mathbf{Y}} = \\mathbf{U}\\mathbf{D_{trunc}}\\mathbf{V}\\\\)\n\nis the rank-\\\\(L\\\\) minimizer of \\\\(\\||\\mathbf{Y} - \\hat{\\mathbf{Y}}\\||_F^2\\\\)\n\n<div style=\"text-align:right;\">\n<i>Eckart-Young theorem</i>\n</div>",
       "extraFields" : { }
     }
   }, {
