@@ -199,7 +199,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Matrix rank\n\nThe maximum number of linearly independent columns/rows\n\nFor matrix \\\\(\\mathbf{U}\\in\\Re^{N\\times M} \\\\):\n\n- \\\\(rank(\\mathbf{U}) = 0 \\\\) iff \\\\(N=M=0\\\\)\n- \\\\(max(rank(\\mathbf{U})) = min(N,M)\\\\)\n",
+      "code" : "### Matrix rank\n\nThe maximum number of linearly independent columns/rows\n\nFor matrix \\\\(\\mathbf{U}\\in\\Re^{N\\times M} \\\\):\n\n- if \\\\(N=M=0\\\\) then \\\\(rank(\\mathbf{U}) = 0 \\\\) \n- else \\\\(max(rank(\\mathbf{U})) = min(N,M)\\\\)\n",
       "extraFields" : { }
     }
   }, {

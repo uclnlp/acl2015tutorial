@@ -29,8 +29,18 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Why Low-Rank\n\n- low-rank assumption usually does not hold\n\n- reconstruction unlikely to be perfect\n\n- if full rank then perfect reconstruction is trivial: \\\\( \\mathbf{Y} = \\mathbf{Y}\\mathbf{I} \\\\)\n\n\n&nbsp;&nbsp;&nbsp;&nbsp;Key insight:\n\n> original matrix has **redundancy** and **noise**, low-rank exploits the former to remove the latter\n",
+      "code" : "### Why Low-Rank\n\n- low-rank assumption usually does not hold\n\n- reconstruction unlikely to be perfect\n\n- if full-rank then perfect reconstruction is trivial: \\\\( \\mathbf{Y} = \\mathbf{Y}\\mathbf{I} \\\\)\n\n\n\n",
       "extraFields" : { }
+    }
+  }, {
+    "id" : 27,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "&nbsp;&nbsp;&nbsp;&nbsp;Key insight:\n\n> original matrix has **redundancy** and **noise**, low-rank exploits the former to remove the latter",
+      "extraFields" : {
+        "fragment" : "true"
+      }
     }
   }, {
     "id" : 4,
@@ -84,7 +94,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Why Low-Rank\n\nBecause we want a model on matrices with:\n\n1. Invariance by permutation of rows and columns\n> Solution depends only on the eigenvalues\n\n2. A measure to control complexity\n> A \\\\(p\\\\)-norm with \\\\(p \\ge 0\\\\) \n\n3. Fast to compute and memory efficient\n> \\\\(p\\le 1\\\\) (sparsity-inducing)",
+      "code" : "### Why Low-Rank\n\nBecause we want a model on matrices with:\n\n1. Invariance by permutation of rows and columns\n> The order of instances and features is irrelevant\n\n2. A measure to control complexity\n> A \\\\(p\\\\)-norm with \\\\(p \\ge 0\\\\) \n\n3. Fast to compute and memory efficient\n> \\\\(p\\le 1\\\\) (sparsity-inducing)",
       "extraFields" : { }
     }
   }, {
