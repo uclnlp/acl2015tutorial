@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Non-negativity\n\nLow-rank factors are commonly interpreted as:\n\n- topics\n- image features \n\n<img src=\"../../assets/figures/Faces.png\" height=\"250\">",
+      "code" : "### Non-negativity\n\nLow-rank factors are commonly interpreted as:\n\n- topics\n- image features\n\n<img src=\"../../assets/figures/Faces.png\" height=\"200\">\n<div style=\"text-align:right;\"><font size=\"3\">\n<i>http://nimfa.biolab.si/nimfa.examples.orl_images.html</i></font>",
       "extraFields" : { }
     }
   }, {
@@ -21,7 +21,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "> MF is commomly used to find how <br/> each instance is composed of its parts; <br/> Subtraction is often counter-intuitive\n\n<div style=\"text-align:right;\"><font size=\"3\">\n<i>http://nimfa.biolab.si/nimfa.examples.orl_images.html</i></font>\n</div>",
+      "code" : "> MF is commomly used to find how <br/> each instance is composed of its parts; <br/> Subtraction is often counter-intuitive",
       "extraFields" : {
         "fragment" : "true"
       }
@@ -36,10 +36,10 @@
     }
   }, {
     "id" : 4,
-    "compiler" : "html",
+    "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<h3>Definition</h3>\n\n<br>\n<div style=\"text-align:center;\">\nGiven \\(\\mathbf{Y} \\in\\Re^{N\\times M}\\) <font color=\"blue\">\\(\\geq 0 \\)</font> <br>\n<br>\nfind \\(\\mathbf{U} \\in\\Re^{N\\times L}\\) <font color=\"blue\">\\(\\geq 0\\)</font> &nbsp; and &nbsp; \\(\\mathbf{V} \\in\\Re^{M\\times L}\\) <font color=\"blue\"> \\(\\geq 0\\)</font> <br>\n<br>\nso that \\(\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T}\\)\n</div>\n<br/>",
+      "code" : "### Definition\n\n<img src=\"../../assets/figures/vanillaMF.png\" height=\"250\">\n\nGiven \\\\(\\mathbf{Y} \\in\\Re^{N\\times M}\\\\) <font color=\"blue\">\\\\(\\geq 0 \\\\)</font>\n\nfind \\\\(\\mathbf{U} \\in\\Re^{N\\times L}\\\\) <font color=\"blue\">\\\\(\\geq 0\\\\)</font> &nbsp; and &nbsp; \\\\(\\mathbf{V} \\in\\Re^{M\\times L}\\\\) <font color=\"blue\"> \\\\(\\geq 0\\\\)</font>\n\nso that \\\\(\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T}\\\\)\n",
       "extraFields" : { }
     }
   }, {
@@ -63,7 +63,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Basic NMF algorithm\n\nMultiplicative update rules to minimize \\\\(||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}||^2 _2\\\\):\n\n$$u_{n,l} = u_{n,l} \\frac{(\\mathbf{Y}\\mathbf{V})_{n,l}}{(\\mathbf{Y}\\mathbf{Y}^{T}\\mathbf{U})_{n,l}} $$\n\n$$v_{m,l} = v_{m,l} \\frac{(\\mathbf{Y}^T\\mathbf{U})_{m,l}}{(\\mathbf{Y}^{T}\\mathbf{Y}\\mathbf{V})_{m,l}} $$\n\n<div style=\"text-align:right;\">\n<i>Lee and Seung (2001)</i>\n</div>",
+      "code" : "### Basic NMF algorithm\n\nMultiplicative update rules to minimize \\\\(||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}||^2 _2\\\\):\n\n$$u_{n,l} = u_{n,l} \\frac{(\\mathbf{Y}\\mathbf{V})_{n,l}}{(\\mathbf{U}\\mathbf{V}^{T}\\mathbf{V})_{n,l}} $$ \n\n$$v_{m,l} = v_{m,l} \\frac{(\\mathbf{Y}^T\\mathbf{U})_{m,l}}{(\\mathbf{V}\\mathbf{U}^T\\mathbf{U})_{m,l}} $$\n\n<div style=\"text-align:right;\">\n<i>Lee and Seung (2001)</i>\n</div>",
       "extraFields" : { }
     }
   }, {
@@ -71,7 +71,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<br/>\n\n> Recent work have switched to constrained Alternating Least Squares optimization\n\n\n<div style=\"text-align:right;\">\n<i>Kim and Park (2008)</i>\n</div>\n",
+      "code" : "\n> Recent work have switched to constrained Alternating Least Squares optimization\n\n\n<div style=\"text-align:right;\">\n<i>Kim and Park (2008)</i>\n</div>\n",
       "extraFields" : {
         "fragment" : "true"
       }
@@ -89,7 +89,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### NMF with KL divergence\n<br>\n\nAssume that \\\\(\\mathbf{Y}\\\\) represents a probability distribution \n$$\\sum_{n,m} y_{n,m} = 1$$\n<br>\nMinimize the Kullback-Leibler divergence:\n\n$$ KL_{div}(\\mathbf{Y}||\\mathbf{U}\\mathbf{V}^{T}) = \\sum_{n,m}(y_{n,m}\\log\\frac{y_{n,m}}{(\\mathbf{U}\\mathbf{V}^{T})_{n,m}} )  $$\n\n- results in similar multiplicative updates\n- ensures that \\\\(\\mathbf{U}\\\\) and \\\\(\\mathbf{V}\\\\) also represent probability distributions\n\n",
+      "code" : "### NMF with KL divergence\n\nAssume that \\\\(\\mathbf{Y}\\\\) represents a probability distribution \n$$\\sum_{n,m} y_{n,m} = 1$$\n\nMinimize the Kullback-Leibler divergence:\n\n$$ KL_{div}(\\mathbf{Y}||\\mathbf{U}\\mathbf{V}^{T}) = \\sum_{n,m}(y_{n,m}\\log\\frac{y_{n,m}}{(\\mathbf{U}\\mathbf{V}^{T})_{n,m}} )  $$\n\n- results in similar multiplicative updates\n- ensures that \\\\(\\mathbf{U}\\\\) and \\\\(\\mathbf{V}\\\\) also represent probability distributions\n\n",
       "extraFields" : { }
     }
   }, {
@@ -105,7 +105,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Probabilistic Latent Semantic Analysis\n\n<br>\n\n$$ y_{n,m} = P(n,m) \\\\\\\n= \\sum_{l} P(l) P(m|l) P(n|l)\n$$\n\nwhere \\\\(n\\\\) is a document, \\\\(m\\\\) a word and \\\\(l\\\\) a component.\n<br/>",
+      "code" : "### Probabilistic Latent Semantic Analysis\n\n$$ y_{n,m} = P(n,m) \\\\\\\n= \\sum_{l} P(l) P(m|l) P(n|l)\n$$\n\nwhere \\\\(n\\\\) is a document, \\\\(m\\\\) a word and \\\\(l\\\\) a component.\n",
       "extraFields" : { }
     }
   }, {
@@ -131,18 +131,16 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Probabilistic Latent Semantic Analysis\n\n<br>\n\n$$\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T} = (\\mathbf{U}\\mathbf{A}^{-1}\\mathbf{A})(\\mathbf{V}\\mathbf{B}^{-1}\\mathbf{B})^T\\\\\\ = (\\mathbf{U}\\mathbf{A}^{-1})(\\mathbf{A}\\mathbf{B})(\\mathbf{V}\\mathbf{B}^{-1})^T $$\n<br/>\nwhere \\\\(\\mathbf{A}=diag(\\sum_n v_{n,1},\\dots,\\sum_n v_{n,L})\\\\) <br> and \\\\(\\mathbf{B} = diag(\\sum_m u_{1,l}, \\dots, \\sum_m u_{m,L}) \\\\)",
+      "code" : "### Probabilistic Latent Semantic Analysis\n\n$$\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T} = (\\mathbf{U}\\mathbf{A}^{-1}\\mathbf{A})(\\mathbf{V}\\mathbf{B}^{-1}\\mathbf{B})^T\\\\\\ = (\\mathbf{U}\\mathbf{A}^{-1})(\\mathbf{A}\\mathbf{B})(\\mathbf{V}\\mathbf{B}^{-1})^T $$\n\n<div style=\"text-align:center;\">\nwhere \\(\\mathbf{A}=diag(\\sum_n v_{n,1},\\dots,\\sum_n v_{n,L}) \\)<br>\nand \\(\\mathbf{B}=diag(\\sum_m u_{m,1},\\dots,\\sum_m u_{m,L}) \\)\n</div>\n\n\n\n",
       "extraFields" : { }
     }
   }, {
-    "id" : 16,
+    "id" : 24,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<br/>\n\n> pLSA uses EM for parameter estimation and can converge to different local optima of the same objective as NMF-KL.\n<br>\n<div style=\"text-align:right;\">\n<i>Gaussier and Goutte (2005)</i>\n</div>",
-      "extraFields" : {
-        "fragment" : "true"
-      }
+      "code" : "<br/>\n> pLSA uses EM for parameter estimation and can converge to different local optima of the same objective as NMF-KL.\n\n<div style=\"text-align:right;\">\n<i>Gaussier and Goutte (2005)</i>\n</div> ",
+      "extraFields" : { }
     }
   }, {
     "id" : 17,
@@ -175,7 +173,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Generative story\n<br>\n\n- For each topic \\\\(l\\\\)\n    - draw multinomial over words \\\\(\\mathbf{v}_{:l}\\in\\Re^M\\\\) from \\\\(Dir(\\beta)\\\\)\n- For each document \\\\(n\\\\)\n    - draw multinomial over topics \\\\(\\mathbf{u}_{n:}\\in\\Re^L\\\\) from \\\\(Dir(\\alpha)\\\\)\n    - for each word \\\\(i\\\\)\n        - sample a topic assignment \\\\(z_i \\\\) from \\\\(\\mathbf{u}_{n:}\\\\)\n        - sample a word \\\\(w_i \\\\) from \\\\(\\mathbf{v}_{:z_i}\\\\)\n<br>\n<br>",
+      "code" : "### Generative story\n\n- For each topic \\\\(l\\\\)\n    - draw multinomial over words \\\\(\\mathbf{v}_{:l}\\in\\Re^M\\\\) from \\\\(Dir(\\beta)\\\\)\n- For each document \\\\(n\\\\)\n    - draw multinomial over topics \\\\(\\mathbf{u}_{n:}\\in\\Re^L\\\\) from \\\\(Dir(\\alpha)\\\\)\n    - for each word \\\\(i\\\\)\n        - sample a topic assignment \\\\(z_i \\\\) from \\\\(\\mathbf{u}_{n:}\\\\)\n        - sample a word \\\\(w_i \\\\) from \\\\(\\mathbf{v}_{:z_i}\\\\)\n\n",
       "extraFields" : { }
     }
   }, {
@@ -201,7 +199,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "###Summary\n\n<br>\n\n- Saw the matrix\n\n- Refresher on matrix rank and norms\n\n- Standard approaches to MF\n\n- Non-negative MF and connections to pLSA and LDA\n",
+      "code" : "###Summary\n\n- Saw the matrix\n\n- Refresher on matrix rank and norms\n\n- Standard approaches to MF\n\n- Non-negative MF and connections to pLSA and LDA\n",
       "extraFields" : { }
     }
   } ],

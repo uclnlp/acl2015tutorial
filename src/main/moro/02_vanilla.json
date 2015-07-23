@@ -10,10 +10,10 @@
     }
   }, {
     "id" : 1,
-    "compiler" : "html",
+    "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<h3>Matrix Completion via Low-Rank Factorization</h3>\n\n<div style=\"text-align:center;\">\n<img src=\"../../assets/figures/vanillaMF.png\" height=\"300\">\n<br>\nGiven \\(\\mathbf{Y} \\in\\Re^{N\\times M} \\) \n<br>\n\nfind \\(\\mathbf{U} \\in\\Re^{N\\times L}\\) and \\(\\mathbf{V} \\in\\Re^{M\\times L} \\) <br>\nso that \\(\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T}\\)<br>\n<br>\n<b>low rank</b> assumption: \\( rank(\\mathbf{Y})=L\\lt\\lt M,N \\)\n</div>\n",
+      "code" : "###Matrix Completion via Low-Rank Factorization\n\n<img src=\"../../assets/figures/vanillaMF.png\" height=\"300\">\n\nGiven \\\\(\\mathbf{Y} \\in\\Re^{N\\times M} \\\\)\n\nfind \\\\(\\mathbf{U} \\in\\Re^{N\\times L}\\\\) and \\\\(\\mathbf{V} \\in\\Re^{M\\times L}\\\\)\n\nso that \\\\(\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T}\\\\)\n\n<b>low rank</b> assumption: \\\\( rank(\\mathbf{Y})=L\\lt\\lt M,N \\\\)",
       "extraFields" : { }
     }
   }, {
@@ -29,8 +29,18 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Why Low-Rank\n<br/>\n\n- low-rank assumption usually does not hold \n- reconstruction unlikely to be perfect\n<br/>\n<br/>\n\nBut:\n<br/>\n\n> original matrix exhibits **redundancy** and **noise**,<br/> low-rank reconstruction exploits the former and removes the latter\n",
+      "code" : "### Why Low-Rank\n\n- low-rank assumption usually does not hold\n\n- reconstruction unlikely to be perfect\n\n- if full-rank then perfect reconstruction is trivial: \\\\( \\mathbf{Y} = \\mathbf{Y}\\mathbf{I} \\\\)\n\n\n\n",
       "extraFields" : { }
+    }
+  }, {
+    "id" : 27,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "&nbsp;&nbsp;&nbsp;&nbsp;Key insight:\n\n> original matrix has **redundancy** and **noise**, low-rank exploits the former to remove the latter",
+      "extraFields" : {
+        "fragment" : "true"
+      }
     }
   }, {
     "id" : 4,
@@ -57,7 +67,7 @@
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "val Y = parseMatrix(\n    \"\"\"1 2 0 0 0\n       0 0 1 0 0\n       0 0 0 1 1 \n       0 0 1 1 1\n       1 2 1 1 0\"\"\")\n       \nval rowNames = Seq(\"doc1\",\"doc2\",\"doc3\",\"doc4\",\"doc5\")\nval colNames = Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")\nval names = header(rowNames,colNames)\nval rls = Matrix(hRulers = Seq(5), vRulers = Seq(5))\n       \nval m0 = numbers(matrix(Y)) + names +rls\nval m1 = opacity(matrix(Y), 0,2) + names + rls\nval m2 = Matrix(Seq(Cell(2,2,\"Y\")), hRulers = Seq(5), vRulers = Seq(5))\nval m3 = Matrix(Seq(Cell(6,2,\"V\"),Cell(2,6,\"U\"), Cell(2,2,\"Y\")), hRulers = Seq(5), vRulers = Seq(5))\nval (u,v) = optimizeL2(Y,2,1000)\nval m4 = numbers(embeddings(u,v))\nval Yhat = dots(u,v)\nval m5 = numbers(matrix(Yhat)) + numbers(embeddings(u,v)) + names\nval m6 = opacity(matrix(Yhat),0,2) + numbers(embeddings(u,v)) + names\n\nrender(Seq(m0,m1,m2,m3,m4,m5,m6,m1),layout) ",
+      "code" : "val Y = parseMatrix(\n    \"\"\"1 2 0 0 0\n       0 0 1 0 0\n       0 0 0 1 1 \n       0 0 1 1 1\n       1 2 1 1 0\"\"\")\n       \nval rowNames = Seq(\"doc1\",\"doc2\",\"doc3\",\"doc4\",\"doc5\")\nval colNames = Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")\nval names = header(rowNames,colNames)\nval rls = Matrix(hRulers = Seq(5), vRulers = Seq(5))\n       \nval m0 = numbers(matrix(Y)) + names +rls\nval m1 = opacity(matrix(Y), 0,2) + names + rls\nval m2 = Matrix(Seq(Cell(2,2,\"Y\")), hRulers = Seq(5), vRulers = Seq(5))\nval m3 = Matrix(Seq(Cell(6,2,\"V\"),Cell(2,6,\"U\"), Cell(2,2,\"Y\")), hRulers = Seq(5), vRulers = Seq(5))\nval (u,v) = optimizeL2(Y,2,1000)\nval m4 = numbers(embeddings(u,v)) +names\nval Yhat = dots(u,v)\nval m5 = numbers(matrix(Yhat)) + numbers(embeddings(u,v)) + names\nval m6 = opacity(matrix(Yhat),0,2) + numbers(embeddings(u,v)) + names\n\nrender(Seq(m0,m1,m3,m4,m5,m6,m1),layout) ",
       "extraFields" : {
         "showEditor" : "false",
         "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150, rowHeaderSize=100)\\n\\ndef optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\\n  val rand = new scala.util.Random(0)\\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val y = a dot v\\n    A(i) += v * alpha * (M(i, j) - y)\\n    V(j) += a * alpha * (M(i, j) - y)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), \\n           rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\"]"
@@ -68,7 +78,7 @@
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "<div style=\"position:relative; width:600px; height:100px; margin:auto; display:block\">\n<div class=\"fragment0 fade-out\" style=\"position:absolute; top:0;left:0px;\">Document-Term matrix \\(\\mathbf{Y}\\)</div><div class=\"fragment0 current-visible\" style=\"position:absolute; top:0;left:0px;\">Document-Term matrix \\(\\mathbf{Y}\\)</div><div class=\"fragment1 current-visible\" style=\"position:absolute; top:0;left:0px;\">Document-Term matrix \\(\\mathbf{Y}\\)</div><div class=\"fragment2 current-visible\" style=\"position:absolute; top:0;left:0px;\">Document-Term matrix \\(\\mathbf{Y}\\) <br/>Document-Topic \\(\\mathbf{U}\\), Topic-Term \\(\\mathbf{V}\\)</div>\n<div class=\"fragment3 current-visible\" style=\"position:absolute; top:0;left:0px;\"> <br/>Document-Topic \\(\\mathbf{U}\\), Topic-Term \\(\\mathbf{V}\\)</div><div class=\"fragment4 current-visible\" style=\"position:absolute; top:0;left:0px;\">Reconstructed \\(\\mathbf{Y}\\) <br/>Document-Topic \\(\\mathbf{U}\\), Topic-Term \\(\\mathbf{V}\\)</div><div class=\"fragment5 current-visible\" style=\"position:absolute; top:0;left:0px;\">Reconstructed \\(\\mathbf{Y}\\) <br/>Document-Topic \\(\\mathbf{U}\\), Topic-Term \\(\\mathbf{V}\\)</div><div class=\"fragment6 current-visible\" style=\"position:absolute; top:0;left:0px;\">Document-Term matrix \\(\\mathbf{Y}\\)</div>\n</div>",
+      "code" : "<div style=\"position:relative; width:600px; height:100px; margin:auto; display:block\">\n<div class=\"fragment0 fade-out\" style=\"position:absolute; top:0;left:0px;\">Document-Term matrix \\(\\mathbf{Y}\\)</div>\n<div class=\"fragment0 current-visible\" style=\"position:absolute; top:0;left:0px;\">Document-Term matrix \\(\\mathbf{Y}\\) <br> Rank/topics??</div>\n<div class=\"fragment1 current-visible\" style=\"position:absolute; top:0;left:0px;\">Document-Term matrix \\(\\mathbf{Y}\\) <br/>Document-Topic \\(\\mathbf{U}\\), Topic-Term \\(\\mathbf{V}\\)</div>\n<div class=\"fragment2 current-visible\" style=\"position:absolute; top:0;left:0px;\"> <br/>Document-Topic \\(\\mathbf{U}\\), Topic-Term \\(\\mathbf{V}\\)</div>\n<div class=\"fragment3 current-visible\" style=\"position:absolute; top:0;left:0px;\">Reconstructed \\(\\mathbf{Y}\\) <br/>Document-Topic \\(\\mathbf{U}\\), Topic-Term \\(\\mathbf{V}\\)</div>\n<div class=\"fragment4 current-visible\" style=\"position:absolute; top:0;left:0px;\">Reconstructed \\(\\mathbf{Y}\\) <br/>Document-Topic \\(\\mathbf{U}\\), Topic-Term \\(\\mathbf{V}\\)</div\n><div class=\"fragment5 current-visible\" style=\"position:absolute; top:0;left:0px;\">Document-Term matrix \\(\\mathbf{Y}\\)</div>\n</div>",
       "extraFields" : { }
     }
   }, {
@@ -84,7 +94,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Why Low-Rank\n<br>\nBecause we want a model on matrices with:\n<br>\n\n1. Invariance by permutation of rows and columns\n> Solution depends only on the eigenvalues\n\n2. A measure to control complexity\n> A \\\\(p\\\\)-norm with \\\\(p \\ge 0\\\\) \n\n3. Fast to compute and memory efficient\n> \\\\(p\\le 1\\\\) (sparsity-inducing)",
+      "code" : "### Why Low-Rank\n\nBecause we want a model on matrices with:\n\n1. Invariance by permutation of rows and columns\n> The order of instances and features is irrelevant\n\n2. A measure to control complexity\n> A \\\\(p\\\\)-norm with \\\\(p \\ge 0\\\\) \n\n3. Fast to compute and memory efficient\n> \\\\(p\\le 1\\\\) (sparsity-inducing)",
       "extraFields" : { }
     }
   }, {
@@ -116,11 +126,11 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Singular Value Decomposition (SVD)\n<br>\nGiven \\\\(\\mathbf{Y} \\in\\Re^{N\\times M} \\\\) there exists \n\n<br>\n$$\n\\mathbf{Y} = \\mathbf{U}\\mathbf{D}\\mathbf{V}\n$$\n<br>\nwhere \\\\(\\mathbf{U}\\in\\Re^{N\\times N},\\mathbf{V}\\in\\Re^{M\\times M}\\\\) are orthogonal<br/>\nand \\\\(\\mathbf{D} \\in\\Re^{N\\times M} \\ge 0\\\\) is diagonal\n<br/>\n\n<img src=\"../../assets/figures/SVD.png\" height=\"300\">",
+      "code" : "### Singular Value Decomposition (SVD)\n\nGiven \\\\(\\mathbf{Y} \\in\\Re^{N\\times M} \\\\) there exists \n\n$$\n\\mathbf{Y} = \\mathbf{U}\\mathbf{D}\\mathbf{V}\n$$\n\nwhere \\\\(\\mathbf{U}\\in\\Re^{N\\times N},\\mathbf{V}\\in\\Re^{M\\times M}\\\\) are orthogonal<br/>\nand \\\\(\\mathbf{D} \\in\\Re^{N\\times M} \\ge 0\\\\) is diagonal\n\n<img src=\"../../assets/figures/SVD.png\" height=\"300\">",
       "extraFields" : { }
     }
   }, {
-    "id" : 25,
+    "id" : 14,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -128,15 +138,15 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 14,
+    "id" : 15,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Truncated SVD\n\nIf we truncate \\\\(\\mathbf{D}\\\\) to its \\\\(L\\\\) largest values \n\n<img src=\"../../assets/figures/SVDtrunc.png\" height=\"300\">\n\nthen \\\\( \\hat{\\mathbf{Y}} = \\mathbf{U}\\mathbf{D_{trunc}}\\mathbf{V}\\\\)\n\nis the minimizer of \\\\(\\||\\mathbf{Y} - \\hat{\\mathbf{Y}}\\||_F^2\\\\)\n\n<br/>\n\n<div style=\"text-align:right;\">\n<i>Eckart-Young theorem</i>\n</div>",
+      "code" : "### Truncated SVD\n\nIf we truncate \\\\(\\mathbf{D}\\\\) to its \\\\(L\\\\) largest values \n\n<img src=\"../../assets/figures/SVDtrunc.png\" height=\"300\">\n\nthen \\\\( \\hat{\\mathbf{Y}} = \\mathbf{U}\\mathbf{D_{trunc}}\\mathbf{V}\\\\)\n\nis the minimizer of \\\\(\\||\\mathbf{Y} - \\hat{\\mathbf{Y}}\\||_F^2\\\\)\n\n<div style=\"text-align:right;\">\n<i>Eckart-Young theorem</i>\n</div>",
       "extraFields" : { }
     }
   }, {
-    "id" : 15,
+    "id" : 16,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -144,25 +154,23 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 16,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### MF with Stochastic Gradient Descent\n<br>\nObjective:\n\\\\(\n\\gamma(U,V) := \\sum_{(i,j)\\in\\Omega} (y_{ij} - \\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle)^2 \n\\\\)\n\n\\\\((i,j)\\notin \\Omega\\\\): **missing values**\n\n",
-      "extraFields" : { }
-    }
-  }, {
     "id" : 17,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<br>\n**Algorithm**:\n\n1. Pick \\\\( (i,j)\\in\\Omega \\\\) uniformly at random\n\n2. Gradient steps\n\n\\\\(\\mathbf{u}_i \\leftarrow \\mathbf{u}_i - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{v}_j  \\\\)\n\n\\\\(\\mathbf{v}_j \\leftarrow \\mathbf{v}_j - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{u}_i \\\\)\n\nwhere \\\\(\\eta\\\\) is the gradient step size (can be adaptive)",
-      "extraFields" : {
-        "fragment" : "true"
-      }
+      "code" : "### MF with Stochastic Gradient Descent\n\nObjective:\n\\\\(\n\\gamma(U,V) := \\sum_{(i,j)\\in\\Omega} (y_{ij} - \\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle)^2 \n\\\\)\n\n\\\\((i,j)\\notin \\Omega\\\\): **missing values**\n",
+      "extraFields" : { }
     }
   }, {
-    "id" : 18,
+    "id" : 26,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "**Algorithm**:\n\n1. Pick \\\\( (i,j)\\in\\Omega \\\\) uniformly at random\n\n2. Gradient steps\n\n\\\\(\\mathbf{u}_i \\leftarrow \\mathbf{u}_i - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{v}_j  \\\\)\n\n\\\\(\\mathbf{v}_j \\leftarrow \\mathbf{v}_j - \\eta (\\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle-y_{ij}) \\mathbf{u}_i \\\\)\n\nwhere \\\\(\\eta\\\\) is the gradient step size (can be adaptive)",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 19,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -170,25 +178,25 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 19,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### Alternating Least Squares\n<br>\nObjective:\n\\\\(\n\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2 \n\\\\)\n\n<br>\n**block-coordinate descent**:\n\n\\\\(\n\\arg\\min_{\\mathbf{u}_{i:}} \\gamma(U,V) = \\arg\\min_{\\mathbf{u}_{i:}} \\||\\mathbf{y}_{i:} - \\mathbf{V}\\mathbf{u}_{i:}\\||_F^2 \n\\\\)\n\n\\\\(\n\\arg\\min_{\\mathbf{v}_{j:}} \\gamma(U,V) = \\arg\\min_{\\mathbf{v}_{j:}} \\||\\mathbf{y}_{:j} - \\mathbf{U}\\mathbf{v}_{j:}\\||_F^2 \n\\\\)\n\n",
-      "extraFields" : { }
-    }
-  }, {
     "id" : 20,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<br>\nLeast square problems &#8667; Unique solutions!\n\n\\\\(\n\\mathbf{u}_i \\leftarrow (\\mathbf{V}^T\\mathbf{V})^{-1} \\mathbf{V}^T \\mathbf{y}_{i:} \n\\\\)\n\n\n\\\\(\n\\mathbf{v}_j \\leftarrow (\\mathbf{U}^T\\mathbf{U})^{-1} \\mathbf{U}^T \\mathbf{y}_{:j} \n\\\\)\n<br>\nEach step can be parallelized efficiently",
+      "code" : "### Alternating Least Squares\n\nObjective:\n\\\\(\n\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2 \n\\\\)\n\n**block-coordinate descent**:\n\n\\\\(\n\\arg\\min_{\\mathbf{u}_{i:}} \\gamma(U,V) = \\arg\\min_{\\mathbf{u}_{i:}} \\||\\mathbf{y}_{i:} - \\mathbf{V}\\mathbf{u}_{i:}\\||_F^2 \n\\\\)\n\n\\\\(\n\\arg\\min_{\\mathbf{v}_{j:}} \\gamma(U,V) = \\arg\\min_{\\mathbf{v}_{j:}} \\||\\mathbf{y}_{:j} - \\mathbf{U}\\mathbf{v}_{j:}\\||_F^2 \n\\\\)\n\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 21,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\nLeast square problems &#8667; Unique solutions!\n\n\\\\(\n\\mathbf{u}_i \\leftarrow (\\mathbf{V}^T\\mathbf{V})^{-1} \\mathbf{V}^T \\mathbf{y}_{i:} \n\\\\)\n\n\n\\\\(\n\\mathbf{v}_j \\leftarrow (\\mathbf{U}^T\\mathbf{U})^{-1} \\mathbf{U}^T \\mathbf{y}_{:j} \n\\\\)\n\nEach step can be parallelized efficiently",
       "extraFields" : {
         "fragment" : "true"
       }
     }
   }, {
-    "id" : 21,
+    "id" : 22,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -196,15 +204,15 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 22,
+    "id" : 23,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Regularization\n<br>\nObjective:\n<br/>\n\n$$\n\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2 + \\lambda_1Reg1(\\mathbf{U}) + \\lambda_2Reg2(\\mathbf{V})\n$$\n<br>\nCommon choices for \\\\(Reg1\\\\) and \\\\(Reg2\\\\):\n\n- sparsity-inducing 1-norm: \\\\(||\\mathbf{v_j}||_1\\\\)\n- overfitting-avoiding squared 2-norm: \\\\(||\\mathbf{u}_i||_F^2\\\\)\n\n<br/>\n> 1-norm not continuously differentiable<br/>\nOptimization harder but still possible",
+      "code" : "### Regularization\n\nObjective:\n\n$$\n\\gamma(U,V) := \\||\\mathbf{Y} - \\mathbf{U}\\mathbf{V}^{T}\\||_F^2 + \\lambda_1Reg1(\\mathbf{U}) + \\lambda_2Reg2(\\mathbf{V})\n$$\n\nCommon choices for \\\\(Reg1\\\\) and \\\\(Reg2\\\\):\n\n- sparsity-inducing 1-norm: \\\\(||\\mathbf{v_j}||_1\\\\)\n- overfitting-avoiding squared 2-norm: \\\\(||\\mathbf{u}_i||_F^2\\\\)\n\n> 1-norm not continuously differentiable<br/>\nOptimization harder but still possible",
       "extraFields" : { }
     }
   }, {
-    "id" : 23,
+    "id" : 24,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -212,11 +220,11 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 24,
+    "id" : 25,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Regularized Latent Semantic Indexing\n<br/>\n\ndocument-term matrix \\\\(\\mathbf{Y}\\approx \\mathbf{U}\\mathbf{V}^T\\\\)\n<br/>\ndocument-topic matrix \\\\(\\mathbf{U}\\\\), term-topic matrix \\\\(\\mathbf{V}\\\\)\n<br/>\n<br/>\n\n<div style=\"text-align:center;\">\n<table>\n\n  <tr>\n    <th>\\(\\mathbf{U}\\)</th>\n    <th>\\(\\mathbf{V}\\)</th>\n    <th>Readability</th>\n    <th>Compactness</th>\n    <th>Retrieval</th>\n  </tr>\n  <tr>\n    <td>1-norm &nbsp;</td>\n    <td>2-norm &nbsp;</td>\n    <td>✓</td>\n    <td>✓</td>\n    <td>✓</td>\n  </tr>\n  <tr>\n    <td>2-norm</td>\n    <td>1-norm</td>\n    <td>&#10003;</td>\n    <td>&#x2717;</td>\n    <td>&#x2717;</td>\n  </tr>\n  <tr>\n    <td>1-norm</td>\n    <td>1-norm</td>\n    <td>&#10003;</td>\n    <td>&#10003;</td>\n    <td>&#x2717;</td>\n  </tr>\n  <tr>\n    <td>2-norm</td>\n    <td>2-norm</td>\n    <td>&#x2717;</td>\n    <td>&#x2717;</td>\n    <td>&#x2717;</td>\n  </tr>\n</table>\n</div>\n\n<br/>\n<div style=\"text-align:right;\">\n<i>Wang et al. (2011)</i>\n</div>",
+      "code" : "### Regularized Latent Semantic Indexing\n\ndocument-term matrix \\\\(\\mathbf{Y}\\approx \\mathbf{U}\\mathbf{V}^T\\\\)\n\ndocument-topic matrix \\\\(\\mathbf{U}\\\\), term-topic matrix \\\\(\\mathbf{V}\\\\)\n\n<div style=\"text-align:center;\">\n<table>\n\n  <tr>\n    <th>\\(\\mathbf{U}\\)</th>\n    <th>\\(\\mathbf{V}\\)</th>\n    <th>Readability</th>\n    <th>Compactness</th>\n    <th>Retrieval</th>\n  </tr>\n  <tr>\n    <td>1-norm &nbsp;</td>\n    <td>2-norm &nbsp;</td>\n    <td>✓</td>\n    <td>✓</td>\n    <td>✓</td>\n  </tr>\n  <tr>\n    <td>2-norm</td>\n    <td>1-norm</td>\n    <td>&#10003;</td>\n    <td>&#x2717;</td>\n    <td>&#x2717;</td>\n  </tr>\n  <tr>\n    <td>1-norm</td>\n    <td>1-norm</td>\n    <td>&#10003;</td>\n    <td>&#10003;</td>\n    <td>&#x2717;</td>\n  </tr>\n  <tr>\n    <td>2-norm</td>\n    <td>2-norm</td>\n    <td>&#x2717;</td>\n    <td>&#x2717;</td>\n    <td>&#x2717;</td>\n  </tr>\n</table>\n</div>\n<br>\n<div style=\"text-align:right\">\n<i>Wang et al. (2011)</i>\n</div>",
       "extraFields" : { }
     }
   } ],
