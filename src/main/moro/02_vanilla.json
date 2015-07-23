@@ -33,7 +33,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 27,
+    "id" : 4,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -43,7 +43,7 @@
       }
     }
   }, {
-    "id" : 4,
+    "id" : 5,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -51,7 +51,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 5,
+    "id" : 6,
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
@@ -63,7 +63,7 @@
       }
     }
   }, {
-    "id" : 6,
+    "id" : 7,
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
@@ -74,7 +74,7 @@
       }
     }
   }, {
-    "id" : 7,
+    "id" : 8,
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
@@ -82,7 +82,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 8,
+    "id" : 9,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -90,7 +90,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 9,
+    "id" : 10,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -98,7 +98,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 10,
+    "id" : 11,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -106,7 +106,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 11,
+    "id" : 12,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -114,7 +114,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 12,
+    "id" : 13,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -122,15 +122,15 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 13,
+    "id" : 14,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Singular Value Decomposition (SVD)\n\nGiven \\\\(\\mathbf{Y} \\in\\Re^{N\\times M} \\\\) there exists \n\n$$\n\\mathbf{Y} = \\mathbf{U}\\mathbf{D}\\mathbf{V}\n$$\n\nwhere \\\\(\\mathbf{U}\\in\\Re^{N\\times N},\\mathbf{V}\\in\\Re^{M\\times M}\\\\) are orthogonal<br/>\nand \\\\(\\mathbf{D} \\in\\Re^{N\\times M} \\ge 0\\\\) is diagonal\n\n<img src=\"../../assets/figures/SVD.png\" height=\"300\">",
+      "code" : "### Singular Value Decomposition (SVD)\n\nGiven \\\\(\\mathbf{Y} \\in\\Re^{M\\times N} \\\\) there exists \n\n$$\n\\mathbf{Y} = \\mathbf{U}\\mathbf{D}\\mathbf{V}\n$$\n\nwhere \\\\(\\mathbf{U}\\in\\Re^{M\\times M},\\mathbf{V}\\in\\Re^{N\\times N}\\\\) are orthogonal<br/>\nand \\\\(\\mathbf{D} \\in\\Re^{M\\times N} \\ge 0\\\\) is diagonal\n\n<img src=\"../../assets/figures/SVD.png\" height=\"300\">",
       "extraFields" : { }
     }
   }, {
-    "id" : 14,
+    "id" : 15,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -138,7 +138,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 15,
+    "id" : 16,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -146,7 +146,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 16,
+    "id" : 17,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -154,7 +154,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 17,
+    "id" : 18,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -162,7 +162,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 26,
+    "id" : 19,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -170,7 +170,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 19,
+    "id" : 20,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -178,7 +178,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 20,
+    "id" : 21,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -186,7 +186,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 21,
+    "id" : 22,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -196,7 +196,7 @@
       }
     }
   }, {
-    "id" : 22,
+    "id" : 23,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -204,7 +204,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 23,
+    "id" : 24,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -212,7 +212,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 24,
+    "id" : 25,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -220,7 +220,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 25,
+    "id" : 26,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
