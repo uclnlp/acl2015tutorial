@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Tensors\n- In many real-world data more then two variables are interacting\n    - Subject, verb, object triplets \\\\((s,v,o)\\\\)\n    - Binary relation triplets \\\\((r_s, e_i, e_j)\\\\)\n    - Tag-recommendation: user, item, tag triplets \\\\((u, i, t)\\\\)\n- 2D Matrix representation is an unnatural choice\n- **Tensors** are the higher-order generalization of matrices\n- Can be used to model \\\\(N\\\\)-way interactions",
+      "code" : "### Tensors\n- In many real-world data more then two variables are interacting\n    - Subject, verb, object triplets \\\\((s,v,o)\\\\)\n    - Binary relation triplets \\\\((r_s, e_i, e_j)\\\\)\n    - Tag-recommendation: user, item, tag triplets \\\\((u, i, t)\\\\)\n    - User-movie-song-book recommendation: \\\\((u, m, s, b)\\\\)\n- 2D Matrix representation is an unnatural choice\n- **Tensors** are the higher-order generalization of matrices\n- Can be used to model \\\\(N\\\\)-way interactions",
       "extraFields" : { }
     }
   }, {
