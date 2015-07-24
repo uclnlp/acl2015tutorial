@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Discriminative Factorials Models\n\nFactorization is an efficient way of reducing the effective number of parameters in discriminative/predictive models\n\nWe introduce:\n\n* Factorization Machines\n* Multi-Task/Multi-Label Learning with Matrix Factorization\n* Structured Prediction with Factorized Parameters",
+      "code" : "### Discriminative Factorial Models\n\nFactorization is an efficient way of reducing the effective number of parameters in discriminative/predictive models\n\nWe introduce:\n\n* Factorization Machines\n* Multi-Task/Multi-Label Learning with Matrix Factorization\n* Structured Prediction with Factorized Parameters",
       "extraFields" : { }
     }
   }, {
@@ -93,7 +93,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Examples of Matrix/Tensor Factorization\n\n<br />\n<img src=\"../../assets/figures/08/s8s2.png\" height=\"500\">",
+      "code" : "### Examples of NLP Structured Prediction\n\n<br />\n<img src=\"../../assets/figures/08/s8s2.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -189,7 +189,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Learning\n\n Training Objective: \n\n $$ C \\sum_i \\eta_i + ||U||_F^2 + ||V||_F^2 + ||W||_F^2 + ||A||_F^2 $$ \n\nNon-convex optimization \n\nCan optimize with variant of Passive Aggressive (Crammer, 2006) \n",
+      "code" : "### Learning\n\n Training Objective: \n\n $$ C \\sum_i \\eta_i + ||U||_F^2 + ||V||_F^2 + ||W||_F^2 + ||A||_F^2 $$ \n\nNon-convex optimization with regularization\n\nCan optimize with variant of Passive Aggressive (Crammer, 2006) \n",
       "extraFields" : { }
     }
   }, {
@@ -209,6 +209,22 @@
       "extraFields" : { }
     }
   }, {
+    "id" : 30,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "parseresults",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 31,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Performance - Parsing\n\n<img src=\"../../assets/figures/08/parser-results.png\" height=\"400\">\n\n- RBG + MF model trained with rank \\\\(r = 50\\\\) tensors\n\n- Results averaged over 14 languages (CoNLL data)",
+      "extraFields" : { }
+    }
+  }, {
     "id" : 26,
     "compiler" : "section",
     "input" : {
@@ -221,7 +237,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Performance - SRL\n\n<br />\n<img src=\"../../assets/figures/08/srl-results.png\" height=\"400\">\n\n - Baselines have many features and automatic feature selection\n\n - Outperform previous best system across many languages",
+      "code" : "### Performance - SRL\n\n<img src=\"../../assets/figures/08/srl-results.png\" height=\"400\">\n\n - Baselines have many features and automatic feature selection\n\n - Outperforms previous best system across many languages",
       "extraFields" : { }
     }
   }, {
