@@ -173,7 +173,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Step 2: Formulate Model Parameters Tensor\n\nA tensor \\\\(R^{n \\times n \\times d}\\\\), describes the concatenation of all three feature vectors, so replace \\\\(\\Theta\\\\) with tensor \\\\(A\\\\):\n\n $$ S(\\mathbf{x},\\mathbf{y};\\mathbf{\\Theta})  <\\phi_{head} \\otimes \\phi_{child} \\otimes \\phi_{arc},\\mathbf{\\Theta}> $$ \n\n Can be huge!  A better option?  Low rank approximation.  Calculate A as: \n\n $$ \\mathbf{\\Theta} = \\sum_i U_i \\otimes V_i \\otimes W_i $$ \n\nwhere \\\\(U,V,\\\\) and \\\\(W\\\\) are dense low-dimensional representations \\\\(\\in \\Re^{n\\times r}\\\\) ",
+      "code" : "### Step 2: Formulate Model Parameters Tensor\n\nA tensor \\\\(\\Re^{n \\times n \\times d}\\\\), describes the concatenation of all three feature vectors, so replace \\\\(\\Theta\\\\) with tensor \\\\(A\\\\):\n\n $$ S(\\mathbf{x},\\mathbf{y};\\mathbf{\\Theta})  <\\phi_{head} \\otimes \\phi_{child} \\otimes \\phi_{arc},\\mathbf{\\Theta}> $$ \n\n Can be huge!  A better option?  Low rank approximation.  Calculate A as: \n\n $$ \\mathbf{\\Theta} = \\sum_i U_i \\otimes V_i \\otimes W_i $$ \n\nwhere \\\\(U,V,\\\\) and \\\\(W\\\\) are dense low-dimensional representations \\\\(\\in \\Re^{n\\times r}\\\\) ",
       "extraFields" : { }
     }
   }, {
