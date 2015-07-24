@@ -67,7 +67,7 @@
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "val Y = parseMatrix(\n    \"\"\"1 2 0 0 0\n       0 0 1 0 0\n       0 0 0 1 1 \n       0 0 1 1 1\n       1 2 1 1 0\"\"\")\n       \nval rowNames = Seq(\"doc1\",\"doc2\",\"doc3\",\"doc4\",\"doc5\")\nval colNames = Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")\nval names = header(rowNames,colNames)\nval rls = Matrix(hRulers = Seq(5), vRulers = Seq(5))\n       \nval m0 = numbers(matrix(Y)) + names +rls\nval m1 = opacity(matrix(Y), 0,2) + names + rls\nval m2 = Matrix(Seq(Cell(2,2,\"Y\")), hRulers = Seq(5), vRulers = Seq(5))\nval m3 = Matrix(Seq(Cell(6,2,\"V\"),Cell(2,6,\"U\"), Cell(2,2,\"Y\")), hRulers = Seq(5), vRulers = Seq(5))\nval (u,v) = optimizeL2(Y,2,1000)\nval m4 = numbers(embeddings(u,v)) +names\nval Yhat = dots(u,v)\nval m5 = numbers(matrix(Yhat)) + numbers(embeddings(u,v)) + names\nval m6 = opacity(matrix(Yhat),0,2) + numbers(embeddings(u,v)) + names\n\nrender(Seq(m0,m1,m3,m4,m5,m6,m1),layout) ",
+      "code" : "val Y = parseMatrix(\n    \"\"\"1 2 0 0 0\n       0 0 1 0 0\n       0 0 0 1 1 \n       0 0 1 1 1\n       1 2 1 1 0\"\"\")\n       \nval rowNames = Seq(\"doc1\",\"doc2\",\"doc3\",\"doc4\",\"doc5\")\nval colNames = Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")\nval names = header(rowNames,colNames)\nval rls = Matrix(hRulers = Seq(0,5), vRulers = Seq(0,5))\n       \nval m0 = numbers(matrix(Y)) + names +rls\nval m1 = opacity(matrix(Y), 0,2) + names + rls\nval m2 = Matrix(Seq(Cell(2,2,\"Y\")), hRulers = Seq(5), vRulers = Seq(5))\nval m3 = Matrix(Seq(Cell(6,2,\"V\"),Cell(2,6,\"U\"), Cell(2,2,\"Y\")), hRulers = Seq(5), vRulers = Seq(5))\nval (u,v) = optimizeL2(Y,2,1000)\nval m4 = numbers(embeddings(u,v)) +names\nval Yhat = dots(u,v)\nval m5 = numbers(matrix(Yhat)) + numbers(embeddings(u,v)) + names\nval m6 = opacity(matrix(Yhat),0,2) + numbers(embeddings(u,v)) + names\n\nrender(Seq(m0,m1,m3,m4,m5,m6,m1),layout) ",
       "extraFields" : {
         "showEditor" : "false",
         "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150, rowHeaderSize=100)\\n\\ndef optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\\n  val rand = new scala.util.Random(0)\\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val y = a dot v\\n    A(i) += v * alpha * (M(i, j) - y)\\n    V(j) += a * alpha * (M(i, j) - y)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), \\n           rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\"]"
@@ -126,7 +126,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Singular Value Decomposition (SVD)\n\nGiven \\\\(\\mathbf{Y} \\in\\Re^{M\\times N} \\\\) there exists \n\n$$\n\\mathbf{Y} = \\mathbf{U}\\mathbf{D}\\mathbf{V}\n$$\n\nwhere \\\\(\\mathbf{U}\\in\\Re^{M\\times M},\\mathbf{V}\\in\\Re^{N\\times N}\\\\) are orthogonal<br/>\nand \\\\(\\mathbf{D} \\in\\Re^{M\\times N} \\ge 0\\\\) is diagonal\n\n<img src=\"../../assets/figures/SVD.png\" height=\"300\">",
+      "code" : "### Singular Value Decomposition (SVD)\n\nGiven \\\\(\\mathbf{Y} \\in\\Re^{M\\times N} \\\\) there exists \n\n$$\n\\mathbf{Y} = \\mathbf{U}\\mathbf{D}\\mathbf{V}\n$$\n\nwhere \\\\(\\mathbf{U}\\in\\Re^{M\\times M},\\mathbf{V}\\in\\Re^{N\\times N}\\\\) are orthogonal (\\\\(\\mathbf{U}\\mathbf{U}^T = \\mathbf{V}\\mathbf{V}^T= I\\\\))<br/>\nand \\\\(\\mathbf{D} \\in\\Re^{M\\times N} \\ge 0\\\\) is diagonal\n\n<img src=\"../../assets/figures/SVD.png\" height=\"300\">",
       "extraFields" : { }
     }
   }, {
@@ -225,6 +225,40 @@
     "input" : {
       "sessionId" : null,
       "code" : "### Regularized Latent Semantic Indexing\n\ndocument-term matrix \\\\(\\mathbf{Y}\\approx \\mathbf{U}\\mathbf{V}^T\\\\)\n\ndocument-topic matrix \\\\(\\mathbf{U}\\\\), term-topic matrix \\\\(\\mathbf{V}\\\\)\n\n<div style=\"text-align:center;\">\n<table>\n\n  <tr>\n    <th>\\(\\mathbf{U}\\)</th>\n    <th>\\(\\mathbf{V}\\)</th>\n    <th>Readability</th>\n    <th>Compactness</th>\n    <th>Retrieval</th>\n  </tr>\n  <tr>\n    <td>1-norm &nbsp;</td>\n    <td>2-norm &nbsp;</td>\n    <td>✓</td>\n    <td>✓</td>\n    <td>✓</td>\n  </tr>\n  <tr>\n    <td>2-norm</td>\n    <td>1-norm</td>\n    <td>&#10003;</td>\n    <td>&#x2717;</td>\n    <td>&#x2717;</td>\n  </tr>\n  <tr>\n    <td>1-norm</td>\n    <td>1-norm</td>\n    <td>&#10003;</td>\n    <td>&#10003;</td>\n    <td>&#x2717;</td>\n  </tr>\n  <tr>\n    <td>2-norm</td>\n    <td>2-norm</td>\n    <td>&#x2717;</td>\n    <td>&#x2717;</td>\n    <td>&#x2717;</td>\n  </tr>\n</table>\n</div>\n<br>\n<div style=\"text-align:right\">\n<i>Wang et al. (2011)</i>\n</div>",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 27,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "word",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 28,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "###Learning word embeddings\n\n... is matrix factorization\n\n\n\n ",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 29,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150, rowHeaderSize=110)\n\nval Y = parseMatrix(\n    \"\"\"1 2 0 0 0\n       0 0 1 0 0\n       0 0 0 1 1 \n       0 0 1 1 1\n       1 2 1 1 0\"\"\")\n       \nval rowNames = Seq(\"context1\",\"context2\",\"context3\",\"context4\",\"context5\")\nval colNames = Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")\nval names = header(rowNames,colNames)\nval rls = Matrix(hRulers = Seq(0,5), vRulers = Seq(0,5))\nval m0 = numbers(matrix(Y)) + names +rls\nrender(Seq(m0),layout)",
+      "extraFields" : {
+        "showEditor" : "false"
+      }
+    }
+  }, {
+    "id" : 30,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\n> implicit MF: SkipGram (Mikolov et al. 2013)\n\n> explicit MF: GloVe (Pennington et al. 2014) and S-PPMI (Levy and Goldberg, 2014)",
       "extraFields" : { }
     }
   } ],
