@@ -9,11 +9,11 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 1,
+    "id" : 44,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Tensors\n- In many real-world data more then two variables are interacting\n    - Subject, verb, object triplets \\\\((s,v,o)\\\\)\n    - Binary relation triplets \\\\((r_s, e_i, e_j)\\\\)\n    - Tag-recommendation: user, item, tag triplets \\\\((u, i, t)\\\\)\n    - User-movie-song-book recommendation: \\\\((u, m, s, b)\\\\)\n- 2D Matrix representation is an unnatural choice\n- **Tensors** are the higher-order generalization of matrices\n- Can be used to model \\\\(N\\\\)-way interactions",
+      "code" : "<h3>Tensors</h3>\n<ul>\n<li class=\"fragment\" data-fragment-index=\"1\">\nIn many real-world data more then two variables are interacting\n<ul>\n    <li>Subject, verb, object triplets \\((s,v,o)\\)</li>\n    <li>Binary relation triplets \\((r_s, e_i, e_j)\\)</li>\n    <li>Tag-recommendation: user, item, tag triplets \\((u, i, t)\\)</li>\n    <li>User-movie-song-book recommendation: \\((u, m, s, b)\\)</li>\n</ul>    \n</li>    \n<li class=\"fragment\" data-fragment-index=\"2\">2D Matrix representation is an unnatural choice</li>\n<li class=\"fragment\" data-fragment-index=\"3\"><b>Tensors</b> are the higher-order generalization of matrices</li>\n<li class=\"fragment\" data-fragment-index=\"4\">Can be used to model \\(N\\)-way interactions</li>\n</ul>",
       "extraFields" : { }
     }
   }, {
@@ -25,11 +25,11 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 3,
-    "compiler" : "markdown",
+    "id" : 45,
+    "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "### Notation\n(Kolda and Bader, 2009)\n\n- Vectors: boldface lower-case letters \\\\(\\mathbf{v}\\\\)\n- Matrices: boldface capital letters \\\\(\\mathbf{M}\\\\)\n- Tensors: Euler script letters \\\\(\\mathcal{T}\\\\)\n- Order-\\\\(N\\\\) tensor is a multidimensional array with N indices\n\n    \\\\(\\mathcal{T} \\in \\mathbb{R}^{I_1 \\,\\times\\, I_2 \\,\\times\\, \\cdots\\, \\times\\, I_N}\\\\)\n",
+      "code" : "<h3>Notation</h3>\n<font color=\"blue\"><b>(Kolda and Bader, 2009)</b></font>\n\n<ul>\n<li class=\"fragment\" data-fragment-index=\"1\">\nVectors: boldface lower-case letters \\(\\mathbf{v}\\)\n</li>    \n<li class=\"fragment\" data-fragment-index=\"2\">Matrices: boldface capital letters \\(\\mathbf{M}\\)</li>\n<li class=\"fragment\" data-fragment-index=\"3\">Tensors: Euler script letters \\(\\mathcal{T}\\)</li>\n<li class=\"fragment\" data-fragment-index=\"4\">Order-\\(N\\) tensor is a multidimensional array with N indices\n\n$$\n\\mathcal{T} \\in \\mathbb{R}^{I_1 \\,\\times\\, I_2 \\,\\times\\, \\cdots\\, \\times\\, I_N}\n$$\n\n</li>\n</ul>",
       "extraFields" : { }
     }
   }, {
@@ -93,7 +93,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Tensor Operations\n- Mode-\\\\(N\\\\) **tensor-vector product** \\\\(\\mathcal{T} \\times_N \\mathbf{v}\\\\)\n    - Dot product of each mode-\\\\(N\\\\) fiber in \\\\(\\mathcal{T}\\\\) with \\\\(\\mathbf{v}\\\\)\n    - Eliminates one mode\n\n<img src=\"../../assets/figures/tf-vec.png\" width=\"100%\">\n\n",
+      "code" : "### Tensor Operations\n- Mode-\\\\(N\\\\) **tensor-vector product** \\\\(\\mathcal{T} \\times_N \\mathbf{v}\\\\)\n    - Dot product of each mode-\\\\(N\\\\) fiber in \\\\(\\mathcal{T}\\\\) with \\\\(\\mathbf{v}\\\\)\n    - \\\\(\\mathcal{T} \\in \\mathbb{R}^{I_1\\,\\times\\,\\cdots\\,\\times\\,I_N\\,\\times\\,\\cdots\\,I_n} \\\\)\n    - \\\\(\\mathbf{v} \\in \\mathbb{R}^{I_N}\\\\)\n    - \\\\(\\mathcal{T} \\times_N \\mathbf{v} \\in \\mathbb{R}^{I_1\\,\\times\\,\\cdots\\,\\times\\,I_{N-1}\\,\\times\\,I_{N+1}\\,\\times\\,\\cdots\\,I_n} \\\\)\n    - Eliminates one mode\n\n<img src=\"../../assets/figures/tf-vec.png\" width=\"100%\">\n\n",
       "extraFields" : { }
     }
   }, {
@@ -109,7 +109,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Tensor Operations\n- Mode-\\\\(N\\\\) **tensor-matrix product** \\\\(\\mathcal{T} \\times_N \\mathbf{M}\\\\)\n    - Matrix-vector product of each mode-\\\\(N\\\\) fiber in \\\\(\\mathcal{T}\\\\) with \\\\(\\mathbf{M}\\\\)\n    - Mode \\\\(N\\\\) of resulting tensor will have dimensionality of number of matrix columns\n\n<img src=\"../../assets/figures/tf-mat.png\" width=\"100%\">\n",
+      "code" : "### Tensor Operations\n- Mode-\\\\(N\\\\) **tensor-matrix product** \\\\(\\mathcal{T} \\times_N \\mathbf{M}\\\\)\n    - Matrix-vector product of each mode-\\\\(N\\\\) fiber in \\\\(\\mathcal{T}\\\\) with \\\\(\\mathbf{M}\\\\)\n    - \\\\(\\mathcal{T} \\in \\mathbb{R}^{I_1\\,\\times\\,\\cdots\\,\\times\\,I_N\\,\\times\\,\\cdots\\,I_n} \\\\)\n    - \\\\(\\mathbf{M}\\in\\mathbb{R}^{K \\,\\times\\, I_N}\\\\)\n    - \\\\(\\mathcal{T} \\times_N \\mathbf{M} \\in \\mathbb{R}^{I_1\\,\\times\\,\\cdots\\,\\times\\,K\\,\\times\\,\\cdots\\,I_n} \\\\)\n\n<img src=\"../../assets/figures/tf-mat.png\" width=\"100%\">\n",
       "extraFields" : { }
     }
   }, {
@@ -141,7 +141,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Tensor Rank\n\n- **Rank-\\\\(1\\\\) tensor**: outer product of three vectors:\n\n    \\\\(\\mathcal{X} = \\mathbf{a} \\circ \\mathbf{b} \\circ \\mathbf{c}\\\\) \n\n    <img src=\"../../assets/figures/tf-rank.png\" height=\"300\">\n\n- Rank of a tensor \\\\(\\mathcal{T}\\\\): smallest number of rank-\\\\(1\\\\) tensor that add up to \\\\(\\mathcal{T}\\\\)",
+      "code" : "### Tensor Rank\n\n- **Rank-\\\\(1\\\\) tensor**: outer product of three vectors:\n\n    \\\\(\\mathcal{X} = \\mathbf{a} \\otimes \\mathbf{b} \\otimes \\mathbf{c}\\\\) \n\n    <img src=\"../../assets/figures/tf-rank.png\" height=\"300\">\n\n- Rank of a tensor \\\\(\\mathcal{T}\\\\): smallest number of rank-\\\\(1\\\\) tensor that add up to \\\\(\\mathcal{T}\\\\)",
       "extraFields" : { }
     }
   }, {
@@ -221,7 +221,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### CANDECOMP/PARAFAC\n(Carroll and Chang, 1970; Harshman, 1970)\n\n- Approximate \\\\(\\mathcal{T}\\\\) with a sum of \\\\(n\\\\) rank-\\\\(1\\\\) tensors\n\n    \\\\(\\mathcal{T} \\approx \\sum_{i=1}^n \\mathbf{a}_i \\circ \\mathbf{b}_i \\circ \\mathbf{c}_i\\\\)\n    \n- Loss\n\n    \\\\(\\min_{\\mathbf{a}_i\\mathbf{b}_i\\mathbf{c}_i} ||\\mathcal{T} - \\sum_{i=1}^n \\mathbf{a}_i \\circ \\mathbf{b}_i \\circ \\mathbf{c}_i||_F^2\\\\)",
+      "code" : "### CANDECOMP/PARAFAC\n(Carroll and Chang, 1970; Harshman, 1970)\n\n- Approximate \\\\(\\mathcal{T}\\\\) with a sum of \\\\(n\\\\) rank-\\\\(1\\\\) tensors\n\n    \\\\(\\mathcal{T} \\approx \\sum_{i=1}^n \\mathbf{a}_i \\otimes \\mathbf{b}_i \\otimes \\mathbf{c}_i\\\\)\n    \n- Loss\n\n    \\\\(\\min_{\\mathbf{a}_i\\mathbf{b}_i\\mathbf{c}_i} ||\\mathcal{T} - \\sum_{i=1}^n \\mathbf{a}_i \\otimes \\mathbf{b}_i \\otimes \\mathbf{c}_i||_F^2\\\\)",
       "extraFields" : { }
     }
   }, {
