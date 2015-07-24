@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Discriminative Factorials Models\n\nFactorization is an efficient way of reducing the effective number of parameters in discriminative/predictive models\n\nWe introduce:\n\n* Factorization Machines\n* Multi-Task/Multi-Label Learning with Matrix Factorization\n* Structured Prediction with Factorized Parameters",
+      "code" : "### Discriminative Factorial Models\n\nFactorization is an efficient way of reducing the effective number of parameters in discriminative/predictive models\n\nWe introduce:\n\n* Factorization Machines\n* Multi-Task/Multi-Label Learning with Matrix Factorization\n* Structured Prediction with Factorized Parameters",
       "extraFields" : { }
     }
   }, {
@@ -93,7 +93,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Examples of Matrix/Tensor Factorization\n\n<br />\n<img src=\"../../assets/figures/08/s8s2.png\" height=\"500\">",
+      "code" : "### Examples of NLP Structured Prediction\n\n<br />\n<img src=\"../../assets/figures/08/s8s2.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -173,7 +173,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Step 2: Formulate Model Parameters Tensor\n\nA tensor \\\\(R^{n \\times n \\times d}\\\\), describes the concatenation of all three feature vectors, so replace \\\\(\\Theta\\\\) with tensor \\\\(A\\\\):\n\n $$ S(\\mathbf{x},\\mathbf{y};\\mathbf{\\Theta})  <\\phi_{head} \\otimes \\phi_{child} \\otimes \\phi_{arc},\\mathbf{\\Theta}> $$ \n\n Can be huge!  A better option?  Low rank approximation.  Calculate A as: \n\n $$ \\mathbf{\\Theta} = \\sum_i U_i \\otimes V_i \\otimes W_i $$ \n\nwhere \\\\(U,V,\\\\) and \\\\(W\\\\) are dense low-dimensional representations \\\\(\\in \\Re^{n\\times r}\\\\) ",
+      "code" : "### Step 2: Formulate Model Parameters Tensor\n\nA tensor \\\\(\\Re^{n \\times n \\times d}\\\\), describes the concatenation of all three feature vectors, so replace \\\\(\\Theta\\\\) with tensor \\\\(A\\\\):\n\n $$ S(\\mathbf{x},\\mathbf{y};\\mathbf{\\Theta})  <\\phi_{head} \\otimes \\phi_{child} \\otimes \\phi_{arc},\\mathbf{\\Theta}> $$ \n\n Can be huge!  A better option?  Low rank approximation.  Calculate A as: \n\n $$ \\mathbf{\\Theta} = \\sum_i U_i \\otimes V_i \\otimes W_i $$ \n\nwhere \\\\(U,V,\\\\) and \\\\(W\\\\) are dense low-dimensional representations \\\\(\\in \\Re^{n\\times r}\\\\) ",
       "extraFields" : { }
     }
   }, {
@@ -189,7 +189,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Learning\n\n Training Objective: \n\n $$ C \\sum_i \\eta_i + ||U||_F^2 + ||V||_F^2 + ||W||_F^2 + ||A||_F^2 $$ \n\nNon-convex optimization \n\nCan optimize with variant of Passive Aggressive (Crammer, 2006) \n",
+      "code" : "### Learning\n\n Training Objective: \n\n $$ C \\sum_i \\eta_i + ||U||_F^2 + ||V||_F^2 + ||W||_F^2 + ||A||_F^2 $$ \n\nNon-convex optimization with regularization\n\nCan optimize with variant of Passive Aggressive (Crammer, 2006) \n",
       "extraFields" : { }
     }
   }, {
@@ -205,7 +205,23 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Learning\n\nOnline method tailored for tensors [Lei et al., 2014]\n\nIterate over data and for each instance, update \\\\(A\\\\) and choose one of the feature tensors as follows: \n\n - \\\\( A^{(t + 1)} = A^t + \\Delta A \\\\) \n\n - \\\\( U^{(t+1)} = U^t + \\Delta U \\\\) \n\n With sub-problem (solvable with closed-form solution): \n\n $$ \\min_{\\Delta A, \\Delta U} \\frac{1}{2} ||\\Delta A ||_F^2 + \\frac{1}{2} ||\\Delta U ||_F^2 + C \\eta_i $$ ",
+      "code" : "### Learning\n\nOnline method tailored for tensors [Lei et al., 2014]\n\nIterate over data and for each instance, update \\\\(A\\\\) and choose one of the feature tensors as follows (assuming \\\\(U\\\\) was chosen): \n\n - \\\\( A^{(t + 1)} = A^t + \\Delta A \\\\) \n\n - \\\\( U^{(t+1)} = U^t + \\Delta U \\\\) \n\n With sub-problem (solvable with closed-form solution): \n\n $$ \\min_{\\Delta A, \\Delta U} \\frac{1}{2} ||\\Delta A ||_F^2 + \\frac{1}{2} ||\\Delta U ||_F^2 + C \\eta_i $$ ",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 30,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "parseresults",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 31,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Performance - Parsing\n\n<img src=\"../../assets/figures/08/parser-results.png\" height=\"400\">\n\n- RBG + MF model trained with rank \\\\(r = 50\\\\) tensors\n\n- Results averaged over 14 languages (CoNLL data)",
       "extraFields" : { }
     }
   }, {
@@ -221,7 +237,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Performance - SRL\n\n<br />\n<img src=\"../../assets/figures/08/srl-results.png\" height=\"400\">\n\n - Baselines have many features and automatic feature selection\n\n - Outperform previous best system across many languages",
+      "code" : "### Performance - SRL\n\n<img src=\"../../assets/figures/08/srl-results.png\" height=\"400\">\n\n - Baselines have many features and automatic feature selection\n\n - Outperforms previous best system across many languages",
       "extraFields" : { }
     }
   }, {
