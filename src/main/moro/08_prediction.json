@@ -205,7 +205,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Learning\n\nOnline method tailored for tensors [Lei et al., 2014]\n\nIterate over data and for each instance, update \\\\(A\\\\) and choose one of the feature tensors as follows: \n\n - \\\\( A^{(t + 1)} = A^t + \\Delta A \\\\) \n\n - \\\\( U^{(t+1)} = U^t + \\Delta U \\\\) \n\n With sub-problem (solvable with closed-form solution): \n\n $$ \\min_{\\Delta A, \\Delta U} \\frac{1}{2} ||\\Delta A ||_F^2 + \\frac{1}{2} ||\\Delta U ||_F^2 + C \\eta_i $$ ",
+      "code" : "### Learning\n\nOnline method tailored for tensors [Lei et al., 2014]\n\nIterate over data and for each instance, update \\\\(A\\\\) and choose one of the feature tensors as follows (assuming \\\\(U\\\\) was chosen): \n\n - \\\\( A^{(t + 1)} = A^t + \\Delta A \\\\) \n\n - \\\\( U^{(t+1)} = U^t + \\Delta U \\\\) \n\n With sub-problem (solvable with closed-form solution): \n\n $$ \\min_{\\Delta A, \\Delta U} \\frac{1}{2} ||\\Delta A ||_F^2 + \\frac{1}{2} ||\\Delta U ||_F^2 + C \\eta_i $$ ",
       "extraFields" : { }
     }
   }, {
