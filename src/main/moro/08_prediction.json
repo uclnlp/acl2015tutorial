@@ -141,7 +141,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Difficulties Selection\n####Few Templates:\n\n- Poor Performance\nMany Templates:\n\n- High Performance, Many Parameters\n- Interactions between features can be hard to know\n\n####Alternatives? Automatic Feature Selection:\n\n- Effective, but ''messy'' (Zhao, 2009)\n- Expensive\n**Solution**: Learn templates from data using matrix factorization",
+      "code" : "### Difficulties of Manual Feature Selection\nFew Templates:\n\n- Poor Performance\n\nMany Templates:\n\n- High Performance \\\\(\\implies\\\\) Many Parameters\n- Useful feature interactions hard to know a priori\n\nAlternatives? Automatic Feature Selection:\n\n- Effective, but ''messy'' (Zhao, 2009)\n- Computationally expensive\n\n**Solution**: Learn templates from data using matrix factorization",
       "extraFields" : { }
     }
   }, {

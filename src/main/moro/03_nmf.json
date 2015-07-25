@@ -31,7 +31,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "definition",
+      "code" : "demoNMF",
       "extraFields" : { }
     }
   }, {
@@ -39,11 +39,70 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Definition\n\n<img src=\"../../assets/figures/vanillaMF.png\" height=\"250\">\n\nGiven \\\\(\\mathbf{Y} \\in\\Re^{N\\times M}\\\\) <font color=\"blue\">\\\\(\\geq 0 \\\\)</font>\n\nfind \\\\(\\mathbf{U} \\in\\Re^{N\\times L}\\\\) <font color=\"blue\">\\\\(\\geq 0\\\\)</font> &nbsp; and &nbsp; \\\\(\\mathbf{V} \\in\\Re^{M\\times L}\\\\) <font color=\"blue\"> \\\\(\\geq 0\\\\)</font>\n\nso that \\\\(\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T}\\\\)\n",
+      "code" : "###Non-negative MF vs MF",
       "extraFields" : { }
     }
   }, {
     "id" : 5,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\nimport ml.wolfe.{Mat, Vect}\nimport ml.wolfe.util.Math._\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150, rowHeaderSize=100)\n",
+      "extraFields" : {
+        "hide_output" : "true",
+        "showEditor" : "false",
+        "aggregatedCells" : "[]"
+      }
+    }
+  }, {
+    "id" : 6,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "val n = 5\nval m = 5 \nval rand = new scala.util.Random(0)\nval rowNames = Seq(\"doc1\",\"doc2\",\"doc3\",\"doc4\",\"doc5\")\nval colNames = Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")\nval names = header(rowNames,colNames)\nval rls = Matrix(hRulers = Seq(0,5), vRulers = Seq(0,5))\nval M = parseMatrix(\n    \"\"\"1 2 0 0 0\n       0 0 1 0 0\n       0 0 0 1 1 \n       0 0 1 1 1\n       1 2 1 1 0\"\"\")\n       \ndef optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\n  val rand = new scala.util.Random(0)\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\n  val A = AV._1; val V = AV._2\n  def update(i: Int, j: Int) = {\n    val a = A(i).copy\n    val v = V(j).copy\n    val y = a dot v\n    A(i) += v * alpha * (M(i, j) - y)\n    V(j) += a * alpha * (M(i, j) - y)\n  }\n  for (i <- Range(0,iters).toList) {\n    update(rand.nextInt(M.dim1), \n           rand.nextInt(M.dim2))\n  }\n  (A, V)\n}",
+      "extraFields" : {
+        "hide_output" : "true",
+        "showEditor" : "false",
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport ml.wolfe.util.Math._\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150, rowHeaderSize=100)\\n\"]"
+      }
+    }
+  }, {
+    "id" : 7,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\nval (_A,_V) = nmf(M, 2, 10)\nval m1 = opacity(matrix(M) + names,0,2) + rls\n//val m1 = opacity(matrix(M) + names,0,2).addRectClass(Set(4 -> 4),\"red-box\") + rls\nval nmfOpaq = opacity(matrix(dots(_A,_V)) + embeddings(_A,_V) + names,0,2) +rls\nval nmfNums = opacity(matrix(dots(_A,_V)),0,2) + numbers(embeddings(_A,_V)) + names +rls\n//val m4 = numbers(matrix(dots(_A,_V)).addTextClass(Set(4 -> 4),\"red-text\") + names) +rls\nval (u,v) = optimizeL2(M,2,1000)\nval Mhat = dots(u,v)\nval MFrecon = opacity(matrix(Mhat), 0,2) + numbers(embeddings(u,v)) + names +rls\n\nval (_A4, _V4) = nmf(M, 2, 10)\nval nmfOpaq4 = opacity(matrix(dots(_A4,_V4)) + names,0,2) +rls\n\nval (u4,v4) = optimizeL2(M,4,10000)\nval Mhat4 = dots(u4,v4)\nval MFrecon4 = opacity(matrix(Mhat4), 0,2) + names +rls\n\n\nrender(Seq(m1,nmfNums, MFrecon, nmfOpaq4, MFrecon4),layout)",
+      "extraFields" : {
+        "showEditor" : "false",
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport ml.wolfe.util.Math._\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150, rowHeaderSize=100)\\n\",\"val n = 5\\nval m = 5 \\nval rand = new scala.util.Random(0)\\nval rowNames = Seq(\\\"doc1\\\",\\\"doc2\\\",\\\"doc3\\\",\\\"doc4\\\",\\\"doc5\\\")\\nval colNames = Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\")\\nval names = header(rowNames,colNames)\\nval rls = Matrix(hRulers = Seq(0,5), vRulers = Seq(0,5))\\nval M = parseMatrix(\\n    \\\"\\\"\\\"1 2 0 0 0\\n       0 0 1 0 0\\n       0 0 0 1 1 \\n       0 0 1 1 1\\n       1 2 1 1 0\\\"\\\"\\\")\\n       \\ndef optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\\n  val rand = new scala.util.Random(0)\\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val y = a dot v\\n    A(i) += v * alpha * (M(i, j) - y)\\n    V(j) += a * alpha * (M(i, j) - y)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), \\n           rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\"]"
+      }
+    }
+  }, {
+    "id" : 8,
+    "compiler" : "html",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<div style=\"position:relative; width:600px; height:100px; margin:auto; display:block\">\n<div class=\"fragment0 fade-out\" style=\"position:absolute; top:0;left:0px;\">Document-term matrix</div><div class=\"fragment0 current-visible\" style=\"position:absolute; top:0;left:0px;\">NMF reconstruction</div><div class=\"fragment1 current-visible\" style=\"position:absolute; top:0;left:0px;\">MF reconsruction</div>\n<div class=\"fragment2 current-visible\" style=\"position:absolute; top:0\n;left:0px;\">rank-4 NMF reconstruction</div>\n<div class=\"fragment3 current-visible\" style=\"position:absolute; top:0;left:0px;\">rank-4 MF reconstruction</div>\n</div>\n</div>\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 9,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "definition",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 10,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Definition\n\n<img src=\"../../assets/figures/vanillaMF.png\" height=\"250\">\n\nGiven \\\\(\\mathbf{Y} \\in\\Re^{N\\times M}\\\\) <font color=\"blue\">\\\\(\\geq 0 \\\\)</font>\n\nfind \\\\(\\mathbf{U} \\in\\Re^{N\\times L}\\\\) <font color=\"blue\">\\\\(\\geq 0\\\\)</font> &nbsp; and &nbsp; \\\\(\\mathbf{V} \\in\\Re^{M\\times L}\\\\) <font color=\"blue\"> \\\\(\\geq 0\\\\)</font>\n\nso that \\\\(\\mathbf{Y} \\approx \\mathbf{U}\\mathbf{V}^{T}\\\\)\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 11,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -51,7 +110,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 6,
+    "id" : 12,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -59,7 +118,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 7,
+    "id" : 13,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -67,7 +126,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 8,
+    "id" : 14,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -77,7 +136,7 @@
       }
     }
   }, {
-    "id" : 9,
+    "id" : 15,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -85,7 +144,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 10,
+    "id" : 16,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -93,7 +152,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 11,
+    "id" : 17,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -101,7 +160,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 12,
+    "id" : 18,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -109,7 +168,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 13,
+    "id" : 19,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -119,7 +178,7 @@
       }
     }
   }, {
-    "id" : 14,
+    "id" : 20,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -127,7 +186,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 15,
+    "id" : 21,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -135,7 +194,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 24,
+    "id" : 22,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -143,7 +202,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 17,
+    "id" : 23,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -153,7 +212,7 @@
       }
     }
   }, {
-    "id" : 18,
+    "id" : 24,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -161,7 +220,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 19,
+    "id" : 25,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -169,7 +228,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 20,
+    "id" : 26,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -177,7 +236,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 21,
+    "id" : 27,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -187,7 +246,7 @@
       }
     }
   }, {
-    "id" : 22,
+    "id" : 28,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -195,7 +254,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 23,
+    "id" : 29,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,

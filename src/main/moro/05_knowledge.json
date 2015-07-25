@@ -13,7 +13,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Drawbacks of OpenIE and Embeddings\n\n<br />\n<img src=\"../../assets/figures/07/MF-8.png\" height=\"500\">",
+      "code" : "### Drawbacks of OpenIE and Embeddings\n\n<img src=\"../../assets/figures/07/MF-8.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -21,7 +21,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "drawbacks1",
+      "code" : "drawbacks2",
       "extraFields" : { }
     }
   }, {
@@ -29,7 +29,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Drawbacks of OpenIE and Embeddings\n\n<br />\n<img src=\"../../assets/figures/07/MF-12.png\" height=\"500\">",
+      "code" : "### Drawbacks of OpenIE and Embeddings\n\n<img src=\"../../assets/figures/07/MF-13.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -37,7 +37,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "drawbacks2",
+      "code" : "drawbacks3",
       "extraFields" : { }
     }
   }, {
@@ -45,7 +45,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Drawbacks of OpenIE and Embeddings\n\n<br />\n<img src=\"../../assets/figures/07/MF-13.png\" height=\"500\">",
+      "code" : "### Drawbacks of OpenIE and Embeddings\n\n<img src=\"../../assets/figures/07/MF-14.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -53,7 +53,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "drawbacks3",
+      "code" : "drawbacks4",
       "extraFields" : { }
     }
   }, {
@@ -61,7 +61,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Drawbacks of OpenIE and Embeddings\n\n<br />\n<img src=\"../../assets/figures/07/MF-14.png\" height=\"500\">",
+      "code" : "### Drawbacks of OpenIE and Embeddings\n\n<img src=\"../../assets/figures/07/MF-15.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -69,7 +69,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "drawbacks4",
+      "code" : "drawbacks5",
       "extraFields" : { }
     }
   }, {
@@ -77,7 +77,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Drawbacks of OpenIE and Embeddings\n\n<br />\n<img src=\"../../assets/figures/07/MF-15.png\" height=\"500\">",
+      "code" : "### Drawbacks of OpenIE and Embeddings\n\n<img src=\"../../assets/figures/07/MF-16.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -85,7 +85,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "drawbacks5",
+      "code" : "facts",
       "extraFields" : { }
     }
   }, {
@@ -93,7 +93,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Drawbacks of OpenIE and Embeddings\n\n<br />\n<img src=\"../../assets/figures/07/MF-16.png\" height=\"500\">",
+      "code" : "<h3>Factual Prior Knowledge</h3>\n\n<img src=\"../../assets/figures/mfprior.png\" width=\"100%\">\n\n- Collective Matrix Factoriztion",
       "extraFields" : { }
     }
   }, {
@@ -101,7 +101,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "logic",
+      "code" : "hard",
       "extraFields" : { }
     }
   }, {
@@ -109,7 +109,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<h3>First-order Logic Prior Knowledge</h3>\n<ul>\n<li class=\"fragment\" data-fragment-index=\"1\"><b>Representation Learning</b>: hard to fix mistakes\n$$\n\\neg \\text{person}(x) \\Rightarrow \\neg \\text{place of birth}(x,y)\n$$\n<li class=\"fragment\" data-fragment-index=\"2\"><b>Distant Supervision</b>: fails for no or little alignment\n$$\n\\text{#1-is-a-student-in-#2-'s-lab}(x,y) \\Rightarrow \\text{supervisedBy}(x,y)$$\n<li class=\"fragment\" data-fragment-index=\"3\"><b>Pros</b>: Formulae are easy to modify and improve\n<li class=\"fragment\" data-fragment-index=\"4\"><b>Cons</b>: Brittle, no generalization and inference can become intractable\n<li class=\"fragment\" data-fragment-index=\"5\"><i>Markov Logic Networks</i>: easy to modify, generalize well, but inference often intractable in practice\n</ul>",
+      "code" : "<h3>Hard Constraints</h3>\n(e.g. Chang et al. 2014)\n\n<img src=\"../../assets/figures/constrainedmf.png\" width=\"100%\">",
       "extraFields" : { }
     }
   }, {
@@ -117,7 +117,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "overview",
+      "code" : "logic",
       "extraFields" : { }
     }
   }, {
@@ -125,7 +125,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Low-rank Logic Embeddings \n\n<br />\n<img src=\"../../assets/figures/07/Overview-7.png\" height=\"300\">",
+      "code" : "<h3>First-order Logic Prior Knowledge</h3>\n<ul>\n<li class=\"fragment\" data-fragment-index=\"1\"><b>Representation Learning</b>: hard to fix mistakes\n$$\n\\neg \\text{person}(x) \\Rightarrow \\neg \\text{place of birth}(x,y)\n$$\n<li class=\"fragment\" data-fragment-index=\"2\"><b>Distant Supervision</b>: fails for no or little alignment\n$$\n\\text{#1-is-a-student-in-#2-'s-lab}(x,y) \\Rightarrow \\text{supervisedBy}(x,y)$$\n<li class=\"fragment\" data-fragment-index=\"3\"><b>Pros</b>: Formulae are easy to modify and improve\n<li class=\"fragment\" data-fragment-index=\"4\"><b>Cons</b>: Brittle, no generalization and inference can become intractable\n<li class=\"fragment\" data-fragment-index=\"5\"><i>Markov Logic Networks</i>: easy to modify, generalize well, but inference often intractable in practice\n</ul>",
       "extraFields" : { }
     }
   }, {
@@ -133,7 +133,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "mflogic1",
+      "code" : "overview",
       "extraFields" : { }
     }
   }, {
@@ -141,7 +141,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Combining Logic and Matrix Factorization\n\n<br />\n<img src=\"../../assets/figures/07/Baselines-1.png\" height=\"500\">",
+      "code" : "### Low-rank Logic Embeddings \n\n<img src=\"../../assets/figures/07/Overview-7.png\" height=\"300\">",
       "extraFields" : { }
     }
   }, {
@@ -149,7 +149,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "mfLogic2",
+      "code" : "mflogic0",
       "extraFields" : { }
     }
   }, {
@@ -157,7 +157,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Combining Logic and Matrix Factorization\n\n<br />\n<img src=\"../../assets/figures/07/Baselines-2.png\" height=\"500\">",
+      "code" : "### Combining Logic and Matrix Factorization\n\n<img src=\"../../assets/figures/07/Baselines-0.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -165,7 +165,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "mfLogic3",
+      "code" : "mflogic1",
       "extraFields" : { }
     }
   }, {
@@ -173,7 +173,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Combining Logic and Matrix Factorization\n\n<br />\n<img src=\"../../assets/figures/07/Baselines-3.png\" height=\"500\">",
+      "code" : "### Combining Logic and Matrix Factorization\n\n<img src=\"../../assets/figures/07/Baselines-1.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -181,7 +181,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "mfLogic4",
+      "code" : "mfLogic2",
       "extraFields" : { }
     }
   }, {
@@ -189,7 +189,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Combining Logic and Matrix Factorization\n\n<br />\n<img src=\"../../assets/figures/07/Baselines-4.png\" height=\"500\">\n",
+      "code" : "### Combining Logic and Matrix Factorization\n\n<img src=\"../../assets/figures/07/Baselines-2.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -197,7 +197,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "mfLogic5",
+      "code" : "mfLogic3",
       "extraFields" : { }
     }
   }, {
@@ -205,7 +205,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Combining Logic and Matrix Factorization\n\n<br />\n<img src=\"../../assets/figures/07/Baselines-5.png\" height=\"500\">",
+      "code" : "### Combining Logic and Matrix Factorization\n\n<img src=\"../../assets/figures/07/Baselines-3.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -213,7 +213,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "mfLogic6",
+      "code" : "mfLogic4",
       "extraFields" : { }
     }
   }, {
@@ -221,7 +221,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Combining Logic and Matrix Factorization\n\n<br />\n<img src=\"../../assets/figures/07/Baselines-6.png\" height=\"500\">",
+      "code" : "### Combining Logic and Matrix Factorization\n\n<img src=\"../../assets/figures/07/Baselines-4.png\" height=\"500\">\n",
       "extraFields" : { }
     }
   }, {
@@ -229,7 +229,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "mfLogic7",
+      "code" : "mfLogic5",
       "extraFields" : { }
     }
   }, {
@@ -237,7 +237,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Combining Logic and Matrix Factorization\n\n<br />\n<img src=\"../../assets/figures/07/Baselines-7.png\" height=\"500\">",
+      "code" : "### Combining Logic and Matrix Factorization\n\n<img src=\"../../assets/figures/07/Baselines-5.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -245,7 +245,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "mfLogic8",
+      "code" : "mfLogic6",
       "extraFields" : { }
     }
   }, {
@@ -253,7 +253,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Combining Logic and Matrix Factorization\n\n<br />\n<img src=\"../../assets/figures/07/Baselines-8.png\" height=\"500\">",
+      "code" : "### Combining Logic and Matrix Factorization\n\n<img src=\"../../assets/figures/07/Baselines-6.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -261,7 +261,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "mfLogic9",
+      "code" : "mfLogic7",
       "extraFields" : { }
     }
   }, {
@@ -269,7 +269,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Combining Logic and Matrix Factorization\n\n<br />\n<img src=\"../../assets/figures/07/Baselines-9.png\" height=\"500\">",
+      "code" : "### Combining Logic and Matrix Factorization\n\n<img src=\"../../assets/figures/07/Baselines-7.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -277,7 +277,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "mfLogic10",
+      "code" : "mfLogic8",
       "extraFields" : { }
     }
   }, {
@@ -285,7 +285,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Combining Logic and Matrix Factorization\n\n<br />\n<img src=\"../../assets/figures/07/Baselines-10.png\" height=\"500\">",
+      "code" : "### Combining Logic and Matrix Factorization\n\n<img src=\"../../assets/figures/07/Baselines-8.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -293,7 +293,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "mfLogic11",
+      "code" : "mfLogic9",
       "extraFields" : { }
     }
   }, {
@@ -301,7 +301,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Combining Logic and Matrix Factorization\n\n<br />\n<img src=\"../../assets/figures/07/Baselines-11.png\" height=\"500\">",
+      "code" : "### Combining Logic and Matrix Factorization\n\n<img src=\"../../assets/figures/07/Baselines-9.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -309,7 +309,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "mfLogic12",
+      "code" : "mfLogic10",
       "extraFields" : { }
     }
   }, {
@@ -317,7 +317,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Combining Logic and Matrix Factorization\n\n<br />\n<img src=\"../../assets/figures/07/Baselines-12.png\" height=\"500\">",
+      "code" : "### Combining Logic and Matrix Factorization\n\n<img src=\"../../assets/figures/07/Baselines-10.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -325,7 +325,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "mfLogic13",
+      "code" : "mfLogic11",
       "extraFields" : { }
     }
   }, {
@@ -333,7 +333,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Combining Logic and Matrix Factorization\n\n<br />\n<img src=\"../../assets/figures/07/Baselines-13.png\" height=\"500\">",
+      "code" : "### Combining Logic and Matrix Factorization\n\n<img src=\"../../assets/figures/07/Baselines-11.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -341,7 +341,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "mfLogic14",
+      "code" : "mfLogic12",
       "extraFields" : { }
     }
   }, {
@@ -349,7 +349,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Combining Logic and Matrix Factorization\n\n<br />\n<img src=\"../../assets/figures/07/Baselines-14.png\" height=\"500\">",
+      "code" : "### Combining Logic and Matrix Factorization\n\n<img src=\"../../assets/figures/07/Baselines-12.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -357,15 +357,15 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "injectfacts",
+      "code" : "mfLogic13",
       "extraFields" : { }
     }
   }, {
     "id" : 45,
-    "compiler" : "html",
+    "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<h3>Matrix Factorization is “Injecting” Atomic Formulae</h3>\n<ul>\n<li class=\"fragment\" data-fragment-index=\"1\">Training facts are ground atoms: $$\\mathcal{F} = r_s(e_i, e_j)$$\n</li>\n<li class=\"fragment\" data-fragment-index=\"2\">Let [•] denote mapping from symbolic formulae to expectations\n$$[r_s(e_i, e_j)] := \\sigma(\\mathbf{v}_{s} \\cdot \\mathbf{v}_{ij})$$</li>\n<li class=\"fragment\" data-fragment-index=\"3\">Training objective:\n    $$\\max_{\\{\\mathbf{v}_s\\}, \\{\\mathbf{v}_{ij}\\}} \\sum_{\\mathcal{F} \\in \\mathfrak{F}} \\log([\\mathcal{F}])$$</li>\n<li class=\"fragment\" data-fragment-index=\"4\">Can we do this for <i>any</i> propositional formulae? \n  $$[\\mathcal{F}] = [r_1(e_i\\,e_j) \\wedge \\neg r_2(e_i\\,e_j) \\Rightarrow r_3(e_i\\,e_j)]$$</li>    \n</ul>",
+      "code" : "### Combining Logic and Matrix Factorization\n\n<img src=\"../../assets/figures/07/Baselines-13.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -373,15 +373,15 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "difflogic",
+      "code" : "mfLogic14",
       "extraFields" : { }
     }
   }, {
     "id" : 47,
-    "compiler" : "html",
+    "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<h3>Differentiable Logic Formulae</h3>\n\n$$\n[\\mathcal{F}] = \\begin{cases}\n   \\sigma(\\mathbf{v}_s \\cdot \\mathbf{v}_{ij}) & \\text{ if } \\mathcal{F} = r_s(e_i, e_j), \\text{ i.e., facts}\\newline\n   1 - [\\mathcal{A}] & \\text{ if } \\mathcal{F} = \\neg\\mathcal{A}\\newline\n  [\\mathcal{A}] * [\\mathcal{B}] &\\text{ if } \\mathcal{F} = \\mathcal{A} \\wedge \\mathcal{B}\n\\end{cases}\n$$\n\n<ul>\n<li class=\"fragment\" data-fragment-index=\"1\">\nFrom negation and conjunction we can build any propositional formula\n    <ul><li>Disjunction: $$[\\mathcal{A} \\vee \\mathcal{B}] = 1 - (1 - [\\mathcal{A}])*(1 - [\\mathcal{B}])$$\n    </li>\n    <li>Implication:$$[\\mathcal{A} \\Rightarrow \\mathcal{B}] = [\\mathcal{A}]([\\mathcal{B}] - 1) + 1$$\n    </li>\n    </ul>    \n</li>\n<li class=\"fragment\" data-fragment-index=\"2\">\n    Jointly maximize the log-likelihood of atomic and propositional formulae \n \n    $$\\max_{\\{\\mathbf{v}_s\\}, \\{\\mathbf{v}_{ij}\\}} \\sum_{\\mathcal{F} \\in \\mathfrak{F}} \\log([\\mathcal{F}])$$\n</li>\n</ul>",
+      "code" : "### Combining Logic and Matrix Factorization\n\n<img src=\"../../assets/figures/07/Baselines-14.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -389,15 +389,15 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "backprop",
+      "code" : "injectfacts",
       "extraFields" : { }
     }
   }, {
     "id" : 49,
-    "compiler" : "markdown",
+    "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "### Backpropagation Through Structure\n(Goller and Küchler, 1996)\n\n<br />\n<img src=\"../../assets/figures/07/Backprop.png\" height=\"400\">",
+      "code" : "<h3>Matrix Factorization is “Injecting” Atomic Formulae</h3>\n<ul>\n<li class=\"fragment\" data-fragment-index=\"1\">Training facts are ground atoms: $$\\mathcal{F} = r_s(e_i, e_j)$$\n</li>\n<li class=\"fragment\" data-fragment-index=\"2\">Let [•] denote mapping from symbolic formulae to expectations\n$$[r_s(e_i, e_j)] := \\sigma(\\mathbf{v}_{s} \\cdot \\mathbf{v}_{ij})$$</li>\n<li class=\"fragment\" data-fragment-index=\"3\">Training objective:\n    $$\\max_{\\{\\mathbf{v}_s\\}, \\{\\mathbf{v}_{ij}\\}} \\sum_{\\mathcal{F} \\in \\mathfrak{F}} \\log([\\mathcal{F}])$$</li>\n<li class=\"fragment\" data-fragment-index=\"4\">Can we do this for <i>any</i> propositional formulae? \n  $$[\\mathcal{F}] = [r_1(e_i\\,e_j) \\wedge \\neg r_2(e_i\\,e_j) \\Rightarrow r_3(e_i\\,e_j)]$$</li>    \n</ul>",
       "extraFields" : { }
     }
   }, {
@@ -405,7 +405,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "grounding",
+      "code" : "difflogic",
       "extraFields" : { }
     }
   }, {
@@ -413,7 +413,7 @@
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "<h3>Grounding</h3>\n$$\\forall x,y: r_s(x,y) \\Rightarrow r_t(x,y)$$\n<ul>\n<li class=\"fragment\" data-fragment-index=\"1\">Grounding based on all observed facts for premise \\((r_s(e_i,e_j)\\) and consequent \\(r_t(e_i,e_j)\\)\n</li>\n<li class=\"fragment\" data-fragment-index=\"2\">\nSample unobserved facts \\(r_s(e_i', e_j')\\) and \\(r_t(e_i', e_j')\\)\n</li>\n<li class=\"fragment\" data-fragment-index=\"3\">Add propositional formulae to the matrix factorization training objective\n<ul>\n    <li>\\([r_s(e_i,e_j) \\Rightarrow r_t(e_i,e_j)]\\)</li>\n    <li>\\([r_s(e_i',e_j') \\Rightarrow r_t(e_i',e_j')]\\)</li>\n</ul>   \n</li>\n</ul>",
+      "code" : "<h3>Differentiable Logic Formulae</h3>\n\n$$\n[\\mathcal{F}] = \\begin{cases}\n   \\sigma(\\mathbf{v}_s \\cdot \\mathbf{v}_{ij}) & \\text{ if } \\mathcal{F} = r_s(e_i, e_j), \\text{ i.e., facts}\\newline\n   1 - [\\mathcal{A}] & \\text{ if } \\mathcal{F} = \\neg\\mathcal{A}\\newline\n  [\\mathcal{A}] * [\\mathcal{B}] &\\text{ if } \\mathcal{F} = \\mathcal{A} \\wedge \\mathcal{B}\n\\end{cases}\n$$\n\n<ul>\n<li class=\"fragment\" data-fragment-index=\"1\">\nFrom negation and conjunction we can build any propositional formula\n    <ul><li>Disjunction: $$[\\mathcal{A} \\vee \\mathcal{B}] = 1 - (1 - [\\mathcal{A}])*(1 - [\\mathcal{B}])$$\n    </li>\n    <li>Implication:$$[\\mathcal{A} \\Rightarrow \\mathcal{B}] = [\\mathcal{A}]([\\mathcal{B}] - 1) + 1$$\n    </li>\n    </ul>    \n</li>\n<li class=\"fragment\" data-fragment-index=\"2\">\n    Jointly maximize the log-likelihood of atomic and propositional formulae \n \n    $$\\max_{\\{\\mathbf{v}_s\\}, \\{\\mathbf{v}_{ij}\\}} \\sum_{\\mathcal{F} \\in \\mathfrak{F}} \\log([\\mathcal{F}])$$\n</li>\n</ul>",
       "extraFields" : { }
     }
   }, {
@@ -421,15 +421,15 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "experiments",
+      "code" : "grounding",
       "extraFields" : { }
     }
   }, {
     "id" : 53,
-    "compiler" : "markdown",
+    "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "<h3>Experiments</h3>\n<ul>\n<li class=\"fragment\" data-fragment-index=\"1\">Relation extraction corpus (Riedel et al., 2013)\n<ul>\n<li>~4k textual patterns from New York Times corpus and 151 Freebase relations, ~42k entity-pairs, ~100k training facts </li>\n<li>Metric: mean average precision (<b>MAP</b>) on manually annotated predictions for Freebase relations</li>\n</ul>\n</li>\n<li class=\"fragment\" data-fragment-index=\"2\"><b>Zero-shot Relation Learning</b>: \n<ul>\n<li>All Freebase training facts are removed</li>\n<li>No alignment between Freebase relations and textual patterns</li>\n</ul>\n</li>\n<li class=\"fragment\" data-fragment-index=\"3\"><b>Relations with Few Distant Labels</b>:\n<ul>\n<li>Varying degree of alignment between relations and textual patterns</li>\n</ul>\n</li>\n</ul>",
+      "code" : "<h3>Grounding</h3>\n$$\\forall x,y: r_s(x,y) \\Rightarrow r_t(x,y)$$\n<ul>\n<li class=\"fragment\" data-fragment-index=\"1\">Grounding based on all observed facts for premise \\(r_s(e_i,e_j)\\) and consequent \\(r_t(e_i,e_j)\\)\n</li>\n<li class=\"fragment\" data-fragment-index=\"2\">\nSample unobserved facts \\(r_s(e_i', e_j')\\) and \\(r_t(e_i', e_j')\\)\n</li>\n<li class=\"fragment\" data-fragment-index=\"3\">Add propositional formulae to the matrix factorization training objective\n<ul>\n    <li>\\([r_s(e_i,e_j) \\Rightarrow r_t(e_i,e_j)]\\)</li>\n    <li>\\([r_s(e_i',e_j') \\Rightarrow r_t(e_i',e_j')]\\)</li>\n</ul>   \n</li>\n</ul>",
       "extraFields" : { }
     }
   }, {
@@ -437,7 +437,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "evaluation",
+      "code" : "results1",
       "extraFields" : { }
     }
   }, {
@@ -445,7 +445,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "## Evaluation\n- Formulae extracted from predictions of a matrix factorization model (Sanchez et al., 2015)\n- Annotated manually\n- Given these formulae, which method can best make use of them?\n    - **Logical Inference**\n    - **Post-Factorization Inference**\n    - **Pre-Factorization Inference**\n    - **Joint Optimization**\n- Example: \n    \\\\(\\forall x,y: \\verb~#2-minister-#1~(x,y) \\Rightarrow \\verb~person/nationality~(x,y)\\\\)",
+      "code" : "### Zero-shot Relation Learning\n\n<img src=\"../../assets/figures/07/zero-shot-1.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -453,7 +453,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "results1",
+      "code" : "results2",
       "extraFields" : { }
     }
   }, {
@@ -461,7 +461,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Zero-shot Relation Learning\n\n<br />\n<img src=\"../../assets/figures/07/zero-shot-1.png\" height=\"500\">",
+      "code" : "### Zero-shot Relation Learning\n\n<img src=\"../../assets/figures/07/zero-shot-2.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -469,7 +469,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "results2",
+      "code" : "results3",
       "extraFields" : { }
     }
   }, {
@@ -477,7 +477,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Zero-shot Relation Learning\n\n<br />\n<img src=\"../../assets/figures/07/zero-shot-2.png\" height=\"500\">",
+      "code" : "### Zero-shot Relation Learning\n\n<img src=\"../../assets/figures/07/zero-shot-3.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -485,7 +485,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "results3",
+      "code" : "results4",
       "extraFields" : { }
     }
   }, {
@@ -493,7 +493,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Zero-shot Relation Learning\n\n<br />\n<img src=\"../../assets/figures/07/zero-shot-3.png\" height=\"500\">",
+      "code" : "### Zero-shot Relation Learning\n\n<img src=\"../../assets/figures/07/zero-shot-4.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -501,7 +501,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "results4",
+      "code" : "results5",
       "extraFields" : { }
     }
   }, {
@@ -509,7 +509,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Zero-shot Relation Learning\n\n<br />\n<img src=\"../../assets/figures/07/zero-shot-4.png\" height=\"500\">",
+      "code" : "### Zero-shot Relation Learning\n\n<img src=\"../../assets/figures/07/zero-shot-5.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
@@ -517,7 +517,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "results5",
+      "code" : "results",
       "extraFields" : { }
     }
   }, {
@@ -525,55 +525,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Zero-shot Relation Learning\n\n<br />\n<img src=\"../../assets/figures/07/zero-shot-5.png\" height=\"500\">",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 66,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "fewdistant",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 67,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### Relations with Few Distant Labels\n\n<br />\n<img src=\"../../assets/figures/07/subsample-wMAP.png\" height=\"500\">",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 68,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "results",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 69,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### Results on Full Dataset\n\n<br />\n<img src=\"../../assets/figures/07/results.png\" height=\"500\">",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 70,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "summary",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 71,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "## Summary\n- Matrix factorization for relation extraction generalizes well\n    - Hard to fix mistakes\n    - Fails for new or sparse relations\n- Formalize background knowledge as logical formulae\n    - Brittle and no generalization\n- Formulae can be injected into embeddings\n    - Make logical background knowledge differentiable\n    - Jointly optimize over factual and first-order knowledge\n        - Learns relations with no or little prior information in databases\n        - Generalizes beyond textual patterns mentioned in formulae\n        - Joint optimization > Pre-factorization inference > Post-factorization inference > Logical inference",
+      "code" : "### Full Dataset\n\n<img src=\"../../assets/figures/07/results.png\" height=\"500\">",
       "extraFields" : { }
     }
   } ],
