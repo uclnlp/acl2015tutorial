@@ -81,7 +81,7 @@
       }
     }
   }, {
-    "id" : 25,
+    "id" : 9,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -91,7 +91,7 @@
       }
     }
   }, {
-    "id" : 9,
+    "id" : 10,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -99,15 +99,15 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 10,
+    "id" : 11,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Vector Operations\n\n- the **inner/dot product** between vectors \\\\(\\mathbf{u}\\in\\Re^L\\\\) and \\\\(\\mathbf{v}\\in\\Re^L\\\\)\n$$\\langle \\mathbf{u},\\mathbf{v} \\rangle := \\sum_{\\ell=1}^L u_{\\ell} v_\\ell$$\n\n- the **outer product** between vectors \\\\(\\mathbf{u}\\in\\Re^N\\\\) and \\\\(\\mathbf{v}\\in\\Re^M\\\\)\n\n$$\\mathbf{u} \\otimes \\mathbf{v} = \\begin{pmatrix} u_{1} \\\\\\ u_{2} \\\\\\ \\vdots \\\\\\ u_{N}\\end{pmatrix} \\otimes \\begin{pmatrix} v_{1} \\\\\\ v_{2} \\\\\\ \\vdots \\\\\\ v_{M}\\end{pmatrix}  := \\begin{pmatrix} u_{1} v_{1} & u_{1} v_{2} & \\cdots & u_{1} v_{M}  \\\\\\ u_{2} v_{1} & u_{2} v_{2} & \\cdots & u_{2} v_{M} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ u_{N} v_{1} & u_{N} v_{2} & \\cdots & u_{N} v_{M} \\end{pmatrix}_{N\\times M}\n$$",
+      "code" : "### Vector Operations\n\n- the **inner product** between vectors \\\\(\\mathbf{u}\\in\\Re^L\\\\) and \\\\(\\mathbf{v}\\in\\Re^L\\\\)\n$$\\langle \\mathbf{u},\\mathbf{v} \\rangle := \\sum_{\\ell=1}^L u_{\\ell} v_\\ell$$\n\n- the **outer product** between vectors \\\\(\\mathbf{u}\\in\\Re^N\\\\) and \\\\(\\mathbf{v}\\in\\Re^M\\\\)\n\n$$\\mathbf{u} \\otimes \\mathbf{v} = \\begin{pmatrix} u_{1} \\\\\\ u_{2} \\\\\\ \\vdots \\\\\\ u_{N}\\end{pmatrix} \\otimes \\begin{pmatrix} v_{1} \\\\\\ v_{2} \\\\\\ \\vdots \\\\\\ v_{M}\\end{pmatrix}  := \\begin{pmatrix} u_{1} v_{1} & u_{1} v_{2} & \\cdots & u_{1} v_{M}  \\\\\\ u_{2} v_{1} & u_{2} v_{2} & \\cdots & u_{2} v_{M} \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ u_{N} v_{1} & u_{N} v_{2} & \\cdots & u_{N} v_{M} \\end{pmatrix}_{N\\times M}\n$$",
       "extraFields" : { }
     }
   }, {
-    "id" : 11,
+    "id" : 12,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -115,7 +115,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 12,
+    "id" : 13,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -123,7 +123,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 13,
+    "id" : 14,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -131,7 +131,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 14,
+    "id" : 15,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -139,7 +139,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 15,
+    "id" : 16,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -147,7 +147,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 16,
+    "id" : 17,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -155,7 +155,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 17,
+    "id" : 18,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -163,7 +163,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 18,
+    "id" : 19,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -171,7 +171,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 19,
+    "id" : 20,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -179,7 +179,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 20,
+    "id" : 21,
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
@@ -187,7 +187,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 21,
+    "id" : 22,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -195,7 +195,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 22,
+    "id" : 23,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -203,7 +203,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 26,
+    "id" : 24,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -213,7 +213,7 @@
       }
     }
   }, {
-    "id" : 24,
+    "id" : 25,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
