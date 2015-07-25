@@ -107,7 +107,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<img src=\"../../assets/figures/00/s1f2.png\" height=\"500\">",
+      "code" : "### NLP and Matrix Factorization\n\n**We already use it!**\n\n- LDA, word2vec, and GLOVE have interpretations as MF\n\n **Factorization can improve structured prediction models**:\n\n- Model parameters can be smoothed with matrix/tensor factorization\n\n- Better, more compact, dense models.\n\n **Matrix factorization supports logical reasoning:** \n\n- Recent work unites factorization and first-order logic rules",
       "extraFields" : { }
     }
   }, {
