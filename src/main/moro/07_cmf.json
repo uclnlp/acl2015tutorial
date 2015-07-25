@@ -18,6 +18,29 @@
     }
   }, {
     "id" : 2,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\n\nimport uk.ac.ucl.cs.mr.acltutorial.ManualCMF._\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\nimport ml.wolfe.{Mat, Vect}\nimport ml.wolfe.util.Math._\n\ndef opacity(m: Matrix, min: Double = 0, max: Double = 1, color: (Int, Int, Int) = (0, 0, 0)) = {\ndef valueToOpacity(value: Double) = {\n  val capped = Math.min(Math.max(min, value), max)\n  (capped - min) / (max - min)\n}\nm.copy(m.cells collect { case cell@Cell(_, _, d: Double, _, _, _, _) =>\n  cell.copy(value = \"\", color = color, opacity = valueToOpacity(d))\n})\n}\n\nval entityNames = Seq(\n   Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\"),\n   Seq(\"G\",\"P\",\"E\"),\n   Seq(\"D1\",\"D2\",\"D3\",\"D4\",\"D5\"))\n\nval n1 = entityNames(0).length \nval n2 = entityNames(1).length \nval n3 = entityNames(2).length \nval tuples31 = toTuples(parseMatrix(\n  \"\"\"1 2 0 0 0\n     0 0 1 0 0\n     0 0 0 1 1\n     0 0 1 1 1\n     1 2 1 1 1\"\"\"), n1 + n2, 0)\nval tuples32 = toTuples(parseMatrix(\n  \"\"\"1 0 0\n     0 1 1\n     0 1 1\n     0 1 0\n     1 0 1\"\"\"), n1 + n2, n1)\nval tuples21 = toTuples(parseMatrix(\n  \"\"\"1 1 0 0 0\n     1 1 0 1 1\n     1 1 1 1 1\"\"\"), n1, 0)\nval T1 = new Table(l2_type, tuples31)\nval T2 = new Table(logistic_type, tuples32)\nval T3 = new Table(logistic_type, tuples21)\n    \nval layout = Layout(cw = 65, ch = 50, colHeaderSize = 140)    \nval r31 = render(Seq(opacity(tuplesToMatrix(tuples31),0,2) + header(entityNames(2),entityNames(0))),layout)\nval r32 = render(Seq(opacity(tuplesToMatrix(tuples32)) + header(entityNames(2),entityNames(1))),layout)\nval r21 = render(Seq(opacity(tuplesToMatrix(tuples21)) + header(entityNames(1),entityNames(0))),layout)\n\nval r31_r32 = render(Seq(opacity(tuplesToMatrix(tuples31++ tuples32),0,2) + header(entityNames(2),entityNames(0) ++ entityNames(1))),layout)\n\nval r31_r32_r21 = render(Seq(opacity(tuplesToMatrix(tuples31++ tuples32 ++ tuples21),0,2) + header(entityNames(1) ++ entityNames(2),entityNames(0) ++ entityNames(1)).copy(vRulers = Seq(n1),hRulers = Seq(n2))),layout)\n\nval allEntityNames = entityNames.flatten(x => x)\n\nval r31_r32_r12 = render(Seq(opacity(tuplesToMatrix(tuples31++ tuples32 ++ transpose(tuples21)),0,2) + header(allEntityNames,entityNames(0) ++ entityNames(1)).copy(vRulers = Seq(n1),hRulers = Seq(n3))),layout)\n\n",
+      "extraFields" : {
+        "hide" : "true",
+        "aggregatedCells" : "[]"
+      }
+    }
+  }, {
+    "id" : 3,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\nval tuples31t = transpose(tuples31)\nval tuples32t = transpose(tuples32)\nval tuples21t = transpose(tuples21)\nval blk_mat = (opacity(tuplesToMatrix(tuples31++ tuples32 ++ tuples21++ tuples31t ++ tuples32t ++ tuples21t),0,2) + header(allEntityNames,allEntityNames)).copy(vRulers = Seq(n1,n1+n2),hRulers = Seq(n1,n1+n2))\n\nrender(Seq(blk_mat),layout)",
+      "extraFields" : {
+        "hide" : "true",
+        "cache" : "false",
+        "aggregatedCells" : "[\"\\n\\nimport uk.ac.ucl.cs.mr.acltutorial.ManualCMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport ml.wolfe.util.Math._\\n\\ndef opacity(m: Matrix, min: Double = 0, max: Double = 1, color: (Int, Int, Int) = (0, 0, 0)) = {\\ndef valueToOpacity(value: Double) = {\\n  val capped = Math.min(Math.max(min, value), max)\\n  (capped - min) / (max - min)\\n}\\nm.copy(m.cells collect { case cell@Cell(_, _, d: Double, _, _, _, _) =>\\n  cell.copy(value = \\\"\\\", color = color, opacity = valueToOpacity(d))\\n})\\n}\\n\\nval entityNames = Seq(\\n   Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\"),\\n   Seq(\\\"G\\\",\\\"P\\\",\\\"E\\\"),\\n   Seq(\\\"D1\\\",\\\"D2\\\",\\\"D3\\\",\\\"D4\\\",\\\"D5\\\"))\\n\\nval n1 = entityNames(0).length \\nval n2 = entityNames(1).length \\nval n3 = entityNames(2).length \\nval tuples31 = toTuples(parseMatrix(\\n  \\\"\\\"\\\"1 2 0 0 0\\n     0 0 1 0 0\\n     0 0 0 1 1\\n     0 0 1 1 1\\n     1 2 1 1 1\\\"\\\"\\\"), n1 + n2, 0)\\nval tuples32 = toTuples(parseMatrix(\\n  \\\"\\\"\\\"1 0 0\\n     0 1 1\\n     0 1 1\\n     0 1 0\\n     1 0 1\\\"\\\"\\\"), n1 + n2, n1)\\nval tuples21 = toTuples(parseMatrix(\\n  \\\"\\\"\\\"1 1 0 0 0\\n     1 1 0 1 1\\n     1 1 1 1 1\\\"\\\"\\\"), n1, 0)\\nval T1 = new Table(l2_type, tuples31)\\nval T2 = new Table(logistic_type, tuples32)\\nval T3 = new Table(logistic_type, tuples21)\\n    \\nval layout = Layout(cw = 65, ch = 50, colHeaderSize = 140)    \\nval r31 = render(Seq(opacity(tuplesToMatrix(tuples31),0,2) + header(entityNames(2),entityNames(0))),layout)\\nval r32 = render(Seq(opacity(tuplesToMatrix(tuples32)) + header(entityNames(2),entityNames(1))),layout)\\nval r21 = render(Seq(opacity(tuplesToMatrix(tuples21)) + header(entityNames(1),entityNames(0))),layout)\\n\\nval r31_r32 = render(Seq(opacity(tuplesToMatrix(tuples31++ tuples32),0,2) + header(entityNames(2),entityNames(0) ++ entityNames(1))),layout)\\n\\nval r31_r32_r21 = render(Seq(opacity(tuplesToMatrix(tuples31++ tuples32 ++ tuples21),0,2) + header(entityNames(1) ++ entityNames(2),entityNames(0) ++ entityNames(1)).copy(vRulers = Seq(n1),hRulers = Seq(n2))),layout)\\n\\nval allEntityNames = entityNames.flatten(x => x)\\n\\nval r31_r32_r12 = render(Seq(opacity(tuplesToMatrix(tuples31++ tuples32 ++ transpose(tuples21)),0,2) + header(allEntityNames,entityNames(0) ++ entityNames(1)).copy(vRulers = Seq(n1),hRulers = Seq(n3))),layout)\\n\\n\"]"
+      }
+    }
+  }, {
+    "id" : 4,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -25,7 +48,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 7,
+    "id" : 5,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -33,18 +56,19 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 8,
+    "id" : 6,
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "\n\nval n = 5\nval m = 5 \nval rand = new scala.util.Random(0)\nval rowNames = Seq(\"D1\",\"D2\",\"D3\",\"D4\",\"D5\")\nval colNames = Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")\nval names = header(rowNames,colNames)\n//val M = parseMatrix(\n//    \"\"\"1 2 0 0 0\n//       0 0 1 0 0\n//       0 0 0 1 1 \n//       0 0 1 1 1\n//       1 2 1 1 0\"\"\")\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=8, numRows=5)\n\nval m1 = Matrix(Seq(\n    Cell(0,0,   1),\n    Cell(0,1,   2),\n    Cell(1,2,   1),\n    Cell(2,3,   1),\n    Cell(2,4,   1),\n    Cell(3,2,   1),\n    Cell(3,3,   1),\n    Cell(3,4,   1),\n    Cell(4,0,   1),\n    Cell(4,1,   2),\n    Cell(4,2,   1),\n    Cell(4,3,   1)\n),\nSeq(\n    RowLabel(2,\"Doc\")\n    ),\nSeq(\n    ColLabel(2,\"Word\")\n    ), \nSeq(0,5), Seq(0,5))\n\nval m2 = Matrix(Seq(\n    Cell(0,0,   1),\n    Cell(0,1,   2),\n    Cell(1,2,   1),\n    Cell(2,3,   1),\n    Cell(2,4,   1),\n    Cell(3,2,   1),\n    Cell(3,3,   1),\n    Cell(3,4,   1),\n    Cell(4,0,   1),\n    Cell(4,1,   2),\n    Cell(4,2,   1),\n    Cell(4,3,   1),\n    Cell(0,5,   1),\n    Cell(1,6,   1),\n    Cell(1,7,   1),\n    Cell(2,6,   1),\n    Cell(2,7,   1),\n    Cell(3,6,   1),\n    Cell(3,7,   1),\n    Cell(4,5,   1),\n    Cell(4,6,   1),\n    Cell(4,7,   1)\n),\nSeq(\n    RowLabel(2,\"Doc\")\n    ),\nSeq(\n    ColLabel(2,\"Word\"),\n    ColLabel(6,\"Label\")\n    ), \nSeq(0,5), Seq(0,5,8))\n\n//m5.size = Some(2.0 -> 3.0)\nval matrices = Seq(m1,m2)\nMatrixRenderer.render(matrices,layout)\n\n",
+      "code" : "\n\n\nfragments(Seq(floatLeft(Seq(r31,r32)),r31_r32))\n\n\n",
       "extraFields" : {
         "showEditor" : "false",
-        "aggregatedCells" : "[\"\\nimport uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport ml.wolfe.util.Math._\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)\\n\",\"\\nimport uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=9,numRows=8)\\n\\nval m5 = Matrix(Seq(\\n    Cell(0,1,   1),\\n    Cell(0,0,   1),\\n    Cell(0,2,   1),\\n    Cell(0,3,   0),\\n    Cell(0,4,   1),\\n    Cell(0,6,0),\\n    Cell(1,1,1),\\n    Cell(1,0,0),\\n    Cell(1,4,1),\\n    Cell(1,5,0),\\n    Cell(1,6,0),\\n    Cell(1,7,1),\\n    Cell(2,1,0),\\n    Cell(2,0,1),\\n    Cell(2,3,1),\\n    Cell(2,4,0),\\n    Cell(2,6,1),\\n    Cell(2,7,0),\\n    Cell(3,1,0),\\n    Cell(3,0,0),\\n    Cell(3,2,1),\\n    Cell(3,5,0),\\n    Cell(3,6,0),\\n    Cell(3,7,0),\\n    Cell(4,1,\\\"???\\\"),\\n    Cell(4,0,\\\"???\\\"),\\n    Cell(4,2,1),\\n    Cell(4,3,0),\\n    Cell(4,5,1),\\n    Cell(4,6,0),\\n    Cell(4,7,0),\\n    Cell(5,1,\\\"???\\\"),\\n    Cell(5,0,\\\"???\\\"),\\n    Cell(5,2,0),\\n    Cell(5,3,1),\\n    Cell(5,5,0),\\n    Cell(6,2,1),\\n    Cell(6,3,0),\\n    Cell(6,5,1),\\n    Cell(6,6,0),\\n    Cell(7,2,0),\\n    Cell(7,3,1),\\n    Cell(7,4,0),\\n    Cell(7,5,0)\\n),\\nSeq(\\n    RowLabel(0,\\\"TRAIN\\\"),\\n    RowLabel(4,\\\"TEST\\\"),\\n    RowLabel(6,\\\"UNLAB\\\")),\\n    Seq(ColLabel(0,\\\"task1\\\"),\\n    ColLabel(1,\\\"task2\\\"),\\n    ColLabel(2,\\\"feat1\\\"),\\n    ColLabel(3,\\\"feat2\\\"),\\n    ColLabel(4,\\\"feat3\\\"),\\n    ColLabel(5,\\\"feat4\\\"),\\n    ColLabel(6,\\\"feat5\\\"),\\n    ColLabel(7,\\\"feat6\\\")), \\nSeq(0,4,6), Seq(0,2))\\n\\n//m5.size = Some(2.0 -> 3.0)\\nval matrices = Seq(m5)\\nMatrixRenderer.render(matrices,layout)\\n\"]"
+        "cache" : "false",
+        "aggregatedCells" : "[\"\\n\\nimport uk.ac.ucl.cs.mr.acltutorial.ManualCMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport ml.wolfe.util.Math._\\n\\ndef opacity(m: Matrix, min: Double = 0, max: Double = 1, color: (Int, Int, Int) = (0, 0, 0)) = {\\ndef valueToOpacity(value: Double) = {\\n  val capped = Math.min(Math.max(min, value), max)\\n  (capped - min) / (max - min)\\n}\\nm.copy(m.cells collect { case cell@Cell(_, _, d: Double, _, _, _, _) =>\\n  cell.copy(value = \\\"\\\", color = color, opacity = valueToOpacity(d))\\n})\\n}\\n\\nval entityNames = Seq(\\n   Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\"),\\n   Seq(\\\"G\\\",\\\"P\\\",\\\"E\\\"),\\n   Seq(\\\"D1\\\",\\\"D2\\\",\\\"D3\\\",\\\"D4\\\",\\\"D5\\\"))\\n\\nval n1 = entityNames(0).length \\nval n2 = entityNames(1).length \\nval n3 = entityNames(2).length \\nval tuples31 = toTuples(parseMatrix(\\n  \\\"\\\"\\\"1 2 0 0 0\\n     0 0 1 0 0\\n     0 0 0 1 1\\n     0 0 1 1 1\\n     1 2 1 1 1\\\"\\\"\\\"), n1 + n2, 0)\\nval tuples32 = toTuples(parseMatrix(\\n  \\\"\\\"\\\"1 0 0\\n     0 1 1\\n     0 1 1\\n     0 1 0\\n     1 0 1\\\"\\\"\\\"), n1 + n2, n1)\\nval tuples21 = toTuples(parseMatrix(\\n  \\\"\\\"\\\"1 1 0 0 0\\n     1 1 0 1 1\\n     1 1 1 1 1\\\"\\\"\\\"), n1, 0)\\nval T1 = new Table(l2_type, tuples31)\\nval T2 = new Table(logistic_type, tuples32)\\nval T3 = new Table(logistic_type, tuples21)\\n    \\nval layout = Layout(cw = 65, ch = 50, colHeaderSize = 140)    \\nval r31 = render(Seq(opacity(tuplesToMatrix(tuples31),0,2) + header(entityNames(2),entityNames(0))),layout)\\nval r32 = render(Seq(opacity(tuplesToMatrix(tuples32)) + header(entityNames(2),entityNames(1))),layout)\\nval r21 = render(Seq(opacity(tuplesToMatrix(tuples21)) + header(entityNames(1),entityNames(0))),layout)\\n\\nval r31_r32 = render(Seq(opacity(tuplesToMatrix(tuples31++ tuples32),0,2) + header(entityNames(2),entityNames(0) ++ entityNames(1))),layout)\\n\\nval r31_r32_r21 = render(Seq(opacity(tuplesToMatrix(tuples31++ tuples32 ++ tuples21),0,2) + header(entityNames(1) ++ entityNames(2),entityNames(0) ++ entityNames(1)).copy(vRulers = Seq(n1),hRulers = Seq(n2))),layout)\\n\\nval allEntityNames = entityNames.flatten(x => x)\\n\\nval r31_r32_r12 = render(Seq(opacity(tuplesToMatrix(tuples31++ tuples32 ++ transpose(tuples21)),0,2) + header(allEntityNames,entityNames(0) ++ entityNames(1)).copy(vRulers = Seq(n1),hRulers = Seq(n3))),layout)\\n\\n\",\"\\nval tuples31t = transpose(tuples31)\\nval tuples32t = transpose(tuples32)\\nval tuples21t = transpose(tuples21)\\nval blk_mat = (opacity(tuplesToMatrix(tuples31++ tuples32 ++ tuples21++ tuples31t ++ tuples32t ++ tuples21t),0,2) + header(allEntityNames,allEntityNames)).copy(vRulers = Seq(n1,n1+n2),hRulers = Seq(n1,n1+n2))\\n\\nrender(Seq(blk_mat),layout)\"]"
       }
     }
   }, {
-    "id" : 9,
+    "id" : 7,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -54,7 +78,7 @@
       }
     }
   }, {
-    "id" : 10,
+    "id" : 8,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -62,7 +86,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 11,
+    "id" : 9,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -70,14 +94,33 @@
       "extraFields" : { }
     }
   }, {
+    "id" : 10,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\n\nfragments(Seq(floatLeft(Seq(r31,r32,r21)),r31_r32_r21))\n\n\n",
+      "extraFields" : {
+        "showEditor" : "false",
+        "aggregatedCells" : "[\"\\n\\nimport uk.ac.ucl.cs.mr.acltutorial.ManualCMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport ml.wolfe.util.Math._\\n\\ndef opacity(m: Matrix, min: Double = 0, max: Double = 1, color: (Int, Int, Int) = (0, 0, 0)) = {\\ndef valueToOpacity(value: Double) = {\\n  val capped = Math.min(Math.max(min, value), max)\\n  (capped - min) / (max - min)\\n}\\nm.copy(m.cells collect { case cell@Cell(_, _, d: Double, _, _, _, _) =>\\n  cell.copy(value = \\\"\\\", color = color, opacity = valueToOpacity(d))\\n})\\n}\\n\\nval entityNames = Seq(\\n   Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\"),\\n   Seq(\\\"G\\\",\\\"P\\\",\\\"E\\\"),\\n   Seq(\\\"D1\\\",\\\"D2\\\",\\\"D3\\\",\\\"D4\\\",\\\"D5\\\"))\\n\\nval n1 = entityNames(0).length \\nval n2 = entityNames(1).length \\nval n3 = entityNames(2).length \\nval tuples31 = toTuples(parseMatrix(\\n  \\\"\\\"\\\"1 2 0 0 0\\n     0 0 1 0 0\\n     0 0 0 1 1\\n     0 0 1 1 1\\n     1 2 1 1 1\\\"\\\"\\\"), n1 + n2, 0)\\nval tuples32 = toTuples(parseMatrix(\\n  \\\"\\\"\\\"1 0 0\\n     0 1 1\\n     0 1 1\\n     0 1 0\\n     1 0 1\\\"\\\"\\\"), n1 + n2, n1)\\nval tuples21 = toTuples(parseMatrix(\\n  \\\"\\\"\\\"1 1 0 0 0\\n     1 1 0 1 1\\n     1 1 1 1 1\\\"\\\"\\\"), n1, 0)\\nval T1 = new Table(l2_type, tuples31)\\nval T2 = new Table(logistic_type, tuples32)\\nval T3 = new Table(logistic_type, tuples21)\\n    \\nval layout = Layout(cw = 65, ch = 50, colHeaderSize = 140)    \\nval r31 = render(Seq(opacity(tuplesToMatrix(tuples31),0,2) + header(entityNames(2),entityNames(0))),layout)\\nval r32 = render(Seq(opacity(tuplesToMatrix(tuples32)) + header(entityNames(2),entityNames(1))),layout)\\nval r21 = render(Seq(opacity(tuplesToMatrix(tuples21)) + header(entityNames(1),entityNames(0))),layout)\\n\\nval r31_r32 = render(Seq(opacity(tuplesToMatrix(tuples31++ tuples32),0,2) + header(entityNames(2),entityNames(0) ++ entityNames(1))),layout)\\n\\nval r31_r32_r21 = render(Seq(opacity(tuplesToMatrix(tuples31++ tuples32 ++ tuples21),0,2) + header(entityNames(1) ++ entityNames(2),entityNames(0) ++ entityNames(1)).copy(vRulers = Seq(n1),hRulers = Seq(n2))),layout)\\n\\nval allEntityNames = entityNames.flatten(x => x)\\n\\nval r31_r32_r12 = render(Seq(opacity(tuplesToMatrix(tuples31++ tuples32 ++ transpose(tuples21)),0,2) + header(allEntityNames,entityNames(0) ++ entityNames(1)).copy(vRulers = Seq(n1),hRulers = Seq(n3))),layout)\\n\\n\",\"\\nval tuples31t = transpose(tuples31)\\nval tuples32t = transpose(tuples32)\\nval tuples21t = transpose(tuples21)\\nval blk_mat = (opacity(tuplesToMatrix(tuples31++ tuples32 ++ tuples21++ tuples31t ++ tuples32t ++ tuples21t),0,2) + header(allEntityNames,allEntityNames)).copy(vRulers = Seq(n1,n1+n2),hRulers = Seq(n1,n1+n2))\\n\\nrender(Seq(blk_mat),layout)\",\"\\n\\n\\nfragments(Seq(floatLeft(Seq(r31,r32)),r31_r32))\\n\\n\\n\"]"
+      }
+    }
+  }, {
+    "id" : 11,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "blk",
+      "extraFields" : { }
+    }
+  }, {
     "id" : 12,
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "\n\n\nval n = 5\nval m = 5 \nval rand = new scala.util.Random(0)\nval rowNames = Seq(\"D1\",\"D2\",\"D3\",\"D4\",\"D5\",\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")\nval colNames = Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\",\"greece\",\"politics\",\"economy\")\nval names = header(rowNames,colNames)\n//val M = parseMatrix(\n//    \"\"\"1 2 0 0 0\n//       0 0 1 0 0\n//       0 0 0 1 1 \n//       0 0 1 1 1\n//       1 2 1 1 0\"\"\")\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=8, numRows=10)\n\nval m1 = Matrix(Seq(\n    Cell(0,0,   1),\n    Cell(0,1,   2),\n    Cell(1,2,   1),\n    Cell(2,3,   1),\n    Cell(2,4,   1),\n    Cell(3,2,   1),\n    Cell(3,3,   1),\n    Cell(3,4,   1),\n    Cell(4,0,   1),\n    Cell(4,1,   2),\n    Cell(4,2,   1),\n    Cell(4,3,   1),\n    Cell(0,5,   1),\n    Cell(1,6,   1),\n    Cell(1,7,   1),\n    Cell(2,6,   1),\n    Cell(2,7,   1),\n    Cell(3,6,   1),\n    Cell(3,7,   1),\n    Cell(4,5,   1),\n    Cell(4,6,   1),\n    Cell(4,7,   1),\n    Cell(5,5,   1),\n    Cell(5,6,   1),\n    Cell(6,7,   1),\n    Cell(7,5,   1),\n    Cell(8,6,   1),\n    Cell(9,7,   1)\n),\nSeq(\n    RowLabel(2,\"Doc\"),\n    RowLabel(7,\"Word\")\n    ),\nSeq(\n    ColLabel(2,\"Word\"),\n    ColLabel(6,\"Label\")\n    ), \nSeq(0,5,10), Seq(0,5,8))\n\n//m5.size = Some(2.0 -> 3.0)\nval matrices = Seq(m1)\nMatrixRenderer.render(matrices,layout)\n",
+      "code" : "render(Seq(blk_mat),Layout(cw = 55, ch = 40, colHeaderSize = 140))",
       "extraFields" : {
         "showEditor" : "false",
-        "aggregatedCells" : "[\"\\nimport uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport ml.wolfe.util.Math._\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)\\n\",\"\\nimport uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=9,numRows=8)\\n\\nval m5 = Matrix(Seq(\\n    Cell(0,1,   1),\\n    Cell(0,0,   1),\\n    Cell(0,2,   1),\\n    Cell(0,3,   0),\\n    Cell(0,4,   1),\\n    Cell(0,6,0),\\n    Cell(1,1,1),\\n    Cell(1,0,0),\\n    Cell(1,4,1),\\n    Cell(1,5,0),\\n    Cell(1,6,0),\\n    Cell(1,7,1),\\n    Cell(2,1,0),\\n    Cell(2,0,1),\\n    Cell(2,3,1),\\n    Cell(2,4,0),\\n    Cell(2,6,1),\\n    Cell(2,7,0),\\n    Cell(3,1,0),\\n    Cell(3,0,0),\\n    Cell(3,2,1),\\n    Cell(3,5,0),\\n    Cell(3,6,0),\\n    Cell(3,7,0),\\n    Cell(4,1,\\\"???\\\"),\\n    Cell(4,0,\\\"???\\\"),\\n    Cell(4,2,1),\\n    Cell(4,3,0),\\n    Cell(4,5,1),\\n    Cell(4,6,0),\\n    Cell(4,7,0),\\n    Cell(5,1,\\\"???\\\"),\\n    Cell(5,0,\\\"???\\\"),\\n    Cell(5,2,0),\\n    Cell(5,3,1),\\n    Cell(5,5,0),\\n    Cell(6,2,1),\\n    Cell(6,3,0),\\n    Cell(6,5,1),\\n    Cell(6,6,0),\\n    Cell(7,2,0),\\n    Cell(7,3,1),\\n    Cell(7,4,0),\\n    Cell(7,5,0)\\n),\\nSeq(\\n    RowLabel(0,\\\"TRAIN\\\"),\\n    RowLabel(4,\\\"TEST\\\"),\\n    RowLabel(6,\\\"UNLAB\\\")),\\n    Seq(ColLabel(0,\\\"task1\\\"),\\n    ColLabel(1,\\\"task2\\\"),\\n    ColLabel(2,\\\"feat1\\\"),\\n    ColLabel(3,\\\"feat2\\\"),\\n    ColLabel(4,\\\"feat3\\\"),\\n    ColLabel(5,\\\"feat4\\\"),\\n    ColLabel(6,\\\"feat5\\\"),\\n    ColLabel(7,\\\"feat6\\\")), \\nSeq(0,4,6), Seq(0,2))\\n\\n//m5.size = Some(2.0 -> 3.0)\\nval matrices = Seq(m5)\\nMatrixRenderer.render(matrices,layout)\\n\",\"\\n\\nval n = 5\\nval m = 5 \\nval rand = new scala.util.Random(0)\\nval rowNames = Seq(\\\"D1\\\",\\\"D2\\\",\\\"D3\\\",\\\"D4\\\",\\\"D5\\\")\\nval colNames = Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\")\\nval names = header(rowNames,colNames)\\n//val M = parseMatrix(\\n//    \\\"\\\"\\\"1 2 0 0 0\\n//       0 0 1 0 0\\n//       0 0 0 1 1 \\n//       0 0 1 1 1\\n//       1 2 1 1 0\\\"\\\"\\\")\\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=8, numRows=5)\\n\\nval m1 = Matrix(Seq(\\n    Cell(0,0,   1),\\n    Cell(0,1,   2),\\n    Cell(1,2,   1),\\n    Cell(2,3,   1),\\n    Cell(2,4,   1),\\n    Cell(3,2,   1),\\n    Cell(3,3,   1),\\n    Cell(3,4,   1),\\n    Cell(4,0,   1),\\n    Cell(4,1,   2),\\n    Cell(4,2,   1),\\n    Cell(4,3,   1)\\n),\\nSeq(\\n    RowLabel(2,\\\"Doc\\\")\\n    ),\\nSeq(\\n    ColLabel(2,\\\"Word\\\")\\n    ), \\nSeq(0,5), Seq(0,5))\\n\\nval m2 = Matrix(Seq(\\n    Cell(0,0,   1),\\n    Cell(0,1,   2),\\n    Cell(1,2,   1),\\n    Cell(2,3,   1),\\n    Cell(2,4,   1),\\n    Cell(3,2,   1),\\n    Cell(3,3,   1),\\n    Cell(3,4,   1),\\n    Cell(4,0,   1),\\n    Cell(4,1,   2),\\n    Cell(4,2,   1),\\n    Cell(4,3,   1),\\n    Cell(0,5,   1),\\n    Cell(1,6,   1),\\n    Cell(1,7,   1),\\n    Cell(2,6,   1),\\n    Cell(2,7,   1),\\n    Cell(3,6,   1),\\n    Cell(3,7,   1),\\n    Cell(4,5,   1),\\n    Cell(4,6,   1),\\n    Cell(4,7,   1)\\n),\\nSeq(\\n    RowLabel(2,\\\"Doc\\\")\\n    ),\\nSeq(\\n    ColLabel(2,\\\"Word\\\"),\\n    ColLabel(6,\\\"Label\\\")\\n    ), \\nSeq(0,5), Seq(0,5,8))\\n\\n//m5.size = Some(2.0 -> 3.0)\\nval matrices = Seq(m1,m2)\\nMatrixRenderer.render(matrices,layout)\\n\\n\"]"
+        "aggregatedCells" : "[\"\\n\\nimport uk.ac.ucl.cs.mr.acltutorial.ManualCMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport ml.wolfe.util.Math._\\n\\ndef opacity(m: Matrix, min: Double = 0, max: Double = 1, color: (Int, Int, Int) = (0, 0, 0)) = {\\ndef valueToOpacity(value: Double) = {\\n  val capped = Math.min(Math.max(min, value), max)\\n  (capped - min) / (max - min)\\n}\\nm.copy(m.cells collect { case cell@Cell(_, _, d: Double, _, _, _, _) =>\\n  cell.copy(value = \\\"\\\", color = color, opacity = valueToOpacity(d))\\n})\\n}\\n\\nval entityNames = Seq(\\n   Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\"),\\n   Seq(\\\"G\\\",\\\"P\\\",\\\"E\\\"),\\n   Seq(\\\"D1\\\",\\\"D2\\\",\\\"D3\\\",\\\"D4\\\",\\\"D5\\\"))\\n\\nval n1 = entityNames(0).length \\nval n2 = entityNames(1).length \\nval n3 = entityNames(2).length \\nval tuples31 = toTuples(parseMatrix(\\n  \\\"\\\"\\\"1 2 0 0 0\\n     0 0 1 0 0\\n     0 0 0 1 1\\n     0 0 1 1 1\\n     1 2 1 1 1\\\"\\\"\\\"), n1 + n2, 0)\\nval tuples32 = toTuples(parseMatrix(\\n  \\\"\\\"\\\"1 0 0\\n     0 1 1\\n     0 1 1\\n     0 1 0\\n     1 0 1\\\"\\\"\\\"), n1 + n2, n1)\\nval tuples21 = toTuples(parseMatrix(\\n  \\\"\\\"\\\"1 1 0 0 0\\n     1 1 0 1 1\\n     1 1 1 1 1\\\"\\\"\\\"), n1, 0)\\nval T1 = new Table(l2_type, tuples31)\\nval T2 = new Table(logistic_type, tuples32)\\nval T3 = new Table(logistic_type, tuples21)\\n    \\nval layout = Layout(cw = 65, ch = 50, colHeaderSize = 140)    \\nval r31 = render(Seq(opacity(tuplesToMatrix(tuples31),0,2) + header(entityNames(2),entityNames(0))),layout)\\nval r32 = render(Seq(opacity(tuplesToMatrix(tuples32)) + header(entityNames(2),entityNames(1))),layout)\\nval r21 = render(Seq(opacity(tuplesToMatrix(tuples21)) + header(entityNames(1),entityNames(0))),layout)\\n\\nval r31_r32 = render(Seq(opacity(tuplesToMatrix(tuples31++ tuples32),0,2) + header(entityNames(2),entityNames(0) ++ entityNames(1))),layout)\\n\\nval r31_r32_r21 = render(Seq(opacity(tuplesToMatrix(tuples31++ tuples32 ++ tuples21),0,2) + header(entityNames(1) ++ entityNames(2),entityNames(0) ++ entityNames(1)).copy(vRulers = Seq(n1),hRulers = Seq(n2))),layout)\\n\\nval allEntityNames = entityNames.flatten(x => x)\\n\\nval r31_r32_r12 = render(Seq(opacity(tuplesToMatrix(tuples31++ tuples32 ++ transpose(tuples21)),0,2) + header(allEntityNames,entityNames(0) ++ entityNames(1)).copy(vRulers = Seq(n1),hRulers = Seq(n3))),layout)\\n\\n\",\"\\nval tuples31t = transpose(tuples31)\\nval tuples32t = transpose(tuples32)\\nval tuples21t = transpose(tuples21)\\nval blk_mat = (opacity(tuplesToMatrix(tuples31++ tuples32 ++ tuples21++ tuples31t ++ tuples32t ++ tuples21t),0,2) + header(allEntityNames,allEntityNames)).copy(vRulers = Seq(n1,n1+n2),hRulers = Seq(n1,n1+n2))\\n\\nrender(Seq(blk_mat),layout)\",\"\\n\\n\\nfragments(Seq(floatLeft(Seq(r31,r32)),r31_r32))\\n\\n\\n\",\"\\n\\nfragments(Seq(floatLeft(Seq(r31,r32,r21)),r31_r32_r21))\\n\\n\\n\"]"
       }
     }
   }, {
@@ -98,17 +141,6 @@
     }
   }, {
     "id" : 15,
-    "compiler" : "scala",
-    "input" : {
-      "sessionId" : null,
-      "code" : "val n = 5\nval m = 5 \nval rand = new scala.util.Random(0)\nval rowNames = Seq(\"D1\",\"D2\",\"D3\",\"D4\",\"D5\",\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")\nval colNames = Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\",\"greece\",\"politics\",\"economy\")\nval names = header(rowNames,colNames)\n//val M = parseMatrix(\n//    \"\"\"1 2 0 0 0\n//       0 0 1 0 0\n//       0 0 0 1 1 \n//       0 0 1 1 1\n//       1 2 1 1 0\"\"\")\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=8, numRows=10)\n\nval m1 = Matrix(Seq(\n    Cell(0,0,   1),\n    Cell(0,1,   2),\n    Cell(1,2,   1),\n    Cell(2,3,   1),\n    Cell(2,4,   1),\n    Cell(3,2,   1),\n    Cell(3,3,   1),\n    Cell(3,4,   1),\n    Cell(4,0,   1),\n    Cell(4,1,   2),\n    Cell(4,2,   1),\n    Cell(4,3,   1),\n    Cell(0,5,   1),\n    Cell(1,6,   1),\n    Cell(1,7,   1),\n    Cell(2,6,   1),\n    Cell(2,7,   1),\n    Cell(3,6,   1),\n    Cell(3,7,   1),\n    Cell(4,5,   1),\n    Cell(4,6,   1),\n    Cell(4,7,   1),\n    Cell(5,5,   1),\n    Cell(5,6,   1),\n    Cell(6,7,   1),\n    Cell(7,5,   1),\n    Cell(8,6,   1),\n    Cell(9,7,   1)\n),\nSeq(\n    RowLabel(2,\"Doc\"),\n    RowLabel(7,\"Word\")\n    ),\nSeq(\n    ColLabel(2,\"Word\"),\n    ColLabel(6,\"Label\")\n    ), \nSeq(0,5,10), Seq(0,5,8))\n\n//m5.size = Some(2.0 -> 3.0)\nval matrices = Seq(m1)\nMatrixRenderer.render(matrices,layout)",
-      "extraFields" : {
-        "showEditor" : "false",
-        "aggregatedCells" : "[\"\\nimport uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport ml.wolfe.util.Math._\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)\\n\",\"\\nimport uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=9,numRows=8)\\n\\nval m5 = Matrix(Seq(\\n    Cell(0,1,   1),\\n    Cell(0,0,   1),\\n    Cell(0,2,   1),\\n    Cell(0,3,   0),\\n    Cell(0,4,   1),\\n    Cell(0,6,0),\\n    Cell(1,1,1),\\n    Cell(1,0,0),\\n    Cell(1,4,1),\\n    Cell(1,5,0),\\n    Cell(1,6,0),\\n    Cell(1,7,1),\\n    Cell(2,1,0),\\n    Cell(2,0,1),\\n    Cell(2,3,1),\\n    Cell(2,4,0),\\n    Cell(2,6,1),\\n    Cell(2,7,0),\\n    Cell(3,1,0),\\n    Cell(3,0,0),\\n    Cell(3,2,1),\\n    Cell(3,5,0),\\n    Cell(3,6,0),\\n    Cell(3,7,0),\\n    Cell(4,1,\\\"???\\\"),\\n    Cell(4,0,\\\"???\\\"),\\n    Cell(4,2,1),\\n    Cell(4,3,0),\\n    Cell(4,5,1),\\n    Cell(4,6,0),\\n    Cell(4,7,0),\\n    Cell(5,1,\\\"???\\\"),\\n    Cell(5,0,\\\"???\\\"),\\n    Cell(5,2,0),\\n    Cell(5,3,1),\\n    Cell(5,5,0),\\n    Cell(6,2,1),\\n    Cell(6,3,0),\\n    Cell(6,5,1),\\n    Cell(6,6,0),\\n    Cell(7,2,0),\\n    Cell(7,3,1),\\n    Cell(7,4,0),\\n    Cell(7,5,0)\\n),\\nSeq(\\n    RowLabel(0,\\\"TRAIN\\\"),\\n    RowLabel(4,\\\"TEST\\\"),\\n    RowLabel(6,\\\"UNLAB\\\")),\\n    Seq(ColLabel(0,\\\"task1\\\"),\\n    ColLabel(1,\\\"task2\\\"),\\n    ColLabel(2,\\\"feat1\\\"),\\n    ColLabel(3,\\\"feat2\\\"),\\n    ColLabel(4,\\\"feat3\\\"),\\n    ColLabel(5,\\\"feat4\\\"),\\n    ColLabel(6,\\\"feat5\\\"),\\n    ColLabel(7,\\\"feat6\\\")), \\nSeq(0,4,6), Seq(0,2))\\n\\n//m5.size = Some(2.0 -> 3.0)\\nval matrices = Seq(m5)\\nMatrixRenderer.render(matrices,layout)\\n\",\"\\n\\nval n = 5\\nval m = 5 \\nval rand = new scala.util.Random(0)\\nval rowNames = Seq(\\\"D1\\\",\\\"D2\\\",\\\"D3\\\",\\\"D4\\\",\\\"D5\\\")\\nval colNames = Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\")\\nval names = header(rowNames,colNames)\\n//val M = parseMatrix(\\n//    \\\"\\\"\\\"1 2 0 0 0\\n//       0 0 1 0 0\\n//       0 0 0 1 1 \\n//       0 0 1 1 1\\n//       1 2 1 1 0\\\"\\\"\\\")\\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=8, numRows=5)\\n\\nval m1 = Matrix(Seq(\\n    Cell(0,0,   1),\\n    Cell(0,1,   2),\\n    Cell(1,2,   1),\\n    Cell(2,3,   1),\\n    Cell(2,4,   1),\\n    Cell(3,2,   1),\\n    Cell(3,3,   1),\\n    Cell(3,4,   1),\\n    Cell(4,0,   1),\\n    Cell(4,1,   2),\\n    Cell(4,2,   1),\\n    Cell(4,3,   1)\\n),\\nSeq(\\n    RowLabel(2,\\\"Doc\\\")\\n    ),\\nSeq(\\n    ColLabel(2,\\\"Word\\\")\\n    ), \\nSeq(0,5), Seq(0,5))\\n\\nval m2 = Matrix(Seq(\\n    Cell(0,0,   1),\\n    Cell(0,1,   2),\\n    Cell(1,2,   1),\\n    Cell(2,3,   1),\\n    Cell(2,4,   1),\\n    Cell(3,2,   1),\\n    Cell(3,3,   1),\\n    Cell(3,4,   1),\\n    Cell(4,0,   1),\\n    Cell(4,1,   2),\\n    Cell(4,2,   1),\\n    Cell(4,3,   1),\\n    Cell(0,5,   1),\\n    Cell(1,6,   1),\\n    Cell(1,7,   1),\\n    Cell(2,6,   1),\\n    Cell(2,7,   1),\\n    Cell(3,6,   1),\\n    Cell(3,7,   1),\\n    Cell(4,5,   1),\\n    Cell(4,6,   1),\\n    Cell(4,7,   1)\\n),\\nSeq(\\n    RowLabel(2,\\\"Doc\\\")\\n    ),\\nSeq(\\n    ColLabel(2,\\\"Word\\\"),\\n    ColLabel(6,\\\"Label\\\")\\n    ), \\nSeq(0,5), Seq(0,5,8))\\n\\n//m5.size = Some(2.0 -> 3.0)\\nval matrices = Seq(m1,m2)\\nMatrixRenderer.render(matrices,layout)\\n\\n\",\"\\n\\n\\nval n = 5\\nval m = 5 \\nval rand = new scala.util.Random(0)\\nval rowNames = Seq(\\\"D1\\\",\\\"D2\\\",\\\"D3\\\",\\\"D4\\\",\\\"D5\\\",\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\")\\nval colNames = Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\",\\\"greece\\\",\\\"politics\\\",\\\"economy\\\")\\nval names = header(rowNames,colNames)\\n//val M = parseMatrix(\\n//    \\\"\\\"\\\"1 2 0 0 0\\n//       0 0 1 0 0\\n//       0 0 0 1 1 \\n//       0 0 1 1 1\\n//       1 2 1 1 0\\\"\\\"\\\")\\nval layout = Layout(colHeaderSize=110, ch=45, cw=60, rowHeaderSize=100, numCols=8, numRows=10)\\n\\nval m1 = Matrix(Seq(\\n    Cell(0,0,   1),\\n    Cell(0,1,   2),\\n    Cell(1,2,   1),\\n    Cell(2,3,   1),\\n    Cell(2,4,   1),\\n    Cell(3,2,   1),\\n    Cell(3,3,   1),\\n    Cell(3,4,   1),\\n    Cell(4,0,   1),\\n    Cell(4,1,   2),\\n    Cell(4,2,   1),\\n    Cell(4,3,   1),\\n    Cell(0,5,   1),\\n    Cell(1,6,   1),\\n    Cell(1,7,   1),\\n    Cell(2,6,   1),\\n    Cell(2,7,   1),\\n    Cell(3,6,   1),\\n    Cell(3,7,   1),\\n    Cell(4,5,   1),\\n    Cell(4,6,   1),\\n    Cell(4,7,   1),\\n    Cell(5,5,   1),\\n    Cell(5,6,   1),\\n    Cell(6,7,   1),\\n    Cell(7,5,   1),\\n    Cell(8,6,   1),\\n    Cell(9,7,   1)\\n),\\nSeq(\\n    RowLabel(2,\\\"Doc\\\"),\\n    RowLabel(7,\\\"Word\\\")\\n    ),\\nSeq(\\n    ColLabel(2,\\\"Word\\\"),\\n    ColLabel(6,\\\"Label\\\")\\n    ), \\nSeq(0,5,10), Seq(0,5,8))\\n\\n//m5.size = Some(2.0 -> 3.0)\\nval matrices = Seq(m1)\\nMatrixRenderer.render(matrices,layout)\\n\"]"
-      }
-    }
-  }, {
-    "id" : 16,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -116,15 +148,15 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 17,
+    "id" : 16,
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
-      "code" : "<h3>Motivating Example</h3>\n<ul>\n<li>Document - Word matrix \\(Y^{(1)} \\in ( \\Re \\cup \\lbrace ? \\rbrace )^{N\\times F}\\)\n</li>\n<li>Document - Label matrix  \\(Y^{(2)} \\in \\lbrace 0,1,? \\rbrace ^{N\\times K}\\)\n</li>\n<li>\nWord - Label matrix \\( Y^{(3)} \\in \\lbrace 0, 1 ,? \\rbrace ^{K\\times F} \\)\n</li>\n</ul>\n\nNaive concatenation:\n\n$$\nY := \n\\left[\\begin{array}{cc} \nY^{(3)} & [?]_{K\\times K} \n\\\\\nY^{(1)} & Y^{(2)} \n\\end{array}\\right] \n$$\n\nWe can estimate a probabilitic model on \\(Y\\) by factorizing it. This additional relation enables feature labelling and increase prediction capabilities when similar rare words share similar labels",
+      "code" : "<h3>Concatenation</h3>\n<ul>\n<li>Document - Word matrix \\(Y^{(1)} \\in ( \\Re \\cup \\lbrace ? \\rbrace )^{N\\times F}\\)\n</li>\n<li>Document - Label matrix  \\(Y^{(2)} \\in \\lbrace 0,1,? \\rbrace ^{N\\times K}\\)\n</li>\n<li>\nWord - Label matrix \\( Y^{(3)} \\in \\lbrace 0, 1 ,? \\rbrace ^{K\\times F} \\)\n</li>\n</ul>\n\nNaive concatenation:\n\n$$\nY := \n\\left[\\begin{array}{cc} \nY^{(3)} & [?]_{K\\times K} \n\\\\\nY^{(1)} & Y^{(2)} \n\\end{array}\\right] \n$$\n\nWe can estimate a probabilitic model on \\(Y\\) by factorizing it. This additional relation enables feature labelling and increase prediction capabilities when similar rare words share similar labels",
       "extraFields" : { }
     }
   }, {
-    "id" : 18,
+    "id" : 17,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -132,7 +164,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 19,
+    "id" : 18,
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
@@ -140,7 +172,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 20,
+    "id" : 19,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -148,15 +180,69 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 21,
+    "id" : 20,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Collective Matrix Factorization\n\nWe have \\\\(T\\\\) types of entity with embeddings \\\\(\\mathbf{U} = (\\mathbf{U}^{(1)}, \\cdots, \\mathbf{U}^{(T)})\\\\) and we observe relations between all possible entity types \\\\(\\mathbf{Y} = (\\mathbf{Y}^{(1,1)}, \\mathbf{Y}^{(1,2)}, \\cdots, \\mathbf{Y}^{(T,T)}) \\\\)\n\n\nGeneral Loss functions \\\\(\\ell_{tt'}\\\\):\n\n\\\\(\\mathcal{L}(\\mathbf{U}) = \\sum_{t=1}^T \\sum_{t < t'< T} \\ell_{tt'}(\\mathbf{U}^{(t)}\\mathbf{U}^{(t')T}; \\mathbf{Y}^{(t,t')}||) \\\\)\n\nFor quadratic loss:\n\n\\\\(\\mathcal{L}(\\mathbf{U}) = \\sum_{t=1}^T \\sum_{t < t'< T} \\frac{1}{\\sigma_{tt'}^2} ||\\mathbf{U}^{(t)}\\mathbf{U}^{(t')T} - \\mathbf{Y}^{(t,t')}||_F^2 \\\\)\n",
+      "code" : "### Collective Matrix Factorization\n\nWe have \\\\(T\\\\) types of entity with embeddings \\\\(\\mathbf{U} = (\\mathbf{U}^{(1)}, \\cdots, \\mathbf{U}^{(T)})\\\\) and we observe relations between all possible entity types \\\\(\\mathbf{Y} = (\\mathbf{Y}^{(1,1)}, \\mathbf{Y}^{(1,2)}, \\cdots, \\mathbf{Y}^{(T,T)}) \\\\)\n\n\nGeneral Loss functions \\\\(\\ell_{tt'}\\\\):\n\n\\\\(\\mathcal{L}(\\mathbf{U}) = \\sum_{t=1}^T \\sum_{t < t'< T} \\ell_{tt'}(\\mathbf{U}^{(t)}\\mathbf{U}^{(t')T}; \\mathbf{Y}^{(t,t')}||) \\\\)\n\nLet's try SGD!\n",
       "extraFields" : { }
     }
   }, {
-    "id" : 22,
+    "id" : 44,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "SgdCmf",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 43,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\nval entityNames = Seq(\n   Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\"),\n   Seq(\"G\",\"P\",\"E\"),\n   Seq(\"D1\",\"D2\",\"D3\",\"D4\",\"D5\"))\nval n1 = entityNames(0).length \nval n2 = entityNames(1).length \nval n3 = entityNames(2).length \nval tuples31 = toTuples(parseMatrix(\n  \"\"\"1 2 0 0 0\n     0 0 1 0 0\n     0 0 0 1 1\n     0 0 1 1 1\n     1 2 1 1 1\"\"\"), n1 + n2, 0)\nval tuples32 = toTuples(parseMatrix(\n  \"\"\"1 0 0\n     0 1 1\n     0 1 1\n     0 1 0\n     1 0 1\"\"\"), n1 + n2, n1)\nval tuples21 = toTuples(parseMatrix(\n  \"\"\"1 1 0 0 0\n     1 1 0 1 1\n     1 1 1 1 1\"\"\"), n1, 0)\nval T1 = new Table(l2_type, tuples31)\nval T2 = new Table(logistic_type, tuples32)\nval T3 = new Table(logistic_type, tuples21)",
+      "extraFields" : {
+        "hide_output" : "true"
+      }
+    }
+  }, {
+    "id" : 46,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "algo",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 45,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\ndef optimizeCMF(database: Seq[Table], tables_weights: Seq[Double], rk: Int, iters: Int, step_size:Double = 0.1, initScale:Double = 1.0): Seq[Vect] = {\n    val U = initial_embeddings(num_of_entities(database), rk, initScale) // N*rank embedding matrix\n    for (it <- 0 until iters) {    // Loop over SGD iterations\n      // Sampling an observation\n      val relation = sample_discrete(tables_weights)\n      val table = database(relation)\n      val observation = sample_seq(table.observations)\n      //Gradient Step\n      val (i, j, gold) = observation\n      val v1 = U(i).copy\n      val v2 = U(j).copy\n      val dloss = loss_gradient(table.loss_type, v1 dot v2, gold)\n      U(i) += v2 * step_size * dloss\n      U(j) += v1 * step_size * dloss\n    }\n    U //output the embedding matrix}\n  }\n",
+      "extraFields" : {
+        "hide_output" : "true"
+      }
+    }
+  }, {
+    "id" : 47,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "Result",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 48,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\nval U= optimizeCMF(Seq(T1, T2, T3), Seq(.1, .5, .4), 3, 100000)\nval blk_mat_rec = matrix(dots(_U,_U)) + embeddings(_U,_U) + header(allEntityNames,allEntityNames)).copy(vRulers = Seq(n1,n1+n2),hRulers = Seq(n1,n1+n2))\nval blk_mat_rec2 = opacity(blk_mat_rec,0,2)\nrender(Seq(blk_mat,blk_mat_rec2,),Layout(cw = 55, ch = 40, colHeaderSize = 140)) ",
+      "extraFields" : {
+        "aggregatedCells" : "[\"\\n\\nimport uk.ac.ucl.cs.mr.acltutorial.ManualCMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport ml.wolfe.util.Math._\\n\\ndef opacity(m: Matrix, min: Double = 0, max: Double = 1, color: (Int, Int, Int) = (0, 0, 0)) = {\\ndef valueToOpacity(value: Double) = {\\n  val capped = Math.min(Math.max(min, value), max)\\n  (capped - min) / (max - min)\\n}\\nm.copy(m.cells collect { case cell@Cell(_, _, d: Double, _, _, _, _) =>\\n  cell.copy(value = \\\"\\\", color = color, opacity = valueToOpacity(d))\\n})\\n}\\n\\nval entityNames = Seq(\\n   Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\"),\\n   Seq(\\\"G\\\",\\\"P\\\",\\\"E\\\"),\\n   Seq(\\\"D1\\\",\\\"D2\\\",\\\"D3\\\",\\\"D4\\\",\\\"D5\\\"))\\n\\nval n1 = entityNames(0).length \\nval n2 = entityNames(1).length \\nval n3 = entityNames(2).length \\nval tuples31 = toTuples(parseMatrix(\\n  \\\"\\\"\\\"1 2 0 0 0\\n     0 0 1 0 0\\n     0 0 0 1 1\\n     0 0 1 1 1\\n     1 2 1 1 1\\\"\\\"\\\"), n1 + n2, 0)\\nval tuples32 = toTuples(parseMatrix(\\n  \\\"\\\"\\\"1 0 0\\n     0 1 1\\n     0 1 1\\n     0 1 0\\n     1 0 1\\\"\\\"\\\"), n1 + n2, n1)\\nval tuples21 = toTuples(parseMatrix(\\n  \\\"\\\"\\\"1 1 0 0 0\\n     1 1 0 1 1\\n     1 1 1 1 1\\\"\\\"\\\"), n1, 0)\\nval T1 = new Table(l2_type, tuples31)\\nval T2 = new Table(logistic_type, tuples32)\\nval T3 = new Table(logistic_type, tuples21)\\n    \\nval layout = Layout(cw = 65, ch = 50, colHeaderSize = 140)    \\nval r31 = render(Seq(opacity(tuplesToMatrix(tuples31),0,2) + header(entityNames(2),entityNames(0))),layout)\\nval r32 = render(Seq(opacity(tuplesToMatrix(tuples32)) + header(entityNames(2),entityNames(1))),layout)\\nval r21 = render(Seq(opacity(tuplesToMatrix(tuples21)) + header(entityNames(1),entityNames(0))),layout)\\n\\nval r31_r32 = render(Seq(opacity(tuplesToMatrix(tuples31++ tuples32),0,2) + header(entityNames(2),entityNames(0) ++ entityNames(1))),layout)\\n\\nval r31_r32_r21 = render(Seq(opacity(tuplesToMatrix(tuples31++ tuples32 ++ tuples21),0,2) + header(entityNames(1) ++ entityNames(2),entityNames(0) ++ entityNames(1)).copy(vRulers = Seq(n1),hRulers = Seq(n2))),layout)\\n\\nval allEntityNames = entityNames.flatten(x => x)\\n\\nval r31_r32_r12 = render(Seq(opacity(tuplesToMatrix(tuples31++ tuples32 ++ transpose(tuples21)),0,2) + header(allEntityNames,entityNames(0) ++ entityNames(1)).copy(vRulers = Seq(n1),hRulers = Seq(n3))),layout)\\n\\n\",\"\\nval tuples31t = transpose(tuples31)\\nval tuples32t = transpose(tuples32)\\nval tuples21t = transpose(tuples21)\\nval blk_mat = (opacity(tuplesToMatrix(tuples31++ tuples32 ++ tuples21++ tuples31t ++ tuples32t ++ tuples21t),0,2) + header(allEntityNames,allEntityNames)).copy(vRulers = Seq(n1,n1+n2),hRulers = Seq(n1,n1+n2))\\n\\nrender(Seq(blk_mat),layout)\",\"\\n\\n\\nfragments(Seq(floatLeft(Seq(r31,r32)),r31_r32))\\n\\n\\n\",\"\\n\\nfragments(Seq(floatLeft(Seq(r31,r32,r21)),r31_r32_r21))\\n\\n\\n\",\"render(Seq(blk_mat),Layout(cw = 55, ch = 40, colHeaderSize = 140))\",\"\\nval entityNames = Seq(\\n   Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\"),\\n   Seq(\\\"G\\\",\\\"P\\\",\\\"E\\\"),\\n   Seq(\\\"D1\\\",\\\"D2\\\",\\\"D3\\\",\\\"D4\\\",\\\"D5\\\"))\\nval n1 = entityNames(0).length \\nval n2 = entityNames(1).length \\nval n3 = entityNames(2).length \\nval tuples31 = toTuples(parseMatrix(\\n  \\\"\\\"\\\"1 2 0 0 0\\n     0 0 1 0 0\\n     0 0 0 1 1\\n     0 0 1 1 1\\n     1 2 1 1 1\\\"\\\"\\\"), n1 + n2, 0)\\nval tuples32 = toTuples(parseMatrix(\\n  \\\"\\\"\\\"1 0 0\\n     0 1 1\\n     0 1 1\\n     0 1 0\\n     1 0 1\\\"\\\"\\\"), n1 + n2, n1)\\nval tuples21 = toTuples(parseMatrix(\\n  \\\"\\\"\\\"1 1 0 0 0\\n     1 1 0 1 1\\n     1 1 1 1 1\\\"\\\"\\\"), n1, 0)\\nval T1 = new Table(l2_type, tuples31)\\nval T2 = new Table(logistic_type, tuples32)\\nval T3 = new Table(logistic_type, tuples21)\",\"\\ndef optimizeCMF(database: Seq[Table], tables_weights: Seq[Double], rk: Int, iters: Int, step_size:Double = 0.1, initScale:Double = 1.0): Seq[Vect] = {\\n    val U = initial_embeddings(num_of_entities(database), rk, initScale) // N*rank embedding matrix\\n    for (it <- 0 until iters) {    // Loop over SGD iterations\\n      // Sampling an observation\\n      val relation = sample_discrete(tables_weights)\\n      val table = database(relation)\\n      val observation = sample_seq(table.observations)\\n      //Gradient Step\\n      val (i, j, gold) = observation\\n      val v1 = U(i).copy\\n      val v2 = U(j).copy\\n      val dloss = loss_gradient(table.loss_type, v1 dot v2, gold)\\n      U(i) += v2 * step_size * dloss\\n      U(j) += v1 * step_size * dloss\\n    }\\n    U //output the embedding matrix}\\n  }\\n\"]"
+      }
+    }
+  }, {
+    "id" : 21,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -164,7 +250,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 23,
+    "id" : 22,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -172,7 +258,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 24,
+    "id" : 23,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -180,15 +266,31 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 25,
+    "id" : 24,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Example: Augmented Multi-View\n*Objective*: Predict one view given the other\n\nPixel similarity should help. We create a binary matrix linking pixels.\n\n- Relation 1: pixel intensity value in the first image (real)\n- Relation 2: pixel intensity value in the second image (real)\n- Relation 3: Relative similarity between pixels (binary)\n\n<br />\n<img src=\"../../assets/figures/06/faces.png\" width=\"45%\">\n<img src=\"../../assets/figures/06/faces_expt.png\" width=\"45%\">\n\n\n",
+      "code" : "### Example: Augmented Multi-View\n*Objective*: Predict one view given the other\n\nPixel similarity should help. We create a binary matrix linking pixels.\n\n- Relation 1: pixel intensity value in the first image (real)\n- Relation 2: pixel intensity value in the second image (real)\n- Relation 3: Relative similarity between pixels (binary)\n\n\n",
       "extraFields" : { }
     }
   }, {
-    "id" : 40,
+    "id" : 25,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "amv",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 26,
+    "compiler" : "html",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\n<br />\n<img src=\"../../assets/figures/06/faces.png\" width=\"45%\">\n<img src=\"../../assets/figures/06/faces_expt.png\" width=\"45%\">\n\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 27,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -196,7 +298,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 41,
+    "id" : 28,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -204,7 +306,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 26,
+    "id" : 29,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -212,7 +314,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 27,
+    "id" : 30,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -220,7 +322,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 28,
+    "id" : 31,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -228,7 +330,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 29,
+    "id" : 32,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -236,7 +338,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 30,
+    "id" : 33,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -244,7 +346,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 31,
+    "id" : 34,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -252,7 +354,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 32,
+    "id" : 35,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -260,7 +362,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 33,
+    "id" : 36,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -268,7 +370,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 34,
+    "id" : 37,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -276,7 +378,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 35,
+    "id" : 38,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -284,7 +386,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 36,
+    "id" : 39,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -292,7 +394,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 37,
+    "id" : 40,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -300,7 +402,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 38,
+    "id" : 41,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -308,7 +410,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 39,
+    "id" : 42,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
