@@ -79,22 +79,6 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 9,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "mf4nlp",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 10,
-    "compiler" : "markdown",
-    "input" : {
-      "sessionId" : null,
-      "code" : "### Natural Language Processing Goals\n\n**To find structure in unstructured text**\n\n- Linguistic structure: syntax, semantic roles\n\n- Application structure: relation extraction, knowledgebase completion\n\n**To find patterns in language**\n\n- clustering: LSA, Latent Dirichlet Allocation\n\n- Distributional semantics: word2vec\n\n**Reasoning with language**: Inference with first-order logic",
-      "extraFields" : { }
-    }
-  }, {
     "id" : 11,
     "compiler" : "section",
     "input" : {
@@ -107,7 +91,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### NLP and Matrix Factorization\n\n**We already use it!**\n\n- LDA, word2vec, and GLOVE have interpretations as MF\n\n **Factorization can improve structured prediction models**:\n\n- Model parameters can be smoothed with matrix/tensor factorization\n\n- Better, more compact, dense models.\n\n **Matrix factorization supports logical reasoning:** \n\n- Recent work unites factorization and first-order logic rules",
+      "code" : "### NLP and Matrix Factorization\n\n**We already use it!**\n\n- topic modelling: probabilistic LSA, LDA...\n- word embedding learning: word2vec, GLOVE...\n- knowledge base population\n\n **Factorization can improve structured prediction models**:\n\n- Smoothing of model parameters \n\n **Matrix factorization supports logical reasoning:** \n\n- Recent work unites factorization and first-order logic rules",
       "extraFields" : { }
     }
   }, {
@@ -123,7 +107,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Motivation\n<br>\n**Matrix and tensor factorization**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n<br>\n\n- encompass a variety of learning problems \n\n- well-studied in ML/stats literature\n\n- state-of-the-art performance in many tasks\n",
+      "code" : "### Motivation\n\n**Matrix and tensor factorization**\n\n- encompass a variety of learning problems \n\n- well-studied in ML/stats literature\n\n- state-of-the-art performance in many tasks\n",
       "extraFields" : { }
     }
   }, {
