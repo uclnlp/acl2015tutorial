@@ -67,7 +67,7 @@
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "val Y = parseMatrix(\n    \"\"\"1 2 0 0 0\n       0 0 1 0 0\n       0 0 0 1 1 \n       0 0 1 1 1\n       1 2 1 1 0\"\"\")\n       \nval rowNames = Seq(\"doc1\",\"doc2\",\"doc3\",\"doc4\",\"doc5\")\nval colNames = Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")\nval names = header(rowNames,colNames)\nval rls = Matrix(hRulers = Seq(0,5), vRulers = Seq(0,5))\n       \nval m0 = numbers(matrix(Y)) + names +rls\nval m1 = opacity(matrix(Y), 0,2) + names + rls\nval m2 = Matrix(Seq(Cell(2,2,\"Y\")), hRulers = Seq(5), vRulers = Seq(5))\nval m3 = Matrix(Seq(Cell(6,2,\"V\"),Cell(2,6,\"U\"), Cell(2,2,\"Y\")), hRulers = Seq(5), vRulers = Seq(5))\nval (u,v) = optimizeL2(Y,2,1000)\nval m4 = numbers(embeddings(u,v)) +names\nval Yhat = dots(u,v)\nval m5 = numbers(matrix(Yhat)) + numbers(embeddings(u,v)) + names\nval m6 = opacity(matrix(Yhat),0,2) + numbers(embeddings(u,v)) + names\n\nrender(Seq(m0,m1,m3,m4,m5,m6,m1),layout) ",
+      "code" : "val Y = parseMatrix(\n    \"\"\"1 2 0 0 0\n       0 0 1 0 0\n       0 0 0 1 1 \n       0 0 1 1 1\n       1 2 1 1 0\"\"\")\n       \nval rowNames = Seq(\"doc1\",\"doc2\",\"doc3\",\"doc4\",\"doc5\")\nval colNames = Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")\nval names = header(rowNames,colNames)\nval rls = Matrix(hRulers = Seq(0,5), vRulers = Seq(0,5))\n       \nval m0 = numbers(matrix(Y)) + names +rls\nval m1 = opacity(matrix(Y), 0,2) + names + rls\nval m2 = Matrix(Seq(Cell(2,2,\"Y\")), hRulers = Seq(5), vRulers = Seq(5))\nval m3 = Matrix(Seq(Cell(6,2,\"V\"),Cell(2,6,\"U\"), Cell(2,2,\"Y\")), hRulers = Seq(5), vRulers = Seq(5))\nval (u,v) = optimizeL2(Y,2,1000)\nval m4 = numbers(embeddings(u,v)) +names +rls\nval Yhat = dots(u,v)\nval m5 = numbers(matrix(Yhat)) + numbers(embeddings(u,v)) + names +rls\nval m6 = opacity(matrix(Yhat),0,2) + numbers(embeddings(u,v)) + names +rls\n\nrender(Seq(m0,m1,m3,m4,m5,m6,m1),layout) ",
       "extraFields" : {
         "showEditor" : "false",
         "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150, rowHeaderSize=100)\\n\\ndef optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\\n  val rand = new scala.util.Random(0)\\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val y = a dot v\\n    A(i) += v * alpha * (M(i, j) - y)\\n    V(j) += a * alpha * (M(i, j) - y)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), \\n           rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\"]"
@@ -142,7 +142,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Truncated SVD\n\nIf we truncate \\\\(\\mathbf{D}\\\\) to its \\\\(L\\\\) largest values \n\n<img src=\"../../assets/figures/SVDtrunc.png\" height=\"300\">\n\nthen \\\\( \\hat{\\mathbf{Y}} = \\mathbf{U}\\mathbf{D_{trunc}}\\mathbf{V}\\\\)\n\nis the rank-\\\\(L\\\\) minimizer of \\\\(\\||\\mathbf{Y} - \\hat{\\mathbf{Y}}\\||_F^2\\\\)\n\n<div style=\"text-align:right;\">\n<i>Eckart-Young theorem</i>\n</div>",
+      "code" : "### Truncated SVD\n\nIf we truncate \\\\(\\mathbf{D}\\\\) to its \\\\(L\\\\) largest values \n\n<img src=\"../../assets/figures/SVDtrunc.png\" height=\"300\">\n\nthen \\\\( \\hat{\\mathbf{Y}} = \\mathbf{U}\\mathbf{D_{trunc}}\\mathbf{V} = (\\mathbf{U}\\sqrt{\\mathbf{D_{trunc}}})(\\sqrt{\\mathbf{D_{trunc}}}\\mathbf{V})\\\\)\n\nis the rank-\\\\(L\\\\) minimizer of \\\\(\\||\\mathbf{Y} - \\hat{\\mathbf{Y}}\\||_F^2\\\\)\n\n<div style=\"text-align:right;\">\n<i>Eckart-Young theorem</i>\n</div>",
       "extraFields" : { }
     }
   }, {
@@ -172,6 +172,7 @@
       "extraFields" : {
         "hide_output" : "true",
         "showEditor" : "false",
+        "cache" : "false",
         "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150, rowHeaderSize=100)\\n\\ndef optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\\n  val rand = new scala.util.Random(0)\\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val y = a dot v\\n    A(i) += v * alpha * (M(i, j) - y)\\n    V(j) += a * alpha * (M(i, j) - y)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), \\n           rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\",\"val Y = parseMatrix(\\n    \\\"\\\"\\\"1 2 0 0 0\\n       0 0 1 0 0\\n       0 0 0 1 1 \\n       0 0 1 1 1\\n       1 2 1 1 0\\\"\\\"\\\")\\n       \\nval rowNames = Seq(\\\"doc1\\\",\\\"doc2\\\",\\\"doc3\\\",\\\"doc4\\\",\\\"doc5\\\")\\nval colNames = Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\")\\nval names = header(rowNames,colNames)\\nval rls = Matrix(hRulers = Seq(0,5), vRulers = Seq(0,5))\\n       \\nval m0 = numbers(matrix(Y)) + names +rls\\nval m1 = opacity(matrix(Y), 0,2) + names + rls\\nval m2 = Matrix(Seq(Cell(2,2,\\\"Y\\\")), hRulers = Seq(5), vRulers = Seq(5))\\nval m3 = Matrix(Seq(Cell(6,2,\\\"V\\\"),Cell(2,6,\\\"U\\\"), Cell(2,2,\\\"Y\\\")), hRulers = Seq(5), vRulers = Seq(5))\\nval (u,v) = optimizeL2(Y,2,1000)\\nval m4 = numbers(embeddings(u,v)) +names\\nval Yhat = dots(u,v)\\nval m5 = numbers(matrix(Yhat)) + numbers(embeddings(u,v)) + names\\nval m6 = opacity(matrix(Yhat),0,2) + numbers(embeddings(u,v)) + names\\n\\nrender(Seq(m0,m1,m3,m4,m5,m6,m1),layout) \"]"
       }
     }
@@ -214,11 +215,41 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "als",
+      "code" : "sgdConvergence",
       "extraFields" : { }
     }
   }, {
     "id" : 25,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "\nimport org.sameersingh.scalaplot._\n\ndef plot(x:Seq[Double],y:Seq[Double]):XYChart = {\n     xyChart(new XYData(new MemXYSeries(x,y)))\n}\ndef plot(x1:Seq[Double],y1:Seq[Double],s1:String,x2:Seq[Double],y2:Seq[Double],s2:String):XYChart = {\n     var c = xyChart(new XYData(new MemXYSeries(x1,y1,s1),new MemXYSeries(x2,y2,s2)))\n     c.showLegend = true\n     c\n}\n\ndef optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\n  val rand = new scala.util.Random(0)\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\n  val A = AV._1; val V = AV._2\n  def update(i: Int, j: Int) = {\n    val a = A(i).copy\n    val v = V(j).copy\n    val y = a dot v\n    A(i) += v * alpha * (M(i, j) - y)\n    V(j) += a * alpha * (M(i, j) - y)\n  }\n  for (i <- Range(0,iters).toList) {\n    update(rand.nextInt(M.dim1), \n           rand.nextInt(M.dim2))\n  }\n  (A, V)\n}\n\nval M = parseMatrix(\n    \"\"\"1 2 0 0 0\n       0 0 1 0 0\n       0 0 0 1 1 \n       0 0 1 1 1\n       1 2 1 1 0\"\"\")",
+      "extraFields" : {
+        "hide_output" : "true",
+        "showEditor" : "false",
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150, rowHeaderSize=100)\\n\\ndef optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\\n  val rand = new scala.util.Random(0)\\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val y = a dot v\\n    A(i) += v * alpha * (M(i, j) - y)\\n    V(j) += a * alpha * (M(i, j) - y)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), \\n           rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\",\"val Y = parseMatrix(\\n    \\\"\\\"\\\"1 2 0 0 0\\n       0 0 1 0 0\\n       0 0 0 1 1 \\n       0 0 1 1 1\\n       1 2 1 1 0\\\"\\\"\\\")\\n       \\nval rowNames = Seq(\\\"doc1\\\",\\\"doc2\\\",\\\"doc3\\\",\\\"doc4\\\",\\\"doc5\\\")\\nval colNames = Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\")\\nval names = header(rowNames,colNames)\\nval rls = Matrix(hRulers = Seq(0,5), vRulers = Seq(0,5))\\n       \\nval m0 = numbers(matrix(Y)) + names +rls\\nval m1 = opacity(matrix(Y), 0,2) + names + rls\\nval m2 = Matrix(Seq(Cell(2,2,\\\"Y\\\")), hRulers = Seq(5), vRulers = Seq(5))\\nval m3 = Matrix(Seq(Cell(6,2,\\\"V\\\"),Cell(2,6,\\\"U\\\"), Cell(2,2,\\\"Y\\\")), hRulers = Seq(5), vRulers = Seq(5))\\nval (u,v) = optimizeL2(Y,2,1000)\\nval m4 = numbers(embeddings(u,v)) +names\\nval Yhat = dots(u,v)\\nval m5 = numbers(matrix(Yhat)) + numbers(embeddings(u,v)) + names\\nval m6 = opacity(matrix(Yhat),0,2) + numbers(embeddings(u,v)) + names\\n\\nrender(Seq(m0,m1,m3,m4,m5,m6,m1),layout) \",\"val layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)\\nval M = parseMatrix(\\n    \\\"\\\"\\\"1 2 0 0 0\\n       0 0 1 0 0\\n       0 0 0 1 1 \\n       0 0 1 1 1\\n       1 2 1 1 0\\\"\\\"\\\")\",\"val (u,s,v) = breezeSVD(M)\\nval eigen = numbers(rowVector(s))\\nval (ea,ev) = toEmbeddings(u,s,v,4)\\nval m1 = opacity(matrix(dots(ea,ev)),0,2)\\nrender(Seq(opacity(matrix(M),0,2),numbers(rowVector(s)),m1),layout)\"]"
+      }
+    }
+  }, {
+    "id" : 26,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "val K = 2 //rank \nval x = Range(0,10).map(_.toDouble)\nval models = for (i <- x.map(_.toInt)) yield optimizeL2(M, K, i * 100, 0.1)\nval ySGD = models.map(m => l2Loss(M,dots(m._1,m._2)))\nval (u,s,v) = breezeSVD(M)\nval (ea,ev) = toEmbeddings(u,s,v,K)\nval ySVD = l2Loss(M,dots(ea,ev))\nval c = plot(x,ySGD,\"L2-loss SGD\",Seq(0.0,10.0),Seq(ySVD,ySVD),\"SVD\")\nc.size = (500.0 -> 200.0)\nc//ml.wolfe.ui.D3Plotter.lineplot(c)",
+      "extraFields" : {
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150, rowHeaderSize=100)\\n\\ndef optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\\n  val rand = new scala.util.Random(0)\\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val y = a dot v\\n    A(i) += v * alpha * (M(i, j) - y)\\n    V(j) += a * alpha * (M(i, j) - y)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), \\n           rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\",\"val Y = parseMatrix(\\n    \\\"\\\"\\\"1 2 0 0 0\\n       0 0 1 0 0\\n       0 0 0 1 1 \\n       0 0 1 1 1\\n       1 2 1 1 0\\\"\\\"\\\")\\n       \\nval rowNames = Seq(\\\"doc1\\\",\\\"doc2\\\",\\\"doc3\\\",\\\"doc4\\\",\\\"doc5\\\")\\nval colNames = Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\")\\nval names = header(rowNames,colNames)\\nval rls = Matrix(hRulers = Seq(0,5), vRulers = Seq(0,5))\\n       \\nval m0 = numbers(matrix(Y)) + names +rls\\nval m1 = opacity(matrix(Y), 0,2) + names + rls\\nval m2 = Matrix(Seq(Cell(2,2,\\\"Y\\\")), hRulers = Seq(5), vRulers = Seq(5))\\nval m3 = Matrix(Seq(Cell(6,2,\\\"V\\\"),Cell(2,6,\\\"U\\\"), Cell(2,2,\\\"Y\\\")), hRulers = Seq(5), vRulers = Seq(5))\\nval (u,v) = optimizeL2(Y,2,1000)\\nval m4 = numbers(embeddings(u,v)) +names\\nval Yhat = dots(u,v)\\nval m5 = numbers(matrix(Yhat)) + numbers(embeddings(u,v)) + names\\nval m6 = opacity(matrix(Yhat),0,2) + numbers(embeddings(u,v)) + names\\n\\nrender(Seq(m0,m1,m3,m4,m5,m6,m1),layout) \",\"val layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)\\nval M = parseMatrix(\\n    \\\"\\\"\\\"1 2 0 0 0\\n       0 0 1 0 0\\n       0 0 0 1 1 \\n       0 0 1 1 1\\n       1 2 1 1 0\\\"\\\"\\\")\",\"val (u,s,v) = breezeSVD(M)\\nval eigen = numbers(rowVector(s))\\nval (ea,ev) = toEmbeddings(u,s,v,4)\\nval m1 = opacity(matrix(dots(ea,ev)),0,2)\\nrender(Seq(opacity(matrix(M),0,2),numbers(rowVector(s)),m1),layout)\",\"\\nimport org.sameersingh.scalaplot._\\n\\ndef plot(x:Seq[Double],y:Seq[Double]):XYChart = {\\n     xyChart(new XYData(new MemXYSeries(x,y)))\\n}\\ndef plot(x1:Seq[Double],y1:Seq[Double],s1:String,x2:Seq[Double],y2:Seq[Double],s2:String):XYChart = {\\n     var c = xyChart(new XYData(new MemXYSeries(x1,y1,s1),new MemXYSeries(x2,y2,s2)))\\n     c.showLegend = true\\n     c\\n}\\n\\ndef optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\\n  val rand = new scala.util.Random(0)\\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val y = a dot v\\n    A(i) += v * alpha * (M(i, j) - y)\\n    V(j) += a * alpha * (M(i, j) - y)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), \\n           rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\\n\\nval M = parseMatrix(\\n    \\\"\\\"\\\"1 2 0 0 0\\n       0 0 1 0 0\\n       0 0 0 1 1 \\n       0 0 1 1 1\\n       1 2 1 1 0\\\"\\\"\\\")\"]"
+      }
+    }
+  }, {
+    "id" : 27,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "als",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 28,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -226,7 +257,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 26,
+    "id" : 29,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -236,7 +267,7 @@
       }
     }
   }, {
-    "id" : 27,
+    "id" : 30,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -244,7 +275,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 28,
+    "id" : 31,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -252,7 +283,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 29,
+    "id" : 32,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -260,7 +291,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 30,
+    "id" : 33,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -268,7 +299,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 31,
+    "id" : 34,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -276,7 +307,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 32,
+    "id" : 35,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -284,18 +315,18 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 33,
+    "id" : 36,
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
       "code" : "\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150, rowHeaderSize=110)\n\nval Y = parseMatrix(\n    \"\"\"1 2 0 0 0\n       0 0 1 0 0\n       0 0 0 1 1 \n       0 0 1 1 1\n       1 2 1 1 0\"\"\")\n       \nval rowNames = Seq(\"context1\",\"context2\",\"context3\",\"context4\",\"context5\")\nval colNames = Seq(\"Greece\",\"Tsipras\",\"Germany\",\"crisis\",\"economy\")\nval names = header(rowNames,colNames)\nval rls = Matrix(hRulers = Seq(0,5), vRulers = Seq(0,5))\nval m0 = numbers(matrix(Y)) + names +rls\n\nval (u,v) = optimizeL2(Y,2,1000)\nval m4 = m0 + numbers(embeddings(u,v))\n\nrender(Seq(m0,m4),layout)",
       "extraFields" : {
         "showEditor" : "false",
-        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150, rowHeaderSize=100)\\n\\ndef optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\\n  val rand = new scala.util.Random(0)\\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val y = a dot v\\n    A(i) += v * alpha * (M(i, j) - y)\\n    V(j) += a * alpha * (M(i, j) - y)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), \\n           rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\",\"val Y = parseMatrix(\\n    \\\"\\\"\\\"1 2 0 0 0\\n       0 0 1 0 0\\n       0 0 0 1 1 \\n       0 0 1 1 1\\n       1 2 1 1 0\\\"\\\"\\\")\\n       \\nval rowNames = Seq(\\\"doc1\\\",\\\"doc2\\\",\\\"doc3\\\",\\\"doc4\\\",\\\"doc5\\\")\\nval colNames = Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\")\\nval names = header(rowNames,colNames)\\nval rls = Matrix(hRulers = Seq(0,5), vRulers = Seq(0,5))\\n       \\nval m0 = numbers(matrix(Y)) + names +rls\\nval m1 = opacity(matrix(Y), 0,2) + names + rls\\nval m2 = Matrix(Seq(Cell(2,2,\\\"Y\\\")), hRulers = Seq(5), vRulers = Seq(5))\\nval m3 = Matrix(Seq(Cell(6,2,\\\"V\\\"),Cell(2,6,\\\"U\\\"), Cell(2,2,\\\"Y\\\")), hRulers = Seq(5), vRulers = Seq(5))\\nval (u,v) = optimizeL2(Y,2,1000)\\nval m4 = numbers(embeddings(u,v)) +names\\nval Yhat = dots(u,v)\\nval m5 = numbers(matrix(Yhat)) + numbers(embeddings(u,v)) + names\\nval m6 = opacity(matrix(Yhat),0,2) + numbers(embeddings(u,v)) + names\\n\\nrender(Seq(m0,m1,m3,m4,m5,m6,m1),layout) \",\"val layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)\\nval M = parseMatrix(\\n    \\\"\\\"\\\"1 2 0 0 0\\n       0 0 1 0 0\\n       0 0 0 1 1 \\n       0 0 1 1 1\\n       1 2 1 1 0\\\"\\\"\\\")\",\"val (u,s,v) = breezeSVD(M)\\nval eigen = numbers(rowVector(s))\\nval (ea,ev) = toEmbeddings(u,s,v,4)\\nval m1 = opacity(matrix(dots(ea,ev)),0,2)\\nrender(Seq(opacity(matrix(M),0,2),numbers(rowVector(s)),m1),layout)\"]"
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150, rowHeaderSize=100)\\n\\ndef optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\\n  val rand = new scala.util.Random(0)\\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val y = a dot v\\n    A(i) += v * alpha * (M(i, j) - y)\\n    V(j) += a * alpha * (M(i, j) - y)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), \\n           rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\",\"val Y = parseMatrix(\\n    \\\"\\\"\\\"1 2 0 0 0\\n       0 0 1 0 0\\n       0 0 0 1 1 \\n       0 0 1 1 1\\n       1 2 1 1 0\\\"\\\"\\\")\\n       \\nval rowNames = Seq(\\\"doc1\\\",\\\"doc2\\\",\\\"doc3\\\",\\\"doc4\\\",\\\"doc5\\\")\\nval colNames = Seq(\\\"Greece\\\",\\\"Tsipras\\\",\\\"Germany\\\",\\\"crisis\\\",\\\"economy\\\")\\nval names = header(rowNames,colNames)\\nval rls = Matrix(hRulers = Seq(0,5), vRulers = Seq(0,5))\\n       \\nval m0 = numbers(matrix(Y)) + names +rls\\nval m1 = opacity(matrix(Y), 0,2) + names + rls\\nval m2 = Matrix(Seq(Cell(2,2,\\\"Y\\\")), hRulers = Seq(5), vRulers = Seq(5))\\nval m3 = Matrix(Seq(Cell(6,2,\\\"V\\\"),Cell(2,6,\\\"U\\\"), Cell(2,2,\\\"Y\\\")), hRulers = Seq(5), vRulers = Seq(5))\\nval (u,v) = optimizeL2(Y,2,1000)\\nval m4 = numbers(embeddings(u,v)) +names\\nval Yhat = dots(u,v)\\nval m5 = numbers(matrix(Yhat)) + numbers(embeddings(u,v)) + names\\nval m6 = opacity(matrix(Yhat),0,2) + numbers(embeddings(u,v)) + names\\n\\nrender(Seq(m0,m1,m3,m4,m5,m6,m1),layout) \",\"val layout = Layout(cw = 80, ch = 50, colHeaderSize = 150)\\nval M = parseMatrix(\\n    \\\"\\\"\\\"1 2 0 0 0\\n       0 0 1 0 0\\n       0 0 0 1 1 \\n       0 0 1 1 1\\n       1 2 1 1 0\\\"\\\"\\\")\",\"val (u,s,v) = breezeSVD(M)\\nval eigen = numbers(rowVector(s))\\nval (ea,ev) = toEmbeddings(u,s,v,4)\\nval m1 = opacity(matrix(dots(ea,ev)),0,2)\\nrender(Seq(opacity(matrix(M),0,2),numbers(rowVector(s)),m1),layout)\",\"\\nimport org.sameersingh.scalaplot._\\n\\ndef plot(x:Seq[Double],y:Seq[Double]):XYChart = {\\n     xyChart(new XYData(new MemXYSeries(x,y)))\\n}\\ndef plot(x1:Seq[Double],y1:Seq[Double],s1:String,x2:Seq[Double],y2:Seq[Double],s2:String):XYChart = {\\n     var c = xyChart(new XYData(new MemXYSeries(x1,y1,s1),new MemXYSeries(x2,y2,s2)))\\n     c.showLegend = true\\n     c\\n}\\n\\ndef optimizeL2(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\\n  val rand = new scala.util.Random(0)\\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val y = a dot v\\n    A(i) += v * alpha * (M(i, j) - y)\\n    V(j) += a * alpha * (M(i, j) - y)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), \\n           rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\\n\\nval M = parseMatrix(\\n    \\\"\\\"\\\"1 2 0 0 0\\n       0 0 1 0 0\\n       0 0 0 1 1 \\n       0 0 1 1 1\\n       1 2 1 1 0\\\"\\\"\\\")\",\"val K = 2 //rank \\nval x = Range(0,10).map(_.toDouble)\\nval models = for (i <- x.map(_.toInt)) yield optimizeL2(M, K, i * 100, 0.1)\\nval ySGD = models.map(m => l2Loss(M,dots(m._1,m._2)))\\nval (u,s,v) = breezeSVD(M)\\nval (ea,ev) = toEmbeddings(u,s,v,K)\\nval ySVD = l2Loss(M,dots(ea,ev))\\nval c = plot(x,ySGD,\\\"L2-loss SGD\\\",Seq(0.0,10.0),Seq(ySVD,ySVD),\\\"SVD\\\")\\nc.size = (500.0 -> 200.0)\\nc//ml.wolfe.ui.D3Plotter.lineplot(c)\"]"
       }
     }
   }, {
-    "id" : 34,
+    "id" : 37,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
