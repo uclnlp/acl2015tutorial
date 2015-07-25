@@ -12,7 +12,7 @@ import uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer.{Cell, ColLabel, Matrix, RowLa
 object ManualCMF {
 
   val logistic_type = 0
-  val l2_type = 0
+  val l2_type = 1
   val rand = new scala.util.Random(0)
 
 
@@ -45,9 +45,11 @@ object ManualCMF {
   def loss_gradient(loss_type: Int, score:Double, gold:Double): Double = {
     var grad = 0.0
     if (loss_type == logistic_type) {
-      grad = gold - 1.0 / (1.0 + math.exp(-score))
+      val s = (2.0 * gold - 1.0)
+      grad = s / (1.0 + math.exp( math.min(100.0, s * score)))
+      //println("" + (gold,score, (2.0 * gold - 1.0) * score,grad))
     }else if(loss_type == l2_type) {
-      grad = gold - score
+      grad =  score - gold
     }
     grad
   }
@@ -85,8 +87,13 @@ object ManualCMF {
       val v1 = U(i).copy
       val v2 = U(j).copy
       val dloss = loss_gradient(table.loss_type, v1 dot v2, gold)
-      U(i) += v2 * step_size * dloss
-      U(j) += v1 * step_size * dloss
+//      if (table.loss_type == logistic_type) {
+//        println("dot=" + (v1 dot v2))
+//        println("gold=" + gold)
+//        println("dloss=" + dloss)
+//      }
+      U(i) -= v2 * step_size * dloss
+      U(j) -= v1 * step_size * dloss
     }
     U //output the embedding matrix}
   }
@@ -133,15 +140,34 @@ object ManualCMF {
       """1 1 0 0 0
          1 1 0 1 1
          1 1 1 1 1"""), n1, 0)
+/*
+    val tuples31 = toTuples(parseMatrix(
+      """1 2 0 0 0
+         0 0 0 0 0
+         0 0 1 1 1
+         0 0 1 1 1
+         1 2 1 1 1"""), n1 + n2, 0)
+
+    val tuples32 = toTuples(parseMatrix(
+      """1 0 0
+         0 0 0
+         0 1 1
+         0 1 1
+         1 1 1"""), n1 + n2, n1)
+
+    val tuples21 = toTuples(parseMatrix(
+      """1 1 0 0 0
+         1 1 1 1 1
+         1 1 1 1 1"""), n1, 0)
+*/
 
     val T1 = new Table(loss_type = l2_type, observations = tuples31)
-    val T2 = new Table(loss_type = logistic_type, observations = tuples32)
-    val T3 = new Table(loss_type = logistic_type, observations = tuples21)
+    val T2 = new Table(loss_type = l2_type, observations = tuples32)
+    val T3 = new Table(loss_type = l2_type, observations = tuples21)
 
-    val U = optimizeCMF0(Seq(T1, T2, T3), Seq(.1, .5, .4), 2, 10000)
-    println(U)
-
-    println(tuplesToMatrix(tuples21))
+    val U = optimizeCMF0(Seq(T1, T2, T3), Seq(.3, .3, .4), 1, 100000,.01,.001)
+    println(dots(U,U))
+    //println(tuplesToMatrix(tuples21))
     println("finished")
 
 
