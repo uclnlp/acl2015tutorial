@@ -56,50 +56,57 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "Slide2",
+      "code" : "logdemo",
       "extraFields" : { }
     }
   }, {
     "id" : 7,
-    "compiler" : "markdown",
+    "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "### Equivalent View: Generalized PCA\n\n\n",
-      "extraFields" : { }
+      "code" : "import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\nimport ml.wolfe.{Mat, Vect}\nimport ml.wolfe.util.Math._\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150, rowHeaderSize = 80)\nval rand = new scala.util.Random(0)\nval rowNames = Seq(\"Andy\",\"Tim\",\"Ivan\",\"Rex\",\"Hal\")\nval colNames = Seq(\"greek\",\"european\",\"human\",\"mammal\",\"entity\")\nval names = header(rowNames,colNames)\nval M = parseMatrix(\n    \"\"\"1 1 1 1 1\n       0 1 1 1 1\n       0 0 1 1 0 \n       0 0 0 1 1\n       0 0 0 0 1\"\"\")",
+      "extraFields" : {
+        "hide" : "true",
+        "hide_output" : "true",
+        "showEditor" : "false",
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\nimport math._\\n\\ndef format(vect:Double) = f\\\"$vect%2.2f\\\"\\n\\nval layout = Layout(\\n    colHeaderSize=170, rowHeaderSize=220,\\n    ch=50, cw=100)\\nval random = new scala.util.Random(1)\\nval n = 4\\nval docRows = for (row <- 0 until n) yield RowLabel(row, \\\"Doc\\\" + (row + 1))\\nval docCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(random.nextGaussian() + 2.0))\\nval docCols = Seq(\\n  ColLabel(0,\\\"the\\\"),\\n  ColLabel(1,\\\"black\\\"),\\n  ColLabel(2,\\\"cat\\\"),\\n  ColLabel(3,\\\"sat\\\")\\n  )\\n\\nval docMatrix = Matrix(docCells,docRows,docCols)\\n\\nval graphRows = Seq(\\n  RowLabel(0,\\\"(Blunsom,Oxford)\\\"),\\n  RowLabel(1,\\\"(Clark,Cambridge)\\\"),\\n  RowLabel(2,\\\"(Riedel,UCL)\\\"), \\n  RowLabel(3,\\\"(Vlachos,Sheffield)\\\")\\n)\\n\\nval graphCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,f\\\"${random.nextInt(2)}\\\")\\nval graphCols = Seq(\\n  ColLabel(0,\\\"worksFor\\\"),\\n  ColLabel(1,\\\"lecturerAt\\\"),\\n  ColLabel(2,\\\"affiliatedWith\\\"),\\n  ColLabel(3,\\\"profAt\\\")\\n)\\n\\n\\nval graphMatrix = Matrix(graphCells,graphRows,graphCols)\\n//render the matrices\\nrender(Seq(docMatrix,graphMatrix),layout)\"]"
+      }
     }
   }, {
     "id" : 8,
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "import cc.factorie.la._\nimport ml.wolfe.util._\n\ndef randomEmbedding = Range(0,2).map(_ => random.nextGaussian()) \nval rowEmbeddings = Range(0,n).map(row => randomEmbedding)\nval colEmbeddings = Range(0,n).map(row => randomEmbedding)\n\nval colEmbeddingsMatrix = Range(0,n).map(i => colEmbedding(i,n,colEmbeddings(i).map(format))).reduce(_ + _)\nval rowEmbeddingsMatrix = Range(0,n).map(i => rowEmbedding(i,n,rowEmbeddings(i).map(format))).reduce(_ + _)\n\ndef score(row:Int,col:Int) = \n  new DenseTensor1(rowEmbeddings(row).toArray) dot \n  new DenseTensor1(colEmbeddings(col).toArray)\n\nval scores = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(score(row,col)))\n\nval probs = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(Math.sigmoid(score(row,col))))\n\nval labels = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,if (random.nextDouble < Math.sigmoid(score(row,col))) 1 else 0)\n\nval m1 = Matrix(Nil,graphRows,graphCols)\nval m3 = m1 + rowEmbeddingsMatrix + colEmbeddingsMatrix\nval m4 = m3 + Matrix(scores)\nval m5 = m3 + Matrix(probs)\nval m6 = m3 + Matrix(labels)\n\nrender(Seq(m1,m3,m4,m5,m6),layout)\n",
+      "code" : "val m1 = opacity(matrix(M),0,1) + names \nval (a,v) = optimizeL2(M, 2, 1000)\nval m2 = opacity(matrix(dots(a,v)),0,1) + names\nrender(Seq(m1,m2),layout) ",
       "extraFields" : {
-        "showEditor" : "false",
-        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\nimport math._\\n\\ndef format(vect:Double) = f\\\"$vect%2.2f\\\"\\n\\nval layout = Layout(\\n    colHeaderSize=170, rowHeaderSize=220,\\n    ch=50, cw=100)\\nval random = new scala.util.Random(1)\\nval n = 4\\nval docRows = for (row <- 0 until n) yield RowLabel(row, \\\"Doc\\\" + (row + 1))\\nval docCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(random.nextGaussian() + 2.0))\\nval docCols = Seq(\\n  ColLabel(0,\\\"the\\\"),\\n  ColLabel(1,\\\"black\\\"),\\n  ColLabel(2,\\\"cat\\\"),\\n  ColLabel(3,\\\"sat\\\")\\n  )\\n\\nval docMatrix = Matrix(docCells,docRows,docCols)\\n\\nval graphRows = Seq(\\n  RowLabel(0,\\\"(Blunsom,Oxford)\\\"),\\n  RowLabel(1,\\\"(Clark,Cambridge)\\\"),\\n  RowLabel(2,\\\"(Riedel,UCL)\\\"), \\n  RowLabel(3,\\\"(Vlachos,Sheffield)\\\")\\n)\\n\\nval graphCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,f\\\"${random.nextInt(2)}\\\")\\nval graphCols = Seq(\\n  ColLabel(0,\\\"worksFor\\\"),\\n  ColLabel(1,\\\"lecturerAt\\\"),\\n  ColLabel(2,\\\"affiliatedWith\\\"),\\n  ColLabel(3,\\\"profAt\\\")\\n)\\n\\n\\nval graphMatrix = Matrix(graphCells,graphRows,graphCols)\\n//render the matrices\\nrender(Seq(docMatrix,graphMatrix),layout)\"]"
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\nimport math._\\n\\ndef format(vect:Double) = f\\\"$vect%2.2f\\\"\\n\\nval layout = Layout(\\n    colHeaderSize=170, rowHeaderSize=220,\\n    ch=50, cw=100)\\nval random = new scala.util.Random(1)\\nval n = 4\\nval docRows = for (row <- 0 until n) yield RowLabel(row, \\\"Doc\\\" + (row + 1))\\nval docCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(random.nextGaussian() + 2.0))\\nval docCols = Seq(\\n  ColLabel(0,\\\"the\\\"),\\n  ColLabel(1,\\\"black\\\"),\\n  ColLabel(2,\\\"cat\\\"),\\n  ColLabel(3,\\\"sat\\\")\\n  )\\n\\nval docMatrix = Matrix(docCells,docRows,docCols)\\n\\nval graphRows = Seq(\\n  RowLabel(0,\\\"(Blunsom,Oxford)\\\"),\\n  RowLabel(1,\\\"(Clark,Cambridge)\\\"),\\n  RowLabel(2,\\\"(Riedel,UCL)\\\"), \\n  RowLabel(3,\\\"(Vlachos,Sheffield)\\\")\\n)\\n\\nval graphCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,f\\\"${random.nextInt(2)}\\\")\\nval graphCols = Seq(\\n  ColLabel(0,\\\"worksFor\\\"),\\n  ColLabel(1,\\\"lecturerAt\\\"),\\n  ColLabel(2,\\\"affiliatedWith\\\"),\\n  ColLabel(3,\\\"profAt\\\")\\n)\\n\\n\\nval graphMatrix = Matrix(graphCells,graphRows,graphCols)\\n//render the matrices\\nrender(Seq(docMatrix,graphMatrix),layout)\",\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport ml.wolfe.util.Math._\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150, rowHeaderSize = 80)\\nval rand = new scala.util.Random(0)\\nval rowNames = Seq(\\\"Andy\\\",\\\"Tim\\\",\\\"Ivan\\\",\\\"Rex\\\",\\\"Hal\\\")\\nval colNames = Seq(\\\"greek\\\",\\\"european\\\",\\\"human\\\",\\\"mammal\\\",\\\"entity\\\")\\nval names = header(rowNames,colNames)\\nval M = parseMatrix(\\n    \\\"\\\"\\\"1 1 1 1 1\\n       0 1 1 1 1\\n       0 0 1 1 0 \\n       0 0 0 1 1\\n       0 0 0 0 1\\\"\\\"\\\")\"]"
       }
     }
   }, {
     "id" : 9,
-    "compiler" : "html",
+    "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "<ul>\n    <li class=\"fragment1\">Generate Embeddings \\(U\\) and \\(V\\) using Gaussians</li>\n    <li class=\"fragment2\">Calculate natural parameters \\( \\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle \\)</li>\n    <li class=\"fragment3\">Apply sigmoid to get Bernoulli probabilities</li>\n    <li class=\"fragment4\">Draw a Boolean value from Bernoulli</li>\n</ul>\n\n",
+      "code" : "logloss",
       "extraFields" : { }
     }
   }, {
     "id" : 10,
-    "compiler" : "section",
+    "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "Slide3",
-      "extraFields" : { }
+      "code" : "def optimizeLogistic(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\n  val rand = new scala.util.Random(0)\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\n  val A = AV._1; val V = AV._2\n  def update(i: Int, j: Int) = {\n    val a = A(i).copy\n    val v = V(j).copy\n    val p = sigmoid(a dot v)\n    A(i) += v * alpha * (M(i, j) - p)\n    V(j) += a * alpha * (M(i, j) - p)\n  }\n  for (i <- Range(0,iters).toList) {\n    update(rand.nextInt(M.dim1), \n           rand.nextInt(M.dim2))\n  }\n  (A, V)\n}\n\n\"\"",
+      "extraFields" : {
+        "hide_output" : "true",
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\nimport math._\\n\\ndef format(vect:Double) = f\\\"$vect%2.2f\\\"\\n\\nval layout = Layout(\\n    colHeaderSize=170, rowHeaderSize=220,\\n    ch=50, cw=100)\\nval random = new scala.util.Random(1)\\nval n = 4\\nval docRows = for (row <- 0 until n) yield RowLabel(row, \\\"Doc\\\" + (row + 1))\\nval docCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(random.nextGaussian() + 2.0))\\nval docCols = Seq(\\n  ColLabel(0,\\\"the\\\"),\\n  ColLabel(1,\\\"black\\\"),\\n  ColLabel(2,\\\"cat\\\"),\\n  ColLabel(3,\\\"sat\\\")\\n  )\\n\\nval docMatrix = Matrix(docCells,docRows,docCols)\\n\\nval graphRows = Seq(\\n  RowLabel(0,\\\"(Blunsom,Oxford)\\\"),\\n  RowLabel(1,\\\"(Clark,Cambridge)\\\"),\\n  RowLabel(2,\\\"(Riedel,UCL)\\\"), \\n  RowLabel(3,\\\"(Vlachos,Sheffield)\\\")\\n)\\n\\nval graphCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,f\\\"${random.nextInt(2)}\\\")\\nval graphCols = Seq(\\n  ColLabel(0,\\\"worksFor\\\"),\\n  ColLabel(1,\\\"lecturerAt\\\"),\\n  ColLabel(2,\\\"affiliatedWith\\\"),\\n  ColLabel(3,\\\"profAt\\\")\\n)\\n\\n\\nval graphMatrix = Matrix(graphCells,graphRows,graphCols)\\n//render the matrices\\nrender(Seq(docMatrix,graphMatrix),layout)\",\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport ml.wolfe.util.Math._\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150, rowHeaderSize = 80)\\nval rand = new scala.util.Random(0)\\nval rowNames = Seq(\\\"Andy\\\",\\\"Tim\\\",\\\"Ivan\\\",\\\"Rex\\\",\\\"Hal\\\")\\nval colNames = Seq(\\\"greek\\\",\\\"european\\\",\\\"human\\\",\\\"mammal\\\",\\\"entity\\\")\\nval names = header(rowNames,colNames)\\nval M = parseMatrix(\\n    \\\"\\\"\\\"1 1 1 1 1\\n       0 1 1 1 1\\n       0 0 1 1 0 \\n       0 0 0 1 1\\n       0 0 0 0 1\\\"\\\"\\\")\",\"val m1 = opacity(matrix(M),0,1) + names \\nval (a,v) = optimizeL2(M, 2, 1000)\\nval m2 = opacity(matrix(dots(a,v)),0,1) + names\\nrender(Seq(m1,m2),layout) \"]"
+      }
     }
   }, {
     "id" : 11,
-    "compiler" : "markdown",
+    "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "### Negative Data",
+      "code" : "logresults",
       "extraFields" : { }
     }
   }, {
@@ -107,14 +114,41 @@
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "import uk.ac.ucl.cs.mr.acltutorial.BinaryMF._\nrender(Seq(allCells,noZeroes,someSampledZeroes,moreSampledZeroes),layout)",
+      "code" : "val (la,lv) = optimizeLogistic(M, 2, 1000, 0.1)\nval m3 = numbers(matrix(dots(la,lv)) + names)\nval m4 = numbers(matrix(sigm(dots(la,lv)))) + names\nval m5 = opacity(matrix(sigm(dots(la,lv))) + embeddings(la,lv),0,1) + names\nrender(Seq(m3,m4,m5),layout)",
       "extraFields" : {
         "showEditor" : "false",
-        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\nimport math._\\n\\ndef format(vect:Double) = f\\\"$vect%2.2f\\\"\\n\\nval layout = Layout(\\n    colHeaderSize=170, rowHeaderSize=220,\\n    ch=50, cw=100)\\nval random = new scala.util.Random(1)\\nval n = 4\\nval docRows = for (row <- 0 until n) yield RowLabel(row, \\\"Doc\\\" + (row + 1))\\nval docCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(random.nextGaussian() + 2.0))\\nval docCols = Seq(\\n  ColLabel(0,\\\"the\\\"),\\n  ColLabel(1,\\\"black\\\"),\\n  ColLabel(2,\\\"cat\\\"),\\n  ColLabel(3,\\\"sat\\\")\\n  )\\n\\nval docMatrix = Matrix(docCells,docRows,docCols)\\n\\nval graphRows = Seq(\\n  RowLabel(0,\\\"(Blunsom,Oxford)\\\"),\\n  RowLabel(1,\\\"(Clark,Cambridge)\\\"),\\n  RowLabel(2,\\\"(Riedel,UCL)\\\"), \\n  RowLabel(3,\\\"(Vlachos,Sheffield)\\\")\\n)\\n\\nval graphCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,f\\\"${random.nextInt(2)}\\\")\\nval graphCols = Seq(\\n  ColLabel(0,\\\"worksFor\\\"),\\n  ColLabel(1,\\\"lecturerAt\\\"),\\n  ColLabel(2,\\\"affiliatedWith\\\"),\\n  ColLabel(3,\\\"profAt\\\")\\n)\\n\\n\\nval graphMatrix = Matrix(graphCells,graphRows,graphCols)\\n//render the matrices\\nrender(Seq(docMatrix,graphMatrix),layout)\",\"import cc.factorie.la._\\nimport ml.wolfe.util._\\n\\ndef randomEmbedding = Range(0,2).map(_ => random.nextGaussian()) \\nval rowEmbeddings = Range(0,n).map(row => randomEmbedding)\\nval colEmbeddings = Range(0,n).map(row => randomEmbedding)\\n\\nval colEmbeddingsMatrix = Range(0,n).map(i => colEmbedding(i,n,colEmbeddings(i).map(format))).reduce(_ + _)\\nval rowEmbeddingsMatrix = Range(0,n).map(i => rowEmbedding(i,n,rowEmbeddings(i).map(format))).reduce(_ + _)\\n\\ndef score(row:Int,col:Int) = \\n  new DenseTensor1(rowEmbeddings(row).toArray) dot \\n  new DenseTensor1(colEmbeddings(col).toArray)\\n\\nval scores = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(score(row,col)))\\n\\nval probs = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(Math.sigmoid(score(row,col))))\\n\\nval labels = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,if (random.nextDouble < Math.sigmoid(score(row,col))) 1 else 0)\\n\\nval m1 = Matrix(Nil,graphRows,graphCols)\\nval m3 = m1 + rowEmbeddingsMatrix + colEmbeddingsMatrix\\nval m4 = m3 + Matrix(scores)\\nval m5 = m3 + Matrix(probs)\\nval m6 = m3 + Matrix(labels)\\n\\nrender(Seq(m1,m3,m4,m5,m6),layout)\\n\"]"
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\nimport math._\\n\\ndef format(vect:Double) = f\\\"$vect%2.2f\\\"\\n\\nval layout = Layout(\\n    colHeaderSize=170, rowHeaderSize=220,\\n    ch=50, cw=100)\\nval random = new scala.util.Random(1)\\nval n = 4\\nval docRows = for (row <- 0 until n) yield RowLabel(row, \\\"Doc\\\" + (row + 1))\\nval docCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(random.nextGaussian() + 2.0))\\nval docCols = Seq(\\n  ColLabel(0,\\\"the\\\"),\\n  ColLabel(1,\\\"black\\\"),\\n  ColLabel(2,\\\"cat\\\"),\\n  ColLabel(3,\\\"sat\\\")\\n  )\\n\\nval docMatrix = Matrix(docCells,docRows,docCols)\\n\\nval graphRows = Seq(\\n  RowLabel(0,\\\"(Blunsom,Oxford)\\\"),\\n  RowLabel(1,\\\"(Clark,Cambridge)\\\"),\\n  RowLabel(2,\\\"(Riedel,UCL)\\\"), \\n  RowLabel(3,\\\"(Vlachos,Sheffield)\\\")\\n)\\n\\nval graphCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,f\\\"${random.nextInt(2)}\\\")\\nval graphCols = Seq(\\n  ColLabel(0,\\\"worksFor\\\"),\\n  ColLabel(1,\\\"lecturerAt\\\"),\\n  ColLabel(2,\\\"affiliatedWith\\\"),\\n  ColLabel(3,\\\"profAt\\\")\\n)\\n\\n\\nval graphMatrix = Matrix(graphCells,graphRows,graphCols)\\n//render the matrices\\nrender(Seq(docMatrix,graphMatrix),layout)\",\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport ml.wolfe.util.Math._\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150, rowHeaderSize = 80)\\nval rand = new scala.util.Random(0)\\nval rowNames = Seq(\\\"Andy\\\",\\\"Tim\\\",\\\"Ivan\\\",\\\"Rex\\\",\\\"Hal\\\")\\nval colNames = Seq(\\\"greek\\\",\\\"european\\\",\\\"human\\\",\\\"mammal\\\",\\\"entity\\\")\\nval names = header(rowNames,colNames)\\nval M = parseMatrix(\\n    \\\"\\\"\\\"1 1 1 1 1\\n       0 1 1 1 1\\n       0 0 1 1 0 \\n       0 0 0 1 1\\n       0 0 0 0 1\\\"\\\"\\\")\",\"val m1 = opacity(matrix(M),0,1) + names \\nval (a,v) = optimizeL2(M, 2, 1000)\\nval m2 = opacity(matrix(dots(a,v)),0,1) + names\\nrender(Seq(m1,m2),layout) \",\"def optimizeLogistic(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\\n  val rand = new scala.util.Random(0)\\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val p = sigmoid(a dot v)\\n    A(i) += v * alpha * (M(i, j) - p)\\n    V(j) += a * alpha * (M(i, j) - p)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), \\n           rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\\n\\n\\\"\\\"\"]"
       }
     }
   }, {
-    "id" : 13,
+    "id" : 19,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "Slide3",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 20,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Negative Data",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 21,
+    "compiler" : "scala",
+    "input" : {
+      "sessionId" : null,
+      "code" : "import uk.ac.ucl.cs.mr.acltutorial.BinaryMF._\nval layout = Layout(\n    colHeaderSize=170, rowHeaderSize=220,\n    ch=50, cw=100)\n\nrender(Seq(allCells,noZeroes,someSampledZeroes,moreSampledZeroes),layout)",
+      "extraFields" : {
+        "showEditor" : "false",
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\nimport math._\\n\\ndef format(vect:Double) = f\\\"$vect%2.2f\\\"\\n\\nval layout = Layout(\\n    colHeaderSize=170, rowHeaderSize=220,\\n    ch=50, cw=100)\\nval random = new scala.util.Random(1)\\nval n = 4\\nval docRows = for (row <- 0 until n) yield RowLabel(row, \\\"Doc\\\" + (row + 1))\\nval docCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(random.nextGaussian() + 2.0))\\nval docCols = Seq(\\n  ColLabel(0,\\\"the\\\"),\\n  ColLabel(1,\\\"black\\\"),\\n  ColLabel(2,\\\"cat\\\"),\\n  ColLabel(3,\\\"sat\\\")\\n  )\\n\\nval docMatrix = Matrix(docCells,docRows,docCols)\\n\\nval graphRows = Seq(\\n  RowLabel(0,\\\"(Blunsom,Oxford)\\\"),\\n  RowLabel(1,\\\"(Clark,Cambridge)\\\"),\\n  RowLabel(2,\\\"(Riedel,UCL)\\\"), \\n  RowLabel(3,\\\"(Vlachos,Sheffield)\\\")\\n)\\n\\nval graphCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,f\\\"${random.nextInt(2)}\\\")\\nval graphCols = Seq(\\n  ColLabel(0,\\\"worksFor\\\"),\\n  ColLabel(1,\\\"lecturerAt\\\"),\\n  ColLabel(2,\\\"affiliatedWith\\\"),\\n  ColLabel(3,\\\"profAt\\\")\\n)\\n\\n\\nval graphMatrix = Matrix(graphCells,graphRows,graphCols)\\n//render the matrices\\nrender(Seq(docMatrix,graphMatrix),layout)\",\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport ml.wolfe.util.Math._\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150, rowHeaderSize = 80)\\nval rand = new scala.util.Random(0)\\nval rowNames = Seq(\\\"Andy\\\",\\\"Tim\\\",\\\"Ivan\\\",\\\"Rex\\\",\\\"Hal\\\")\\nval colNames = Seq(\\\"greek\\\",\\\"european\\\",\\\"human\\\",\\\"mammal\\\",\\\"entity\\\")\\nval names = header(rowNames,colNames)\\nval M = parseMatrix(\\n    \\\"\\\"\\\"1 1 1 1 1\\n       0 1 1 1 1\\n       0 0 1 1 0 \\n       0 0 0 1 1\\n       0 0 0 0 1\\\"\\\"\\\")\",\"val m1 = opacity(matrix(M),0,1) + names \\nval (a,v) = optimizeL2(M, 2, 1000)\\nval m2 = opacity(matrix(dots(a,v)),0,1) + names\\nrender(Seq(m1,m2),layout) \",\"def optimizeLogistic(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\\n  val rand = new scala.util.Random(0)\\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val p = sigmoid(a dot v)\\n    A(i) += v * alpha * (M(i, j) - p)\\n    V(j) += a * alpha * (M(i, j) - p)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), \\n           rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\\n\\n\\\"\\\"\",\"val (la,lv) = optimizeLogistic(M, 2, 1000, 0.1)\\nval m3 = numbers(matrix(dots(la,lv)) + names)\\nval m4 = numbers(matrix(sigm(dots(la,lv)))) + names\\nval m5 = opacity(matrix(sigm(dots(la,lv))) + embeddings(la,lv),0,1) + names\\nrender(Seq(m3,m4,m5),layout)\",\"import cc.factorie.la._\\nimport ml.wolfe.util._\\n\\nval random = ml.wolfe.util.Math.random\\n\\nval layout = Layout(\\n    colHeaderSize=170, rowHeaderSize=220,\\n    ch=50, cw=100)\\n\\ndef randomEmbedding = Range(0,2).map(_ => random.nextGaussian()) \\nval rowEmbeddings = Range(0,n).map(row => randomEmbedding)\\nval colEmbeddings = Range(0,n).map(row => randomEmbedding)\\n\\nval colEmbeddingsMatrix = Range(0,n).map(i => colEmbedding(i,n,colEmbeddings(i).map(format))).reduce(_ + _)\\nval rowEmbeddingsMatrix = Range(0,n).map(i => rowEmbedding(i,n,rowEmbeddings(i).map(format))).reduce(_ + _)\\n\\ndef score(row:Int,col:Int) = \\n  new DenseTensor1(rowEmbeddings(row).toArray) dot \\n  new DenseTensor1(colEmbeddings(col).toArray)\\n\\nval scores = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(score(row,col)))\\n\\nval probs = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(Math.sigmoid(score(row,col))))\\n\\nval labels = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,if (random.nextDouble < Math.sigmoid(score(row,col))) 1 else 0)\\n\\nval m1 = Matrix(Nil,graphRows,graphCols)\\nval m3 = m1 + rowEmbeddingsMatrix + colEmbeddingsMatrix\\nval m4 = m3 + Matrix(scores)\\nval m5 = m3 + Matrix(probs)\\nval m6 = m3 + Matrix(labels)\\n\\nrender(Seq(m1,m3,m4,m5,m6),layout)\\n\"]"
+      }
+    }
+  }, {
+    "id" : 22,
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
@@ -122,7 +156,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 14,
+    "id" : 23,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -130,15 +164,15 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 15,
+    "id" : 24,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Implicit Negative Training Data\n<br><br>\n\n$$\n  \\sum_{(i,j)\\in\\Omega}\n    \\omega_\\text{pos}\\log(\\text{sigm} \\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle)\n  +$$\n$$\\sum_{(u,w)\\not\\in\\Omega} \\omega_\\text{neg}\\log\\left(1-\\text{sigm} \\langle\\mathbf{u}_a,\\mathbf{v}_b\\rangle\\right)\n$$",
+      "code" : "### Implicit Negative Training Data\n<br><br>\n\n$$\n  \\sum_{(i,j)\\in\\Omega}\n    \\omega_\\text{pos}\\log(\\text{sigm} \\langle\\mathbf{u}_i,\\mathbf{v}_j\\rangle)\n  +$$\n$$\\sum_{(a,b)\\not\\in\\Omega} \\omega_\\text{neg}\\log\\left(1-\\text{sigm} \\langle\\mathbf{u}_a,\\mathbf{v}_b\\rangle\\right)\n$$",
       "extraFields" : { }
     }
   }, {
-    "id" : 16,
+    "id" : 25,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -146,7 +180,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 17,
+    "id" : 26,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -154,7 +188,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 18,
+    "id" : 27,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -162,7 +196,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 19,
+    "id" : 28,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -170,18 +204,18 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 20,
+    "id" : 29,
     "compiler" : "scala",
     "input" : {
       "sessionId" : null,
-      "code" : "render(sgdUpdates,layout)",
+      "code" : "val layout = Layout(\n    colHeaderSize=170, rowHeaderSize=220,\n    ch=50, cw=100)\nrender(sgdUpdates,layout)",
       "extraFields" : {
         "showEditor" : "false",
-        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\nimport math._\\n\\ndef format(vect:Double) = f\\\"$vect%2.2f\\\"\\n\\nval layout = Layout(\\n    colHeaderSize=170, rowHeaderSize=220,\\n    ch=50, cw=100)\\nval random = new scala.util.Random(1)\\nval n = 4\\nval docRows = for (row <- 0 until n) yield RowLabel(row, \\\"Doc\\\" + (row + 1))\\nval docCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(random.nextGaussian() + 2.0))\\nval docCols = Seq(\\n  ColLabel(0,\\\"the\\\"),\\n  ColLabel(1,\\\"black\\\"),\\n  ColLabel(2,\\\"cat\\\"),\\n  ColLabel(3,\\\"sat\\\")\\n  )\\n\\nval docMatrix = Matrix(docCells,docRows,docCols)\\n\\nval graphRows = Seq(\\n  RowLabel(0,\\\"(Blunsom,Oxford)\\\"),\\n  RowLabel(1,\\\"(Clark,Cambridge)\\\"),\\n  RowLabel(2,\\\"(Riedel,UCL)\\\"), \\n  RowLabel(3,\\\"(Vlachos,Sheffield)\\\")\\n)\\n\\nval graphCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,f\\\"${random.nextInt(2)}\\\")\\nval graphCols = Seq(\\n  ColLabel(0,\\\"worksFor\\\"),\\n  ColLabel(1,\\\"lecturerAt\\\"),\\n  ColLabel(2,\\\"affiliatedWith\\\"),\\n  ColLabel(3,\\\"profAt\\\")\\n)\\n\\n\\nval graphMatrix = Matrix(graphCells,graphRows,graphCols)\\n//render the matrices\\nrender(Seq(docMatrix,graphMatrix),layout)\",\"import cc.factorie.la._\\nimport ml.wolfe.util._\\n\\ndef randomEmbedding = Range(0,2).map(_ => random.nextGaussian()) \\nval rowEmbeddings = Range(0,n).map(row => randomEmbedding)\\nval colEmbeddings = Range(0,n).map(row => randomEmbedding)\\n\\nval colEmbeddingsMatrix = Range(0,n).map(i => colEmbedding(i,n,colEmbeddings(i).map(format))).reduce(_ + _)\\nval rowEmbeddingsMatrix = Range(0,n).map(i => rowEmbedding(i,n,rowEmbeddings(i).map(format))).reduce(_ + _)\\n\\ndef score(row:Int,col:Int) = \\n  new DenseTensor1(rowEmbeddings(row).toArray) dot \\n  new DenseTensor1(colEmbeddings(col).toArray)\\n\\nval scores = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(score(row,col)))\\n\\nval probs = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(Math.sigmoid(score(row,col))))\\n\\nval labels = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,if (random.nextDouble < Math.sigmoid(score(row,col))) 1 else 0)\\n\\nval m1 = Matrix(Nil,graphRows,graphCols)\\nval m3 = m1 + rowEmbeddingsMatrix + colEmbeddingsMatrix\\nval m4 = m3 + Matrix(scores)\\nval m5 = m3 + Matrix(probs)\\nval m6 = m3 + Matrix(labels)\\n\\nrender(Seq(m1,m3,m4,m5,m6),layout)\\n\",\"import uk.ac.ucl.cs.mr.acltutorial.BinaryMF._\\nrender(Seq(allCells,noZeroes,someSampledZeroes,moreSampledZeroes),layout)\"]"
+        "aggregatedCells" : "[\"import uk.ac.ucl.cs.mr.acltutorial._\\nimport MatrixRenderer._\\nimport math._\\n\\ndef format(vect:Double) = f\\\"$vect%2.2f\\\"\\n\\nval layout = Layout(\\n    colHeaderSize=170, rowHeaderSize=220,\\n    ch=50, cw=100)\\nval random = new scala.util.Random(1)\\nval n = 4\\nval docRows = for (row <- 0 until n) yield RowLabel(row, \\\"Doc\\\" + (row + 1))\\nval docCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(random.nextGaussian() + 2.0))\\nval docCols = Seq(\\n  ColLabel(0,\\\"the\\\"),\\n  ColLabel(1,\\\"black\\\"),\\n  ColLabel(2,\\\"cat\\\"),\\n  ColLabel(3,\\\"sat\\\")\\n  )\\n\\nval docMatrix = Matrix(docCells,docRows,docCols)\\n\\nval graphRows = Seq(\\n  RowLabel(0,\\\"(Blunsom,Oxford)\\\"),\\n  RowLabel(1,\\\"(Clark,Cambridge)\\\"),\\n  RowLabel(2,\\\"(Riedel,UCL)\\\"), \\n  RowLabel(3,\\\"(Vlachos,Sheffield)\\\")\\n)\\n\\nval graphCells = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,f\\\"${random.nextInt(2)}\\\")\\nval graphCols = Seq(\\n  ColLabel(0,\\\"worksFor\\\"),\\n  ColLabel(1,\\\"lecturerAt\\\"),\\n  ColLabel(2,\\\"affiliatedWith\\\"),\\n  ColLabel(3,\\\"profAt\\\")\\n)\\n\\n\\nval graphMatrix = Matrix(graphCells,graphRows,graphCols)\\n//render the matrices\\nrender(Seq(docMatrix,graphMatrix),layout)\",\"import uk.ac.ucl.cs.mr.acltutorial.ManualMF._\\nimport uk.ac.ucl.cs.mr.acltutorial.MatrixRenderer._\\nimport uk.ac.ucl.cs.mr.acltutorial.Renderer._\\nimport cc.factorie.la.{DenseTensor2, DenseTensor1}\\nimport ml.wolfe.{Mat, Vect}\\nimport ml.wolfe.util.Math._\\nval layout = Layout(cw = 80, ch = 50, colHeaderSize = 150, rowHeaderSize = 80)\\nval rand = new scala.util.Random(0)\\nval rowNames = Seq(\\\"Andy\\\",\\\"Tim\\\",\\\"Ivan\\\",\\\"Rex\\\",\\\"Hal\\\")\\nval colNames = Seq(\\\"greek\\\",\\\"european\\\",\\\"human\\\",\\\"mammal\\\",\\\"entity\\\")\\nval names = header(rowNames,colNames)\\nval M = parseMatrix(\\n    \\\"\\\"\\\"1 1 1 1 1\\n       0 1 1 1 1\\n       0 0 1 1 0 \\n       0 0 0 1 1\\n       0 0 0 0 1\\\"\\\"\\\")\",\"val m1 = opacity(matrix(M),0,1) + names \\nval (a,v) = optimizeL2(M, 2, 1000)\\nval m2 = opacity(matrix(dots(a,v)),0,1) + names\\nrender(Seq(m1,m2),layout) \",\"def optimizeLogistic(M: Mat, K: Int, iters: Int, alpha:Double = 0.1, initScale:Double = 1.0): (Seq[Vect], Seq[Vect]) = {\\n  val rand = new scala.util.Random(0)\\n  val AV = initialAV(K, M.dim1, M.dim2, initScale)\\n  val A = AV._1; val V = AV._2\\n  def update(i: Int, j: Int) = {\\n    val a = A(i).copy\\n    val v = V(j).copy\\n    val p = sigmoid(a dot v)\\n    A(i) += v * alpha * (M(i, j) - p)\\n    V(j) += a * alpha * (M(i, j) - p)\\n  }\\n  for (i <- Range(0,iters).toList) {\\n    update(rand.nextInt(M.dim1), \\n           rand.nextInt(M.dim2))\\n  }\\n  (A, V)\\n}\\n\\n\\\"\\\"\",\"val (la,lv) = optimizeLogistic(M, 2, 1000, 0.1)\\nval m3 = numbers(matrix(dots(la,lv)) + names)\\nval m4 = numbers(matrix(sigm(dots(la,lv)))) + names\\nval m5 = opacity(matrix(sigm(dots(la,lv))) + embeddings(la,lv),0,1) + names\\nrender(Seq(m3,m4,m5),layout)\",\"import cc.factorie.la._\\nimport ml.wolfe.util._\\n\\nval random = ml.wolfe.util.Math.random\\n\\nval layout = Layout(\\n    colHeaderSize=170, rowHeaderSize=220,\\n    ch=50, cw=100)\\n\\ndef randomEmbedding = Range(0,2).map(_ => random.nextGaussian()) \\nval rowEmbeddings = Range(0,n).map(row => randomEmbedding)\\nval colEmbeddings = Range(0,n).map(row => randomEmbedding)\\n\\nval colEmbeddingsMatrix = Range(0,n).map(i => colEmbedding(i,n,colEmbeddings(i).map(format))).reduce(_ + _)\\nval rowEmbeddingsMatrix = Range(0,n).map(i => rowEmbedding(i,n,rowEmbeddings(i).map(format))).reduce(_ + _)\\n\\ndef score(row:Int,col:Int) = \\n  new DenseTensor1(rowEmbeddings(row).toArray) dot \\n  new DenseTensor1(colEmbeddings(col).toArray)\\n\\nval scores = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(score(row,col)))\\n\\nval probs = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,format(Math.sigmoid(score(row,col))))\\n\\nval labels = for (row <- 0 until n; col <- 0 until n) yield Cell(row,col,if (random.nextDouble < Math.sigmoid(score(row,col))) 1 else 0)\\n\\nval m1 = Matrix(Nil,graphRows,graphCols)\\nval m3 = m1 + rowEmbeddingsMatrix + colEmbeddingsMatrix\\nval m4 = m3 + Matrix(scores)\\nval m5 = m3 + Matrix(probs)\\nval m6 = m3 + Matrix(labels)\\n\\nrender(Seq(m1,m3,m4,m5,m6),layout)\\n\",\"import uk.ac.ucl.cs.mr.acltutorial.BinaryMF._\\nval layout = Layout(\\n    colHeaderSize=170, rowHeaderSize=220,\\n    ch=50, cw=100)\\n\\nrender(Seq(allCells,noZeroes,someSampledZeroes,moreSampledZeroes),layout)\"]"
       }
     }
   }, {
-    "id" : 21,
+    "id" : 30,
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
@@ -189,7 +223,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 22,
+    "id" : 31,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -197,7 +231,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 23,
+    "id" : 32,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -205,7 +239,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 24,
+    "id" : 33,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -213,7 +247,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 25,
+    "id" : 34,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -221,7 +255,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 29,
+    "id" : 35,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -229,7 +263,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 30,
+    "id" : 36,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -237,7 +271,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 43,
+    "id" : 37,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -245,7 +279,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 31,
+    "id" : 38,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -253,7 +287,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 44,
+    "id" : 39,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -261,7 +295,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 32,
+    "id" : 40,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -269,7 +303,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 45,
+    "id" : 41,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -277,7 +311,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 33,
+    "id" : 42,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -285,7 +319,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 46,
+    "id" : 43,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -293,7 +327,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 34,
+    "id" : 44,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -301,7 +335,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 47,
+    "id" : 45,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -309,7 +343,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 35,
+    "id" : 46,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -317,7 +351,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 48,
+    "id" : 47,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -325,7 +359,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 36,
+    "id" : 48,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -341,7 +375,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 37,
+    "id" : 50,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -349,7 +383,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 50,
+    "id" : 51,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -357,7 +391,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 38,
+    "id" : 52,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -365,7 +399,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 51,
+    "id" : 53,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -373,7 +407,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 40,
+    "id" : 54,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -381,7 +415,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 52,
+    "id" : 55,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -389,7 +423,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 39,
+    "id" : 56,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -397,7 +431,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 53,
+    "id" : 57,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -405,7 +439,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 41,
+    "id" : 58,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -413,7 +447,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 54,
+    "id" : 59,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -421,7 +455,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 42,
+    "id" : 60,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -429,7 +463,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 26,
+    "id" : 61,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -437,7 +471,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 27,
+    "id" : 62,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
