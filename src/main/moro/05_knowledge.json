@@ -525,7 +525,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Results on Full Dataset\n\n<img src=\"../../assets/figures/07/results.png\" height=\"500\">",
+      "code" : "### Full Dataset\n\n<img src=\"../../assets/figures/07/results.png\" height=\"500\">",
       "extraFields" : { }
     }
   } ],
