@@ -13,27 +13,41 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Convexification\n\nMatrix \\\\( Y\\in\\Re^{n,d} \\\\). For any \\\\( K \\in \\mathbb{N} \\\\),\n\n(1) \\\\( \\min_{\\mathbf{U}\\in\\Re^{N\\times K},\\mathbf{V}\\in\\Re^{M\\times K}} \\|| \\mathbf{Y} - \\mathbf{U} \\mathbf{V}^T \\||_F \\\\)\n\nIs equivalent to:\n\n(2) \\\\( \\min_{\\mathbf{X}\\in\\Re^{N\\times M},\\mathtt{rank}(\\mathbf{X})\\le K} \\|| \\mathbf{Y} - \\mathbf{X} \\||_F \\\\)\n\nWhich is relaxed into:\n\n(3) \\\\( \\min_{\\mathbf{X}\\in\\Re^{N\\times M},\\||\\mathbf{X}||_*\\le K} \\|| \\mathbf{Y} - \\mathbf{X} \\||_F \\\\)\n\n(1) and (2) are not convex; (3) is convex",
+      "code" : "### Convexification\n\nMatrix \\\\( Y\\in\\Re^{n,d} \\\\). For any \\\\( K \\in \\mathbb{N} \\\\),\n\n(1) \\\\( \\min_{\\mathbf{U}\\in\\Re^{N\\times K},\\mathbf{V}\\in\\Re^{M\\times K}} \\|| \\mathbf{Y} - \\mathbf{U} \\mathbf{V}^T \\||_F \\\\)\n",
       "extraFields" : { }
     }
   }, {
     "id" : 2,
-    "compiler" : "section",
+    "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "History",
-      "extraFields" : { }
+      "code" : "Is equivalent to:\n\n(2) \\\\( \\min_{\\mathbf{X}\\in\\Re^{N\\times M},\\mathtt{rank}(\\mathbf{X})\\le K} \\|| \\mathbf{Y} - \\mathbf{X} \\||_F \\\\)\n",
+      "extraFields" : {
+        "fragment" : "true"
+      }
     }
   }, {
     "id" : 3,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Some Pointers to Convex Factorization\n\n* **2001**: Fazel, Hindi & Boyd. \"A rank minimization heuristic with application to minimum order system approximation.\n* **2009**: Candès & Recht. \"Exact matrix completion via convex optimization.\".\n* **2009**: Wright, Ganesh, Rao, Peng & Ma. \"Robust principal component analysis\".\n* **2009**: Hsu, Kakade and Zhang. A Spectral Algorithm for Learning Hidden Markov Models\n* **2011**: Tamioka & Suzu. Statistical performance of convex tensor decomposition.\n* **2013**: Bouchard, Guo & Yin. Convex Collective Matrix Factorization.\n* **2014**: Bailly, Carreras & Quattoni: Unsupervised Spectral Learning of Finite-state Transducers\n\n",
-      "extraFields" : { }
+      "code" : "Which is relaxed into:\n\n(3) \\\\( \\min_{\\mathbf{X}\\in\\Re^{N\\times M},\\||\\mathbf{X}||_*\\le K} \\|| \\mathbf{Y} - \\mathbf{X} \\||_F \\\\)\n",
+      "extraFields" : {
+        "fragment" : "true"
+      }
     }
   }, {
     "id" : 4,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "(3) is convex, (2) is not",
+      "extraFields" : {
+        "fragment" : "true"
+      }
+    }
+  }, {
+    "id" : 5,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -41,15 +55,71 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 5,
+    "id" : 6,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### What Do We Gain By Making the Problem Convex?\nWe open the Pandor box of convex optimization tools!\n\nTheoretical guarantees\n\n- Convergence to the global optimum, no need for smart initialization\n- Speed of convergences\n- Polynomial time guarantees for a fixed accuracy \n\nBut more importantly, new algorithms:\n\n- Proximal methods (ISTA and FISTA)\n- Frank-Wolfe (Conjugate Gradient) algorithms\n- Augmented Lagrangian approaches (ADMM, splitting methods)\n- Stochastic variants\n",
+      "code" : "### What Do We Gain By Making the Problem Convex?\nWe have access to all the convex optimization tools!\n\n- Theoretical guarantees\n\n- More importantly, new algorithms\n\n\n",
       "extraFields" : { }
     }
   }, {
-    "id" : 6,
+    "id" : 7,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "g",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 8,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Theory\n\n- Convergence to the global optimum, no need for smart initialization\n- Speed of convergences\n- Polynomial time guarantees for a fixed accuracy \n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 9,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "newalgos",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 10,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### New Algorithms\n\n- Proximal methods (ISTA and FISTA)\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 11,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "- Frank-Wolfe (Conjugate Gradient) algorithms\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 12,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "- Augmented Lagrangian approaches (ADMM, splitting methods)\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 13,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "- Stochastic variants (e.g. SAG)",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 14,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -57,31 +127,63 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 7,
+    "id" : 15,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Combining Regularizations\n\nConvex penalties can be added to get better models\n\n- Sparse plus low-rank\n\n    \\\\(L_1\\\\) penalty added to the trace-norm\n  \n* Convex Cannonical Correlation Analysis\n    \n    Sum of trace norms\n\n    \\\\( \\min_{\\mathbf{S}+\\mathbf{L}} \\ell(S+L;Y) + \\lambda||S||_1 + \\mu||L||_* \n\\\\)\n\nVery popular in image processing ==> should also be useful in NLP!\n\n\n",
+      "code" : "### Combining Regularizations\n\nConvex penalties can be added to get better models\n\n- Sparse plus low-rank\n\n    \\\\( \\min_{\\mathbf{S},\\mathbf{L}} \\ell(\\mathbf{S}+\\mathbf{L};\\mathbf{Y}) + \\lambda||\\mathbf{S}||_1 + \\mu||\\mathbf{L}||_* \\\\)\n  \n    \n    Sum of trace norms\n\n    \\\\( \\min_{\\mathbf{L}_1,\\mathbf{L}_2} \\ell(\\mathbf{X};\\mathbf{Y}) + \\lambda_1||\\mathrm{blk}_1(\\mathbf{X})||_* + \\lambda_2||\\mathrm{blk}_2(\\mathbf{X})||_* \n\\\\)\n\ne.g.: Convex Cannonical Correlation Analysis\n\nVery popular in image processing ==> should also be useful in NLP!\n\n\n",
       "extraFields" : { }
     }
   }, {
-    "id" : 8,
+    "id" : 16,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "Spectral1",
+      "code" : "Section",
       "extraFields" : { }
     }
   }, {
-    "id" : 9,
+    "id" : 17,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Spectral Learning in NLP\n\nA promising application of convex factorization: **polynomial-time** learning of \n\n* HMMs\n* WFSAs\n* Grammars\n* Even NMF!\n\n*Idea*: factorization of redundant moment matrices. \n\n**Example: Empirical Hankel matrix of a string** \n\nMatrix of counts of all possible prefixes and suffixes \n\n<img src=\"../../assets/figures/09/make_hankel.png\" width=\"500\">\n",
+      "code" : "### Some Pointers to Convex Factorization\n\n* **2001**: Fazel, Hindi & Boyd. \"A rank minimization heuristic with application to minimum order system approximation.\n* **2009**: Candès & Recht. \"Exact matrix completion via convex optimization.\".\n* **2009**: Wright, Ganesh, Rao, Peng & Ma. \"Robust principal component analysis\".\n* **2009**: Hsu, Kakade and Zhang. A Spectral Algorithm for Learning Hidden Markov Models\n* **2011**: Tamioka & Suzu. Statistical performance of convex tensor decomposition.\n* **2013**: Bouchard, Guo & Yin. Convex Collective Matrix Factorization.\n* **2014**: Bailly, Carreras & Quattoni: Unsupervised Spectral Learning of Finite-state Transducers\n",
       "extraFields" : { }
     }
   }, {
-    "id" : 10,
+    "id" : 18,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "Spectral",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 19,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Application: Spectral Learning in NLP\n\nA promising application of convex factorization: **polynomial-time** learning of \n\n* HMMs\n* WFSAs\n* Grammars\n* Even NMF!\n\n*Idea*: factorization of redundant moment matrices. \n\n",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 20,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "spec",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 21,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Example: Empirical Hankel Matrix of a String \n\nMatrix of counts of all possible prefixes and suffixes \n\n<img src=\"../../assets/figures/09/make_hankel.png\" width=100%>",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 22,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -89,7 +191,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 11,
+    "id" : 23,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,

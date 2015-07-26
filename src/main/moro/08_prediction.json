@@ -29,11 +29,21 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Factorization Machines\n\nBinary Matrix Factorization as a Logistic Regression\nMatrix \\\\( Y\\in\\Re^{n,d} \\\\). For any \\\\(K\\\\):\n\n\\\\( P(\\mathbf{Y}_{ij}=1|i,j) = \\sigma(\\langle \\mathbf{U}_{i:}, \\mathbf{V}_{j:}\\rangle) \\\\) where \\\\(\\mathbf{U}\\in\\Re^{N\\times K}\\\\) and \\\\(\\mathbf{V}\\in\\Re^{M\\times K}\\\\)\n\nIs equivalent to:\n\n\\\\( P(y_{t}=1|x_t = (i,j) ) = \\sigma(\\langle\\mathbf{\\Theta}, \\Phi(x_t)\\rangle) \\\\) \n\nu.c. rank(\\\\(\\mathbf{\\Theta}\\\\)) = *K*\n\n- \\\\(\\Phi(x_t) = \\mathbf{e}_i \\otimes \\mathbf{e}_j\\\\) : standard MF\n- \\\\(\\Phi(x_t) = [1;\\mathbf{e}_i] \\otimes [1;\\mathbf{e}_j]\\\\) : MF with row and columns bias\n\n\\\\( \\rightarrow \\\\) called **factorization machine** [Rendle 2010]\n",
+      "code" : "### Factorization Machines\n\nBinary Matrix Factorization as a Logistic Regression\nMatrix \\\\( Y\\in\\Re^{n,d} \\\\). For any \\\\(K\\\\):\n\n\\\\( P(\\mathbf{Y}_{ij}=1|i,j) = \\sigma(\\langle \\mathbf{U}_{i:}, \\mathbf{V}_{j:}\\rangle) \\\\) where \\\\(\\mathbf{U}\\in\\Re^{N\\times K}\\\\) and \\\\(\\mathbf{V}\\in\\Re^{M\\times K}\\\\)\n\n",
       "extraFields" : { }
     }
   }, {
     "id" : 4,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "Is equivalent to:\n\n\\\\( P(y_{t}=1|x_t = (i,j) ) = \\sigma(\\langle\\mathbf{\\Theta}, \\Phi(x_t)\\rangle) \\\\) \n\nu.c. rank(\\\\(\\mathbf{\\Theta}\\\\)) = *K*\n\n- \\\\(\\Phi(x_t) = \\mathbf{e}_i \\otimes \\mathbf{e}_j\\\\) : standard MF\n- \\\\(\\Phi(x_t) = [1;\\mathbf{e}_i] \\otimes [1;\\mathbf{e}_j]\\\\) : MF with row and columns bias\n\n\\\\( \\rightarrow \\\\) called **factorization machine** [Rendle 2010]",
+      "extraFields" : {
+        "fragment" : "true"
+      }
+    }
+  }, {
+    "id" : 5,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -41,7 +51,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 5,
+    "id" : 6,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -49,7 +59,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 6,
+    "id" : 7,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -57,7 +67,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 7,
+    "id" : 8,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
@@ -65,7 +75,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 8,
+    "id" : 9,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -73,15 +83,15 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 9,
+    "id" : 10,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Structured Prediction\n\nGoal: Predict \\\\(y^* = \\arg\\max_{y\\in T(\\mathbf{x})} S(\\mathbf{x},\\mathbf{y};\\mathbf{\\Theta})\\\\)\n\n- \\\\(\\mathbf{y}\\\\) is a structured output\n\n- \\\\(S(\\mathbf{x},\\mathbf{y};\\mathbf{\\Theta}) = <\\mathbf{\\Phi}(\\mathbf{x},\\mathbf{y}), \\mathbf{\\Theta}>\\\\) is a score function\n\n- \\\\(T(\\mathbf{x})\\\\) is all possible structures\n\nIn NLP \\\\(\\mathbf{\\Theta}\\\\) is often a vector, but it can be a matrix or tensor",
+      "code" : "### Structured Prediction\n\nGoal: Predict \\\\(y^* = \\arg\\max_{y\\in T(\\mathbf{x})} S(\\mathbf{x},\\mathbf{y};\\mathbf{\\Theta})\\\\)\n\n- \\\\(\\mathbf{y}\\\\) is a structured output\n\n- \\\\(S(\\mathbf{x},\\mathbf{y};\\mathbf{\\Theta}) = <\\mathbf{\\Phi}(\\mathbf{x},\\mathbf{y}), \\mathbf{\\Theta}>\\\\) is a score function\n\n- \\\\(T(\\mathbf{x})\\\\) is all possible structures\n\nIn NLP \\\\(\\mathbf{\\Theta}\\\\) is often a vector, but it can be a matrix or tensor.",
       "extraFields" : { }
     }
   }, {
-    "id" : 10,
+    "id" : 11,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -89,15 +99,15 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 11,
+    "id" : 12,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Examples of NLP Structured Prediction\n\n<br />\n<img src=\"../../assets/figures/08/s8s2.png\" height=\"500\">",
+      "code" : "### Examples of NLP Structured Prediction\n\nLei et al.: Low-Rank Tensors for Scoring Dependency (ACL 2014)\n\n<br />\n<img src=\"../../assets/figures/08/s8s2.png\" height=500>",
       "extraFields" : { }
     }
   }, {
-    "id" : 12,
+    "id" : 13,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -105,15 +115,15 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 13,
+    "id" : 14,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<br />\n<img src=\"../../assets/figures/08/s8s3.png\" height=\"500\">",
+      "code" : "### Standard Vector Features\n\n<br />\n<img src=\"../../assets/figures/08/s8s3.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
-    "id" : 14,
+    "id" : 15,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -121,15 +131,15 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 15,
+    "id" : 16,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<br />\n<img src=\"../../assets/figures/08/s8s4.png\" height=\"500\">",
+      "code" : "### High Order Features\n\n<br />\n<img src=\"../../assets/figures/08/s8s4.png\" height=\"500\">",
       "extraFields" : { }
     }
   }, {
-    "id" : 16,
+    "id" : 17,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
@@ -137,19 +147,11 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 17,
+    "id" : 18,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Difficulties of Manual Feature Selection\nFew Templates:\n\n- Poor Performance\n\nMany Templates:\n\n- High Performance \\\\(\\implies\\\\) Many Parameters\n- Useful feature interactions hard to know a priori\n\nAlternatives? Automatic Feature Selection:\n\n- Effective, but ''messy'' (Zhao, 2009)\n- Computationally expensive\n\n**Solution**: Learn templates from data using matrix factorization",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 18,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "pstep1",
+      "code" : "### Difficulties of Manual Feature Selection\nFew Templates:\n\n- Poor Performance\n\nMany Templates:\n\n- High Performance \\\\(\\implies\\\\) Many Parameters\n- Useful feature interactions hard to know a priori\n",
       "extraFields" : { }
     }
   }, {
@@ -157,31 +159,35 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Step 1: Identify Simple Features\n\nFeature vectors for each type of information: \n\n - \\\\(\\phi_{head}\\\\), vector \\\\(\\in \\Re^n\\\\) for head token\n - \\\\(\\phi_{child}\\\\), vector \\\\(\\in \\Re^n\\\\)for child token\n - \\\\(\\phi_{arc}\\\\), vector \\\\(\\in \\Re^n\\\\) for arc information\n\n### Step 2: Define Composite Features\n\n - \\\\(\\phi_{head} \\otimes \\phi_{child}\\\\), matrix \\\\(\\in \\Re^{n\\times n}\\\\) \n - \\\\(\\phi_{arc} \\otimes \\phi_{child}\\\\), matrix \\\\(\\in \\Re^{n\\times n}\\\\) \n - \\\\(\\phi_{head} \\otimes \\phi_{arc}\\\\), matrix \\\\(\\in \\Re^{n\\times n}\\\\) \n - \\\\(\\phi_{head} \\otimes \\phi_{child} \\otimes \\phi_{arc}\\\\), matrix \\\\(\\in \\Re^{n\\times n \\times n}\\\\) \n\n",
-      "extraFields" : { }
+      "code" : "Alternatives? Automatic Feature Selection:\n\n- Effective, but ''messy'' (Zhao, 2009)\n- Computationally expensive",
+      "extraFields" : {
+        "fragment" : "true"
+      }
     }
   }, {
     "id" : 20,
-    "compiler" : "section",
-    "input" : {
-      "sessionId" : null,
-      "code" : "pstep2",
-      "extraFields" : { }
-    }
-  }, {
-    "id" : 21,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Step 3: Formulate Model Parameters Tensor\n\nA tensor \\\\(\\Re^{n \\times n \\times d}\\\\), describes the concatenation of all three feature vectors, so replace \\\\(\\Theta\\\\) with tensor \\\\(A\\\\):\n\n $$ S(\\mathbf{x},\\mathbf{y};\\mathbf{\\Theta})  <\\phi_{head} \\otimes \\phi_{child} \\otimes \\phi_{arc},\\mathbf{\\Theta}> $$ \n\n Can be huge!  A better option?  Low rank approximation.  Calculate A as: \n\n $$ \\mathbf{\\Theta} = \\sum_i U_i \\otimes V_i \\otimes W_i $$ \n\nwhere \\\\(U,V,\\\\) and \\\\(W\\\\) are dense low-dimensional representations \\\\(\\in \\Re^{n\\times r}\\\\) ",
+      "code" : "\n**Solution**: Learn templates from data using matrix factorization",
+      "extraFields" : {
+        "fragment" : "true"
+      }
+    }
+  }, {
+    "id" : 21,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "pstep1",
       "extraFields" : { }
     }
   }, {
     "id" : 22,
-    "compiler" : "section",
+    "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "tobjectives1",
+      "code" : "### Step 1: Identify Simple Features\n\nFeature vectors for each type of information: \n\n - \\\\(\\phi_{head}\\\\), vector \\\\(\\in \\Re^n\\\\) for head token\n - \\\\(\\phi_{child}\\\\), vector \\\\(\\in \\Re^n\\\\)for child token\n - \\\\(\\phi_{arc}\\\\), vector \\\\(\\in \\Re^n\\\\) for arc information\n\n\n",
       "extraFields" : { }
     }
   }, {
@@ -189,15 +195,17 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Learning\n\n Training Objective: \n\n $$ C \\sum_i \\eta_i + ||U||_F^2 + ||V||_F^2 + ||W||_F^2 + ||A||_F^2 $$ \n\nNon-convex optimization with regularization\n\nCan optimize with variant of Passive Aggressive (Crammer, 2006) \n",
-      "extraFields" : { }
+      "code" : "\n### Step 2: Define Composite Features\n\n - \\\\(\\phi_{head} \\otimes \\phi_{child}\\\\), matrix \\\\(\\in \\Re^{n\\times n}\\\\) \n - \\\\(\\phi_{arc} \\otimes \\phi_{child}\\\\), matrix \\\\(\\in \\Re^{n\\times n}\\\\) \n - \\\\(\\phi_{head} \\otimes \\phi_{arc}\\\\), matrix \\\\(\\in \\Re^{n\\times n}\\\\) \n - \\\\(\\phi_{head} \\otimes \\phi_{child} \\otimes \\phi_{arc}\\\\), matrix \\\\(\\in \\Re^{n\\times n \\times n}\\\\) \n",
+      "extraFields" : {
+        "fragment" : "true"
+      }
     }
   }, {
     "id" : 24,
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "tobjectives2",
+      "code" : "pstep2",
       "extraFields" : { }
     }
   }, {
@@ -205,7 +213,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Learning\n\nOnline method tailored for tensors [Lei et al., 2014]\n\nIterate over data and for each instance, update \\\\(A\\\\) and choose one of the feature tensors as follows (assuming \\\\(U\\\\) was chosen): \n\n - \\\\( A^{(t + 1)} = A^t + \\Delta A \\\\) \n\n - \\\\( U^{(t+1)} = U^t + \\Delta U \\\\) \n\n With sub-problem (solvable with closed-form solution): \n\n $$ \\min_{\\Delta A, \\Delta U} \\frac{1}{2} ||\\Delta A ||_F^2 + \\frac{1}{2} ||\\Delta U ||_F^2 + C \\eta_i $$ ",
+      "code" : "### Step 3: Formulate Model Parameters Tensor\n\nA tensor \\\\(\\Re^{n \\times n \\times d}\\\\), describes the concatenation of all three feature vectors, so replace \\\\(\\Theta\\\\) with tensor \\\\(A\\\\):\n\n $$ S(\\mathbf{x},\\mathbf{y};\\mathbf{\\Theta}) = <\\phi_{head} \\otimes \\phi_{child} \\otimes \\phi_{arc},\\mathbf{\\Theta}> $$ \n\n Can be huge!  A better option?  Low rank approximation.  Calculate A as: \n\n $$ \\mathbf{\\Theta} = \\mathbf{U} \\otimes \\mathbf{V} \\otimes \\mathbf{W} $$ \n\nwhere \\\\(U,V,\\\\) and \\\\(W\\\\) are dense low-dimensional representations \\\\(\\in \\Re^{n\\times r}\\\\) ",
       "extraFields" : { }
     }
   }, {
@@ -213,7 +221,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "parseresults",
+      "code" : "tobjectives1",
       "extraFields" : { }
     }
   }, {
@@ -221,7 +229,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Performance - Parsing\n\n<img src=\"../../assets/figures/08/parser-results.png\" height=\"400\">\n\n- RBG + MF model trained with rank \\\\(r = 50\\\\) tensors\n\n- Results averaged over 14 languages (CoNLL data)",
+      "code" : "### Learning\n\n Training Objective: \n\n $$ C \\sum_i \\eta_i + ||U||_F^2 + ||V||_F^2 + ||W||_F^2 + ||A||_F^2 $$ \n\nNon-convex optimization with regularization\n\nCan optimize with variant of Passive Aggressive (Crammer, 2006) \n",
       "extraFields" : { }
     }
   }, {
@@ -229,7 +237,7 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "srlresults",
+      "code" : "tobjectives2",
       "extraFields" : { }
     }
   }, {
@@ -237,7 +245,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Performance - SRL\n\n<img src=\"../../assets/figures/08/srl-results.png\" height=\"400\">\n\n - Baselines have many features and automatic feature selection\n\n - Outperforms previous best system across many languages",
+      "code" : "### Learning\n\nOnline method tailored for tensors [Lei et al., 2014]\n\nIterate over data and for each instance, update unary feature weights \\\\(\\mathbf{\\theta}\\\\) and choose one of the feature tensors as follows (assuming \\\\(U\\\\) was chosen): \n\n - \\\\( \\theta^{(t + 1)} = \\theta^{(t)} + \\Delta \\theta \\\\) \n\n - \\\\( \\mathbf{U}^{(t+1)} = \\mathbf{U}^{(t)} + \\Delta \\mathbf{U} \\\\) \n\n With sub-problem (solvable with closed-form solution): \n\n $$ \\min_{\\Delta \\theta, \\Delta \\mathbf{U}} \\frac{1}{2} ||\\Delta \\mathbf{\\theta} ||_F^2 + \\frac{1}{2} ||\\Delta \\mathbf{U} ||_F^2 + C \\eta_i $$ ",
       "extraFields" : { }
     }
   }, {
@@ -245,11 +253,43 @@
     "compiler" : "section",
     "input" : {
       "sessionId" : null,
-      "code" : "conclusion",
+      "code" : "parseresults",
       "extraFields" : { }
     }
   }, {
     "id" : 31,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Performance - Parsing\n\n<img src=\"../../assets/figures/08/parse_results.png\" height=\"400\">\n\n- RBG + MF model trained with rank \\\\(r = 50\\\\) tensors\n\n- Results averaged over 14 languages (CoNLL data)",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 32,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "srlresults",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 33,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "### Performance - SRL\n\n<img src=\"../../assets/figures/08/srl-results.png\" height=\"400\">\n\n - Baselines have many features and automatic feature selection\n\n - Outperforms previous best system across many languages",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 34,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "conclusion",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 35,
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
