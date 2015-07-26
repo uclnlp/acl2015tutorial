@@ -1,6 +1,22 @@
 {
   "name" : "Tensor Factorization",
   "cells" : [ {
+    "id" : 44,
+    "compiler" : "section",
+    "input" : {
+      "sessionId" : null,
+      "code" : "homer",
+      "extraFields" : { }
+    }
+  }, {
+    "id" : 45,
+    "compiler" : "markdown",
+    "input" : {
+      "sessionId" : null,
+      "code" : "<img src=\"../../assets/figures/homer.jpg\" width=\"90%\">",
+      "extraFields" : { }
+    }
+  }, {
     "id" : 0,
     "compiler" : "section",
     "input" : {
@@ -153,7 +169,7 @@
       "extraFields" : { }
     }
   }, {
-    "id" : 44,
+    "id" : 19,
     "compiler" : "html",
     "input" : {
       "sessionId" : null,
