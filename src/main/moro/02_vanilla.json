@@ -94,7 +94,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Why Low-Rank\n\nBecause we want a model on matrices with:\n\n1. Invariance by permutation of rows and columns\n> The order of instances and features is irrelevant\n\n2. A measure to control complexity\n> A \\\\(p\\\\)-norm with \\\\(p \\ge 0\\\\) \n\n3. Fast to compute and memory efficient\n> \\\\(p\\le 1\\\\) (sparsity-inducing)",
+      "code" : "### Why Low-Rank\n\nBecause we want a model on matrices with:\n\n1. Invariance by permutation of rows and columns\n> The model depends only on the singular values\n\n2. A measure to control complexity\n> A (pseudo-)norm on the singular values\n\n3. Fast to compute and memory efficient\n> A sparsity-inducing norm",
       "extraFields" : { }
     }
   }, {
