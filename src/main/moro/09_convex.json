@@ -29,7 +29,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "History of Convex Factorization\n\n* 2001: Fazel, Maryam, Haitham Hindi, Stephen P Boyd. \"A rank minimization heuristic with application to minimum order system approximation.\n* 2009: Candès, Emmanuel J, and Benjamin Recht. \"Exact matrix completion via convex optimization.\".\n* 2009: Wright, John, Arvind Ganesh, Shankar Rao, Yigang Peng, and Yi Ma. \"Robust principal component analysis\".\n* 2011: Tamioka et Suzu. Statistical performance of convex tensor decomposition.\n* 2013: Bouchard et al. Convex Collective Matrix Factorization.\n\n",
+      "code" : "### Some Pointers to Convex Factorization\n\n* **2001**: Fazel, Hindi & Boyd. \"A rank minimization heuristic with application to minimum order system approximation.\n* **2009**: Candès & Recht. \"Exact matrix completion via convex optimization.\".\n* **2009**: Wright, Ganesh, Rao, Peng & Ma. \"Robust principal component analysis\".\n* **2009**: Hsu, Kakade and Zhang. A Spectral Algorithm for Learning Hidden Markov Models\n* **2011**: Tamioka & Suzu. Statistical performance of convex tensor decomposition.\n* **2013**: Bouchard, Guo & Yin. Convex Collective Matrix Factorization.\n* **2014**: Bailly, Carreras & Quattoni: Unsupervised Spectral Learning of Finite-state Transducers\n\n",
       "extraFields" : { }
     }
   }, {
