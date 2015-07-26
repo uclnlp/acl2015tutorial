@@ -126,7 +126,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Singular Value Decomposition (SVD)\n\nGiven \\\\(\\mathbf{Y} \\in\\Re^{M\\times N} \\\\) there exists \n\n$$\n\\mathbf{Y} = \\mathbf{U}\\mathbf{D}\\mathbf{V}\n$$\n\nwhere \\\\(\\mathbf{U}\\in\\Re^{M\\times M},\\mathbf{V}\\in\\Re^{N\\times N}\\\\) are orthogonal:\n\n$$\\mathbf{U}\\mathbf{U}^T = \\mathbf{V}\\mathbf{V}^T= I$$\n\nand \\\\(\\mathbf{D} \\in\\Re^{M\\times N} \\ge 0\\\\) is diagonal\n\n<img src=\"../../assets/figures/SVD.png\" height=\"300\">",
+      "code" : "### Singular Value Decomposition (SVD)\n\nGiven \\\\(\\mathbf{Y} \\in\\Re^{M\\times N} \\\\) there exists \n\n$$\n\\mathbf{Y} = \\mathbf{U}\\mathbf{D}\\mathbf{V}^T\n$$\n\nwhere \\\\(\\mathbf{U}\\in\\Re^{M\\times M},\\mathbf{V}\\in\\Re^{N\\times N}\\\\) are orthogonal:\n\n$$\\mathbf{U}\\mathbf{U}^T = \\mathbf{V}\\mathbf{V}^T= I$$\n\nand \\\\(\\mathbf{D} \\in\\Re^{M\\times N} \\ge 0\\\\) is diagonal\n\n<img src=\"../../assets/figures/SVD.png\" height=\"300\">",
       "extraFields" : { }
     }
   }, {
@@ -142,7 +142,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "### Truncated SVD\n\nIf we truncate \\\\(\\mathbf{D}\\\\) to its \\\\(L\\\\) largest values \n\n<img src=\"../../assets/figures/SVDtrunc.png\" height=\"300\">\n\nthen \\\\( \\hat{\\mathbf{Y}} = \\mathbf{U}\\mathbf{D_{trunc}}\\mathbf{V} = (\\mathbf{U}\\sqrt{\\mathbf{D_{trunc}}})(\\sqrt{\\mathbf{D_{trunc}}}\\mathbf{V})\\\\)\n\nis the rank-\\\\(L\\\\) minimizer of \\\\(\\||\\mathbf{Y} - \\hat{\\mathbf{Y}}\\||_F^2\\\\)\n\n<div style=\"text-align:right;\">\n<i>Eckart-Young theorem</i>\n</div>",
+      "code" : "### Truncated SVD\n\nIf we truncate \\\\(\\mathbf{D}\\\\) to its \\\\(L\\\\) largest values \n\n<img src=\"../../assets/figures/SVDtrunc.png\" height=\"300\">\n\nthen \\\\( \\hat{\\mathbf{Y}} = \\mathbf{U}\\mathbf{D_{trunc}}\\mathbf{V} = (\\mathbf{U}\\sqrt{\\mathbf{D_{trunc}}})(\\sqrt{\\mathbf{D_{trunc}}}\\mathbf{V}^T)\\\\)\n\nis the rank-\\\\(L\\\\) minimizer of \\\\(\\||\\mathbf{Y} - \\hat{\\mathbf{Y}}\\||_F^2\\\\)\n\n<div style=\"text-align:right;\">\n<i>Eckart-Young theorem</i>\n</div>",
       "extraFields" : { }
     }
   }, {
