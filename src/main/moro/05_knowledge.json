@@ -93,7 +93,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<h3>Factual Prior Knowledge</h3>\n\n<img src=\"../../assets/figures/mfprior.png\" width=\"100%\">\n\n- Collective Matrix Factoriztion",
+      "code" : "<h3>Factual Prior Knowledge</h3>\n\n<img src=\"../../assets/figures/mfprior.png\" height=\"450\">\n\n- Collective Matrix Factoriztion (Section 7)\n- Discriminative Factorial Models (Section 6)",
       "extraFields" : { }
     }
   }, {
