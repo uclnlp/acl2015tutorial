@@ -125,7 +125,7 @@
     "compiler" : "markdown",
     "input" : {
       "sessionId" : null,
-      "code" : "<h3>First-order Logic Prior Knowledge</h3>\n<ul>\n<li class=\"fragment\" data-fragment-index=\"1\"><b>Representation Learning</b>: hard to fix mistakes\n$$\n\\neg \\text{person}(x) \\Rightarrow \\neg \\text{place of birth}(x,y)\n$$\n<li class=\"fragment\" data-fragment-index=\"2\"><b>Distant Supervision</b>: fails for no or little alignment\n$$\n\\text{#1-is-a-student-in-#2-'s-lab}(x,y) \\Rightarrow \\text{supervisedBy}(x,y)$$\n<li class=\"fragment\" data-fragment-index=\"3\"><b>Pros</b>: Formulae are easy to modify and improve\n<li class=\"fragment\" data-fragment-index=\"4\"><b>Cons</b>: Brittle, no generalization and inference can become intractable\n<li class=\"fragment\" data-fragment-index=\"5\"><i>Markov Logic Networks</i>: easy to modify, generalize well, but inference often intractable in practice\n</ul>",
+      "code" : "<h3>First-order Logic Prior Knowledge</h3>\n<ul>\n<li class=\"fragment\" data-fragment-index=\"1\"><b>Representation Learning</b>: hard to fix mistakes\n$$\n\\neg \\text{person}(x) \\Rightarrow \\neg \\text{place of birth}(x,y)\n$$\n<li class=\"fragment\" data-fragment-index=\"2\"><b>Distant Supervision</b>: fails for no or little alignment\n$$\n\\text{#1-is-a-student-in-#2-'s-lab}(x,y) \\Rightarrow \\text{supervisedBy}(x,y)$$\n<li class=\"fragment\" data-fragment-index=\"3\"><b>Pros</b>: Formulae are easy to modify and improve\n<li class=\"fragment\" data-fragment-index=\"4\"><b>Cons</b>: Brittle, no generalization and inference can become intractable\n<li class=\"fragment\" data-fragment-index=\"5\"><i>Markov Logic Networks</i>: often intractable in practice\n</ul>",
       "extraFields" : { }
     }
   }, {
